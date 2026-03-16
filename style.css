@@ -1,0 +1,888 @@
+/* ==========================================================================
+   mein haus — style.css
+   Design System: ABC Diatype · 8px spacing grid · Apple-inspired type scale
+   ========================================================================== */
+
+/* ---------- @font-face ---------- */
+@font-face {
+    font-family: 'ABC Diatype';
+    src: url('fonts/Diatype-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ABC Diatype';
+    src: url('fonts/Diatype-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ABC Diatype';
+    src: url('fonts/Diatype-RegularItalic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ABC Diatype';
+    src: url('fonts/Diatype-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ABC Diatype';
+    src: url('fonts/Diatype-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Custom Properties ---------- */
+:root {
+    /* Colors */
+    --color-bg: #f9f7f4;
+    --color-text: #2d2d2d;
+    --color-text-muted: #777777;
+    --color-border: #e0e0e0;
+    --color-bg-dark: #111111;
+    --color-text-light: #ffffff;
+    --color-text-light-muted: #999999;
+
+    /* Typography */
+    --font: 'ABC Diatype', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --text-display: clamp(2.5rem, 5vw, 4rem);
+    --text-h2: clamp(1.75rem, 3.5vw, 3rem);
+    --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+    --text-body-lg: clamp(1.0625rem, 1.4vw, 1.25rem);
+    --text-body: 1rem;
+    --text-sm: 0.9375rem;
+    --text-caption: 0.8125rem;
+    --text-label: 0.75rem;
+
+    /* Spacing — 8px grid */
+    --space-4: 0.25rem;
+    --space-8: 0.5rem;
+    --space-12: 0.75rem;
+    --space-16: 1rem;
+    --space-24: 1.5rem;
+    --space-32: 2rem;
+    --space-40: 2.5rem;
+    --space-48: 3rem;
+    --space-56: 3.5rem;
+    --space-64: 4rem;
+    --space-80: 5rem;
+    --space-96: 6rem;
+    --space-120: 7.5rem;
+    --space-160: 10rem;
+
+    /* Responsive spacing */
+    --space-section: clamp(5rem, 12vw, 10rem);
+    --space-section-inner: clamp(3rem, 6vw, 5rem);
+    --space-page-x: clamp(1.5rem, 4vw, 3rem);
+
+    /* Transitions */
+    --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-family: inherit;
+}
+
+/* ---------- Typography ---------- */
+.section-title {
+    font-size: var(--text-h2);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-24);
+}
+
+.section-label {
+    display: block;
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-24);
+}
+
+.section--dark .section-label {
+    color: var(--color-text-light-muted);
+}
+
+.section-intro {
+    font-size: var(--text-body-lg);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    max-width: 600px;
+}
+
+.section--dark .section-intro {
+    color: var(--color-text-light-muted);
+}
+
+.text-large {
+    font-size: var(--text-body-lg);
+    line-height: 1.4;
+    margin-bottom: var(--space-24);
+}
+
+.text-large:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(249, 247, 244, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition);
+}
+
+.nav.scrolled {
+    border-bottom-color: var(--color-border);
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 var(--space-page-x);
+    height: 72px;
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    column-gap: var(--space-64);
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: var(--text-body);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.nav-logo-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-32);
+}
+
+.nav-links a {
+    font-size: var(--text-sm);
+    font-weight: 400;
+    position: relative;
+    padding: var(--space-4) 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-text);
+    transition: width var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-link--disabled {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    cursor: default;
+    padding: var(--space-4) 0;
+}
+
+.nav-cta {
+    font-size: var(--text-sm);
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+.nav-cta:hover {
+    color: var(--color-text-muted);
+}
+
+/* Language toggle */
+.lang-toggle {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: var(--space-8) var(--space-12);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+    background: transparent;
+    color: var(--color-text);
+    font-family: var(--font);
+}
+
+.lang-toggle:hover {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* Mobile right side (lang + hamburger) */
+.nav-right-mobile {
+    display: none;
+    align-items: center;
+    gap: var(--space-16);
+}
+
+/* Mobile toggle */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: var(--space-8);
+    z-index: 110;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--color-text);
+    transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-toggle.active span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+}
+
+.nav-toggle.active span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-menu .lang-toggle {
+    position: absolute;
+    bottom: var(--space-48);
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-32);
+}
+
+.mobile-menu-links a {
+    font-size: var(--text-h2);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.mobile-link--disabled {
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.mobile-menu.active .mobile-menu-links a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu.active .mobile-menu-links a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-menu-links a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu.active .mobile-menu-links a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu.active .mobile-menu-links a:nth-child(4) { transition-delay: 0.25s; }
+
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
+    .nav-right-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav-right {
+        display: none;
+    }
+    .nav-right-mobile {
+        display: flex;
+    }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    padding-top: 72px;
+}
+
+.hero-container {
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(5rem, 12vh, 10rem) var(--space-page-x) clamp(3rem, 6vh, 5rem);
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    column-gap: var(--space-64);
+    row-gap: clamp(2.5rem, 5vh, 4rem);
+}
+
+.hero-title {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-tagline {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero-subtitle {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: var(--text-body-lg);
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-image-wrapper {
+    width: 100%;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 8 / 3;
+    background: linear-gradient(135deg, #e8e4df 0%, #d4cfc8 40%, #c5bfb6 100%);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: var(--space-24);
+    right: var(--space-24);
+    font-size: var(--text-caption);
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    transition: opacity var(--transition);
+}
+
+/* ---------- Sections ---------- */
+.section {
+    padding: var(--space-section) var(--space-page-x);
+}
+
+.section--dark {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+}
+
+.section--border {
+    border-top: 1px solid var(--color-border);
+}
+
+.section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: var(--space-section-inner);
+}
+
+/* ---------- Rooms (Services) ---------- */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-bottom: var(--space-section-inner);
+}
+
+.room-card {
+    border: 1px solid var(--color-border);
+    padding: clamp(2rem, 4vw, 3rem);
+    transition: background var(--transition);
+}
+
+.room-card:hover {
+    background: #fafafa;
+}
+
+.room-number {
+    display: block;
+    font-size: var(--text-label);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-32);
+}
+
+.room-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-32);
+    color: var(--color-text);
+}
+
+.room-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.room-name {
+    font-size: var(--text-h3);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-4);
+}
+
+.room-service {
+    display: block;
+    font-size: var(--text-caption);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-24);
+}
+
+.room-description {
+    font-size: var(--text-body);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    max-width: 420px;
+}
+
+/* Coming soon */
+.rooms-coming-soon {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-section-inner);
+}
+
+.coming-soon-label {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-24);
+}
+
+.coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+}
+
+.coming-soon-room {
+    padding: var(--space-24) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.room-name-small {
+    display: block;
+    font-size: var(--text-body);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+}
+
+.room-service-small {
+    display: block;
+    font-size: var(--text-caption);
+    color: var(--color-text-muted);
+}
+
+/* ---------- Neighbors ---------- */
+.neighbors-content {
+    max-width: 700px;
+}
+
+.section--dark .text-large {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Approach ---------- */
+.approach-content {
+    display: grid;
+    gap: var(--space-section-inner);
+}
+
+.approach-text {
+    max-width: 700px;
+}
+
+.approach-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-32);
+}
+
+.value {
+    padding-top: var(--space-24);
+    border-top: 1px solid var(--color-border);
+}
+
+.value-number {
+    display: block;
+    font-size: var(--text-label);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-16);
+}
+
+.value h4 {
+    font-size: var(--text-body);
+    font-weight: 500;
+    margin-bottom: var(--space-12);
+}
+
+.value p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* ---------- About ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-64);
+}
+
+.about-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #f5f5f5;
+    margin-bottom: var(--space-24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.photo-placeholder {
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 300;
+    color: var(--color-border);
+    user-select: none;
+}
+
+.about-name {
+    font-size: var(--text-h3);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+}
+
+.about-role {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-24);
+    font-style: italic;
+}
+
+.about-bio {
+    font-size: var(--text-body);
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin-bottom: var(--space-24);
+}
+
+.about-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+}
+
+.about-skills span {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: var(--space-8) var(--space-12);
+    border: 1px solid var(--color-border);
+}
+
+/* ---------- Contact ---------- */
+.contact-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-door {
+    width: 60px;
+    height: auto;
+    margin-bottom: var(--space-40);
+    color: var(--color-text-light);
+}
+
+.contact-content .section-title {
+    margin-bottom: var(--space-24);
+}
+
+.contact-content .text-large {
+    margin-bottom: var(--space-40);
+}
+
+.contact-email {
+    font-size: var(--text-h3);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    padding-bottom: var(--space-4);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+    transition: border-color var(--transition);
+    margin-bottom: var(--space-32);
+}
+
+.contact-email:hover {
+    border-bottom-color: var(--color-text-light);
+}
+
+.contact-social {
+    display: flex;
+    gap: var(--space-32);
+}
+
+.contact-social a {
+    font-size: var(--text-sm);
+    color: var(--color-text-light-muted);
+    transition: color var(--transition);
+}
+
+.contact-social a:hover {
+    color: var(--color-text-light);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    padding: var(--space-32) var(--space-page-x);
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-logo {
+    font-size: var(--text-sm);
+    font-weight: 700;
+}
+
+.footer-copy {
+    font-size: var(--text-caption);
+    color: var(--color-text-muted);
+}
+
+/* ---------- Reveal Animations ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.rooms-grid .reveal:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.about-grid .reveal:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+/* ---------- Selection ---------- */
+::selection {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+.section--dark ::selection {
+    background: var(--color-text-light);
+    color: var(--color-bg-dark);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        padding-top: clamp(3rem, 6vh, 5rem);
+        row-gap: var(--space-32);
+    }
+
+    .hero-title,
+    .hero-subtitle,
+    .hero-tagline {
+        grid-column: 1;
+    }
+
+    .hero-title { grid-row: 1; }
+    .hero-subtitle { grid-row: 2; }
+    .hero-tagline { grid-row: 3; align-self: start; }
+
+    .hero-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .coming-soon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-values {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-64);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-tagline br,
+    .section-intro br,
+    .section-title br,
+    .contact-content .text-large br {
+        display: none;
+    }
+}
