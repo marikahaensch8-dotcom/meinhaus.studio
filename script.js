@@ -12,7 +12,7 @@
             'nav.cta': 'Start a project',
 
             'hero.title': 'Every brand<br>needs a home.',
-            'hero.subtitle': 'We\'re mein haus — a creative studio for founders and changemakers. We craft brand identities, digital experiences, and visual stories that resonate. From first concept to final pixel, we turn ideas into something that feels like home.',
+            'hero.subtitle': 'We\'re mein haus — a creative studio shaping brands from the ground up. We build identities, digital experiences, and visual narratives for founders and visionaries. From concept to craft, everything we make is built to resonate.',
             'hero.scroll': '(Scroll)',
             'hero.tagline': 'Branding & web design<br>from vision to home.',
 
@@ -65,7 +65,7 @@
             'nav.cta': 'Projekt starten',
 
             'hero.title': 'Jede Marke braucht<br>ein Zuhause.',
-            'hero.subtitle': 'Wir sind mein haus — ein Kreativstudio für Gründer*innen und Changemaker. Wir gestalten Markenidentitäten, digitale Erlebnisse und visuelle Geschichten, die berühren. Vom ersten Konzept bis zum letzten Pixel verwandeln wir Ideen in etwas, das sich wie Zuhause anfühlt.',
+            'hero.subtitle': 'Wir sind mein haus — ein Kreativstudio, das Marken von Grund auf baut. Wir gestalten Identitäten, digitale Erlebnisse und visuelle Geschichten für Gründer*innen und Visionär*innen. Vom Konzept bis zum Handwerk — alles, was wir machen, ist gebaut, um zu wirken.',
             'hero.scroll': '(Scrollen)',
             'hero.tagline': 'Branding & Webdesign<br>von der Vision zum Zuhause.',
 
