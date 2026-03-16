@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mein Haus Studio – Studio OS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F4F0;--surface:#EDECEA;--white:#fff;
+  --text:#1a1a1a;--muted:#888;--subtle:#bbb;
+  --border:#E0DEDB;--border2:#ccc;
+  --green:#3B6B45;--green-light:#EAF2EC;
+  --red:#c0392b;--red-light:#fdf0ef;
+  --amber:#b07d2a;--amber-light:#fdf6e9;
+  --blue:#2a4a8a;--blue-light:#eef1fa;
+  --radius:10px;--radius-sm:6px;
+  --sidebar:220px;
+  --font:'DM Sans',sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
+
+/* ── LOGIN ── */
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000}
+.login-box{width:340px;text-align:center}
+.login-logo{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3rem}
+.login-title{font-size:22px;font-weight:300;margin-bottom:2rem}
+.login-field{width:100%;padding:12px 14px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--white);font-family:var(--font);font-size:14px;margin-bottom:.75rem;outline:none;transition:border .2s}
+.login-field:focus{border-color:var(--text)}
+.login-btn{width:100%;padding:12px;background:var(--text);color:#fff;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;margin-top:.5rem;transition:opacity .2s}
+.login-btn:hover{opacity:.85}
+.login-error{color:var(--red);font-size:13px;margin-top:.75rem;min-height:20px}
+
+/* ── APP SHELL ── */
+#app{display:none;min-height:100vh}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar);background:var(--surface);border-right:1px solid var(--border);padding:1.5rem 0;display:flex;flex-direction:column}
+.sidebar-logo{padding:0 1.25rem 1.5rem;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.sidebar-user{padding:.75rem 1.25rem;font-size:13px;font-weight:500;border-bottom:1px solid var(--border);margin-bottom:.5rem}
+.sidebar-user span{font-weight:300;color:var(--muted)}
+.nav-item{display:flex;align-items:center;gap:.6rem;padding:.55rem 1.25rem;font-size:13px;cursor:pointer;color:var(--muted);border-radius:0;transition:background .15s,color .15s;border-left:2px solid transparent}
+.nav-item:hover{background:var(--border);color:var(--text)}
+.nav-item.active{color:var(--text);font-weight:500;border-left-color:var(--text);background:rgba(0,0,0,.04)}
+.nav-icon{font-size:14px;width:18px;text-align:center}
+.sidebar-bottom{margin-top:auto;padding:1rem 1.25rem;border-top:1px solid var(--border)}
+.logout-btn{font-size:12px;color:var(--muted);cursor:pointer;background:none;border:none;font-family:var(--font)}
+.logout-btn:hover{color:var(--text)}
+
+.main{margin-left:var(--sidebar);padding:2.5rem 2.5rem 4rem;min-height:100vh}
+.page{display:none}
+.page.active{display:block}
+
+/* ── SHARED ── */
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+.page-title{font-size:22px;font-weight:300}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:8px 16px;border-radius:var(--radius-sm);font-family:var(--font);font-size:13px;cursor:pointer;transition:all .15s;border:1px solid var(--border2);background:var(--white);color:var(--text)}
+.btn:hover{background:var(--surface)}
+.btn-primary{background:var(--text);color:#fff;border-color:var(--text)}
+.btn-primary:hover{opacity:.85}
+.btn-sm{font-size:11px;padding:4px 10px}
+.btn-danger{color:var(--red);border-color:var(--red)}
+.btn-danger:hover{background:var(--red-light)}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500}
+.tag-green{background:var(--green-light);color:var(--green)}
+.tag-amber{background:var(--amber-light);color:var(--amber)}
+.tag-red{background:var(--red-light);color:var(--red)}
+.tag-blue{background:var(--blue-light);color:var(--blue)}
+.tag-grey{background:var(--surface);color:var(--muted)}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:500;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:var(--radius);padding:2rem;width:500px;max-width:90vw;max-height:90vh;overflow-y:auto;display:none}
+.modal-title{font-size:16px;font-weight:500;margin-bottom:1.5rem}
+.form-row{margin-bottom:1rem}
+.form-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;background:var(--bg);outline:none;transition:border .2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--text)}
+.form-textarea{resize:vertical;min-height:80px}
+.modal-actions{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem}
+
+/* ── DASHBOARD LAYOUT ── */
+.dash-top{display:grid;grid-template-columns:1fr 1.6fr;gap:1.5rem;margin-bottom:1.5rem}
+.dash-section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.dash-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.dash-section-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+
+/* ── TODOS ── */
+.todo-input-row{display:flex;gap:.5rem;margin-bottom:1rem}
+.todo-input{flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-family:var(--font);font-size:13px;background:var(--bg);outline:none;transition:border .2s}
+.todo-input:focus{border-color:var(--text)}
+.todo-item{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.todo-item:last-child{border-bottom:none}
+.todo-check{width:16px;height:16px;border:1.5px solid var(--border2);border-radius:3px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .15s}
+.todo-check.done{background:var(--green);border-color:var(--green);color:#fff}
+.todo-text{flex:1}
+.todo-text.done{text-decoration:line-through;color:var(--muted)}
+.todo-claim{font-size:11px;color:var(--muted);cursor:pointer;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:2px 8px;font-family:var(--font);transition:all .15s;white-space:nowrap}
+.todo-claim:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.todo-delete{background:none;border:none;cursor:pointer;color:var(--subtle);font-size:14px;padding:0;line-height:1}
+
+/* ── BOARD (Asana-style) ── */
+.board{display:flex;gap:1rem;overflow-x:auto;padding-bottom:.5rem}
+.board-col{min-width:240px;width:240px;flex-shrink:0;background:var(--surface);border-radius:var(--radius);padding:1rem}
+.board-col-header{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;justify-content:space-between}
+.board-col-count{font-size:10px;background:var(--border);padding:1px 7px;border-radius:20px}
+.board-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.board-card:hover{border-color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.board-card-title{font-size:13px;font-weight:500;margin-bottom:.5rem}
+.board-card-meta{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.board-card-project{display:inline-flex;align-items:center;gap:.3rem;font-size:11px;padding:2px 7px;border-radius:4px;background:var(--surface);color:var(--text);font-weight:500}
+.board-card-project .pdot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.board-card-date{font-size:11px;color:var(--muted)}
+.board-card-assignee{font-size:10px;background:var(--text);color:#fff;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:500;margin-left:auto}
+.board-add{display:flex;align-items:center;gap:.4rem;font-size:12px;color:var(--muted);cursor:pointer;padding:.5rem 0;transition:color .15s;background:none;border:none;font-family:var(--font);width:100%}
+.board-add:hover{color:var(--text)}
+.board-add-input{width:100%;padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-family:var(--font);font-size:13px;background:var(--white);outline:none;margin-bottom:.5rem}
+.board-add-input:focus{border-color:var(--text)}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:2px}
+.dot-todo{background:var(--border2)}
+.dot-in_progress{background:var(--blue)}
+.dot-on_hold{background:var(--amber)}
+.dot-done{background:var(--green)}
+
+/* ── GOALS ── */
+.goals-list{display:flex;flex-direction:column;gap:1rem}
+.goal-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.goal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.5rem}
+.goal-title{font-size:15px;font-weight:500}
+.goal-quarter{font-size:12px;color:var(--muted)}
+.goal-desc{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+.goal-progress{margin-bottom:1rem}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:.4rem}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
+.kr-list{border-top:1px solid var(--border);padding-top:1rem}
+.kr-item{display:flex;align-items:center;gap:.75rem;padding:.4rem 0;font-size:13px}
+.kr-check{width:16px;height:16px;border:1.5px solid var(--border2);border-radius:3px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
+.kr-check.done{background:var(--green);border-color:var(--green);color:#fff}
+
+/* ── PROJECTS ── */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.project-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;transition:border-color .2s}
+.project-card:hover{border-color:var(--text)}
+.project-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem}
+.project-name{font-size:15px;font-weight:500}
+.project-client{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.project-desc{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+.project-footer{display:flex;align-items:center;justify-content:space-between}
+.project-date{font-size:11px;color:var(--subtle)}
+
+/* ── IDEAS ── */
+.ideas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.idea-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;transition:border-color .2s}
+.idea-card:hover{border-color:var(--text)}
+.idea-title{font-size:14px;font-weight:500;margin-bottom:.5rem}
+.idea-body{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.idea-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.idea-date{font-size:11px;color:var(--subtle);margin-top:.75rem}
+
+/* ── DETAIL VIEW ── */
+.detail-back{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:1.5rem}
+.detail-back:hover{color:var(--text)}
+.detail-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem}
+.detail-title{font-size:22px;font-weight:300;margin-bottom:.25rem}
+.detail-meta{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+.detail-section{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.detail-section-title{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.75rem}
+.detail-desc{font-size:14px;line-height:1.75;color:#333}
+.inline-task{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.inline-task:last-child{border-bottom:none}
+.inline-check{width:16px;height:16px;border:1.5px solid var(--border2);border-radius:3px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
+.inline-check.done{background:var(--green);border-color:var(--green);color:#fff}
+.empty{color:var(--muted);font-size:13px;padding:.5rem 0}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Mein Haus Studio</div>
+    <div class="login-title">Studio OS</div>
+    <input class="login-field" id="login-name" placeholder="Dein Name" />
+    <input class="login-field" type="password" id="login-pass" placeholder="Passwort" />
+    <button class="login-btn" onclick="doLogin()">Einloggen</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="sidebar">
+    <div class="sidebar-logo">Studio OS</div>
+    <div class="sidebar-user">Hallo — <span id="user-display"></span></div>
+    <nav>
+      <div class="nav-item active" onclick="showPage('dashboard')" id="nav-dashboard">
+        <span class="nav-icon">◈</span> Dashboard
+      </div>
+      <div class="nav-item" onclick="showPage('projects')" id="nav-projects">
+        <span class="nav-icon">◻</span> Projekte
+      </div>
+      <div class="nav-item" onclick="showPage('ideas')" id="nav-ideas">
+        <span class="nav-icon">✦</span> Ideen
+      </div>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="logout-btn" onclick="doLogout()">← Ausloggen</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <div class="page-title" id="greeting">Guten Morgen ☀</div>
+        <div id="dash-date" style="font-size:13px;color:var(--muted)"></div>
+      </div>
+
+      <div class="dash-top">
+        <!-- TODOS -->
+        <div class="dash-section">
+          <div class="dash-section-header">
+            <div class="dash-section-title">Todos</div>
+          </div>
+          <div class="todo-input-row">
+            <input class="todo-input" id="todo-input" placeholder="Neues Todo..." />
+            <button class="btn btn-sm" onclick="addTodo()" style="padding:8px 12px">+</button>
+          </div>
+          <div id="todo-list"></div>
+        </div>
+
+        <!-- BOARD -->
+        <div class="dash-section" style="overflow:hidden;padding-right:.75rem">
+          <div class="dash-section-header">
+            <div class="dash-section-title">Aufgaben</div>
+          </div>
+          <div class="board" id="task-board"></div>
+        </div>
+      </div>
+
+      <!-- GOALS -->
+      <div class="dash-section" style="margin-bottom:1.5rem">
+        <div class="dash-section-header">
+          <div class="dash-section-title">Ziele & OKRs</div>
+          <button class="btn btn-sm" onclick="openModal('goal')">+ Ziel</button>
+        </div>
+        <div class="goals-list" id="goals-list"></div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="page" id="page-projects">
+      <div class="page-header">
+        <div class="page-title">Projekte & Kunden</div>
+        <button class="btn btn-primary" onclick="openModal('project')">+ Neues Projekt</button>
+      </div>
+      <div class="project-grid" id="project-list"></div>
+    </div>
+
+    <!-- PROJECT DETAIL -->
+    <div class="page" id="page-project-detail">
+      <div class="detail-back" onclick="showPage('projects')">← Zurück</div>
+      <div class="detail-card" id="project-detail-content"></div>
+    </div>
+
+    <!-- IDEAS -->
+    <div class="page" id="page-ideas">
+      <div class="page-header">
+        <div class="page-title">Ideen & Inspiration</div>
+        <button class="btn btn-primary" onclick="openModal('idea')">+ Neue Idee</button>
+      </div>
+      <div class="ideas-grid" id="ideas-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+
+  <!-- Task Edit Modal -->
+  <div class="modal" id="modal-task-edit">
+    <div class="modal-title" id="task-edit-title">Aufgabe bearbeiten</div>
+    <input type="hidden" id="te-id"/>
+    <div class="form-row"><label class="form-label">Aufgabe</label><input class="form-input" id="te-title"/></div>
+    <div class="form-row"><label class="form-label">Notiz</label><textarea class="form-textarea" id="te-note"></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div class="form-row"><label class="form-label">Spalte</label>
+        <select class="form-select" id="te-section">
+          <option value="heute">Heute</option>
+          <option value="morgen">Morgen</option>
+          <option value="diese_woche">Diese Woche</option>
+          <option value="spaeter">Später</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="form-label">Status</label>
+        <select class="form-select" id="te-status">
+          <option value="todo">To Do</option>
+          <option value="in_progress">In Arbeit</option>
+          <option value="on_hold">Pausiert</option>
+          <option value="done">Erledigt</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div class="form-row"><label class="form-label">Zuständig</label>
+        <select class="form-select" id="te-assignee">
+          <option value="">Niemand</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="form-label">Priorität</label>
+        <select class="form-select" id="te-prio">
+          <option value="normal">Normal</option>
+          <option value="hoch">Hoch</option>
+          <option value="niedrig">Niedrig</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div class="form-row"><label class="form-label">Fällig</label><input class="form-input" type="date" id="te-due"/></div>
+      <div class="form-row"><label class="form-label">Projekt</label>
+        <select class="form-select" id="te-project"><option value="">Kein Projekt</option></select>
+      </div>
+    </div>
+    <div class="modal-actions" style="justify-content:space-between">
+      <button class="btn btn-danger btn-sm" id="te-delete-btn" onclick="deleteTaskFromModal()">Löschen</button>
+      <div style="display:flex;gap:.75rem">
+        <button class="btn" onclick="closeModal()">Abbrechen</button>
+        <button class="btn btn-primary" onclick="saveTaskEdit()">Speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Modal -->
+  <div class="modal" id="modal-project">
+    <div class="modal-title">Neues Projekt</div>
+    <div class="form-row"><label class="form-label">Projektname</label><input class="form-input" id="p-name" placeholder="z.B. Brand Identity für Grüne Roots"/></div>
+    <div class="form-row"><label class="form-label">Kunde</label><input class="form-input" id="p-client" placeholder="Kundenname"/></div>
+    <div class="form-row"><label class="form-label">Beschreibung</label><textarea class="form-textarea" id="p-desc" placeholder="Was ist der Scope?"></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div class="form-row"><label class="form-label">Status</label>
+        <select class="form-select" id="p-status">
+          <option value="lead">Lead</option>
+          <option value="aktiv">Aktiv</option>
+          <option value="pause">Pause</option>
+          <option value="abgeschlossen">Abgeschlossen</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="form-label">Deadline</label><input class="form-input" type="date" id="p-deadline"/></div>
+    </div>
+    <div class="form-row"><label class="form-label">Budget (€)</label><input class="form-input" type="number" id="p-budget" placeholder="0"/></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Abbrechen</button>
+      <button class="btn btn-primary" onclick="saveProject()">Speichern</button>
+    </div>
+  </div>
+
+  <!-- Goal Modal -->
+  <div class="modal" id="modal-goal">
+    <div class="modal-title">Neues Ziel</div>
+    <div class="form-row"><label class="form-label">Ziel</label><input class="form-input" id="g-title" placeholder="z.B. 10 Kunden bis Q3 gewinnen"/></div>
+    <div class="form-row"><label class="form-label">Beschreibung</label><textarea class="form-textarea" id="g-desc"></textarea></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div class="form-row"><label class="form-label">Zeitraum</label>
+        <select class="form-select" id="g-quarter">
+          <option>Q1 2025</option><option>Q2 2025</option><option>Q3 2025</option><option>Q4 2025</option>
+          <option>Q1 2026</option><option>Q2 2026</option><option>Q3 2026</option><option>Q4 2026</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="form-label">Fortschritt %</label><input class="form-input" type="number" id="g-progress" min="0" max="100" value="0"/></div>
+    </div>
+    <div class="form-row"><label class="form-label">Key Results (einer pro Zeile)</label><textarea class="form-textarea" id="g-krs" placeholder="Erste 5 Anfragen beantworten&#10;Website live schalten&#10;Instagram auf 500 Follower"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Abbrechen</button>
+      <button class="btn btn-primary" onclick="saveGoal()">Speichern</button>
+    </div>
+  </div>
+
+  <!-- Idea Modal -->
+  <div class="modal" id="modal-idea">
+    <div class="modal-title">Neue Idee</div>
+    <div class="form-row"><label class="form-label">Titel</label><input class="form-input" id="i-title" placeholder="Idee in einem Satz"/></div>
+    <div class="form-row"><label class="form-label">Beschreibung</label><textarea class="form-textarea" id="i-body" placeholder="Beschreib die Idee..."></textarea></div>
+    <div class="form-row"><label class="form-label">Tags (kommagetrennt)</label><input class="form-input" id="i-tags" placeholder="branding, web, intern"/></div>
+    <div class="form-row"><label class="form-label">Kategorie</label>
+      <select class="form-select" id="i-cat">
+        <option value="Intern">Intern</option>
+        <option value="Kunde">Kunde</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Prozess">Prozess</option>
+        <option value="Inspiration">Inspiration</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Abbrechen</button>
+      <button class="btn btn-primary" onclick="saveIdea()">Speichern</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── FIREBASE ──
+const firebaseConfig = {
+  apiKey: "AIzaSyAJ28-7PhIVyCCaVD3vIPU5mexfRxkLEYc",
+  authDomain: "meinhaus-studio-os.firebaseapp.com",
+  databaseURL: "https://meinhaus-studio-os-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "meinhaus-studio-os",
+  storageBucket: "meinhaus-studio-os.firebasestorage.app",
+  messagingSenderId: "17254286815",
+  appId: "1:17254286815:web:4332387e95d92ae2def06a"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// ── DATA ──
+const PASSWORD = 'meinhaus2024';
+let currentUser = null;
+let todos=[], tasks=[], goals=[], projects=[], ideas=[];
+
+const SECTIONS={heute:'Heute',morgen:'Morgen',diese_woche:'Diese Woche',spaeter:'Später'};
+const STATUSES={todo:'To Do',in_progress:'In Arbeit',on_hold:'Pausiert',done:'Erledigt'};
+
+function toArray(v){ if(!v) return []; if(Array.isArray(v)) return v; return Object.values(v) }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2) }
+
+function initFirebaseListeners(){
+  db.ref('hs_todos').on('value', s=>{ todos=toArray(s.val()); renderTodos() });
+  db.ref('hs_tasks').on('value', s=>{ tasks=toArray(s.val()); renderBoard() });
+  db.ref('hs_goals').on('value', s=>{ goals=toArray(s.val()); renderGoals() });
+  db.ref('hs_projects').on('value', s=>{ projects=toArray(s.val()); renderProjects() });
+  db.ref('hs_ideas').on('value', s=>{ ideas=toArray(s.val()); renderIdeas() });
+}
+
+// ── LOGIN ──
+function doLogin(){
+  const name=document.getElementById('login-name').value.trim();
+  const pass=document.getElementById('login-pass').value;
+  if(!name){ document.getElementById('login-error').textContent='Bitte Namen eingeben'; return }
+  if(pass!==PASSWORD){ document.getElementById('login-error').textContent='Falsches Passwort'; return }
+  currentUser=name;
+  localStorage.setItem('hs_user',name);
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('user-display').textContent=name;
+  document.getElementById('greeting').textContent=`Hallo, ${name} ☀`;
+  document.getElementById('dash-date').textContent=new Date().toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  renderAll();
+}
+function doLogout(){
+  localStorage.removeItem('hs_user');
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('login-pass').value='';
+}
+// ── NAVIGATION ──
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  const nav=document.getElementById('nav-'+name);
+  if(nav) nav.classList.add('active');
+}
+
+// ── MODALS ──
+function openModal(type){
+  document.getElementById('modal-overlay').classList.add('open');
+  document.querySelectorAll('.modal').forEach(m=>m.style.display='none');
+  document.getElementById('modal-'+type).style.display='block';
+}
+function closeModal(e){
+  if(e && e.target!==document.getElementById('modal-overlay')) return;
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.getElementById('modal-overlay').classList.remove('open') });
+
+// ── HELPERS ──
+function statusTag(s){ const m={lead:'tag-blue',aktiv:'tag-green',pause:'tag-amber',abgeschlossen:'tag-grey'}; return `<span class="tag ${m[s]||'tag-grey'}">${s}</span>` }
+function taskStatusTag(s){ const m={todo:'tag-grey',in_progress:'tag-blue',on_hold:'tag-amber',done:'tag-green'}; return `<span class="tag ${m[s]||'tag-grey'}">${STATUSES[s]||s}</span>` }
+function prioTag(p){ const m={hoch:'tag-red',normal:'tag-grey',niedrig:'tag-blue'}; return `<span class="tag ${m[p]||'tag-grey'}">${p}</span>` }
+function catTag(c){ const m={Intern:'tag-blue',Kunde:'tag-green',Marketing:'tag-amber',Prozess:'tag-grey',Inspiration:'tag-blue'}; return `<span class="tag ${m[c]||'tag-grey'}">${c}</span>` }
+function fmtDate(d){ if(!d) return ''; return new Date(d).toLocaleDateString('de-DE',{day:'numeric',month:'short'}) }
+function getProjectName(id){ const p=projects.find(x=>x.id===id); return p?p.name:'' }
+function renderAll(){ renderTodos(); renderBoard(); renderGoals(); renderProjects(); renderIdeas() }
+
+// ── TODOS ──
+function renderTodos(){
+  const el=document.getElementById('todo-list');
+  if(!todos.length){ el.innerHTML='<div class="empty">Noch keine Todos</div>'; return }
+  el.innerHTML=todos.map(t=>`
+    <div class="todo-item">
+      <div class="todo-check ${t.done?'done':''}" onclick="toggleTodo('${t.id}')">✓</div>
+      <span class="todo-text ${t.done?'done':''}">${t.text}</span>
+      ${!t.done?`<button class="todo-claim" onclick="claimTodo('${t.id}')">→</button>`:''}
+      <button class="todo-delete" onclick="deleteTodo('${t.id}')">×</button>
+    </div>`).join('');
+}
+function addTodo(){
+  const inp=document.getElementById('todo-input'), text=inp.value.trim();
+  if(!text) return;
+  todos.push({id:uid(),text,done:false,createdBy:currentUser,created:Date.now()});
+  db.ref('hs_todos').set(todos); inp.value='';
+}
+function toggleTodo(id){ const t=todos.find(x=>x.id===id); if(t){t.done=!t.done; db.ref('hs_todos').set(todos)} }
+function deleteTodo(id){ todos=todos.filter(t=>t.id!==id); db.ref('hs_todos').set(todos) }
+function claimTodo(id){
+  const t=todos.find(x=>x.id===id); if(!t) return;
+  tasks.push({id:uid(),title:t.text,note:'',status:'todo',section:'heute',assignee:currentUser,prio:'normal',due:'',projectId:'',created:Date.now()});
+  todos=todos.filter(x=>x.id!==id);
+  db.ref('hs_todos').set(todos); db.ref('hs_tasks').set(tasks);
+}
+
+// ── BOARD ──
+function renderBoard(){
+  const board=document.getElementById('task-board');
+  board.innerHTML=Object.entries(SECTIONS).map(([key,label])=>{
+    const col=tasks.filter(t=>(t.section||'heute')===key);
+    return `<div class="board-col">
+      <div class="board-col-header">${label} <span class="board-col-count">${col.length}</span></div>
+      ${col.map(t=>{
+        const pName=getProjectName(t.projectId);
+        const initials=t.assignee?t.assignee.charAt(0).toUpperCase():'';
+        return `<div class="board-card" onclick="openTaskEdit('${t.id}')">
+          <div class="board-card-title"><span class="status-dot dot-${t.status}"></span> ${t.title}</div>
+          <div class="board-card-meta">
+            ${pName?`<span class="board-card-project"><span class="pdot"></span>${pName}</span>`:''}
+            ${t.due?`<span class="board-card-date">${fmtDate(t.due)}</span>`:''}
+            ${t.prio==='hoch'?'<span class="tag tag-red">!</span>':''}
+            ${initials?`<span class="board-card-assignee">${initials}</span>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+      <div id="add-row-${key}">
+        <button class="board-add" onclick="showInlineAdd('${key}')">+ Aufgabe hinzufügen</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showInlineAdd(section){
+  const row=document.getElementById('add-row-'+section);
+  row.innerHTML=`<input class="board-add-input" id="inline-add-${section}" placeholder="Aufgabe..." autofocus
+    onkeydown="if(event.key==='Enter')inlineAddTask('${section}');if(event.key==='Escape')renderBoard()"
+    onblur="setTimeout(()=>renderBoard(),150)"/>`;
+  document.getElementById('inline-add-'+section).focus();
+}
+
+function inlineAddTask(section){
+  const inp=document.getElementById('inline-add-'+section);
+  const title=inp.value.trim(); if(!title) return;
+  tasks.push({id:uid(),title,note:'',status:'todo',section,assignee:currentUser,prio:'normal',due:'',projectId:'',created:Date.now()});
+  db.ref('hs_tasks').set(tasks);
+}
+
+// ── TASK EDIT ──
+function openTaskEdit(id){
+  const t=tasks.find(x=>x.id===id); if(!t) return;
+  document.getElementById('te-id').value=t.id;
+  document.getElementById('te-title').value=t.title;
+  document.getElementById('te-note').value=t.note||'';
+  document.getElementById('te-section').value=t.section||'heute';
+  document.getElementById('te-status').value=t.status||'todo';
+  document.getElementById('te-prio').value=t.prio||'normal';
+  document.getElementById('te-due').value=t.due||'';
+  // Populate assignee
+  const asel=document.getElementById('te-assignee');
+  const names=new Set(['Emma','Marika']); if(currentUser) names.add(currentUser);
+  tasks.forEach(tk=>{if(tk.assignee) names.add(tk.assignee)});
+  asel.innerHTML='<option value="">Niemand</option>'+[...names].map(n=>`<option value="${n}" ${n===t.assignee?'selected':''}>${n}</option>`).join('');
+  // Populate project
+  const psel=document.getElementById('te-project');
+  psel.innerHTML='<option value="">Kein Projekt</option>'+projects.map(p=>`<option value="${p.id}" ${p.id===t.projectId?'selected':''}>${p.name}</option>`).join('');
+  document.getElementById('task-edit-title').textContent='Aufgabe bearbeiten';
+  openModal('task-edit');
+}
+
+function saveTaskEdit(){
+  const id=document.getElementById('te-id').value;
+  const t=tasks.find(x=>x.id===id); if(!t) return;
+  t.title=document.getElementById('te-title').value.trim();
+  t.note=document.getElementById('te-note').value.trim();
+  t.section=document.getElementById('te-section').value;
+  t.status=document.getElementById('te-status').value;
+  t.assignee=document.getElementById('te-assignee').value;
+  t.prio=document.getElementById('te-prio').value;
+  t.due=document.getElementById('te-due').value;
+  t.projectId=document.getElementById('te-project').value;
+  db.ref('hs_tasks').set(tasks);
+  closeModal();
+}
+
+function deleteTaskFromModal(){
+  const id=document.getElementById('te-id').value;
+  if(!confirm('Aufgabe löschen?')) return;
+  tasks=tasks.filter(t=>t.id!==id);
+  db.ref('hs_tasks').set(tasks);
+  closeModal();
+}
+
+// ── GOALS ──
+function renderGoals(){
+  const el=document.getElementById('goals-list');
+  if(!goals.length){ el.innerHTML='<div class="empty">Noch keine Ziele</div>'; return }
+  el.innerHTML=goals.map(g=>{
+    const krs=g.krs||[];
+    return `<div class="goal-card">
+      <div class="goal-header">
+        <div><div class="goal-title">${g.title}</div><div class="goal-quarter">${g.quarter}</div></div>
+        <button onclick="deleteGoal('${g.id}')" style="background:none;border:none;cursor:pointer;color:var(--subtle);font-size:18px">×</button>
+      </div>
+      ${g.desc?`<div class="goal-desc">${g.desc}</div>`:''}
+      <div class="goal-progress">
+        <div class="progress-label"><span>Fortschritt</span><span>${g.progress}%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${g.progress}%"></div></div>
+      </div>
+      <input type="range" min="0" max="100" value="${g.progress}" style="width:100%;margin-bottom:1rem;accent-color:var(--green)" oninput="updateProgress('${g.id}',this.value)"/>
+      ${krs.length?`<div class="kr-list">${krs.map((kr,i)=>`
+        <div class="kr-item">
+          <div class="kr-check ${kr.done?'done':''}" onclick="toggleKR('${g.id}',${i})">✓</div>
+          <span style="${kr.done?'text-decoration:line-through;color:var(--muted)':''}">${kr.text}</span>
+        </div>`).join('')}</div>`:''}
+    </div>`;
+  }).join('');
+}
+function updateProgress(id,v){ const g=goals.find(x=>x.id===id); if(g){g.progress=parseInt(v); db.ref('hs_goals').set(goals)} }
+function toggleKR(gid,i){ const g=goals.find(x=>x.id===gid); if(g&&g.krs[i]){g.krs[i].done=!g.krs[i].done; db.ref('hs_goals').set(goals)} }
+function deleteGoal(id){ goals=goals.filter(g=>g.id!==id); db.ref('hs_goals').set(goals) }
+
+// ── PROJECTS ──
+function renderProjects(){
+  const el=document.getElementById('project-list'); if(!el) return;
+  if(!projects.length){ el.innerHTML='<div class="empty">Noch keine Projekte</div>'; return }
+  el.innerHTML=projects.map(p=>`
+    <div class="project-card" onclick="showProjectDetail('${p.id}')">
+      <div class="project-card-header"><div class="project-name">${p.name}</div>${statusTag(p.status)}</div>
+      <div class="project-client">${p.client||'Kein Kunde'}</div>
+      <div class="project-desc">${p.desc||''}</div>
+      <div class="project-footer">
+        <span class="project-date">${p.deadline?'Deadline: '+fmtDate(p.deadline):''}</span>
+        ${p.budget?`<span class="tag tag-grey">€${Number(p.budget).toLocaleString('de-DE')}</span>`:''}
+      </div>
+    </div>`).join('');
+}
+function showProjectDetail(id){
+  const p=projects.find(x=>x.id===id); if(!p) return;
+  const ptasks=tasks.filter(t=>t.projectId===id);
+  document.getElementById('project-detail-content').innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem">
+      <div class="detail-title">${p.name}</div>
+      <div style="display:flex;gap:.5rem">${statusTag(p.status)}
+        <button class="btn btn-sm" onclick="deleteProject('${p.id}')">Löschen</button></div>
+    </div>
+    <div class="detail-meta">${p.client||''} ${p.deadline?'· Deadline: '+fmtDate(p.deadline):''} ${p.budget?'· €'+Number(p.budget).toLocaleString('de-DE'):''}</div>
+    <div class="detail-desc">${p.desc||''}</div>
+    <div class="detail-section">
+      <div class="detail-section-title">Aufgaben (${ptasks.length})</div>
+      ${ptasks.length?ptasks.map(t=>`
+        <div class="inline-task" style="cursor:pointer" onclick="openTaskEdit('${t.id}')">
+          <span class="status-dot dot-${t.status}"></span>
+          <span style="${t.status==='done'?'text-decoration:line-through;color:var(--muted)':''}">${t.title}</span>
+          <span style="margin-left:auto">${taskStatusTag(t.status)}</span>
+        </div>`).join(''):'<div class="empty">Keine Aufgaben</div>'}
+    </div>`;
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-project-detail').classList.add('active');
+}
+function deleteProject(id){
+  if(!confirm('Projekt löschen?')) return;
+  projects=projects.filter(p=>p.id!==id);
+  db.ref('hs_projects').set(projects); showPage('projects');
+}
+
+// ── IDEAS ──
+function renderIdeas(){
+  const el=document.getElementById('ideas-grid'); if(!el) return;
+  if(!ideas.length){ el.innerHTML='<div class="empty">Noch keine Ideen</div>'; return }
+  el.innerHTML=ideas.map(i=>`
+    <div class="idea-card">
+      <div style="display:flex;justify-content:space-between">
+        <div class="idea-title">${i.title}</div>
+        <button onclick="deleteIdea('${i.id}')" style="background:none;border:none;cursor:pointer;color:var(--subtle);font-size:18px;line-height:1">×</button>
+      </div>
+      <div class="idea-body">${i.body||''}</div>
+      <div class="idea-tags">${catTag(i.cat)} ${(i.tags||[]).map(t=>`<span class="tag tag-grey">${t}</span>`).join('')}</div>
+      <div class="idea-date">${fmtDate(i.date)}</div>
+    </div>`).join('');
+}
+function deleteIdea(id){ ideas=ideas.filter(i=>i.id!==id); db.ref('hs_ideas').set(ideas) }
+
+// ── SAVE NEW ──
+function saveProject(){
+  const name=document.getElementById('p-name').value.trim(); if(!name) return;
+  projects.push({id:uid(),name,client:document.getElementById('p-client').value.trim(),desc:document.getElementById('p-desc').value.trim(),status:document.getElementById('p-status').value,deadline:document.getElementById('p-deadline').value,budget:document.getElementById('p-budget').value,created:Date.now()});
+  db.ref('hs_projects').set(projects);
+  ['p-name','p-client','p-desc','p-budget','p-deadline'].forEach(id=>document.getElementById(id).value='');
+  closeModal();
+}
+function saveGoal(){
+  const title=document.getElementById('g-title').value.trim(); if(!title) return;
+  const krs=document.getElementById('g-krs').value.split('\n').filter(l=>l.trim()).map(l=>({text:l.trim(),done:false}));
+  goals.push({id:uid(),title,desc:document.getElementById('g-desc').value.trim(),quarter:document.getElementById('g-quarter').value,progress:parseInt(document.getElementById('g-progress').value)||0,krs,created:Date.now()});
+  db.ref('hs_goals').set(goals);
+  ['g-title','g-desc','g-krs'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('g-progress').value=0; closeModal();
+}
+function saveIdea(){
+  const title=document.getElementById('i-title').value.trim(); if(!title) return;
+  const tags=document.getElementById('i-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  ideas.push({id:uid(),title,body:document.getElementById('i-body').value.trim(),cat:document.getElementById('i-cat').value,tags,date:new Date().toISOString(),created:Date.now()});
+  db.ref('hs_ideas').set(ideas);
+  ['i-title','i-body','i-tags'].forEach(id=>document.getElementById(id).value='');
+  closeModal();
+}
+
+// ── INIT ──
+document.getElementById('login-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin() });
+document.getElementById('todo-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addTodo() });
+initFirebaseListeners();
+const saved=localStorage.getItem('hs_user');
+if(saved){ document.getElementById('login-name').value=saved; document.getElementById('login-pass').value=PASSWORD; doLogin() }
+</script>
+</body>
+</html>
