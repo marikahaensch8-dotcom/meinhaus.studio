@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mein haus — creative studio</title>
+    <meta name="description" content="mein haus is a creative studio for founders and changemakers. Branding and web design that feels like home.">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" data-i18n="nav.logo">meinhaus</a>
+            <nav class="nav-links">
+                <a href="#about" data-i18n="nav.about">About</a>
+                <span class="nav-link--disabled" data-i18n="nav.portfolio">Portfolio</span>
+            </nav>
+            <a href="#contact" class="nav-cta" data-i18n="nav.cta2">komm<br>rein.</a>
+            <div class="nav-right-mobile">
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bottom Nav (scroll) -->
+    <nav class="nav-bottom" id="nav-bottom">
+        <div class="nav-bottom-inner">
+            <a href="#" class="nav-bottom-logo" aria-label="Home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                    <polyline points="3,12 12,3 21,12"/>
+                    <rect x="5" y="12" width="14" height="10"/>
+                </svg>
+            </a>
+            <a href="#about" data-i18n="nav.about">About</a>
+            <span class="nav-bottom-disabled" data-i18n="nav.portfolio">Portfolio</span>
+            <a href="#contact" class="nav-bottom-cta" data-i18n="nav.cta3">komm rein.</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu-links">
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#rooms" data-i18n="nav.services">Services</a>
+            <a class="mobile-link--disabled" data-i18n="nav.portfolio">Portfolio</a>
+            <a href="#contact" data-i18n="nav.cta">Start a project</a>
+        </nav>
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">DE</button>
+    </div>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <h1 data-i18n="hero.statement"><span class="hero-bold">Jede Marke braucht ein Zuhause.</span> Wir sind meinhaus – ein Kreativstudio für Menschen, die etwas Gutes aufbauen.</h1>
+                </div>
+                <div class="hero-image">
+                    <img class="hero-img-default" src="../images/default.png" alt="meinhaus studio">
+                    <img class="hero-img-hover" src="../images/hover.png" alt="meinhaus studio">
+                </div>
+            </div>
+        </section>
+
+        <!-- Rooms (Services) -->
+        <section class="section" id="rooms">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-label" data-i18n="rooms.label">What we do</span>
+                    <h2 class="section-title" data-i18n="rooms.title">Step inside.</h2>
+                    <p class="section-intro" data-i18n="rooms.intro">We think of our services as rooms — each one serves a purpose,<br>but together they make a home.</p>
+                </div>
+
+                <div class="rooms-grid">
+                    <div class="room-card reveal">
+                        <span class="room-number">01</span>
+                        <div class="room-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <line x1="6" y1="40" x2="42" y2="40"/>
+                                <line x1="6" y1="32" x2="42" y2="32"/>
+                                <line x1="6" y1="24" x2="42" y2="24"/>
+                                <rect x="14" y="8" width="20" height="16"/>
+                            </svg>
+                        </div>
+                        <h3 class="room-name" data-i18n="rooms.foundation.name">The Foundation</h3>
+                        <span class="room-service">Branding</span>
+                        <p class="room-description" data-i18n="rooms.foundation.desc">Every good house starts here. We build identities from the ground up — strategy, visual language, and everything that makes your brand feel like yours.</p>
+                    </div>
+
+                    <div class="room-card reveal">
+                        <span class="room-number">02</span>
+                        <div class="room-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="8" y="4" width="32" height="40"/>
+                                <rect x="14" y="10" width="20" height="28"/>
+                                <circle cx="30" cy="26" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="room-name" data-i18n="rooms.door.name">The Front Door</h3>
+                        <span class="room-service">Webdesign</span>
+                        <p class="room-description" data-i18n="rooms.door.desc">First impressions matter. We craft digital spaces your audience actually wants to walk through — and stay a while.</p>
+                    </div>
+
+                    <div class="room-card reveal">
+                        <span class="room-number">03</span>
+                        <div class="room-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="10" y="14" width="28" height="20"/>
+                                <line x1="10" y1="24" x2="38" y2="24"/>
+                                <line x1="24" y1="14" x2="24" y2="34"/>
+                                <circle cx="24" cy="10" r="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="room-name" data-i18n="rooms.interior.name">The Interior</h3>
+                        <span class="room-service">Creative Direction</span>
+                        <p class="room-description" data-i18n="rooms.interior.desc">Ein Haus ist erst ein Zuhause, wenn es lebt. Wir gestalten das Innere eurer Marke — Visual Content, Art Direction und alles, was eurer Identität Seele gibt.</p>
+                    </div>
+                </div>
+
+                <div class="rooms-coming-soon reveal">
+                    <p class="coming-soon-label" data-i18n="rooms.coming">Under construction</p>
+                    <div class="coming-soon-grid">
+                        <div class="coming-soon-room">
+                            <span class="room-name-small" data-i18n="rooms.atelier.name">The Atelier</span>
+                            <span class="room-service-small">3D & Animation</span>
+                        </div>
+                        <div class="coming-soon-room">
+                            <span class="room-name-small" data-i18n="rooms.study.name">The Study</span>
+                            <span class="room-service-small">Editorial & Illustration</span>
+                        </div>
+                        <div class="coming-soon-room">
+                            <span class="room-name-small" data-i18n="rooms.blueprint.name">The Blueprint Room</span>
+                            <span class="room-service-small" data-i18n="rooms.blueprint.service">Visual Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who we work with -->
+        <section class="section section--dark" id="neighbors">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-label" data-i18n="neighbors.label">Who we build for</span>
+                    <h2 class="section-title" data-i18n="neighbors.title">We're picky about<br>our neighbors.</h2>
+                </div>
+                <div class="neighbors-content reveal">
+                    <p class="text-large" data-i18n="neighbors.text1">We work with founders, startups, coaches, and individuals who are building something meaningful — in education, sustainability, and everything that makes the world a little better.</p>
+                    <p class="text-large" data-i18n="neighbors.text2">No mass production. No greenwashing. No toxic stuff.<br>Just good people, doing good things.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why work with us -->
+        <section class="section" id="approach">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-label" data-i18n="approach.label">Why work with us</span>
+                    <h2 class="section-title" data-i18n="approach.title">An architect and a designer<br>walk into a studio.</h2>
+                </div>
+                <div class="approach-content">
+                    <div class="approach-text reveal">
+                        <p class="text-large" data-i18n="approach.text1">Sounds like a joke, but it's actually our origin story. We combine spatial thinking with visual craft. Strategy with soul. Big-picture vision with pixel-perfect detail.</p>
+                        <p class="text-large" data-i18n="approach.text2">Think of us as your brand's architects — we don't just decorate, we build from the foundation up.</p>
+                    </div>
+                    <div class="approach-values reveal">
+                        <div class="value">
+                            <span class="value-number">01</span>
+                            <h4 data-i18n="approach.v1.title">Strategy first</h4>
+                            <p data-i18n="approach.v1.text">Every project starts with understanding — your goals, your audience, your story. We plan before we build.</p>
+                        </div>
+                        <div class="value">
+                            <span class="value-number">02</span>
+                            <h4 data-i18n="approach.v2.title">Built to last</h4>
+                            <p data-i18n="approach.v2.text">No trends for the sake of trends. We create work that ages well and grows with you.</p>
+                        </div>
+                        <div class="value">
+                            <span class="value-number">03</span>
+                            <h4 data-i18n="approach.v3.title">Personal, always</h4>
+                            <p data-i18n="approach.v3.text">Two people, no layers. You work directly with us — the ones actually doing the work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section section--border" id="about">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-label" data-i18n="about.label">About</span>
+                    <h2 class="section-title" data-i18n="about.title">Who lives here.</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-person reveal">
+                        <div class="about-photo">
+                            <span class="photo-placeholder">E</span>
+                        </div>
+                        <h3 class="about-name">Emma</h3>
+                        <span class="about-role" data-i18n="about.emma.role">The one who thinks in spaces</span>
+                        <p class="about-bio" data-i18n="about.emma.bio">Architect by training. Strategist by nature. Emma brings structure, spatial thinking, and a knack for seeing the big picture. She turns chaos into systems and systems into stories.</p>
+                        <div class="about-skills">
+                            <span>3D Visualization</span>
+                            <span>Animation</span>
+                            <span data-i18n="about.emma.skill3">Strategy</span>
+                            <span>Marketing</span>
+                        </div>
+                    </div>
+                    <div class="about-person reveal">
+                        <div class="about-photo">
+                            <span class="photo-placeholder">M</span>
+                        </div>
+                        <h3 class="about-name">Marika</h3>
+                        <span class="about-role" data-i18n="about.marika.role">The one who thinks in pixels</span>
+                        <p class="about-bio" data-i18n="about.marika.bio">Designer by craft. Brand nerd by heart. Marika shapes identities, builds digital experiences, and occasionally draws things just because. She turns ideas into visuals and visuals into feelings.</p>
+                        <div class="about-skills">
+                            <span>Branding</span>
+                            <span>Webdesign</span>
+                            <span>Editorial</span>
+                            <span>Illustration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section section--dark" id="contact">
+            <div class="section-container">
+                <div class="contact-content reveal">
+                    <svg class="contact-door" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="5" y="5" width="50" height="80"/>
+                        <rect x="12" y="12" width="36" height="66"/>
+                        <circle cx="42" cy="48" r="2.5" fill="currentColor"/>
+                    </svg>
+                    <h2 class="section-title" data-i18n="contact.title">The door is<br>always open.</h2>
+                    <p class="text-large" data-i18n="contact.text">Got a project? A wild idea? A napkin sketch<br>that could be something? Let's talk.</p>
+                    <a href="mailto:hello@meinhaus.studio" class="contact-email">hello@meinhaus.studio</a>
+                    <div class="contact-social">
+                        <a href="#" target="_blank" rel="noopener">Instagram</a>
+                        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <span class="footer-logo">mein haus</span>
+            <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 mein haus. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

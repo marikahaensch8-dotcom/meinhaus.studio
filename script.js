@@ -6,15 +6,20 @@
     // ---------- Translations ----------
     const translations = {
         en: {
+            'nav.logo': 'meinhaus',
             'nav.about': 'About',
             'nav.services': 'Services',
             'nav.portfolio': 'Portfolio',
+            'nav.contact': 'Contact',
             'nav.cta': 'Start a project',
+            'nav.cta2': 'come<br>in.',
+            'nav.cta3': 'come in.',
 
             'hero.title': 'Every brand<br>needs a home.',
             'hero.subtitle': 'We\'re mein haus — a creative studio shaping brands from the ground up. We build identities, digital experiences, and visual narratives for founders and visionaries. From concept to craft, everything we make is built to resonate.',
             'hero.scroll': '(Scroll)',
             'hero.tagline': 'Branding & web design<br>from vision to home.',
+            'hero.statement': '<span class="hero-bold">Every brand needs a home.</span> We are meinhaus – a creative studio for people who are building something good.',
 
             'rooms.label': 'What we do',
             'rooms.title': 'Step inside.',
@@ -23,6 +28,8 @@
             'rooms.foundation.desc': 'Every good house starts here. We build identities from the ground up — strategy, visual language, and everything that makes your brand feel like yours.',
             'rooms.door.name': 'The Front Door',
             'rooms.door.desc': 'First impressions matter. We craft digital spaces your audience actually wants to walk through — and stay a while.',
+            'rooms.interior.name': 'The Interior',
+            'rooms.interior.desc': 'A house only becomes a home when it comes alive. We shape the inside of your brand — visual content, art direction, and everything that gives your identity soul.',
             'rooms.coming': 'Under construction',
             'rooms.atelier.name': 'The Atelier',
             'rooms.study.name': 'The Study',
@@ -59,15 +66,20 @@
             'footer.copy': '© 2026 mein haus. All rights reserved.',
         },
         de: {
-            'nav.about': 'Über uns',
+            'nav.logo': 'meinhaus',
+            'nav.about': 'über uns',
             'nav.services': 'Leistungen',
-            'nav.portfolio': 'Portfolio',
+            'nav.portfolio': 'projekte',
+            'nav.contact': 'kontakt',
             'nav.cta': 'Projekt starten',
+            'nav.cta2': 'komm<br>rein.',
+            'nav.cta3': 'komm rein.',
 
             'hero.title': 'Jede Marke braucht<br>ein Zuhause.',
             'hero.subtitle': 'Wir sind mein haus — ein Kreativstudio, das Marken von Grund auf baut. Wir gestalten Identitäten, digitale Erlebnisse und visuelle Geschichten für Gründer*innen und Visionär*innen. Vom Konzept bis zum Handwerk — alles, was wir machen, ist gebaut, um zu wirken.',
             'hero.scroll': '(Scrollen)',
             'hero.tagline': 'Branding & Webdesign<br>von der Vision zum Zuhause.',
+            'hero.statement': '<span class="hero-bold">Jede Marke braucht ein Zuhause.</span> Wir sind meinhaus – ein Kreativstudio für Menschen, die etwas Gutes aufbauen.',
 
             'rooms.label': 'Was wir machen',
             'rooms.title': 'Komm rein.',
@@ -76,6 +88,8 @@
             'rooms.foundation.desc': 'Jedes gute Haus fängt hier an. Wir bauen Identitäten von Grund auf — Strategie, visuelle Sprache und alles, was deine Marke zu deiner Marke macht.',
             'rooms.door.name': 'Die Haustür',
             'rooms.door.desc': 'Der erste Eindruck zählt. Wir gestalten digitale Räume, durch die dein Publikum gerne geht — und gerne bleibt.',
+            'rooms.interior.name': 'Das Interior',
+            'rooms.interior.desc': 'Ein Haus ist erst ein Zuhause, wenn es lebt. Wir gestalten das Innere eurer Marke — Visual Content, Art Direction und alles, was eurer Identität Seele gibt.',
             'rooms.coming': 'Wird noch eingerichtet',
             'rooms.atelier.name': 'Das Atelier',
             'rooms.study.name': 'Die Bibliothek',
@@ -175,12 +189,15 @@
 
     // ---------- Nav scroll state ----------
     const nav = document.getElementById('nav');
+    const navBottom = document.getElementById('nav-bottom');
 
     function onScroll() {
         if (window.scrollY > 50) {
             nav.classList.add('scrolled');
+            if (navBottom) navBottom.classList.add('visible');
         } else {
             nav.classList.remove('scrolled');
+            if (navBottom) navBottom.classList.remove('visible');
         }
     }
 
