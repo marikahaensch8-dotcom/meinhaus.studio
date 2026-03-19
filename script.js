@@ -23,7 +23,9 @@
 
             'rooms.label': 'What we do',
             'rooms.title': 'Step inside.',
+            'rooms.title2': 'Come in.',
             'rooms.intro': 'We think of our services as rooms — each one serves a purpose,<br>but together they make a home.',
+            'rooms.intro2': 'We think of our services as rooms. Each one serves a purpose, but together they make a home.',
             'rooms.foundation.name': 'The Foundation',
             'rooms.foundation.desc': 'Every good house starts here. We build identities from the ground up — strategy, visual language, and everything that makes your brand feel like yours.',
             'rooms.door.name': 'The Front Door',
@@ -83,7 +85,9 @@
 
             'rooms.label': 'Was wir machen',
             'rooms.title': 'Komm rein.',
+            'rooms.title2': 'Komm rein.',
             'rooms.intro': 'Wir denken unsere Leistungen als Räume — jeder hat seine Aufgabe,<br>aber zusammen ergeben sie ein Zuhause.',
+            'rooms.intro2': 'Wir denken unsere Leistungen als Räume. Jeder hat seine Aufgabe, aber zusammen ergeben sie ein Zuhause.',
             'rooms.foundation.name': 'Das Fundament',
             'rooms.foundation.desc': 'Jedes gute Haus fängt hier an. Wir bauen Identitäten von Grund auf — Strategie, visuelle Sprache und alles, was deine Marke zu deiner Marke macht.',
             'rooms.door.name': 'Die Haustür',
@@ -221,6 +225,42 @@
             document.body.style.overflow = '';
         });
     });
+
+    // ---------- Rooms showcase ----------
+    const thumbs = document.querySelectorAll('.rooms-thumb');
+    const panels = document.querySelectorAll('.rooms-panel');
+    const infos = document.querySelectorAll('.rooms-info');
+
+    function setActiveRoom(index) {
+        thumbs.forEach((t) => t.classList.remove('active'));
+        panels.forEach((p) => p.classList.remove('active'));
+        infos.forEach((i) => i.classList.remove('active'));
+        if (thumbs[index]) thumbs[index].classList.add('active');
+        if (panels[index]) panels[index].classList.add('active');
+        if (infos[index]) infos[index].classList.add('active');
+    }
+
+    thumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+            setActiveRoom(Number(thumb.dataset.room));
+        });
+    });
+
+    // Scroll-driven: cycle through rooms while sticky
+    const roomsScroll = document.getElementById('rooms-scroll');
+    if (roomsScroll) {
+        let lastScrollRoom = 0;
+        window.addEventListener('scroll', function () {
+            const rect = roomsScroll.getBoundingClientRect();
+            const scrollRange = roomsScroll.offsetHeight - window.innerHeight;
+            const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
+            const roomIndex = Math.min(2, Math.floor(progress * 3));
+            if (roomIndex !== lastScrollRoom) {
+                lastScrollRoom = roomIndex;
+                setActiveRoom(roomIndex);
+            }
+        }, { passive: true });
+    }
 
     // ---------- Smooth scroll for anchor links ----------
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
