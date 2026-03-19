@@ -26,17 +26,12 @@
             'rooms.title2': 'What we do',
             'rooms.intro': 'We think of our services as rooms — each one serves a purpose,<br>but together they make a home.',
             'rooms.intro2': 'We think of our services as rooms. Each one serves a purpose, but together they make a home.',
-            'rooms.foundation.name': 'The Foundation',
-            'rooms.foundation.desc': 'Every good house starts here. We build identities from the ground up — strategy, visual language, and everything that makes your brand feel like yours.',
-            'rooms.door.name': 'The Front Door',
-            'rooms.door.desc': 'First impressions matter. We craft digital spaces your audience actually wants to walk through — and stay a while.',
-            'rooms.interior.name': 'The Interior',
-            'rooms.interior.desc': 'A house only becomes a home when it comes alive. We shape the inside of your brand — visual content, art direction, and everything that gives your identity soul.',
-            'rooms.coming': 'Under construction',
-            'rooms.atelier.name': 'The Atelier',
-            'rooms.study.name': 'The Study',
-            'rooms.blueprint.name': 'The Blueprint Room',
-            'rooms.blueprint.service': 'Visual Strategy',
+            'rooms.s1.keyword': 'Branding',
+            'rooms.s1.text': 'The foundation. We build identities from the ground up — strategy, visual language and everything that makes your brand yours.',
+            'rooms.s2.keyword': 'Webdesign',
+            'rooms.s2.text': 'The front door. First impressions matter — we design websites and digital experiences that make your brand tangible.',
+            'rooms.s3.keyword': 'Creative Direction',
+            'rooms.s3.text': 'The interior. A house only becomes a home when it comes alive — we fill your brand with everything that makes it visible and vibrant.',
 
             'neighbors.label': 'Who we build for',
             'neighbors.title': 'We\'re picky about<br>our neighbors.',
@@ -88,17 +83,12 @@
             'rooms.title2': 'Was wir machen',
             'rooms.intro': 'Wir denken unsere Leistungen als Räume — jeder hat seine Aufgabe,<br>aber zusammen ergeben sie ein Zuhause.',
             'rooms.intro2': 'Wir denken unsere Leistungen als Räume. Jeder hat seine Aufgabe, aber zusammen ergeben sie ein Zuhause.',
-            'rooms.foundation.name': 'Das Fundament',
-            'rooms.foundation.desc': 'Jedes gute Haus fängt hier an. Wir bauen Identitäten von Grund auf — Strategie, visuelle Sprache und alles, was deine Marke zu deiner Marke macht.',
-            'rooms.door.name': 'Die Haustür',
-            'rooms.door.desc': 'Der erste Eindruck zählt. Wir gestalten digitale Räume, durch die dein Publikum gerne geht — und gerne bleibt.',
-            'rooms.interior.name': 'Das Interior',
-            'rooms.interior.desc': 'Ein Haus ist erst ein Zuhause, wenn es lebt. Wir gestalten das Innere eurer Marke — Visual Content, Art Direction und alles, was eurer Identität Seele gibt.',
-            'rooms.coming': 'Wird noch eingerichtet',
-            'rooms.atelier.name': 'Das Atelier',
-            'rooms.study.name': 'Die Bibliothek',
-            'rooms.blueprint.name': 'Der Planraum',
-            'rooms.blueprint.service': 'Visuelle Strategie',
+            'rooms.s1.keyword': 'Branding',
+            'rooms.s1.text': 'Das Fundament. Wir bauen Identitäten von Grund auf — Strategie, visuelle Sprache und alles, was eure Marke zu eurer Marke macht.',
+            'rooms.s2.keyword': 'Webdesign',
+            'rooms.s2.text': 'Die Haustür. Der erste Eindruck zählt — wir gestalten Websites und digitale Erlebnisse, die eure Marke greifbar machen.',
+            'rooms.s3.keyword': 'Creative Direction',
+            'rooms.s3.text': 'Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt — wir füllen eure Marke mit allem, was sie sichtbar und lebendig macht.',
 
             'neighbors.label': 'Für wen wir bauen',
             'neighbors.title': 'Wir suchen uns unsere<br>Nachbarn gut aus.',
@@ -228,27 +218,16 @@
 
     // ---------- Rooms showcase (progressive floor plan) ----------
     const roomPhases = document.querySelectorAll('.room-phase');
-    const roomSteps = document.querySelectorAll('.rooms-step');
     const roomInfos = document.querySelectorAll('.rooms-info');
 
     function setRoomPhase(index) {
-        // Progressive: all phases up to index get 'drawn'
         roomPhases.forEach((p, i) => {
             p.classList.toggle('drawn', i <= index);
-        });
-        roomSteps.forEach((s, i) => {
-            s.classList.toggle('active', i === index);
         });
         roomInfos.forEach((inf, i) => {
             inf.classList.toggle('active', i === index);
         });
     }
-
-    roomSteps.forEach((step) => {
-        step.addEventListener('click', () => {
-            setRoomPhase(Number(step.dataset.room));
-        });
-    });
 
     // Scroll-driven: progressive room phases
     const roomsScroll = document.getElementById('rooms-scroll');
@@ -256,14 +235,11 @@
         let lastPhase = -1;
         window.addEventListener('scroll', function () {
             const rect = roomsScroll.getBoundingClientRect();
-            // Don't activate until section enters viewport
             if (rect.top > window.innerHeight) {
                 if (lastPhase !== -1) {
                     lastPhase = -1;
                     roomPhases.forEach((p) => p.classList.remove('drawn'));
-                    roomSteps.forEach((s) => s.classList.remove('active'));
                     roomInfos.forEach((inf) => inf.classList.remove('active'));
-                    if (roomSteps[0]) roomSteps[0].classList.add('active');
                 }
                 return;
             }
