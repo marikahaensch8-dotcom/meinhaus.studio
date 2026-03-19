@@ -59,7 +59,7 @@
         <section class="hero" id="hero">
             <div class="hero-inner">
                 <div class="hero-text">
-                    <h1 data-i18n="hero.statement"><span class="hero-bold">Jede Marke braucht ein Zuhause.</span> Wir sind meinhaus – ein Kreativstudio für Menschen, die etwas Gutes aufbauen.</h1>
+                    <h1 data-i18n="hero.statement"><span class="hero-bold">Jede Marke braucht ein Zuhause.</span> Wir sind meinhaus, ein Designstudio für Branding,<br>Web und alles was eure Marke sichtbar macht.</h1>
                 </div>
                 <div class="hero-image">
                     <img class="hero-img-default" src="../images/default.png" alt="meinhaus studio">
@@ -70,98 +70,87 @@
 
         <!-- Rooms (Services) -->
         <section id="rooms">
-            <div class="rooms-top">
-                <div class="rooms-top-inner">
-                    <h2 class="rooms-title" data-i18n="rooms.title2">Komm rein.</h2>
-                    <p class="rooms-top-text" data-i18n="rooms.intro2">Wir denken unsere Leistungen als Räume. Jeder hat seine Aufgabe, aber zusammen ergeben sie ein Zuhause.</p>
-                </div>
-            </div>
             <div class="rooms-scroll" id="rooms-scroll">
                 <div class="rooms-scroll-inner">
-                    <!-- Left: thumbnails -->
-                    <div class="rooms-thumbs">
-                        <button class="rooms-thumb active" data-room="0">
-                            <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1">
-                                <line x1="10" y1="80" x2="110" y2="80"/>
-                                <line x1="10" y1="60" x2="110" y2="60"/>
-                                <line x1="10" y1="40" x2="110" y2="40"/>
-                                <rect x="30" y="10" width="60" height="30"/>
-                                <line x1="60" y1="10" x2="60" y2="40"/>
-                            </svg>
-                        </button>
-                        <button class="rooms-thumb" data-room="1">
-                            <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1">
-                                <rect x="20" y="5" width="80" height="80"/>
-                                <rect x="35" y="15" width="50" height="60"/>
-                                <circle cx="75" cy="50" r="3" fill="currentColor"/>
-                                <rect x="50" y="15" width="4" height="12"/>
-                            </svg>
-                        </button>
-                        <button class="rooms-thumb" data-room="2">
-                            <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1">
-                                <rect x="15" y="20" width="90" height="55"/>
-                                <line x1="15" y1="47" x2="105" y2="47"/>
-                                <line x1="60" y1="20" x2="60" y2="75"/>
-                                <circle cx="60" cy="12" r="8"/>
-                                <line x1="55" y1="12" x2="65" y2="12"/>
-                                <line x1="60" y1="7" x2="60" y2="17"/>
-                            </svg>
-                        </button>
+                    <h2 class="rooms-title" data-i18n="rooms.title2">Was wir machen</h2>
+                    <!-- Step indicators -->
+                    <div class="rooms-steps">
+                        <button class="rooms-step active" data-room="0">01</button>
+                        <button class="rooms-step" data-room="1">02</button>
+                        <button class="rooms-step" data-room="2">03</button>
+                    </div>
+
+                    <!-- Progressive floor plan -->
+                    <div class="rooms-drawing-area">
+                        <svg class="room-drawing" viewBox="0 20 400 500" fill="none" stroke="currentColor">
+                            <!-- Phase 0: Foundation — walls + windows -->
+                            <g class="room-phase" data-phase="0">
+                                <!-- Top wall left -->
+                                <line x1="50" y1="40" x2="118" y2="40" stroke-width="3.5"/>
+                                <!-- Window 1 -->
+                                <line x1="118" y1="33" x2="118" y2="47" stroke-width="1"/>
+                                <line x1="178" y1="33" x2="178" y2="47" stroke-width="1"/>
+                                <line x1="118" y1="40" x2="178" y2="40" stroke-width="0.5"/>
+                                <!-- Top wall mid -->
+                                <line x1="178" y1="40" x2="228" y2="40" stroke-width="3.5"/>
+                                <!-- Window 2 -->
+                                <line x1="228" y1="33" x2="228" y2="47" stroke-width="1"/>
+                                <line x1="288" y1="33" x2="288" y2="47" stroke-width="1"/>
+                                <line x1="228" y1="40" x2="288" y2="40" stroke-width="0.5"/>
+                                <!-- Top wall right -->
+                                <line x1="288" y1="40" x2="350" y2="40" stroke-width="3.5"/>
+                                <!-- Right wall top (door gap 118–193) -->
+                                <line x1="350" y1="40" x2="350" y2="118" stroke-width="3.5"/>
+                                <!-- Right wall bottom -->
+                                <line x1="350" y1="193" x2="350" y2="480" stroke-width="3.5"/>
+                                <!-- Bottom wall -->
+                                <line x1="350" y1="480" x2="50" y2="480" stroke-width="3.5"/>
+                                <!-- Left wall bottom -->
+                                <line x1="50" y1="480" x2="50" y2="318" stroke-width="3.5"/>
+                                <!-- Window 3 -->
+                                <line x1="43" y1="318" x2="57" y2="318" stroke-width="1"/>
+                                <line x1="43" y1="243" x2="57" y2="243" stroke-width="1"/>
+                                <line x1="50" y1="318" x2="50" y2="243" stroke-width="0.5"/>
+                                <!-- Left wall top -->
+                                <line x1="50" y1="243" x2="50" y2="40" stroke-width="3.5"/>
+                            </g>
+
+                            <!-- Phase 1: Front Door -->
+                            <g class="room-phase" data-phase="1">
+                                <!-- Door frame ticks -->
+                                <line x1="347" y1="118" x2="353" y2="118" stroke-width="1.5"/>
+                                <line x1="347" y1="193" x2="353" y2="193" stroke-width="1.5"/>
+                                <!-- Door leaf (open inward) -->
+                                <line x1="350" y1="193" x2="275" y2="193" stroke-width="2"/>
+                                <!-- Door swing arc -->
+                                <path class="no-draw" d="M 350 118 A 75 75 0 0 0 275 193" stroke-width="1" stroke-dasharray="4 3"/>
+                            </g>
+
+                            <!-- Phase 2: Interior -->
+                            <g class="room-phase" data-phase="2">
+                                <!-- Round table -->
+                                <circle cx="200" cy="370" r="58" stroke-width="1.5"/>
+                                <circle cx="200" cy="370" r="44" stroke-width="1"/>
+                                <circle cx="200" cy="370" r="6" stroke-width="1"/>
+                                <!-- Organic sculpture -->
+                                <path d="M 180 200 C 168 185, 172 162, 190 158 C 204 153, 222 162, 224 178 C 226 194, 212 208, 196 210 C 182 212, 176 206, 180 200 Z" stroke-width="1"/>
+                                <circle cx="192" cy="155" r="5" stroke-width="0.8"/>
+                                <circle cx="205" cy="151" r="4" stroke-width="0.8"/>
+                                <circle cx="182" cy="161" r="3.5" stroke-width="0.8"/>
+                                <!-- Shelves on left wall -->
+                                <rect x="52" y="348" width="14" height="80" stroke-width="1.2"/>
+                                <rect x="52" y="128" width="14" height="72" stroke-width="1.2"/>
+                                <!-- Desk lamp -->
+                                <path d="M 92 166 A 16 16 0 0 1 124 166" stroke-width="1"/>
+                                <line x1="108" y1="166" x2="108" y2="192" stroke-width="1"/>
+                            </g>
+                        </svg>
                     </div>
 
                     <!-- Divider -->
                     <div class="rooms-divider"></div>
 
-                    <!-- Center: drawing -->
-                    <div class="rooms-drawing-area">
-                        <div class="rooms-panel active" data-room="0">
-                            <svg class="room-drawing" viewBox="0 0 400 350" fill="none" stroke="currentColor" stroke-width="1.2">
-                                <line x1="20" y1="320" x2="380" y2="320"/>
-                                <line x1="20" y1="280" x2="380" y2="280"/>
-                                <line x1="20" y1="240" x2="380" y2="240"/>
-                                <rect x="80" y="80" width="240" height="160"/>
-                                <line x1="200" y1="80" x2="200" y2="240"/>
-                                <line x1="80" y1="160" x2="320" y2="160"/>
-                                <line x1="80" y1="60" x2="320" y2="60" stroke-dasharray="4 4"/>
-                                <line x1="80" y1="55" x2="80" y2="65"/>
-                                <line x1="320" y1="55" x2="320" y2="65"/>
-                                <line x1="80" y1="80" x2="200" y2="160" stroke-dasharray="6 4" opacity="0.4"/>
-                                <line x1="200" y1="80" x2="80" y2="160" stroke-dasharray="6 4" opacity="0.4"/>
-                            </svg>
-                        </div>
-                        <div class="rooms-panel" data-room="1">
-                            <svg class="room-drawing" viewBox="0 0 400 350" fill="none" stroke="currentColor" stroke-width="1.2">
-                                <rect x="100" y="20" width="200" height="310"/>
-                                <rect x="130" y="40" width="140" height="260"/>
-                                <circle cx="245" cy="180" r="6" fill="currentColor"/>
-                                <rect x="145" y="55" width="110" height="80"/>
-                                <line x1="200" y1="55" x2="200" y2="135"/>
-                                <line x1="145" y1="95" x2="255" y2="95"/>
-                                <line x1="80" y1="330" x2="320" y2="330"/>
-                                <rect x="90" y="320" width="220" height="10" opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <div class="rooms-panel" data-room="2">
-                            <svg class="room-drawing" viewBox="0 0 400 350" fill="none" stroke="currentColor" stroke-width="1.2">
-                                <rect x="40" y="40" width="320" height="270"/>
-                                <line x1="40" y1="310" x2="360" y2="310"/>
-                                <rect x="120" y="180" width="160" height="8"/>
-                                <line x1="140" y1="188" x2="140" y2="260"/>
-                                <line x1="260" y1="188" x2="260" y2="260"/>
-                                <circle cx="200" cy="165" r="15"/>
-                                <rect x="160" y="65" width="80" height="60"/>
-                                <rect x="170" y="75" width="60" height="40"/>
-                                <line x1="80" y1="40" x2="80" y2="100"/>
-                                <ellipse cx="80" cy="105" rx="20" ry="8"/>
-                                <line x1="310" y1="310" x2="310" y2="250"/>
-                                <circle cx="310" cy="240" r="15" stroke-dasharray="3 2"/>
-                                <circle cx="295" cy="250" r="10" stroke-dasharray="3 2"/>
-                                <circle cx="325" cy="248" r="12" stroke-dasharray="3 2"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- Right: info -->
+                    <!-- Info -->
                     <div class="rooms-info-area">
                         <div class="rooms-info active" data-room="0">
                             <span class="rooms-info-number">01</span>
@@ -182,20 +171,6 @@
                             <p class="rooms-info-desc" data-i18n="rooms.interior.desc">Ein Haus ist erst ein Zuhause, wenn es lebt. Wir gestalten das Innere eurer Marke — Visual Content, Art Direction und alles, was eurer Identität Seele gibt.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Who we work with -->
-        <section class="section section--dark" id="neighbors">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-label" data-i18n="neighbors.label">Who we build for</span>
-                    <h2 class="section-title" data-i18n="neighbors.title">We're picky about<br>our neighbors.</h2>
-                </div>
-                <div class="neighbors-content reveal">
-                    <p class="text-large" data-i18n="neighbors.text1">We work with founders, startups, coaches, and individuals who are building something meaningful — in education, sustainability, and everything that makes the world a little better.</p>
-                    <p class="text-large" data-i18n="neighbors.text2">No mass production. No greenwashing. No toxic stuff.<br>Just good people, doing good things.</p>
                 </div>
             </div>
         </section>

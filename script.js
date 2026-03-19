@@ -19,11 +19,11 @@
             'hero.subtitle': 'We\'re mein haus — a creative studio shaping brands from the ground up. We build identities, digital experiences, and visual narratives for founders and visionaries. From concept to craft, everything we make is built to resonate.',
             'hero.scroll': '(Scroll)',
             'hero.tagline': 'Branding & web design<br>from vision to home.',
-            'hero.statement': '<span class="hero-bold">Every brand needs a home.</span> We are meinhaus – a creative studio for people who are building something good.',
+            'hero.statement': '<span class="hero-bold">Every brand needs a home.</span> We are meinhaus, a design studio for branding, web and everything that makes your brand visible.',
 
             'rooms.label': 'What we do',
             'rooms.title': 'Step inside.',
-            'rooms.title2': 'Come in.',
+            'rooms.title2': 'What we do',
             'rooms.intro': 'We think of our services as rooms — each one serves a purpose,<br>but together they make a home.',
             'rooms.intro2': 'We think of our services as rooms. Each one serves a purpose, but together they make a home.',
             'rooms.foundation.name': 'The Foundation',
@@ -81,11 +81,11 @@
             'hero.subtitle': 'Wir sind mein haus — ein Kreativstudio, das Marken von Grund auf baut. Wir gestalten Identitäten, digitale Erlebnisse und visuelle Geschichten für Gründer*innen und Visionär*innen. Vom Konzept bis zum Handwerk — alles, was wir machen, ist gebaut, um zu wirken.',
             'hero.scroll': '(Scrollen)',
             'hero.tagline': 'Branding & Webdesign<br>von der Vision zum Zuhause.',
-            'hero.statement': '<span class="hero-bold">Jede Marke braucht ein Zuhause.</span> Wir sind meinhaus – ein Kreativstudio für Menschen, die etwas Gutes aufbauen.',
+            'hero.statement': '<span class="hero-bold">Jede Marke braucht ein Zuhause.</span> Wir sind meinhaus, ein Designstudio für Branding,<br>Web und alles was eure Marke sichtbar macht.',
 
             'rooms.label': 'Was wir machen',
             'rooms.title': 'Komm rein.',
-            'rooms.title2': 'Komm rein.',
+            'rooms.title2': 'Was wir machen',
             'rooms.intro': 'Wir denken unsere Leistungen als Räume — jeder hat seine Aufgabe,<br>aber zusammen ergeben sie ein Zuhause.',
             'rooms.intro2': 'Wir denken unsere Leistungen als Räume. Jeder hat seine Aufgabe, aber zusammen ergeben sie ein Zuhause.',
             'rooms.foundation.name': 'Das Fundament',
@@ -226,38 +226,53 @@
         });
     });
 
-    // ---------- Rooms showcase ----------
-    const thumbs = document.querySelectorAll('.rooms-thumb');
-    const panels = document.querySelectorAll('.rooms-panel');
-    const infos = document.querySelectorAll('.rooms-info');
+    // ---------- Rooms showcase (progressive floor plan) ----------
+    const roomPhases = document.querySelectorAll('.room-phase');
+    const roomSteps = document.querySelectorAll('.rooms-step');
+    const roomInfos = document.querySelectorAll('.rooms-info');
 
-    function setActiveRoom(index) {
-        thumbs.forEach((t) => t.classList.remove('active'));
-        panels.forEach((p) => p.classList.remove('active'));
-        infos.forEach((i) => i.classList.remove('active'));
-        if (thumbs[index]) thumbs[index].classList.add('active');
-        if (panels[index]) panels[index].classList.add('active');
-        if (infos[index]) infos[index].classList.add('active');
+    function setRoomPhase(index) {
+        // Progressive: all phases up to index get 'drawn'
+        roomPhases.forEach((p, i) => {
+            p.classList.toggle('drawn', i <= index);
+        });
+        roomSteps.forEach((s, i) => {
+            s.classList.toggle('active', i === index);
+        });
+        roomInfos.forEach((inf, i) => {
+            inf.classList.toggle('active', i === index);
+        });
     }
 
-    thumbs.forEach((thumb) => {
-        thumb.addEventListener('click', () => {
-            setActiveRoom(Number(thumb.dataset.room));
+    roomSteps.forEach((step) => {
+        step.addEventListener('click', () => {
+            setRoomPhase(Number(step.dataset.room));
         });
     });
 
-    // Scroll-driven: cycle through rooms while sticky
+    // Scroll-driven: progressive room phases
     const roomsScroll = document.getElementById('rooms-scroll');
     if (roomsScroll) {
-        let lastScrollRoom = 0;
+        let lastPhase = -1;
         window.addEventListener('scroll', function () {
             const rect = roomsScroll.getBoundingClientRect();
+            // Don't activate until section enters viewport
+            if (rect.top > window.innerHeight) {
+                if (lastPhase !== -1) {
+                    lastPhase = -1;
+                    roomPhases.forEach((p) => p.classList.remove('drawn'));
+                    roomSteps.forEach((s) => s.classList.remove('active'));
+                    roomInfos.forEach((inf) => inf.classList.remove('active'));
+                    if (roomSteps[0]) roomSteps[0].classList.add('active');
+                }
+                return;
+            }
             const scrollRange = roomsScroll.offsetHeight - window.innerHeight;
             const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
-            const roomIndex = Math.min(2, Math.floor(progress * 3));
-            if (roomIndex !== lastScrollRoom) {
-                lastScrollRoom = roomIndex;
-                setActiveRoom(roomIndex);
+            const phase = Math.min(2, Math.floor(progress * 3));
+            if (phase !== lastPhase) {
+                lastPhase = phase;
+                setRoomPhase(phase);
             }
         }, { passive: true });
     }

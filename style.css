@@ -517,15 +517,12 @@ button {
     width: 527px;
     height: 700px;
     margin-left: auto;
-    margin-top: 0;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
-}
-
-.hero-image {
+    margin-top: 64px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
 }
 
 .hero-image img {
@@ -581,34 +578,15 @@ button {
 
 /* ---------- Rooms (Services) ---------- */
 /* Rooms section */
-.rooms-top {
-    padding: var(--space-section) var(--space-page-x) 0;
-    margin-bottom: 128px;
-}
-
-.rooms-top-inner {
-    max-width: 1360px;
-    margin: 0 auto;
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-64);
-}
-
 .rooms-title {
+    grid-column: 1 / -1;
     font-family: var(--font);
     font-size: 3rem;
     font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.02em;
+    line-height: 0.9375;
+    letter-spacing: 0;
     white-space: nowrap;
-}
-
-.rooms-top-text {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #545454;
-    line-height: 1.1;
-    max-width: 440px;
+    align-self: end;
 }
 
 /* Scroll lock container */
@@ -619,50 +597,47 @@ button {
 
 .rooms-scroll-inner {
     position: sticky;
-    top: 0;
-    height: 100vh;
+    top: calc(50vh - 340px);
     display: grid;
-    grid-template-columns: 140px 1px 1fr 320px;
-    gap: var(--space-32);
+    grid-template-columns: 48px 1fr 1px 300px;
+    grid-template-rows: auto auto;
+    gap: 96px var(--space-32);
     max-width: 1360px;
     margin: 0 auto;
-    padding: var(--space-48) var(--space-page-x);
+    padding: 0 var(--space-page-x);
+    align-content: start;
     align-items: center;
 }
 
-/* Thumbnails */
-.rooms-thumbs {
+/* Step indicators */
+.rooms-steps {
     display: flex;
     flex-direction: column;
-    gap: var(--space-32);
+    gap: var(--space-24);
     align-self: center;
 }
 
-.rooms-thumb {
-    width: 120px;
-    height: 90px;
-    padding: var(--space-12);
+.rooms-step {
+    font-family: var(--font);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
     background: transparent;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    border: none;
     cursor: pointer;
     opacity: 0.3;
-    transition: opacity var(--transition), border-color var(--transition);
-    color: var(--color-text);
+    transition: opacity var(--transition);
+    padding: var(--space-4) 0;
 }
 
-.rooms-thumb:hover {
-    opacity: 0.5;
+.rooms-step:hover {
+    opacity: 0.6;
 }
 
-.rooms-thumb.active {
+.rooms-step.active {
     opacity: 1;
-    border-color: var(--color-border);
-}
-
-.rooms-thumb svg {
-    width: 100%;
-    height: 100%;
+    color: var(--color-text);
 }
 
 /* Divider */
@@ -677,54 +652,62 @@ button {
 /* Drawing area */
 .rooms-drawing-area {
     position: relative;
-    height: 400px;
+    height: 480px;
     align-self: center;
-}
-
-.rooms-panel {
-    position: absolute;
-    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
-.rooms-panel.active {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .room-drawing {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     height: auto;
     color: var(--color-text);
 }
 
-/* SVG draw-in animation */
-.rooms-panel.active .room-drawing line,
-.rooms-panel.active .room-drawing rect,
-.rooms-panel.active .room-drawing circle,
-.rooms-panel.active .room-drawing ellipse {
-    stroke-dasharray: 800;
-    stroke-dashoffset: 800;
-    animation: drawIn 1.5s ease forwards;
+/* Phase draw-in animation */
+.room-phase line,
+.room-phase rect,
+.room-phase circle,
+.room-phase path:not(.no-draw),
+.room-phase ellipse {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
 }
 
-.rooms-panel.active .room-drawing *:nth-child(1) { animation-delay: 0s; }
-.rooms-panel.active .room-drawing *:nth-child(2) { animation-delay: 0.08s; }
-.rooms-panel.active .room-drawing *:nth-child(3) { animation-delay: 0.16s; }
-.rooms-panel.active .room-drawing *:nth-child(4) { animation-delay: 0.24s; }
-.rooms-panel.active .room-drawing *:nth-child(5) { animation-delay: 0.32s; }
-.rooms-panel.active .room-drawing *:nth-child(6) { animation-delay: 0.4s; }
-.rooms-panel.active .room-drawing *:nth-child(7) { animation-delay: 0.48s; }
-.rooms-panel.active .room-drawing *:nth-child(8) { animation-delay: 0.56s; }
-.rooms-panel.active .room-drawing *:nth-child(9) { animation-delay: 0.64s; }
-.rooms-panel.active .room-drawing *:nth-child(10) { animation-delay: 0.72s; }
-.rooms-panel.active .room-drawing *:nth-child(n+11) { animation-delay: 0.8s; }
+.room-phase.drawn line,
+.room-phase.drawn rect,
+.room-phase.drawn circle,
+.room-phase.drawn path:not(.no-draw),
+.room-phase.drawn ellipse {
+    animation: drawIn 1.4s ease forwards;
+}
+
+/* Dashed elements: fade in instead of stroke draw */
+.room-phase .no-draw {
+    opacity: 0;
+    transition: opacity 0.6s ease 0.4s;
+}
+
+.room-phase.drawn .no-draw {
+    opacity: 1;
+}
+
+/* Stagger delays per phase child */
+.room-phase.drawn *:nth-child(1) { animation-delay: 0s; }
+.room-phase.drawn *:nth-child(2) { animation-delay: 0.06s; }
+.room-phase.drawn *:nth-child(3) { animation-delay: 0.12s; }
+.room-phase.drawn *:nth-child(4) { animation-delay: 0.18s; }
+.room-phase.drawn *:nth-child(5) { animation-delay: 0.24s; }
+.room-phase.drawn *:nth-child(6) { animation-delay: 0.3s; }
+.room-phase.drawn *:nth-child(7) { animation-delay: 0.36s; }
+.room-phase.drawn *:nth-child(8) { animation-delay: 0.42s; }
+.room-phase.drawn *:nth-child(9) { animation-delay: 0.48s; }
+.room-phase.drawn *:nth-child(10) { animation-delay: 0.54s; }
+.room-phase.drawn *:nth-child(11) { animation-delay: 0.6s; }
+.room-phase.drawn *:nth-child(12) { animation-delay: 0.66s; }
+.room-phase.drawn *:nth-child(n+13) { animation-delay: 0.72s; }
 
 @keyframes drawIn {
     to { stroke-dashoffset: 0; }
@@ -1041,14 +1024,10 @@ button {
         padding: var(--space-24) var(--space-page-x);
     }
 
-    .rooms-thumbs {
+    .rooms-steps {
         flex-direction: row;
         justify-content: center;
-    }
-
-    .rooms-thumb {
-        width: 80px;
-        height: 60px;
+        gap: var(--space-16);
     }
 
     .rooms-divider {
@@ -1057,7 +1036,25 @@ button {
     }
 
     .rooms-drawing-area {
-        height: 300px;
+        height: 400px;
+    }
+
+    .room-phase {
+        /* Show all phases on mobile */
+    }
+
+    .room-phase line,
+    .room-phase rect,
+    .room-phase circle,
+    .room-phase path:not(.no-draw),
+    .room-phase ellipse {
+        stroke-dasharray: none;
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+
+    .room-phase .no-draw {
+        opacity: 1;
     }
 
     .rooms-info-area {
