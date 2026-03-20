@@ -164,9 +164,11 @@
 
         <!-- CTA -->
         <section class="cta">
-            <p class="label">Ready?</p>
-            <h2 class="cta-headline">Let's build a brand<br>that works for you.</h2>
-            <a href="mailto:hello@meinhaus.studio" class="cta-link">Get in touch</a>
+            <div class="cta-inner">
+                <p class="label">Ready?</p>
+                <h2 class="cta-headline">Let's build a brand<br>that works for you.</h2>
+                <a href="#contact" class="cta-link">Get in touch</a>
+            </div>
         </section>
 
         <!-- Why Us -->
@@ -242,22 +244,35 @@
             </div>
         </section>
 
-        <div class="divider"></div>
-
         <!-- Contact -->
         <section class="contact" id="contact">
-            <div class="contact-grid">
-                <div class="contact-left">
+            <div class="contact-card">
+                <div class="contact-card-header">
                     <p class="label">Get in touch</p>
-                    <h2 class="contact-headline">Let's talk about<br>your brand.</h2>
+                    <h2 class="section-headline">Let's build your brand.</h2>
                 </div>
-                <div class="contact-right">
-                    <a href="mailto:hello@meinhaus.studio" class="contact-email">hello@meinhaus.studio</a>
-                    <div class="contact-links">
-                        <a href="#">Instagram</a>
-                        <a href="#">LinkedIn</a>
+                <form class="contact-form" action="mailto:hello@meinhaus.studio" method="POST" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Name / Company" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <div class="contact-form-row">
+                        <select name="service" required>
+                            <option value="" disabled selected>Service</option>
+                            <option value="branding">Positioning & Branding</option>
+                            <option value="web">Website / Landing Page</option>
+                            <option value="full">Full Brand System</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <select name="budget">
+                            <option value="" disabled selected>Budget</option>
+                            <option value="3-5k">3–5k</option>
+                            <option value="5-10k">5–10k</option>
+                            <option value="10k+">10k+</option>
+                            <option value="unsure">Not sure yet</option>
+                        </select>
                     </div>
-                </div>
+                    <textarea name="details" placeholder="Project details" rows="4"></textarea>
+                    <button type="submit" class="contact-submit">Send request</button>
+                </form>
             </div>
         </section>
 
@@ -303,7 +318,7 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         // Add reveal class to animatable elements
-        document.querySelectorAll('.hero-inner, .hero-meta, .intro-grid, .section-top, .approach-images, .approach-item, .result-section, .cta, .scope-header, .scope-cards, .why-header, .accordion-item, .about-layout, .contact-grid').forEach((el) => {
+        document.querySelectorAll('.hero-inner, .hero-meta, .intro-grid, .section-top, .approach-images, .approach-item, .result-section, .cta, .scope-header, .scope-cards, .why-header, .accordion-item, .about-layout, .contact-card').forEach((el) => {
             el.classList.add('reveal');
             observer.observe(el);
         });
