@@ -1,0 +1,96 @@
+<!-- ============================================
+     MEIN HAUS – 3D Component
+     ============================================
+     1. GLB-Datei (meinhaus.papier.glb) im gleichen
+        Verzeichnis ablegen oder Pfad anpassen.
+     2. Diesen Code in deine Website einbauen.
+     ============================================ -->
+
+<!-- ── Im <head> einfügen ──────────────────────── -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+  }
+}
+</script>
+
+<!-- ── Container dort platzieren wo das Haus hin soll ── -->
+<div id="haus-3d" style="width: 100%; height: 100vh;"></div>
+
+<!-- ── Script am Ende vom <body> ───────────────── -->
+<script type="module">
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+  const container = document.getElementById('haus-3d');
+
+  // Scene
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xf5f2ee);
+
+  // Camera – frontal
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.set(0, 0.5, 8);
+  camera.lookAt(0, 0.5, 0);
+
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  // Light
+  scene.add(new THREE.AmbientLight(0xffffff, 1.6));
+  const dir = new THREE.DirectionalLight(0xffffff, 2.5);
+  dir.position.set(5, 8, 6);
+  scene.add(dir);
+  const fill = new THREE.DirectionalLight(0xffffff, 1.2);
+  fill.position.set(-5, 3, -4);
+  scene.add(fill);
+  const btm = new THREE.DirectionalLight(0xffffff, 0.6);
+  btm.position.set(0, -5, 0);
+  scene.add(btm);
+
+  // Mouse
+  const mouse = { x: 0, y: 0 };
+  document.addEventListener('mousemove', (e) => {
+    mouse.x = (e.clientX / innerWidth - 0.5) * 2;
+    mouse.y = (e.clientY / innerHeight - 0.5) * 2;
+  });
+
+  // Load GLB
+  const group = new THREE.Group();
+  scene.add(group);
+
+  new GLTFLoader().load('./meinhaus.papier.glb', (gltf) => {
+    const model = gltf.scene;
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    model.position.sub(center);
+    model.scale.setScalar(4 / Math.max(size.x, size.y, size.z));
+    group.add(model);
+  });
+
+  // Smooth rotation
+  const current = { x: 0, y: 0 };
+
+  function animate() {
+    requestAnimationFrame(animate);
+    current.y += (mouse.x * 90 - current.y) * 0.025;
+    current.x += (mouse.y * -60 - current.x) * 0.025;
+    group.rotation.y = THREE.MathUtils.degToRad(current.y);
+    group.rotation.x = THREE.MathUtils.degToRad(current.x);
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Resize
+  addEventListener('resize', () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
+</script>
