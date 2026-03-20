@@ -6,6 +6,14 @@
     <title>mein haus — creative studio</title>
     <meta name="description" content="mein haus is a creative studio for founders and changemakers. Branding and web design that feels like home.">
     <link rel="stylesheet" href="../style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -16,6 +24,7 @@
             <nav class="nav-links">
                 <a href="#about" data-i18n="nav.about">About</a>
                 <span class="nav-link--disabled" data-i18n="nav.portfolio">Portfolio</span>
+                <button class="lang-toggle" aria-label="Switch language">en</button>
             </nav>
             <a href="#contact" class="nav-cta" data-i18n="nav.cta2">komm<br>rein.</a>
             <div class="nav-right-mobile">
@@ -38,6 +47,7 @@
             </a>
             <a href="#about" data-i18n="nav.about">About</a>
             <span class="nav-bottom-disabled" data-i18n="nav.portfolio">Portfolio</span>
+            <button class="lang-toggle" aria-label="Switch language">EN</button>
             <a href="#contact" class="nav-bottom-cta" data-i18n="nav.cta3">komm rein.</a>
         </div>
     </nav>
@@ -54,6 +64,15 @@
     </div>
 
     <main>
+
+        <!-- Hero 3D -->
+        <section class="hero-3d" id="hero-3d">
+            <div class="hero-3d-inner">
+                <span class="hero-3d-left" data-i18n="hero3d.left">meinhaus</span>
+                <div class="hero-3d-canvas" id="haus-3d"></div>
+                <span class="hero-3d-right" data-i18n="hero3d.right">dein zuhause.</span>
+            </div>
+        </section>
 
         <!-- Hero -->
         <section class="hero" id="hero">
@@ -168,30 +187,38 @@
         <!-- Why work with us -->
         <section class="section" id="approach">
             <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-label" data-i18n="approach.label">Why work with us</span>
-                    <h2 class="section-title" data-i18n="approach.title">An architect and a designer<br>walk into a studio.</h2>
-                </div>
-                <div class="approach-content">
-                    <div class="approach-text reveal">
-                        <p class="text-large" data-i18n="approach.text1">Sounds like a joke, but it's actually our origin story. We combine spatial thinking with visual craft. Strategy with soul. Big-picture vision with pixel-perfect detail.</p>
-                        <p class="text-large" data-i18n="approach.text2">Think of us as your brand's architects — we don't just decorate, we build from the foundation up.</p>
+                <h2 class="approach-headline" data-i18n="approach.headline">Warum wir</h2>
+                <p class="approach-intro" data-i18n="approach.intro">Wir sind Marika und Emma — eine Designerin und eine Architektin. Zusammen bauen wir Marken von Grund auf. Von der Strategie bis zum fertigen Design, alles aus einer Hand.</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-number">[01]</span>
+                            <span class="accordion-title" data-i18n="approach.v1.title">Strategie zuerst</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p data-i18n="approach.v1.text">Jedes Projekt beginnt mit Verstehen — eure Ziele, euer Publikum, eure Geschichte. Wir planen, bevor wir bauen.</p>
+                        </div>
                     </div>
-                    <div class="approach-values reveal">
-                        <div class="value">
-                            <span class="value-number">01</span>
-                            <h4 data-i18n="approach.v1.title">Strategy first</h4>
-                            <p data-i18n="approach.v1.text">Every project starts with understanding — your goals, your audience, your story. We plan before we build.</p>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-number">[02]</span>
+                            <span class="accordion-title" data-i18n="approach.v2.title">Gebaut für die Dauer</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p data-i18n="approach.v2.text">Keine Trends um der Trends willen. Wir schaffen Arbeit, die gut altert und mit euch wächst.</p>
                         </div>
-                        <div class="value">
-                            <span class="value-number">02</span>
-                            <h4 data-i18n="approach.v2.title">Built to last</h4>
-                            <p data-i18n="approach.v2.text">No trends for the sake of trends. We create work that ages well and grows with you.</p>
-                        </div>
-                        <div class="value">
-                            <span class="value-number">03</span>
-                            <h4 data-i18n="approach.v3.title">Personal, always</h4>
-                            <p data-i18n="approach.v3.text">Two people, no layers. You work directly with us — the ones actually doing the work.</p>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="accordion-number">[03]</span>
+                            <span class="accordion-title" data-i18n="approach.v3.title">Persönlich, immer</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p data-i18n="approach.v3.text">Zwei Menschen, keine Umwege. Ihr arbeitet direkt mit uns — den Leuten, die die Arbeit auch wirklich machen.</p>
                         </div>
                     </div>
                 </div>
@@ -199,39 +226,25 @@
         </section>
 
         <!-- About -->
-        <section class="section section--border" id="about">
+        <section class="section" id="about">
             <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-label" data-i18n="about.label">About</span>
-                    <h2 class="section-title" data-i18n="about.title">Who lives here.</h2>
-                </div>
-                <div class="about-grid">
-                    <div class="about-person reveal">
-                        <div class="about-photo">
-                            <span class="photo-placeholder">E</span>
-                        </div>
-                        <h3 class="about-name">Emma</h3>
-                        <span class="about-role" data-i18n="about.emma.role">The one who thinks in spaces</span>
-                        <p class="about-bio" data-i18n="about.emma.bio">Architect by training. Strategist by nature. Emma brings structure, spatial thinking, and a knack for seeing the big picture. She turns chaos into systems and systems into stories.</p>
-                        <div class="about-skills">
-                            <span>3D Visualization</span>
-                            <span>Animation</span>
-                            <span data-i18n="about.emma.skill3">Strategy</span>
-                            <span>Marketing</span>
-                        </div>
+                <h2 class="about-headline" data-i18n="about.title">Wer hier wohnt</h2>
+                <div class="about-layout reveal">
+                    <div class="about-image">
+                        <img src="../images/DSC03637.jpeg" alt="Emma und Marika — mein haus">
                     </div>
-                    <div class="about-person reveal">
-                        <div class="about-photo">
-                            <span class="photo-placeholder">M</span>
+                    <div class="about-profiles">
+                        <div class="about-person">
+                            <h3 class="about-name">Emma</h3>
+                            <span class="about-role" data-i18n="about.emma.role">Die, die in Räumen denkt</span>
+                            <p class="about-bio" data-i18n="about.emma.bio">Architektin. Denkt in Systemen, plant Strategien und baut das Fundament, auf dem alles steht. Macht aus einer Idee ein Konzept — und aus einem Konzept eine Marke.</p>
+                            <p class="about-tags">3D Visualisierung / Animation / <span data-i18n="about.emma.skill3">Strategie</span> / Marketing</p>
                         </div>
-                        <h3 class="about-name">Marika</h3>
-                        <span class="about-role" data-i18n="about.marika.role">The one who thinks in pixels</span>
-                        <p class="about-bio" data-i18n="about.marika.bio">Designer by craft. Brand nerd by heart. Marika shapes identities, builds digital experiences, and occasionally draws things just because. She turns ideas into visuals and visuals into feelings.</p>
-                        <div class="about-skills">
-                            <span>Branding</span>
-                            <span>Webdesign</span>
-                            <span>Editorial</span>
-                            <span>Illustration</span>
+                        <div class="about-person">
+                            <h3 class="about-name">Marika</h3>
+                            <span class="about-role" data-i18n="about.marika.role">Die, die in Pixeln denkt</span>
+                            <p class="about-bio" data-i18n="about.marika.bio">Designerin. Gestaltet Logos, Websites und alles Visuelle. Macht aus einem Konzept ein Design — und aus einem Design ein Gefühl.</p>
+                            <p class="about-tags">Branding / Webdesign / Editorial / Illustration</p>
                         </div>
                     </div>
                 </div>
@@ -239,35 +252,293 @@
         </section>
 
         <!-- Contact -->
-        <section class="section section--dark" id="contact">
+        <section class="section" id="contact">
             <div class="section-container">
-                <div class="contact-content reveal">
-                    <svg class="contact-door" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                        <rect x="5" y="5" width="50" height="80"/>
-                        <rect x="12" y="12" width="36" height="66"/>
-                        <circle cx="42" cy="48" r="2.5" fill="currentColor"/>
-                    </svg>
-                    <h2 class="section-title" data-i18n="contact.title">The door is<br>always open.</h2>
-                    <p class="text-large" data-i18n="contact.text">Got a project? A wild idea? A napkin sketch<br>that could be something? Let's talk.</p>
-                    <a href="mailto:hello@meinhaus.studio" class="contact-email">hello@meinhaus.studio</a>
-                    <div class="contact-social">
-                        <a href="#" target="_blank" rel="noopener">Instagram</a>
-                        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                <div class="contact-layout reveal">
+                    <div class="contact-left">
+                        <h2 class="contact-headline" data-i18n="contact.title">Unsere Tür steht offen.<br>Lass uns reden.</h2>
+                        <a href="mailto:hello@meinhaus.studio" class="contact-email">hello@meinhaus.studio</a>
+                        <div class="contact-social">
+                            <a href="#" target="_blank" rel="noopener">Instagram</a>
+                            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                        </div>
                     </div>
+                    <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+                        <div class="form-field">
+                            <input type="text" name="name" required placeholder=" ">
+                            <label data-i18n="contact.form.name">Dein Name*</label>
+                        </div>
+                        <div class="form-field">
+                            <input type="email" name="email" required placeholder=" ">
+                            <label data-i18n="contact.form.email">Deine E-Mail*</label>
+                        </div>
+                        <div class="form-field">
+                            <textarea name="message" rows="3" required placeholder=" "></textarea>
+                            <label data-i18n="contact.form.message">Erzähl uns von deinem Projekt*</label>
+                        </div>
+                        <div class="form-field form-field--select">
+                            <select name="service">
+                                <option value="" disabled selected data-i18n="contact.form.service">Wobei können wir helfen?</option>
+                                <option value="branding">Branding</option>
+                                <option value="webdesign">Webdesign</option>
+                                <option value="creative-direction">Creative Direction</option>
+                                <option value="other" data-i18n="contact.form.other">Anderes</option>
+                            </select>
+                            <svg class="form-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><polyline points="6,9 12,15 18,9"/></svg>
+                        </div>
+                        <button type="submit" class="form-submit" data-i18n="contact.form.submit">abschicken</button>
+                    </form>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <span class="footer-logo">mein haus</span>
+    <!-- Footer — Sheep Meadow -->
+    <footer class="meadow-footer">
+        <div class="meadow">
+            <!-- Sheep = links -->
+            <a href="#" class="sheep" style="left: 8%; top: 45%;" data-label="Instagram">
+                <span class="sheep-tooltip">Instagram</span>
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="18" ry="13" fill="#f5f2ee"/>
+                    <ellipse cx="30" cy="18" rx="18" ry="13" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="20" cy="14" r="7" fill="#f5f2ee" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="18" cy="12" r="2" fill="#2d2d2d"/>
+                    <line x1="20" y1="31" x2="20" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="26" y1="31" x2="26" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="34" y1="31" x2="34" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="40" y1="31" x2="40" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                </svg>
+            </a>
+            <a href="#" class="sheep" style="left: 22%; top: 58%;" data-label="LinkedIn">
+                <span class="sheep-tooltip">LinkedIn</span>
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="18" ry="13" fill="#f5f2ee"/>
+                    <ellipse cx="30" cy="18" rx="18" ry="13" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="20" cy="14" r="7" fill="#f5f2ee" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="18" cy="12" r="2" fill="#2d2d2d"/>
+                    <line x1="20" y1="31" x2="20" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="26" y1="31" x2="26" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="34" y1="31" x2="34" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="40" y1="31" x2="40" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                </svg>
+            </a>
+            <a href="mailto:hello@meinhaus.studio" class="sheep" style="left: 42%; top: 38%;" data-label="E-Mail">
+                <span class="sheep-tooltip">E-Mail</span>
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="18" ry="13" fill="#f5f2ee"/>
+                    <ellipse cx="30" cy="18" rx="18" ry="13" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="20" cy="14" r="7" fill="#f5f2ee" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="18" cy="12" r="2" fill="#2d2d2d"/>
+                    <line x1="20" y1="31" x2="20" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="26" y1="31" x2="26" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="34" y1="31" x2="34" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="40" y1="31" x2="40" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                </svg>
+            </a>
+            <a href="#" class="sheep sheep--grazing" style="left: 60%; top: 62%;" data-label="Impressum">
+                <span class="sheep-tooltip">Impressum</span>
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="18" ry="13" fill="#f5f2ee"/>
+                    <ellipse cx="30" cy="18" rx="18" ry="13" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="17" cy="17" r="7" fill="#f5f2ee" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="15" cy="16" r="2" fill="#2d2d2d"/>
+                    <line x1="20" y1="31" x2="20" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="26" y1="31" x2="26" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="34" y1="31" x2="34" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="40" y1="31" x2="40" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                </svg>
+            </a>
+            <a href="#" class="sheep" style="left: 78%; top: 42%;" data-label="Datenschutz">
+                <span class="sheep-tooltip">Datenschutz</span>
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="18" ry="13" fill="#f5f2ee"/>
+                    <ellipse cx="30" cy="18" rx="18" ry="13" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="40" cy="14" r="7" fill="#f5f2ee" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="42" cy="12" r="2" fill="#2d2d2d"/>
+                    <line x1="20" y1="31" x2="20" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="26" y1="31" x2="26" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="34" y1="31" x2="34" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                    <line x1="40" y1="31" x2="40" y2="38" stroke="#2d2d2d" stroke-width="1.2"/>
+                </svg>
+            </a>
+            <a href="#hero-3d" class="sheep sheep--small" style="left: 90%; top: 70%;" data-label="Nach oben">
+                <span class="sheep-tooltip">Nach oben</span>
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="18" rx="14" ry="10" fill="#f5f2ee"/>
+                    <ellipse cx="30" cy="18" rx="14" ry="10" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="21" cy="14" r="5.5" fill="#f5f2ee" stroke="#2d2d2d" stroke-width="0.8"/>
+                    <circle cx="19.5" cy="13" r="1.5" fill="#2d2d2d"/>
+                    <line x1="23" y1="28" x2="23" y2="34" stroke="#2d2d2d" stroke-width="1"/>
+                    <line x1="28" y1="28" x2="28" y2="34" stroke="#2d2d2d" stroke-width="1"/>
+                    <line x1="33" y1="28" x2="33" y2="34" stroke="#2d2d2d" stroke-width="1"/>
+                    <line x1="38" y1="28" x2="38" y2="34" stroke="#2d2d2d" stroke-width="1"/>
+                </svg>
+            </a>
+        </div>
+        <div class="meadow-bottom">
             <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 mein haus. All rights reserved.</span>
         </div>
     </footer>
 
+    <script>
+        // Sheep drag & drop
+        (function () {
+            const meadow = document.querySelector('.meadow');
+            if (!meadow) return;
+
+            let dragging = null;
+            let offsetX = 0;
+            let offsetY = 0;
+            let hasMoved = false;
+
+            function startDrag(sheep, clientX, clientY) {
+                dragging = sheep;
+                hasMoved = false;
+                const rect = sheep.getBoundingClientRect();
+                offsetX = clientX - rect.left;
+                offsetY = clientY - rect.top;
+                sheep.style.zIndex = '10';
+                sheep.classList.add('dragging');
+            }
+
+            function moveDrag(clientX, clientY) {
+                if (!dragging) return;
+                hasMoved = true;
+                const meadowRect = meadow.getBoundingClientRect();
+                const x = clientX - meadowRect.left - offsetX;
+                const y = clientY - meadowRect.top - offsetY;
+                const px = (x / meadowRect.width) * 100;
+                const py = (y / meadowRect.height) * 100;
+                dragging.style.left = Math.max(0, Math.min(92, px)) + '%';
+                dragging.style.top = Math.max(0, Math.min(85, py)) + '%';
+            }
+
+            function endDrag(e) {
+                if (!dragging) return;
+                dragging.classList.remove('dragging');
+                dragging.style.zIndex = '';
+                if (hasMoved) {
+                    e.preventDefault();
+                }
+                dragging = null;
+            }
+
+            // Mouse events
+            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
+                sheep.addEventListener('mousedown', function (e) {
+                    e.preventDefault();
+                    startDrag(sheep, e.clientX, e.clientY);
+                });
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                moveDrag(e.clientX, e.clientY);
+            });
+
+            document.addEventListener('mouseup', function (e) {
+                endDrag(e);
+            });
+
+            // Touch events
+            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
+                sheep.addEventListener('touchstart', function (e) {
+                    const t = e.touches[0];
+                    startDrag(sheep, t.clientX, t.clientY);
+                }, { passive: true });
+            });
+
+            document.addEventListener('touchmove', function (e) {
+                if (!dragging) return;
+                const t = e.touches[0];
+                moveDrag(t.clientX, t.clientY);
+            }, { passive: false });
+
+            document.addEventListener('touchend', function (e) {
+                endDrag(e);
+            });
+
+            // Prevent click (navigation) after drag
+            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
+                sheep.addEventListener('click', function (e) {
+                    if (hasMoved) {
+                        e.preventDefault();
+                        hasMoved = false;
+                    }
+                });
+            });
+        })();
+    </script>
     <script src="../script.js"></script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        const container = document.getElementById('haus-3d');
+        if (container) {
+            const scene = new THREE.Scene();
+
+            const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+            camera.position.set(0, 0.5, 8);
+            camera.lookAt(0, 0.5, 0);
+
+            const renderSize = 800;
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setClearColor(0x000000, 0);
+            renderer.setSize(renderSize, renderSize);
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+            renderer.domElement.style.width = '650px';
+            renderer.domElement.style.height = '650px';
+            container.appendChild(renderer.domElement);
+
+            // Lighting
+            scene.add(new THREE.AmbientLight(0xffffff, 1.6));
+            const dir = new THREE.DirectionalLight(0xffffff, 2.5);
+            dir.position.set(5, 8, 6);
+            scene.add(dir);
+            const fill = new THREE.DirectionalLight(0xffffff, 1.2);
+            fill.position.set(-5, 3, -4);
+            scene.add(fill);
+            const btm = new THREE.DirectionalLight(0xffffff, 0.6);
+            btm.position.set(0, -5, 0);
+            scene.add(btm);
+
+            // Mouse tracking
+            const mouse = { x: 0, y: 0 };
+            document.addEventListener('mousemove', (e) => {
+                mouse.x = (e.clientX / innerWidth - 0.5) * 2;
+                mouse.y = (e.clientY / innerHeight - 0.5) * 2;
+            });
+
+            // Load GLB
+            const group = new THREE.Group();
+            scene.add(group);
+
+            new GLTFLoader().load('../haus/meinhaus.papier.runde edges.glb', (gltf) => {
+                const model = gltf.scene;
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                model.position.sub(center);
+                model.scale.setScalar(4 / Math.max(size.x, size.y, size.z));
+                group.add(model);
+            });
+
+            // Smooth rotation
+            const current = { x: 0, y: 0 };
+
+            function animate() {
+                requestAnimationFrame(animate);
+                current.y += (mouse.x * 90 - current.y) * 0.025;
+                current.x += (mouse.y * -60 - current.x) * 0.025;
+                group.rotation.y = THREE.MathUtils.degToRad(current.y);
+                group.rotation.x = THREE.MathUtils.degToRad(current.x);
+                renderer.render(scene, camera);
+            }
+            animate();
+
+        }
+    </script>
 </body>
 </html>

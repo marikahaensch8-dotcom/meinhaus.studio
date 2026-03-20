@@ -1,0 +1,87 @@
+MEINHAUS — WEBSITE-INHALTE (DEUTSCH)
+=====================================
+
+--- NAVIGATION ---
+
+Logo: meinhaus
+Link 1: über uns
+Link 2: projekte
+CTA: komm rein.
+Services: Leistungen
+Kontakt: kontakt
+CTA (mobil): Projekt starten
+
+
+--- HERO (3D) ---
+
+Links: meinhaus
+Rechts: dein zuhause.
+
+
+--- HERO ---
+
+Jede Marke braucht ein Zuhause. Wir sind meinhaus, ein Designstudio für Branding, Web und alles was eure Marke sichtbar macht.
+
+
+--- WAS WIR MACHEN (ROOMS/SERVICES) ---
+
+Überschrift: Was wir machen
+
+[1] Branding
+Das Fundament. Wir bauen Identitäten von Grund auf — Strategie, visuelle Sprache und alles, was eure Marke zu eurer Marke macht.
+Tags: Strategie / Brand Design / Visuelle Identität
+
+[2] Webdesign
+Die Haustür. Der erste Eindruck zählt — wir gestalten Websites und digitale Erlebnisse, die eure Marke greifbar machen.
+Tags: UI/UX Design / Development
+
+[3] Creative Direction
+Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt — wir füllen eure Marke mit allem, was sie sichtbar und lebendig macht.
+Tags: 3D Visualisierung / Animation / Editorial / Content Creation / Commercial
+
+
+--- WARUM WIR (APPROACH) ---
+
+Überschrift: Warum wir
+Intro: Wir sind Marika und Emma — eine Designerin und eine Architektin. Zusammen bauen wir Marken von Grund auf. Von der Strategie bis zum fertigen Design, alles aus einer Hand.
+
+[01] Strategie zuerst
+Jedes Projekt beginnt mit Verstehen — eure Ziele, euer Publikum, eure Geschichte. Wir planen, bevor wir bauen.
+
+[02] Gebaut für die Dauer
+Keine Trends um der Trends willen. Wir schaffen Arbeit, die gut altert und mit euch wächst.
+
+[03] Persönlich, immer
+Zwei Menschen, keine Umwege. Ihr arbeitet direkt mit uns — den Leuten, die die Arbeit auch wirklich machen.
+
+
+--- WER HIER WOHNT (ABOUT) ---
+
+Überschrift: Wer hier wohnt
+
+Emma — Die, die in Räumen denkt
+Architektin. Denkt in Systemen, plant Strategien und baut das Fundament, auf dem alles steht. Macht aus einer Idee ein Konzept — und aus einem Konzept eine Marke.
+Tags: 3D Visualisierung / Animation / Strategie / Marketing
+
+Marika — Die, die in Pixeln denkt
+Designerin. Gestaltet Logos, Websites und alles Visuelle. Macht aus einem Konzept ein Design — und aus einem Design ein Gefühl.
+Tags: Branding / Webdesign / Editorial / Illustration
+
+
+--- KONTAKT ---
+
+Überschrift: Unsere Tür steht offen. Lass uns reden.
+E-Mail: hello@meinhaus.studio
+
+Formular:
+- Dein Name*
+- Deine E-Mail*
+- Erzähl uns von deinem Projekt*
+- Wobei können wir helfen? (Branding / Webdesign / Creative Direction / Anderes)
+- Button: abschicken
+
+
+--- FOOTER ---
+
+Links (Schafe): Instagram / LinkedIn / E-Mail / Impressum / Datenschutz / Nach oben
+© 2026 mein haus. Alle Rechte vorbehalten.
