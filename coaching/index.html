@@ -12,12 +12,68 @@
     <!-- Nav -->
     <header class="nav">
         <span class="nav-logo">meinhaus</span>
-        <nav class="nav-links">
-            <a href="#approach">Approach</a>
-            <a href="#scope">Scope</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+
+        <!-- Center menu pill -->
+        <div class="nav-center">
+            <button class="nav-pill" id="nav-menu-toggle">
+                <span class="nav-pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#approach" class="nav-menu-item">Approach</a>
+                <a href="#scope" class="nav-menu-item">Scope</a>
+                <a href="#about" class="nav-menu-item">About</a>
+                <button class="nav-pill nav-pill-close" id="nav-menu-close">
+                    <span class="nav-pill-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Connect pill -->
+        <div class="nav-connect-wrap">
+            <button class="nav-connect" id="nav-connect-toggle">
+                <span>Connect</span>
+                <span class="nav-connect-icon">+</span>
+            </button>
+            <div class="nav-connect-dropdown" id="nav-connect-dropdown">
+                <div class="nav-connect-body">
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">LDN</p>
+                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/London"></span>
+                    </div>
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">BER</p>
+                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
+                    </div>
+                    <div class="nav-connect-row">
+                        <p class="nav-connect-label">General Inquiries</p>
+                        <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
+                    </div>
+                    <div class="nav-connect-social">
+                        <p class="nav-connect-label">Social</p>
+                        <div class="nav-connect-social-links">
+                            <a href="#">Instagram</a>
+                            <a href="#">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -181,7 +237,7 @@
                     <p class="about-body">We believe your brand should work for you so you can focus on growing your business, not fixing your presence.</p>
                 </div>
                 <div class="about-image">
-                    <img src="../images/DSC03637.jpeg" alt="Marika and Emma">
+                    <div class="about-img-placeholder"></div>
                 </div>
             </div>
         </section>
@@ -282,6 +338,64 @@
         // Init first accordion
         const firstBody = document.querySelector('.accordion-body.open');
         if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+
+        // Nav menu toggle
+        const navCenter = document.querySelector('.nav-center');
+        const navMenuToggle = document.getElementById('nav-menu-toggle');
+        const navMenuClose = document.getElementById('nav-menu-close');
+
+        navMenuToggle.addEventListener('click', () => {
+            navCenter.classList.add('open');
+        });
+
+        navMenuClose.addEventListener('click', () => {
+            navCenter.classList.remove('open');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-menu-item').forEach((link) => {
+            link.addEventListener('click', () => {
+                navCenter.classList.remove('open');
+            });
+        });
+
+        // Connect dropdown
+        const connectToggle = document.getElementById('nav-connect-toggle');
+        const connectDropdown = document.getElementById('nav-connect-dropdown');
+        const connectWrap = document.querySelector('.nav-connect-wrap');
+
+        connectToggle.addEventListener('click', () => {
+            const isOpen = connectWrap.classList.toggle('open');
+            connectDropdown.classList.toggle('active', isOpen);
+        });
+
+        // Live clocks
+        function updateClocks() {
+            document.querySelectorAll('.nav-connect-time').forEach((el) => {
+                const tz = el.getAttribute('data-tz');
+                const now = new Date();
+                el.textContent = now.toLocaleTimeString('en-GB', {
+                    timeZone: tz,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                }).toUpperCase();
+            });
+        }
+        updateClocks();
+        setInterval(updateClocks, 1000);
+
+        // Close dropdown on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-connect-wrap')) {
+                connectWrap.classList.remove('open');
+                connectDropdown.classList.remove('active');
+            }
+            if (!e.target.closest('.nav-center')) {
+                navCenter.classList.remove('open');
+            }
+        });
     </script>
 
 </body>

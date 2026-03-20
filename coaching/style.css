@@ -124,18 +124,215 @@ button {
     text-transform: uppercase;
 }
 
-.nav-links {
+/* Center pill (closed) */
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-pill {
     display: flex;
-    gap: 28px;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-radius: 100px;
+    background: var(--grey-light);
+    cursor: pointer;
+    color: var(--black);
+    transition: background var(--ease), color var(--ease);
 }
 
-.nav-links a {
-    font-size: 16px;
+.nav-pill:hover {
+    background: #ddd;
+}
+
+.nav-pill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Center menu (open) */
+.nav-menu {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+.nav-menu.active + .nav-pill,
+.nav-center .nav-pill:first-child {
+    display: flex;
+}
+
+.nav-center.open > .nav-pill:first-child {
+    display: none;
+}
+
+.nav-center.open .nav-menu {
+    display: flex;
+}
+
+.nav-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 20px;
+    border-radius: 100px;
+    background: var(--grey-light);
+    font-family: var(--font);
+    font-size: 14px;
     font-weight: 400;
-    color: var(--grey);
+    color: var(--black);
+    text-decoration: none;
+    transition: background var(--ease);
 }
 
-.nav-links a:hover {
+.nav-menu-item:hover {
+    background: #ddd;
+    color: var(--black);
+}
+
+.nav-pill-close {
+    background: var(--black);
+    color: var(--white);
+}
+
+.nav-pill-close:hover {
+    background: #333;
+}
+
+/* Connect pill */
+.nav-connect-wrap {
+    position: relative;
+}
+
+.nav-connect {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 100px;
+    background: var(--grey-light);
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--black);
+    cursor: pointer;
+    transition: background var(--ease);
+}
+
+.nav-connect:hover {
+    background: #ddd;
+}
+
+.nav-connect-icon {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* Connect dropdown */
+.nav-connect-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 360px;
+    background: #f2f2f2;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.nav-connect-dropdown.active {
+    display: block;
+}
+
+.nav-connect-wrap.open .nav-connect-icon {
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform var(--ease);
+}
+
+.nav-connect-icon {
+    display: inline-block;
+    transition: transform var(--ease);
+}
+
+.nav-connect-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-connect-location {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.nav-connect-city {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 4px;
+}
+
+.nav-connect-time {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    white-space: nowrap;
+}
+
+.nav-connect-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-connect-label {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.nav-connect-link {
+    font-size: 14px;
+    color: var(--grey);
+    text-decoration: none;
+}
+
+.nav-connect-link:hover {
+    color: var(--black);
+}
+
+.nav-connect-social {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.nav-connect-social-links {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-connect-social-links a {
+    font-size: 14px;
+    color: var(--grey);
+    text-decoration: none;
+}
+
+.nav-connect-social-links a:hover {
     color: var(--black);
 }
 
@@ -487,15 +684,10 @@ button {
     margin-bottom: 12px;
 }
 
-.about-image img {
+.about-img-placeholder {
     width: 100%;
-    display: block;
-    filter: grayscale(100%);
-    transition: opacity var(--ease);
-}
-
-.about-image img:hover {
-    opacity: 0.85;
+    aspect-ratio: 3/4;
+    background: var(--grey-light);
 }
 
 /* ===== CONTACT ===== */
