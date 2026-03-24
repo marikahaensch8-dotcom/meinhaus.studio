@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webdesign für Coaches · meinhaus studio</title>
+    <meta name="description" content="Webdesign für Coaches: wir bauen Websites, die nach dir aussehen und Kunden bringen. Coach Website erstellen lassen von meinhaus studio. London & Berlin.">
+    <meta name="keywords" content="Webdesign für Coaches, Coach Website erstellen, Website für Coaches, Coach Landing Page, Webdesign Studio">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://meinhaus.studio/webdesign-fuer-coaches.html">
+    <link rel="alternate" hreflang="de" href="https://meinhaus.studio/webdesign-fuer-coaches.html">
+    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Webdesign für Coaches · meinhaus studio">
+    <meta property="og:description" content="Webdesign für Coaches: wir bauen Websites, die nach dir aussehen und Kunden bringen. Coach Website erstellen lassen von meinhaus studio.">
+    <meta property="og:url" content="https://meinhaus.studio/webdesign-fuer-coaches.html">
+    <meta property="og:site_name" content="meinhaus studio">
+    <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://formspree.io">
+
+    <link rel="icon" href="House.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Nav -->
+    <header class="nav">
+        <a href="de.html" class="nav-logo">meinhaus</a>
+
+        <!-- Center menu pill -->
+        <div class="nav-center">
+            <button class="nav-pill" id="nav-menu-toggle" aria-label="Menü öffnen">
+                <span class="nav-pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-services-wrap">
+                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+                    <div class="nav-services-dropdown" id="nav-services-dropdown">
+                        <a href="branding-fuer-coaches.html" class="nav-services-link">Branding</a>
+                        <a href="webdesign-fuer-coaches.html" class="nav-services-link">Webdesign</a>
+                        <a href="personal-brand-aufbauen.html" class="nav-services-link">Personal Brand Guide</a>
+                    </div>
+                </div>
+                <a href="de.html#scope" class="nav-menu-item">Scope</a>
+                <a href="de.html#about" class="nav-menu-item">Über uns</a>
+                <a href="index.html" class="nav-menu-item">EN</a>
+                <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
+                    <span class="nav-pill-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Connect pill -->
+        <div class="nav-connect-wrap">
+            <button class="nav-connect" id="nav-connect-toggle">
+                <span>Komm rein</span>
+                <span class="nav-connect-icon">
+                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="1" width="12" height="14"/>
+                        <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                        <rect x="1" y="1" width="12" height="14"/>
+                        <path d="M1 1 L6 3 L6 13 L1 15"/>
+                        <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-connect-dropdown" id="nav-connect-dropdown">
+                <div class="nav-connect-body">
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">LDN</p>
+                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/London"></span>
+                    </div>
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">BER</p>
+                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
+                    </div>
+                    <div class="nav-connect-row">
+                        <p class="nav-connect-label">Allgemeine Anfragen</p>
+                        <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
+                    </div>
+                    <div class="nav-connect-social">
+                        <p class="nav-connect-label">Social</p>
+                        <div class="nav-connect-social-links">
+                            <a href="https://www.instagram.com/marika.haensch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- 1. Hero -->
+        <section class="hero">
+            <div class="hero-inner">
+                <p class="hero-label">Webdesign</p>
+                <h1 class="hero-headline">Deine Website ist deine Haustür. <br>Wir sorgen dafür, dass <br>die Leute eintreten wollen.</h1>
+            </div>
+            <div class="hero-meta">
+                <span>Webdesign · Development · SEO</span>
+                <span>London & Berlin</span>
+            </div>
+        </section>
+
+        <!-- 2. Problem -->
+        <section class="intro">
+            <p class="intro-text">Du bist gut in dem, was du tust. Aber deine Website zeigt das nicht. Sie sieht aus wie tausend andere Coach-Seiten: Template-Look, Stock-Fotos, Texte die nichts sagen. Besucher kommen, scrollen kurz und sind wieder weg. Kein Vertrauen. Keine Buchung. Keine Anfrage.</p>
+        </section>
+
+        <!-- [Illustration: Split screen — links eine generische Template-Website, rechts eine leere Seite mit Cursor. Das Gefühl von "das bin nicht ich".] -->
+
+        <!-- 3. Solution -->
+        <section class="approach" id="solution">
+            <div class="section-top">
+                <p class="label">Was wir anders machen</p>
+                <h2 class="section-headline">Wir bauen dir keine Website. <br>Wir bauen dir eine digitale Haustür, <br>die sich anfühlt wie du.</h2>
+            </div>
+
+            <!-- [Illustration: Drei Häuser nebeneinander — jedes einzigartig, mit unterschiedlichen Türen und Fenstern. Das Gefühl von Persönlichkeit und Individualität.] -->
+
+            <div class="approach-images">
+                <div class="approach-img-placeholder"><img src="haus02.png" alt="Landing Page Design" loading="lazy" style="width:80%; height:auto; display:block; margin:auto;"></div>
+                <div class="approach-img-placeholder"><img src="haus 01.png" alt="Website Development" loading="lazy" style="width:60%; height:auto; display:block; margin:auto;"></div>
+                <div class="approach-img-placeholder"><img src="schaf04.png" alt="SEO & Launch" loading="lazy" style="width:60%; height:auto; display:block; margin:auto;"></div>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="haus02.png" alt="Landing Page Design" loading="lazy"></div>
+                    <span class="approach-num">01</span>
+                    <h3 class="approach-title">Persönlichkeit statt Template</h3>
+                    <p class="approach-desc">Deine Website soll nach dir klingen, nicht nach einem Baukasten. Wir gestalten jede Seite individuell, von der Typografie bis zur Bildsprache.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="haus 01.png" alt="Website Development" loading="lazy"></div>
+                    <span class="approach-num">02</span>
+                    <h3 class="approach-title">Struktur, die konvertiert</h3>
+                    <p class="approach-desc">Schön allein reicht nicht. Wir bauen Seiten, die Besucher führen, vom ersten Eindruck zur Buchung. Klar, logisch, ohne Umwege.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="schaf04.png" alt="SEO & Launch" loading="lazy"></div>
+                    <span class="approach-num">03</span>
+                    <h3 class="approach-title">Technik, die einfach läuft</h3>
+                    <p class="approach-desc">Schnell. Mobil. Auffindbar. Wir bauen sauberen Code, optimieren für Google und sorgen dafür, dass alles funktioniert, ohne dass du dich um Technik kümmern musst.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. What we design: 3 focus areas -->
+        <section class="scope" id="leistungen">
+            <div class="scope-header">
+                <p class="label">Was wir gestalten</p>
+                <h2 class="section-headline">Drei Formate, ein Ziel: <br>deine Marke online sichtbar machen.</h2>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <span class="approach-num">01</span>
+                    <h3 class="approach-title">Landing Page</h3>
+                    <p class="approach-desc">Eine Seite, ein Ziel. Perfekt für den Start oder ein einzelnes Angebot. Klare Struktur, starker erster Eindruck, direkter Weg zur Buchung.</p>
+                    <span class="approach-tags">One-Pager · Angebotsseite · Warteliste</span>
+                </div>
+                <div class="approach-item">
+                    <span class="approach-num">02</span>
+                    <h3 class="approach-title">Full Website</h3>
+                    <p class="approach-desc">Mehrere Seiten, ein Zuhause. Für Coaches, die verschiedene Angebote, einen Blog oder ein Portfolio zeigen wollen. Durchdacht und erweiterbar.</p>
+                    <span class="approach-tags">Über mich · Angebote · Blog · Kontakt</span>
+                </div>
+                <div class="approach-item">
+                    <span class="approach-num">03</span>
+                    <h3 class="approach-title">Funnel & Booking</h3>
+                    <p class="approach-desc">Dein System für Anfragen. Wir integrieren Buchungstools, E-Mail-Formulare und Funnels, damit aus Besuchern Kunden werden, automatisch.</p>
+                    <span class="approach-tags">Calendly · Typeform · E-Mail · CRM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Illustration: Drei verschiedene Browser-Fenster übereinander gestapelt — Landing Page, Multi-Page Website, Funnel-Flow. Minimal, Wire-Frame-Stil.] -->
+
+        <!-- 5. Tech & Approach -->
+        <section class="why" id="tech">
+            <div class="why-layout">
+                <div class="why-left">
+                    <p class="label">Wie wir bauen</p>
+                    <h2 class="section-headline">Sauberer Code. Schnelle Seiten. Kein Ballast.</h2>
+                </div>
+                <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="true">
+                        <span class="accordion-label">Mobile-first</span>
+                        <span class="accordion-toggle">&#8722;</span>
+                    </button>
+                    <div class="accordion-body open">
+                        <p>70 % deiner Besucher kommen vom Handy. Deshalb designen wir zuerst für Mobile und skalieren nach oben. Deine Seite sieht auf jedem Gerät gut aus.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <span class="accordion-label">Performance</span>
+                        <span class="accordion-toggle">&#43;</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Jede Sekunde Ladezeit kostet dich Besucher. Wir optimieren Bilder, Code und Hosting, damit deine Seite in unter 2 Sekunden steht.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <span class="accordion-label">SEO von Anfang an</span>
+                        <span class="accordion-toggle">&#43;</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Saubere Struktur, richtige Meta-Tags, schnelle Ladezeiten. Wir legen das Fundament, damit Google dich findet, ohne teure Ads.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <span class="accordion-label">Kein Page-Builder-Chaos</span>
+                        <span class="accordion-toggle">&#43;</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Wir arbeiten mit sauberem Code oder leichtgewichtigen CMS wie WordPress, Webflow oder Framer. Kein aufgeblähtes Plugin-Chaos, das nach zwei Updates zusammenbricht.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. What's included: scope-card grid -->
+        <section class="scope" id="scope">
+            <div class="scope-header">
+                <p class="label">Was du bekommst</p>
+                <h2 class="section-headline">Website-Paket für Coaches <span class="scope-timeline">[2 bis 4 Wochen]</span></h2>
+                <p class="scope-lead">Alles, was du brauchst, um online professionell aufzutreten. Von der ersten Skizze bis zum Launch, und darüber hinaus.</p>
+            </div>
+
+            <div class="scope-cards">
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Design</h3>
+                    <p class="scope-card-detail">Individuelle Gestaltung / Typografie & Farben / Bildkonzept / Responsive Layout / UI/UX</p>
+                </div>
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Development</h3>
+                    <p class="scope-card-detail">Sauberer Code / CMS-Integration / Booking-Tools / Kontaktformular / Analytics</p>
+                </div>
+                <div class="scope-card">
+                    <h3 class="scope-card-title">SEO</h3>
+                    <p class="scope-card-detail">Meta-Tags / Struktur / Ladezeit-Optimierung / Google Search Console / Sitemap</p>
+                </div>
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Launch Support</h3>
+                    <p class="scope-card-detail">Domain-Setup / Hosting / SSL / Einweisung / 30 Tage Support nach Launch</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Illustration: Vier Icons in einer Reihe — Pinsel (Design), Code-Klammern (Development), Lupe (SEO), Rakete (Launch). Einfach, linear, Swiss-Stil.] -->
+
+        <!-- 7. CTA -->
+        <section class="cta">
+            <div class="cta-inner">
+                <p class="label">Bereit?</p>
+                <h2 class="cta-headline">Lass uns deine digitale Haustür bauen.</h2>
+                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="cta-link">Call buchen</a>
+            </div>
+        </section>
+
+        <!-- 8. FAQ -->
+        <section class="why" id="faq">
+            <div class="why-layout">
+                <div class="why-left">
+                    <p class="label">FAQ</p>
+                    <h2 class="section-headline">Die Fragen, die alle stellen.</h2>
+                </div>
+                <div class="accordion" id="faq-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="true">
+                        <span class="accordion-label">Welche Plattform nutzt ihr?</span>
+                        <span class="accordion-toggle">&#8722;</span>
+                    </button>
+                    <div class="accordion-body open">
+                        <p>Das hängt von dir ab. Wenn du selbst Inhalte pflegen willst: WordPress, Webflow oder Framer. Wenn du maximale Performance willst: Custom Code. Wir beraten dich im Erstgespräch, was für dein Setup am meisten Sinn macht.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <span class="accordion-label">Wie lange dauert es?</span>
+                        <span class="accordion-toggle">&#43;</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Eine Landing Page steht in 1 bis 2 Wochen. Eine Full Website mit mehreren Seiten braucht 3 bis 4 Wochen. Das hängt natürlich auch davon ab, wie schnell du Feedback gibst und Inhalte lieferst.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <span class="accordion-label">Kann ich die Website selbst bearbeiten?</span>
+                        <span class="accordion-toggle">&#43;</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Ja. Wenn du das willst, bauen wir mit einem CMS, das du ohne Vorkenntnisse bedienen kannst. Du bekommst eine Einführung und kannst Texte, Bilder und Inhalte jederzeit selbst ändern.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <span class="accordion-label">Was kostet es?</span>
+                        <span class="accordion-toggle">&#43;</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Eine Landing Page beginnt ab 1.500 EUR. Eine Full Website mit mehreren Seiten ab 3.000 EUR. Der genaue Preis hängt vom Umfang ab. Im Erstgespräch klären wir, was du brauchst, und du bekommst ein transparentes Angebot.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Second CTA -->
+        <section class="cta">
+            <div class="cta-inner">
+                <p class="label">Nächster Schritt</p>
+                <h2 class="cta-headline">30 Minuten. Kein Pitch. <br>Nur ein ehrliches Gespräch über deine Website.</h2>
+                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="cta-link">Kostenloses Erstgespräch</a>
+            </div>
+        </section>
+
+        <!-- Internal links -->
+        <section class="intro">
+            <p class="label">Mehr entdecken</p>
+            <p class="intro-text">Du brauchst mehr als eine Website? Schau dir unser <a href="branding-fuer-coaches.html" style="text-decoration:underline; text-underline-offset:3px;">Branding für Coaches</a> an. Oder lerne unser <a href="de.html" style="text-decoration:underline; text-underline-offset:3px;">Studio</a> besser kennen.</p>
+        </section>
+
+    </main>
+
+    <!-- Meadow Footer -->
+    <footer class="meadow-footer">
+        <div class="meadow">
+            <img class="meadow-bg" src="wiese.png" alt="">
+            <a href="https://www.instagram.com/marika.haensch/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 8%; top: 45%;" data-label="Instagram">
+                <span class="sheep-tooltip">Instagram</span>
+                <img src="schaf 01.png" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 22%; top: 60%;" data-label="LinkedIn">
+                <span class="sheep-tooltip">LinkedIn</span>
+                <img src="schaf02.png" alt="LinkedIn">
+            </a>
+            <a href="mailto:hello@meinhaus.studio" class="sheep" style="left: 45%; top: 40%;" data-label="E-Mail">
+                <span class="sheep-tooltip">E-Mail</span>
+                <img src="schaf03.png" alt="E-Mail">
+            </a>
+            <a href="impressum.html" class="sheep sheep--house" style="left: 65%; top: 25%;" data-label="Impressum">
+                <span class="sheep-tooltip">Impressum</span>
+                <img src="haus 01.png" alt="Impressum">
+            </a>
+            <a href="datenschutz.html" class="sheep" style="left: 82%; top: 55%;" data-label="Datenschutz">
+                <span class="sheep-tooltip">Datenschutz</span>
+                <img src="schaf04.png" alt="Datenschutz">
+            </a>
+            <span class="sheep" style="left: 35%; top: 50%;">
+                <img src="schaf 01.png" alt="">
+            </span>
+            <span class="sheep" style="left: 55%; top: 65%;">
+                <img src="schaf03.png" alt="">
+            </span>
+            <div class="meadow-bottom">
+                <span>&copy; <span class="year"></span> meinhaus studio</span>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Webdesign für Coaches",
+        "description": "Individuelles Webdesign für Coaches und Berater. Landing Pages, Full Websites und Booking-Integrationen, von meinhaus studio.",
+        "url": "https://meinhaus.studio/webdesign-fuer-coaches.html",
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "meinhaus studio",
+            "url": "https://meinhaus.studio",
+            "email": "hello@meinhaus.studio",
+            "founder": [
+                { "@type": "Person", "name": "Marika Haensch" },
+                { "@type": "Person", "name": "Emma Neumann" }
+            ],
+            "areaServed": ["London", "Berlin"]
+        },
+        "serviceType": ["Webdesign", "Website Development", "SEO", "Landing Page Design"],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Coaches, Berater, Gründer"
+        }
+    }
+    </script>
+
+    <script>
+        // Year
+        document.querySelector('.year').textContent = new Date().getFullYear();
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+        function reveal(selector) {
+            document.querySelectorAll(selector).forEach((el) => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        }
+
+        function revealStagger(selector, step) {
+            document.querySelectorAll(selector).forEach((el, i) => {
+                el.classList.add('reveal');
+                el.style.setProperty('--reveal-delay', (i * step).toFixed(2));
+                observer.observe(el);
+            });
+        }
+
+        reveal('.intro-text, .section-top, .scope-header, .cta-inner, .why-left');
+        revealStagger('.approach-img-placeholder', 0.12);
+        revealStagger('.approach-item', 0.12);
+        revealStagger('.scope-card', 0.1);
+        revealStagger('.accordion-item', 0.1);
+
+        // Accordion — support multiple accordion groups
+        document.querySelectorAll('.accordion').forEach((accordion) => {
+            accordion.querySelectorAll('.accordion-trigger').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const item = btn.parentElement;
+                    const body = item.querySelector('.accordion-body');
+                    const toggle = btn.querySelector('.accordion-toggle');
+                    const isOpen = body.classList.contains('open');
+
+                    // Close all within this accordion
+                    accordion.querySelectorAll('.accordion-body').forEach((b) => {
+                        b.classList.remove('open');
+                        b.style.maxHeight = null;
+                    });
+                    accordion.querySelectorAll('.accordion-trigger').forEach((t) => {
+                        t.setAttribute('aria-expanded', 'false');
+                        t.querySelector('.accordion-toggle').textContent = '+';
+                    });
+
+                    if (!isOpen) {
+                        body.classList.add('open');
+                        body.style.maxHeight = body.scrollHeight + 'px';
+                        btn.setAttribute('aria-expanded', 'true');
+                        toggle.textContent = '\u2212';
+                    }
+                });
+            });
+
+            // Init first open accordion item in each group
+            const firstBody = accordion.querySelector('.accordion-body.open');
+            if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+        });
+
+        // Nav menu toggle
+        const navCenter = document.querySelector('.nav-center');
+        const navMenuToggle = document.getElementById('nav-menu-toggle');
+        const navMenuClose = document.getElementById('nav-menu-close');
+
+        navMenuToggle.addEventListener('click', () => {
+            navCenter.classList.add('open');
+        });
+
+        navMenuClose.addEventListener('click', () => {
+            navCenter.classList.remove('open');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-menu-item').forEach((link) => {
+            if (link.classList.contains('nav-services-toggle')) return;
+            link.addEventListener('click', () => {
+                navCenter.classList.remove('open');
+            });
+        });
+
+        // Services dropdown
+        const servicesToggle = document.getElementById('nav-services-toggle');
+        const servicesDropdown = document.getElementById('nav-services-dropdown');
+        const servicesWrap = document.querySelector('.nav-services-wrap');
+
+        servicesToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = servicesWrap.classList.toggle('open');
+            servicesDropdown.classList.toggle('active', isOpen);
+        });
+
+        // Connect dropdown
+        const connectToggle = document.getElementById('nav-connect-toggle');
+        const connectDropdown = document.getElementById('nav-connect-dropdown');
+        const connectWrap = document.querySelector('.nav-connect-wrap');
+
+        connectToggle.addEventListener('click', () => {
+            const isOpen = connectWrap.classList.toggle('open');
+            connectDropdown.classList.toggle('active', isOpen);
+        });
+
+        // Live clocks
+        function updateClocks() {
+            document.querySelectorAll('.nav-connect-time').forEach((el) => {
+                const tz = el.getAttribute('data-tz');
+                const now = new Date();
+                el.textContent = now.toLocaleTimeString('de-DE', {
+                    timeZone: tz,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+            });
+        }
+        updateClocks();
+        setInterval(updateClocks, 1000);
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-services-wrap')) {
+                servicesWrap.classList.remove('open');
+                servicesDropdown.classList.remove('active');
+            }
+            if (!e.target.closest('.nav-connect-wrap')) {
+                connectWrap.classList.remove('open');
+                connectDropdown.classList.remove('active');
+            }
+            if (!e.target.closest('.nav-center')) {
+                navCenter.classList.remove('open');
+            }
+        });
+
+        // Sheep drag & drop
+        (function () {
+            const meadow = document.querySelector('.meadow');
+            if (!meadow) return;
+
+            let dragging = null;
+            let offsetX = 0;
+            let offsetY = 0;
+            let hasMoved = false;
+
+            function startDrag(sheep, clientX, clientY) {
+                dragging = sheep;
+                hasMoved = false;
+                const rect = sheep.getBoundingClientRect();
+                offsetX = clientX - rect.left;
+                offsetY = clientY - rect.top;
+                sheep.style.zIndex = '10';
+                sheep.classList.add('dragging');
+            }
+
+            function moveDrag(clientX, clientY) {
+                if (!dragging) return;
+                hasMoved = true;
+                const meadowRect = meadow.getBoundingClientRect();
+                const x = clientX - meadowRect.left - offsetX;
+                const y = clientY - meadowRect.top - offsetY;
+                const px = (x / meadowRect.width) * 100;
+                const py = (y / meadowRect.height) * 100;
+                dragging.style.left = Math.max(0, Math.min(92, px)) + '%';
+                dragging.style.top = Math.max(0, Math.min(85, py)) + '%';
+            }
+
+            function endDrag(e) {
+                if (!dragging) return;
+                dragging.classList.remove('dragging');
+                dragging.style.zIndex = '';
+                if (hasMoved) e.preventDefault();
+                dragging = null;
+            }
+
+            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
+                sheep.addEventListener('mousedown', function (e) {
+                    e.preventDefault();
+                    startDrag(sheep, e.clientX, e.clientY);
+                });
+                sheep.addEventListener('touchstart', function (e) {
+                    const t = e.touches[0];
+                    startDrag(sheep, t.clientX, t.clientY);
+                }, { passive: true });
+                sheep.addEventListener('click', function (e) {
+                    if (hasMoved) { e.preventDefault(); hasMoved = false; }
+                });
+            });
+
+            document.addEventListener('mousemove', function (e) { moveDrag(e.clientX, e.clientY); });
+            document.addEventListener('touchmove', function (e) {
+                if (!dragging) return;
+                moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: false });
+            document.addEventListener('mouseup', function (e) { endDrag(e); });
+            document.addEventListener('touchend', function (e) { endDrag(e); });
+        })();
+    </script>
+
+</body>
+</html>

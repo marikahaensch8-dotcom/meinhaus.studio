@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Brand aufbauen · Schritt für Schritt · meinhaus studio</title>
+    <meta name="description" content="Personal Brand aufbauen: Schritt für Schritt zur eigenen Marke. Lerne, wie du deine Personal Brand von Grund auf entwickelst: Strategie, Identität, Website und Content.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://meinhaus.studio/personal-brand-aufbauen.html">
+    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/">
+    <link rel="alternate" hreflang="de" href="https://meinhaus.studio/personal-brand-aufbauen.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Personal Brand aufbauen · Schritt für Schritt · meinhaus studio">
+    <meta property="og:description" content="Personal Brand aufbauen: Schritt für Schritt zur eigenen Marke. Strategie, Identität, Website und Content. Ein Guide von meinhaus studio.">
+    <meta property="og:url" content="https://meinhaus.studio/personal-brand-aufbauen.html">
+    <meta property="og:site_name" content="meinhaus studio">
+    <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
+
+    <link rel="icon" href="House.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Nav -->
+    <header class="nav">
+        <a href="de.html" class="nav-logo">meinhaus</a>
+
+        <!-- Center menu pill -->
+        <div class="nav-center">
+            <button class="nav-pill" id="nav-menu-toggle" aria-label="Menü öffnen">
+                <span class="nav-pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-services-wrap">
+                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+                    <div class="nav-services-dropdown" id="nav-services-dropdown">
+                        <a href="branding-fuer-coaches.html" class="nav-services-link">Branding</a>
+                        <a href="webdesign-fuer-coaches.html" class="nav-services-link">Webdesign</a>
+                        <a href="personal-brand-aufbauen.html" class="nav-services-link">Personal Brand Guide</a>
+                    </div>
+                </div>
+                <a href="de.html#scope" class="nav-menu-item">Scope</a>
+                <a href="de.html#about" class="nav-menu-item">Über uns</a>
+                <a href="index.html" class="nav-menu-item">EN</a>
+                <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
+                    <span class="nav-pill-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Connect pill -->
+        <div class="nav-connect-wrap">
+            <button class="nav-connect" id="nav-connect-toggle">
+                <span>Komm rein</span>
+                <span class="nav-connect-icon">
+                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="1" width="12" height="14"/>
+                        <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                        <rect x="1" y="1" width="12" height="14"/>
+                        <path d="M1 1 L6 3 L6 13 L1 15"/>
+                        <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-connect-dropdown" id="nav-connect-dropdown">
+                <div class="nav-connect-body">
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">LDN</p>
+                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/London"></span>
+                    </div>
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">BER</p>
+                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
+                    </div>
+                    <div class="nav-connect-row">
+                        <p class="nav-connect-label">Allgemeine Anfragen</p>
+                        <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
+                    </div>
+                    <div class="nav-connect-social">
+                        <p class="nav-connect-label">Social</p>
+                        <div class="nav-connect-social-links">
+                            <a href="https://www.instagram.com/marika.haensch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-inner">
+                <p class="hero-label">Personal Branding</p>
+                <h1 class="hero-headline">Personal Brand aufbauen: <br>von der Idee zum fertigen Auftritt.</h1>
+            </div>
+            <div class="hero-meta">
+                <span>Strategie · Identität · Website · Content</span>
+                <span>Ein Guide von meinhaus studio</span>
+            </div>
+        </section>
+
+        <!-- Intro: What is a personal brand -->
+        <section class="intro">
+            <p class="intro-text">Eine Personal Brand ist kein Logo und kein Instagram-Feed. Es ist das Bild, das Menschen von dir haben, bevor sie dich persönlich kennenlernen. Deine Positionierung, deine Stimme, dein visueller Auftritt, alles zusammen ergibt eine Marke. Und wenn du das nicht bewusst gestaltest, entscheiden andere, wie du wahrgenommen wirst.</p>
+        </section>
+
+        <!-- House Metaphor -->
+        <section class="approach" id="phasen">
+            <div class="section-top">
+                <p class="label">Der Prozess</p>
+                <h2 class="section-headline">Eine Marke aufbauen ist wie <br>ein Haus bauen. Vier Phasen, <br>eine klare Reihenfolge.</h2>
+            </div>
+
+            <!-- [Illustration: Isometrische Darstellung eines Hauses in vier Bauphasen — Fundament, Struktur, Fassade, Interior — als visuelle Metapher für den Brand-Aufbau] -->
+
+            <div class="scope-cards">
+                <div class="scope-card">
+                    <span class="approach-num">01</span>
+                    <h3 class="scope-card-title">Fundament: Brand Strategy</h3>
+                    <p class="scope-card-detail">Positionierung / Zielgruppe / Kernbotschaft / Wettbewerbsanalyse / Werte & Vision</p>
+                </div>
+                <div class="scope-card">
+                    <span class="approach-num">02</span>
+                    <h3 class="scope-card-title">Struktur: Brand Identity</h3>
+                    <p class="scope-card-detail">Logo / Farbpalette / Typografie / Bildsprache / Brand Guidelines</p>
+                </div>
+                <div class="scope-card">
+                    <span class="approach-num">03</span>
+                    <h3 class="scope-card-title">Fassade: Website</h3>
+                    <p class="scope-card-detail">UI/UX Design / Landing Page / Development / SEO / Conversion</p>
+                </div>
+                <div class="scope-card">
+                    <span class="approach-num">04</span>
+                    <h3 class="scope-card-title">Interior: Content</h3>
+                    <p class="scope-card-detail">Editorial Design / Fotografie / Social Media / Copywriting / Newsletter</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase Details -->
+        <section class="why" id="details">
+            <div class="why-layout">
+                <div class="why-left">
+                    <p class="label">Im Detail</p>
+                    <h2 class="section-headline">Jede Phase baut auf die vorherige auf. Überspring keine.</h2>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="true">
+                            <span class="accordion-label">Fundament: Strategie</span>
+                            <span class="accordion-toggle">&#8722;</span>
+                        </button>
+                        <div class="accordion-body open">
+                            <p>Bevor du über Farben, Fonts oder Websites nachdenkst, brauchst du Klarheit. Für wen bist du da? Was unterscheidet dich? Welche Transformation bietest du an? Ohne Fundament steht kein Haus. Deine <a href="branding-fuer-coaches.html" style="text-decoration:underline; color:var(--black);">Markenstrategie</a> ist die Basis für alles, was folgt.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Struktur: Visuelle Identität</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Jetzt wird deine Strategie sichtbar. Logo, Farben, Typografie, Bildsprache, alles entsteht aus deiner Positionierung, nicht aus einem Trend. Deine visuelle Identität soll sich anfühlen wie du, nur klarer und konsistenter als du es alleine könntest.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Fassade: Website</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Deine Website ist dein digitales Zuhause. Hier entscheidet sich in Sekunden, ob jemand bleibt oder geht. Eine gute <a href="webdesign-fuer-coaches.html" style="text-decoration:underline; color:var(--black);">Website für deine Personal Brand</a> zeigt sofort, wer du bist, was du anbietest und wie man mit dir arbeiten kann.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Interior: Content</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Ein leeres Haus ist kein Zuhause. Content macht deine Marke lebendig: Social Media, Blog, Newsletter, Fotografie. Aber erst, wenn die drei vorherigen Phasen stehen, ergibt Content wirklich Sinn. Sonst baust du auf Sand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Illustration: Vier nebeneinander stehende Miniatur-Häuser, jedes repräsentiert eine Phase — vom rohen Fundament bis zum fertigen, eingerichteten Haus] -->
+
+        <!-- Common Mistakes -->
+        <section class="approach" id="fehler">
+            <div class="section-top">
+                <p class="label">Typische Fehler</p>
+                <h2 class="section-headline">Was die meisten falsch machen, <br>wenn sie ihre Personal Brand aufbauen.</h2>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <span class="approach-num">01</span>
+                    <h3 class="approach-title">Mit dem Design anfangen</h3>
+                    <p class="approach-desc">Logo und Website vor der Strategie. Das ist, als würdest du ein Haus streichen, bevor die Wände stehen. Design ohne Fundament sieht vielleicht gut aus, trifft aber daneben.</p>
+                </div>
+                <div class="approach-item">
+                    <span class="approach-num">02</span>
+                    <h3 class="approach-title">Andere kopieren</h3>
+                    <p class="approach-desc">Du siehst eine Marke, die funktioniert, und denkst: Das mache ich genauso. Aber ihre Strategie ist nicht deine. Was bei anderen wirkt, kann bei dir beliebig aussehen. Deine Brand muss von innen kommen.</p>
+                </div>
+                <div class="approach-item">
+                    <span class="approach-num">03</span>
+                    <h3 class="approach-title">Keine klare Positionierung</h3>
+                    <p class="approach-desc">Wenn du alles für alle sein willst, wirst du für niemanden die erste Wahl. Eine starke Personal Brand braucht den Mut, sich zu entscheiden: für eine Zielgruppe, eine Botschaft, eine Haltung.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Illustration: Drei kleine Icons oder Vignetten — ein Haus ohne Fundament (schief), ein Copy-Paste-Symbol, ein unscharfes/verschwommenes Haus] -->
+
+        <!-- Who needs a personal brand -->
+        <section class="scope" id="fuer-wen">
+            <div class="scope-header">
+                <p class="label">Für wen</p>
+                <h2 class="section-headline">Wer braucht eine Personal Brand?</h2>
+                <p class="scope-lead">Im Grunde jeder, der mit seinem Namen und seinem Gesicht für eine Sache steht. Besonders relevant ist es für:</p>
+            </div>
+
+            <div class="scope-cards">
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Coaches & Berater</h3>
+                    <p class="scope-card-detail">Vertrauen ist dein Kapital. Eine klare Marke zeigt Kompetenz, bevor das erste Gespräch stattfindet.</p>
+                </div>
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Gründer & Solopreneure</h3>
+                    <p class="scope-card-detail">Du bist das Gesicht deines Business. Deine Personal Brand entscheidet, wie dein Unternehmen wahrgenommen wird.</p>
+                </div>
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Freelancer & Kreative</h3>
+                    <p class="scope-card-detail">Portfolio allein reicht nicht. Deine Marke zeigt, warum Kunden ausgerechnet mit dir arbeiten sollten.</p>
+                </div>
+                <div class="scope-card">
+                    <h3 class="scope-card-title">Speaker & Autoren</h3>
+                    <p class="scope-card-detail">Deine Ideen verdienen einen Auftritt, der ihnen gerecht wird. Personal Branding macht deine Expertise sichtbar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How we help -->
+        <section class="about" id="wie-wir-helfen">
+            <div class="about-layout" style="grid-template-columns: 1fr;">
+                <div class="about-left" style="max-width:680px;">
+                    <p class="label">So helfen wir</p>
+                    <h2 class="section-headline">Wir bauen Personal Brands von Grund auf. Strategie, Design, Website, alles aus einem Studio.</h2>
+                    <p class="about-lead">Bei <a href="de.html" style="text-decoration:underline; color:var(--black);">meinhaus studio</a> bekommst du nicht nur ein Logo oder eine Website, sondern ein durchdachtes Brand System. Wir starten mit deiner Positionierung, entwickeln daraus eine visuelle Identität und bauen deine Website als digitales Zuhause. Alles aus einer Hand, in 3 bis 6 Wochen.</p>
+                    <p class="about-body">Wir arbeiten mit Coaches, Beratern und Gründern, die bereit sind, ihren Auftritt auf das nächste Level zu bringen, ohne Templates, ohne Kompromisse. Jede Marke, die wir bauen, ist individuell, weil jeder Mensch es ist.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Illustration: Foto oder Illustration von Marika und Emma bei der Arbeit im Studio, oder ein Moodboard-artiges Layout mit Beispielprojekten] -->
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="cta-inner">
+                <p class="label">Bereit?</p>
+                <h2 class="cta-headline">Lass uns deine Personal Brand bauen.</h2>
+                <p style="font-size:var(--body); line-height:1.6; color:var(--grey); max-width:480px; margin-bottom:24px;">In einem kostenlosen Erstgespräch schauen wir uns an, wo du stehst und was du brauchst. Kein Verkaufsgespräch. Nur Klarheit.</p>
+                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="cta-link">Kostenloses Erstgespräch buchen</a>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="why" id="faq">
+            <div class="why-layout">
+                <div class="why-left">
+                    <p class="label">FAQ</p>
+                    <h2 class="section-headline">Häufige Fragen zum Thema Personal Brand aufbauen.</h2>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="true">
+                            <span class="accordion-label">Was kostet eine Personal Brand?</span>
+                            <span class="accordion-toggle">&#8722;</span>
+                        </button>
+                        <div class="accordion-body open">
+                            <p>Das hängt vom Umfang ab. Ein komplettes Brand System, Strategie, Identität und Website, beginnt bei uns ab 5.000 Euro. Einzelne Bausteine wie nur Strategie oder nur Website sind auch möglich. In einem Erstgespräch klären wir, was für dich sinnvoll ist.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Wie lange dauert der Prozess?</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Ein vollständiges Personal Brand System dauert in der Regel 3 bis 6 Wochen. Die Strategie-Phase braucht 1 bis 2 Wochen, Design und Website jeweils 2 bis 3 Wochen. Natürlich hängt es auch davon ab, wie schnell du Feedback gibst.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Brauche ich ein Logo?</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Ein Logo allein macht noch keine Marke. Aber ja, ein durchdachtes Logo ist Teil deiner visuellen Identität. Wir entwerfen es nicht isoliert, sondern als Teil eines Systems, zusammen mit Farben, Typografie und Bildsprache. So ergibt alles ein Gesamtbild.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Kann ich auch nur eine Website bekommen?</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Ja, das ist möglich. Wir empfehlen aber, zumindest eine kurze Strategie-Phase vorauszusetzen. Eine Website ohne klare Positionierung sieht vielleicht gut aus, bringt aber keine Ergebnisse. Mehr dazu auf unserer <a href="webdesign-fuer-coaches.html" style="text-decoration:underline; color:var(--black);">Webdesign-Seite</a>.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">
+                            <span class="accordion-label">Arbeitet ihr remote?</span>
+                            <span class="accordion-toggle">&#43;</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Ja, komplett. Wir sitzen in London und Berlin und arbeiten mit Kunden in ganz Europa. Alles läuft über Videocalls, gemeinsame Boards und asynchrone Abstimmung. Persönliche Treffen sind möglich, aber nicht nötig.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internal links -->
+        <section class="intro">
+            <p class="label">Mehr entdecken</p>
+            <p class="intro-text">Bereit für den nächsten Schritt? Sieh dir unser <a href="branding-fuer-coaches.html" style="text-decoration:underline; text-underline-offset:3px;">Branding für Coaches</a> an. Oder lass dir eine <a href="webdesign-fuer-coaches.html" style="text-decoration:underline; text-underline-offset:3px;">Website bauen</a>, die deine Marke zeigt.</p>
+        </section>
+
+    </main>
+
+    <!-- Meadow Footer -->
+    <footer class="meadow-footer">
+        <div class="meadow">
+            <img class="meadow-bg" src="wiese.png" alt="">
+            <a href="https://www.instagram.com/marika.haensch/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 8%; top: 45%;" data-label="Instagram">
+                <span class="sheep-tooltip">Instagram</span>
+                <img src="schaf 01.png" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 22%; top: 60%;" data-label="LinkedIn">
+                <span class="sheep-tooltip">LinkedIn</span>
+                <img src="schaf02.png" alt="LinkedIn">
+            </a>
+            <a href="mailto:hello@meinhaus.studio" class="sheep" style="left: 45%; top: 40%;" data-label="E-Mail">
+                <span class="sheep-tooltip">E-Mail</span>
+                <img src="schaf03.png" alt="E-Mail">
+            </a>
+            <a href="impressum.html" class="sheep sheep--house" style="left: 65%; top: 25%;" data-label="Impressum">
+                <span class="sheep-tooltip">Impressum</span>
+                <img src="haus 01.png" alt="Impressum">
+            </a>
+            <a href="datenschutz.html" class="sheep" style="left: 82%; top: 55%;" data-label="Datenschutz">
+                <span class="sheep-tooltip">Datenschutz</span>
+                <img src="schaf04.png" alt="Datenschutz">
+            </a>
+            <span class="sheep" style="left: 35%; top: 50%;">
+                <img src="schaf 01.png" alt="">
+            </span>
+            <span class="sheep" style="left: 55%; top: 65%;">
+                <img src="schaf03.png" alt="">
+            </span>
+            <div class="meadow-bottom">
+                <span>&copy; <span class="year"></span> meinhaus studio</span>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Personal Brand aufbauen",
+        "description": "Personal Branding Service: Strategie, visuelle Identität, Website und Content für Coaches, Berater und Gründer.",
+        "url": "https://meinhaus.studio/personal-brand-aufbauen.html",
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "meinhaus studio",
+            "url": "https://meinhaus.studio/de.html",
+            "email": "hello@meinhaus.studio",
+            "areaServed": ["London", "Berlin"],
+            "founder": [
+                { "@type": "Person", "name": "Marika Haensch" },
+                { "@type": "Person", "name": "Emma Neumann" }
+            ]
+        },
+        "serviceType": "Personal Branding",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "5000",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "EUR",
+                "price": "5000",
+                "description": "Ab 5.000 EUR für ein komplettes Brand System"
+            }
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Was kostet eine Personal Brand?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ein komplettes Brand System, Strategie, Identität und Website, beginnt bei meinhaus studio ab 5.000 Euro. Einzelne Bausteine wie nur Strategie oder nur Website sind auch möglich."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wie lange dauert der Prozess?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ein vollständiges Personal Brand System dauert in der Regel 3 bis 6 Wochen. Die Strategie-Phase braucht 1 bis 2 Wochen, Design und Website jeweils 2 bis 3 Wochen."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Brauche ich ein Logo?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ein Logo allein macht noch keine Marke. Aber ein durchdachtes Logo ist Teil der visuellen Identität und wird nicht isoliert entworfen, sondern als Teil eines Systems, zusammen mit Farben, Typografie und Bildsprache."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Kann ich auch nur eine Website bekommen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ja, das ist möglich. Wir empfehlen aber, zumindest eine kurze Strategie-Phase vorauszusetzen. Eine Website ohne klare Positionierung sieht vielleicht gut aus, bringt aber keine Ergebnisse."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Arbeitet ihr remote?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ja, komplett. meinhaus studio sitzt in London und Berlin und arbeitet mit Kunden in ganz Europa. Alles läuft über Videocalls, gemeinsame Boards und asynchrone Abstimmung."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script>
+        // Year
+        document.querySelector('.year').textContent = new Date().getFullYear();
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+        function reveal(selector) {
+            document.querySelectorAll(selector).forEach((el) => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        }
+
+        function revealStagger(selector, step) {
+            document.querySelectorAll(selector).forEach((el, i) => {
+                el.classList.add('reveal');
+                el.style.setProperty('--reveal-delay', (i * step).toFixed(2));
+                observer.observe(el);
+            });
+        }
+
+        reveal('.intro-text, .section-top, .scope-header, .cta-inner, .why-left, .about-left, .about-image');
+        revealStagger('.scope-card', 0.1);
+        revealStagger('.approach-item', 0.12);
+        revealStagger('.accordion-item', 0.1);
+
+        // Accordion
+        document.querySelectorAll('.accordion-trigger').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const body = item.querySelector('.accordion-body');
+                const toggle = btn.querySelector('.accordion-toggle');
+                const isOpen = body.classList.contains('open');
+
+                // Close all within same accordion
+                const accordion = item.closest('.accordion');
+                accordion.querySelectorAll('.accordion-body').forEach((b) => {
+                    b.classList.remove('open');
+                    b.style.maxHeight = null;
+                });
+                accordion.querySelectorAll('.accordion-trigger').forEach((t) => {
+                    t.setAttribute('aria-expanded', 'false');
+                    t.querySelector('.accordion-toggle').textContent = '+';
+                });
+
+                if (!isOpen) {
+                    body.classList.add('open');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                    btn.setAttribute('aria-expanded', 'true');
+                    toggle.textContent = '\u2212';
+                }
+            });
+        });
+
+        // Init first accordion items
+        document.querySelectorAll('.accordion-body.open').forEach((body) => {
+            body.style.maxHeight = body.scrollHeight + 'px';
+        });
+
+        // Nav menu toggle
+        const navCenter = document.querySelector('.nav-center');
+        const navMenuToggle = document.getElementById('nav-menu-toggle');
+        const navMenuClose = document.getElementById('nav-menu-close');
+
+        navMenuToggle.addEventListener('click', () => {
+            navCenter.classList.add('open');
+        });
+
+        navMenuClose.addEventListener('click', () => {
+            navCenter.classList.remove('open');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-menu-item').forEach((link) => {
+            if (link.classList.contains('nav-services-toggle')) return;
+            link.addEventListener('click', () => {
+                navCenter.classList.remove('open');
+            });
+        });
+
+        // Services dropdown
+        const servicesToggle = document.getElementById('nav-services-toggle');
+        const servicesDropdown = document.getElementById('nav-services-dropdown');
+        const servicesWrap = document.querySelector('.nav-services-wrap');
+
+        servicesToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = servicesWrap.classList.toggle('open');
+            servicesDropdown.classList.toggle('active', isOpen);
+        });
+
+        // Connect dropdown
+        const connectToggle = document.getElementById('nav-connect-toggle');
+        const connectDropdown = document.getElementById('nav-connect-dropdown');
+        const connectWrap = document.querySelector('.nav-connect-wrap');
+
+        connectToggle.addEventListener('click', () => {
+            const isOpen = connectWrap.classList.toggle('open');
+            connectDropdown.classList.toggle('active', isOpen);
+        });
+
+        // Live clocks
+        function updateClocks() {
+            document.querySelectorAll('.nav-connect-time').forEach((el) => {
+                const tz = el.getAttribute('data-tz');
+                const now = new Date();
+                el.textContent = now.toLocaleTimeString('de-DE', {
+                    timeZone: tz,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+            });
+        }
+        updateClocks();
+        setInterval(updateClocks, 1000);
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-services-wrap')) {
+                servicesWrap.classList.remove('open');
+                servicesDropdown.classList.remove('active');
+            }
+            if (!e.target.closest('.nav-connect-wrap')) {
+                connectWrap.classList.remove('open');
+                connectDropdown.classList.remove('active');
+            }
+            if (!e.target.closest('.nav-center')) {
+                navCenter.classList.remove('open');
+            }
+        });
+
+        // Sheep drag & drop
+        (function () {
+            const meadow = document.querySelector('.meadow');
+            if (!meadow) return;
+
+            let dragging = null;
+            let offsetX = 0;
+            let offsetY = 0;
+            let hasMoved = false;
+
+            function startDrag(sheep, clientX, clientY) {
+                dragging = sheep;
+                hasMoved = false;
+                const rect = sheep.getBoundingClientRect();
+                offsetX = clientX - rect.left;
+                offsetY = clientY - rect.top;
+                sheep.style.zIndex = '10';
+                sheep.classList.add('dragging');
+            }
+
+            function moveDrag(clientX, clientY) {
+                if (!dragging) return;
+                hasMoved = true;
+                const meadowRect = meadow.getBoundingClientRect();
+                const x = clientX - meadowRect.left - offsetX;
+                const y = clientY - meadowRect.top - offsetY;
+                const px = (x / meadowRect.width) * 100;
+                const py = (y / meadowRect.height) * 100;
+                dragging.style.left = Math.max(0, Math.min(92, px)) + '%';
+                dragging.style.top = Math.max(0, Math.min(85, py)) + '%';
+            }
+
+            function endDrag(e) {
+                if (!dragging) return;
+                dragging.classList.remove('dragging');
+                dragging.style.zIndex = '';
+                if (hasMoved) e.preventDefault();
+                dragging = null;
+            }
+
+            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
+                sheep.addEventListener('mousedown', function (e) {
+                    e.preventDefault();
+                    startDrag(sheep, e.clientX, e.clientY);
+                });
+                sheep.addEventListener('touchstart', function (e) {
+                    const t = e.touches[0];
+                    startDrag(sheep, t.clientX, t.clientY);
+                }, { passive: true });
+                sheep.addEventListener('click', function (e) {
+                    if (hasMoved) { e.preventDefault(); hasMoved = false; }
+                });
+            });
+
+            document.addEventListener('mousemove', function (e) { moveDrag(e.clientX, e.clientY); });
+            document.addEventListener('touchmove', function (e) {
+                if (!dragging) return;
+                moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: false });
+            document.addEventListener('mouseup', function (e) { endDrag(e); });
+            document.addEventListener('touchend', function (e) { endDrag(e); });
+        })();
+    </script>
+
+</body>
+</html>

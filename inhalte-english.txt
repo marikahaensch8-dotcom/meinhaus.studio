@@ -1,0 +1,107 @@
+MEINHAUS COACHING — CONTENT ENGLISH
+=====================================
+
+--- NAVIGATION ---
+
+Logo: meinhaus
+Menu: Approach / Scope / About / DE
+Connect pill: Connect +
+
+Connect dropdown:
+- LDN — marika@meinhaus.studio
+- BER — emma@meinhaus.studio
+- General Inquiries — hello@meinhaus.studio
+- Social — Instagram / LinkedIn
+
+
+--- HERO ---
+
+Label: Personal Brand Studio for Coaches
+Headline: We build personal brands like homes. Structured, intentional, and built to hold everything you're building.
+Meta left: Branding, Web, Strategy
+Meta right: Based in London & Berlin
+
+
+--- THE PROBLEM ---
+
+Label: The problem
+Text: Most coaches struggle with a messy, unclear presence that doesn't reflect their real value. We fix that by turning your expertise into a clear, premium brand system that builds trust and drives client acquisition.
+
+
+--- HOW WE HELP ---
+
+Label: How we help
+Headline: We build personal brands that don't just look good, but actually sell.
+
+[01] Positioning
+We clarify your niche, message and offer so people instantly understand your value. No fluff. No vague branding. Just sharp positioning that makes you stand out.
+
+[02] Visual System
+We design a brand that looks like a market leader. From identity to website, everything is built to increase perceived value and make your offer feel premium.
+
+[03] Conversion Assets
+We create the assets that actually bring in clients. Landing pages, content, PDFs or books, designed to turn attention into trust and trust into sales.
+
+Result: A personal brand that attracts better clients, justifies higher prices and removes guesswork from your growth.
+
+
+--- WHAT YOU GET ---
+
+Label: What you get
+Headline: Personal Brand System [3 to 6 weeks]
+Text: We build a complete personal brand that positions you as the premium choice in your niche and turns your presence into a client acquisition asset.
+
+Card 1: Positioning & Messaging — Clear niche, offer and communication so people instantly understand your value.
+Card 2: Visual Identity — A brand that looks like a market leader and increases perceived value.
+Card 3: Website / Landing Page — Designed to convert visitors into qualified calls.
+Card 4: High-Impact Assets — PDFs, content or sales pages that build authority and drive demand.
+
+
+--- CTA ---
+
+Label: Ready?
+Headline: Let's build a brand that works for you.
+Button: Get in touch
+
+
+--- WHY US ---
+
+Label: Why us
+Headline: Most designers focus on making things look good. We focus on making your brand feel valuable and convert.
+
+Accordion:
+- Strategy first, always — We don't start with design. We start with positioning so your message is clear, sharp and impossible to ignore.
+- Built for perceived value — Your brand should justify your price before you even speak. We design systems that make you look like the premium choice in your niche.
+- Not just aesthetics, conversion — Everything we build has a purpose: to turn attention into trust, and trust into clients.
+- A complete system — Branding, website, content and assets, built together, not in isolation. So your entire presence works as one clear, high-converting system.
+- Fast & focused execution — No endless revisions. No chaos. A clear process that gets you from messy presence to premium brand in weeks.
+
+
+--- ABOUT ---
+
+Label: About
+Headline: Marika & Emma
+Lead: A design duo combining branding, web and visual storytelling to build high-converting personal brands.
+Text 1: With a background in architecture and design, we create brand systems that don't just look good, but communicate value, build trust and drive client acquisition.
+Text 2: We believe your brand should work for you so you can focus on growing your business, not fixing your presence.
+
+
+--- CONTACT (FORM) ---
+
+Label: Get in touch
+Headline: Let's build your brand.
+Fields:
+- Name / Company
+- Email
+- Service (Positioning & Branding / Website / Landing Page / Full Brand System / Other)
+- Budget (3–5k / 5–10k / 10k+ / Not sure yet)
+- Project details
+Button: Send request
+
+
+--- FOOTER ---
+
+Studio: meinhaus / London & Berlin
+Services: Positioning / Visual Identity / Web Design / Conversion Assets
+Connect: hello@meinhaus.studio / Instagram / LinkedIn
+© 2026 mein haus studio
