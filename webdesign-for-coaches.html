@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand Check · Wie stark ist deine Marke? · meinhaus studio</title>
-    <meta name="description" content="Finde in 2 Minuten heraus, wo deine Personal Brand steht. 7 Fragen, ein ehrliches Ergebnis, klare nächste Schritte.">
+    <title>Web Design for Coaches · meinhaus studio</title>
+    <meta name="description" content="Web design for coaches: we build websites that look like you and bring clients. Custom coach websites by meinhaus studio. London & Berlin.">
+    <meta name="keywords" content="web design for coaches, coach website, website for coaches, coach landing page, web design studio">
     <meta name="theme-color" content="#ffffff">
-    <link rel="canonical" href="https://meinhaus.studio/personal-brand-aufbauen.html">
-    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/">
-    <link rel="alternate" hreflang="de" href="https://meinhaus.studio/personal-brand-aufbauen.html">
+    <link rel="canonical" href="https://meinhaus.studio/webdesign-for-coaches.html">
+    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/webdesign-for-coaches.html">
+    <link rel="alternate" hreflang="de" href="https://meinhaus.studio/webdesign-fuer-coaches.html">
 
     <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Personal Brand aufbauen · Schritt für Schritt · meinhaus studio">
-    <meta property="og:description" content="Personal Brand aufbauen: Schritt für Schritt zur eigenen Marke. Strategie, Identität, Website und Content. Ein Guide von meinhaus studio.">
-    <meta property="og:url" content="https://meinhaus.studio/personal-brand-aufbauen.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Web Design for Coaches · meinhaus studio">
+    <meta property="og:description" content="Web design for coaches: we build websites that look like you and bring clients. Custom coach websites by meinhaus studio.">
+    <meta property="og:url" content="https://meinhaus.studio/webdesign-for-coaches.html">
     <meta property="og:site_name" content="meinhaus studio">
     <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://formspree.io">
 
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
@@ -25,11 +29,11 @@
 
     <!-- Nav -->
     <header class="nav">
-        <a href="de.html" class="nav-logo">meinhaus</a>
+        <a href="index.html" class="nav-logo">meinhaus</a>
 
         <!-- Center menu pill -->
         <div class="nav-center">
-            <button class="nav-pill" id="nav-menu-toggle" aria-label="Menü öffnen">
+            <button class="nav-pill" id="nav-menu-toggle" aria-label="Open menu">
                 <span class="nav-pill-icon">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -41,16 +45,16 @@
                 <div class="nav-services-wrap">
                     <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
                     <div class="nav-services-dropdown" id="nav-services-dropdown">
-                        <a href="branding-fuer-coaches.html" class="nav-services-link">Branding</a>
-                        <a href="webdesign-fuer-coaches.html" class="nav-services-link">Webdesign</a>
-                        <a href="personal-brand-aufbauen.html" class="nav-services-link">Brand Check</a>
+                        <a href="branding-for-coaches.html" class="nav-services-link">Branding</a>
+                        <a href="webdesign-for-coaches.html" class="nav-services-link">Webdesign</a>
+                        <a href="brand-check.html" class="nav-services-link">Brand Check</a>
                     </div>
                 </div>
-                <a href="de.html#scope" class="nav-menu-item">Scope</a>
-                <a href="de.html#about" class="nav-menu-item">Über uns</a>
-                <a href="brand-check.html" class="nav-menu-item">EN</a>
-                <a href="de.html#contact" class="nav-menu-item nav-mobile-only">Kontakt</a>
-                <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
+                <a href="index.html#scope" class="nav-menu-item">Scope</a>
+                <a href="index.html#about" class="nav-menu-item">About</a>
+                <a href="webdesign-fuer-coaches.html" class="nav-menu-item">DE</a>
+                <a href="index.html#contact" class="nav-menu-item nav-mobile-only">Contact</a>
+                <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Close menu">
                     <span class="nav-pill-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -64,7 +68,7 @@
         <!-- Connect pill -->
         <div class="nav-connect-wrap">
             <button class="nav-connect" id="nav-connect-toggle">
-                <span>Komm rein</span>
+                <span>Come in</span>
                 <span class="nav-connect-icon">
                     <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="1" y="1" width="12" height="14"/>
@@ -94,7 +98,7 @@
                         <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
                     </div>
                     <div class="nav-connect-row">
-                        <p class="nav-connect-label">Allgemeine Anfragen</p>
+                        <p class="nav-connect-label">General Inquiries</p>
                         <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
                     </div>
                     <div class="nav-connect-social">
@@ -111,43 +115,83 @@
 
     <main>
 
-        <!-- Quiz -->
-        <section class="quiz" id="quiz">
-            <div class="quiz-inner">
+        <!-- 1. Hero -->
+        <section class="hero">
+            <div class="hero-inner">
+                <h1 class="hero-headline">Your website is your front door. <br>We make sure people want <br>to step inside.</h1>
+            </div>
+        </section>
 
-                <!-- Intro screen -->
-                <div class="quiz-screen quiz-screen--active" data-screen="intro">
-                    <p class="label">Brand Check</p>
-                    <h1 class="quiz-question" style="margin-bottom:24px;">Wie stark ist deine Marke?</h1>
-                    <p class="intro-text" style="max-width:520px; margin-bottom:48px;">7 Fragen. 2 Minuten. Ein ehrliches Ergebnis.</p>
-                    <button class="quiz-start" id="quiz-start">Los geht's</button>
+        <!-- 3. Solution -->
+        <section class="approach" id="solution">
+            <div class="section-top">
+                <p class="label">What we do differently</p>
+                <h2 class="section-headline">We don't build you a website. <br>We build you a digital front door <br>that feels like you.</h2>
+            </div>
+
+            <div class="approach-images">
+                <div class="approach-img-placeholder"><img src="haus02.png" alt="Landing Page Design" loading="lazy" style="width:80%; height:auto; display:block; margin:auto;"></div>
+                <div class="approach-img-placeholder"><img src="haus 01.png" alt="Website Development" loading="lazy" style="width:60%; height:auto; display:block; margin:auto;"></div>
+                <div class="approach-img-placeholder"><img src="schaf04.png" alt="SEO & Launch" loading="lazy" style="width:60%; height:auto; display:block; margin:auto;"></div>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="haus02.png" alt="Landing Page Design" loading="lazy"></div>
+                    <span class="approach-num">01</span>
+                    <h3 class="approach-title">Personality over templates</h3>
+                    <p class="approach-desc">Your website should sound like you, not like a page builder. We design every page individually, from typography to imagery.</p>
                 </div>
-
-                <!-- Questions -->
-                <div class="quiz-screen" data-screen="question">
-                    <div class="quiz-progress">
-                        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
-                        <span class="quiz-progress-label" id="quiz-progress-label">1 / 7</span>
-                    </div>
-                    <h2 class="quiz-question" id="quiz-question"></h2>
-                    <div class="quiz-options" id="quiz-options"></div>
+                <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="haus 01.png" alt="Website Development" loading="lazy"></div>
+                    <span class="approach-num">02</span>
+                    <h3 class="approach-title">Structure that converts</h3>
+                    <p class="approach-desc">Pretty alone isn't enough. We build pages that guide visitors from first impression to booking. Clear, logical, no detours.</p>
                 </div>
-
-                <!-- Result screen -->
-                <div class="quiz-screen" data-screen="result">
-                    <div class="quiz-result-score">
-                        <span class="quiz-result-number" id="quiz-result-number"></span>
-                        <span class="quiz-result-total">/ 21</span>
-                    </div>
-                    <h2 class="quiz-result-title" id="quiz-result-title"></h2>
-                    <p class="quiz-result-text" id="quiz-result-text"></p>
-                    <div class="quiz-result-breakdown" id="quiz-result-breakdown"></div>
-                    <div style="display:flex; align-items:center; gap:24px; margin-top:48px;">
-                        <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="cta-link">Call buchen</a>
-                        <button class="quiz-restart" id="quiz-restart">Nochmal machen</button>
-                    </div>
+                <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="schaf04.png" alt="SEO & Launch" loading="lazy"></div>
+                    <span class="approach-num">03</span>
+                    <h3 class="approach-title">Tech that just works</h3>
+                    <p class="approach-desc">Fast. Mobile. Findable. Clean code, optimised for Google, and everything works without you worrying about tech.</p>
                 </div>
+            </div>
+        </section>
 
+        <!-- 4. What we design: 3 focus areas -->
+        <section class="scope" id="services">
+            <div class="scope-header">
+                <p class="label">What we design</p>
+                <h2 class="section-headline">Three formats, one goal: <br>making your brand visible online.</h2>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <span class="approach-num">01</span>
+                    <h3 class="approach-title">Landing Page</h3>
+                    <p class="approach-desc">One page, one goal. Perfect for getting started or a single offer. Clear structure, strong first impression, direct path to booking.</p>
+                    <span class="approach-tags">One-Pager / Offer Page / Waitlist</span>
+                </div>
+                <div class="approach-item">
+                    <span class="approach-num">02</span>
+                    <h3 class="approach-title">Full Website</h3>
+                    <p class="approach-desc">Multiple pages, one home. For coaches who want to show different offers, a blog or portfolio. Thoughtful and scalable.</p>
+                    <span class="approach-tags">About / Services / Blog / Contact</span>
+                </div>
+                <div class="approach-item">
+                    <span class="approach-num">03</span>
+                    <h3 class="approach-title">Funnel & Booking</h3>
+                    <p class="approach-desc">Your system for inquiries. We integrate booking tools, email forms and funnels so visitors become clients, automatically.</p>
+                    <span class="approach-tags">Calendly / Typeform / Email / CRM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="cta-inner">
+                <p class="label">Ready?</p>
+                <h2 class="cta-headline">Let's build your brand.</h2>
+                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="cta-link">Book a call</a>
             </div>
         </section>
 
@@ -189,190 +233,99 @@
         </div>
     </footer>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Design for Coaches",
+        "description": "Custom web design for coaches and consultants. Landing pages, full websites and booking integrations by meinhaus studio.",
+        "url": "https://meinhaus.studio/webdesign-for-coaches.html",
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "meinhaus studio",
+            "url": "https://meinhaus.studio",
+            "email": "hello@meinhaus.studio",
+            "founder": [
+                { "@type": "Person", "name": "Marika Haensch" },
+                { "@type": "Person", "name": "Emma Neumann" }
+            ],
+            "areaServed": ["London", "Berlin"]
+        },
+        "serviceType": ["Web Design", "Website Development", "SEO", "Landing Page Design"],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Coaches, Consultants, Founders"
+        }
+    }
+    </script>
+
     <script>
         // Year
         document.querySelector('.year').textContent = new Date().getFullYear();
 
-        // Quiz
-        (function() {
-            const questions = [
-                {
-                    q: 'Kannst du in einem Satz sagen, wofür du stehst?',
-                    cat: 'Strategie',
-                    options: [
-                        { text: 'Ja, glasklar', score: 3 },
-                        { text: 'So ungefähr', score: 2 },
-                        { text: 'Eher nicht', score: 1 }
-                    ]
-                },
-                {
-                    q: 'Hast du eine definierte Zielgruppe?',
-                    cat: 'Strategie',
-                    options: [
-                        { text: 'Ja, ich weiß genau wen ich anspreche', score: 3 },
-                        { text: 'Ich habe eine Idee, aber nichts Konkretes', score: 2 },
-                        { text: 'Ich spreche eigentlich alle an', score: 1 }
-                    ]
-                },
-                {
-                    q: 'Hast du ein Logo, Farben und Schriften, die zusammenpassen?',
-                    cat: 'Identität',
-                    options: [
-                        { text: 'Ja, professionell gestaltet', score: 3 },
-                        { text: 'Selbst gemacht, aber okay', score: 2 },
-                        { text: 'Nein, nichts Einheitliches', score: 1 }
-                    ]
-                },
-                {
-                    q: 'Sieht dein Auftritt überall gleich aus? Website, Social, Print?',
-                    cat: 'Identität',
-                    options: [
-                        { text: 'Ja, alles aus einem Guss', score: 3 },
-                        { text: 'Teilweise', score: 2 },
-                        { text: 'Jede Plattform sieht anders aus', score: 1 }
-                    ]
-                },
-                {
-                    q: 'Hast du eine eigene Website?',
-                    cat: 'Website',
-                    options: [
-                        { text: 'Ja, custom designed', score: 3 },
-                        { text: 'Ja, aber ein Template', score: 2 },
-                        { text: 'Nein', score: 1 }
-                    ]
-                },
-                {
-                    q: 'Verstehen Besucher in 5 Sekunden, was du anbietest?',
-                    cat: 'Website',
-                    options: [
-                        { text: 'Ja, sofort klar', score: 3 },
-                        { text: 'Wahrscheinlich nicht', score: 2 },
-                        { text: 'Ich habe keine Ahnung', score: 1 }
-                    ]
-                },
-                {
-                    q: 'Bekommst du Anfragen über deine Online-Präsenz?',
-                    cat: 'Wirkung',
-                    options: [
-                        { text: 'Regelmäßig', score: 3 },
-                        { text: 'Selten', score: 2 },
-                        { text: 'Nie', score: 1 }
-                    ]
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
-            ];
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
-            const results = {
-                strong: {
-                    title: 'Deine Marke steht gut da.',
-                    text: 'Die Basis stimmt. Jetzt geht es darum, die Details zu schärfen und den Auftritt auf das nächste Level zu bringen. Ein Brand Audit kann helfen, blinde Flecken aufzudecken.'
-                },
-                medium: {
-                    title: 'Gute Ansätze, aber kein System.',
-                    text: 'Du hast einzelne Bausteine, aber sie passen noch nicht zusammen. Das ist der häufigste Zustand, den wir sehen. Ein durchdachtes Brand System bringt Klarheit und Konsistenz.'
-                },
-                weak: {
-                    title: 'Zeit für ein Fundament.',
-                    text: 'Deine Marke hat noch kein Zuhause. Das ist kein Problem, es ist ein Startpunkt. Mit der richtigen Strategie und einem klaren visuellen System wird aus deiner Expertise eine Marke, die wirkt.'
-                }
-            };
+        function reveal(selector) {
+            document.querySelectorAll(selector).forEach((el) => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        }
 
-            let current = 0;
-            let scores = [];
-            const screens = document.querySelectorAll('.quiz-screen');
+        function revealStagger(selector, step) {
+            document.querySelectorAll(selector).forEach((el, i) => {
+                el.classList.add('reveal');
+                el.style.setProperty('--reveal-delay', (i * step).toFixed(2));
+                observer.observe(el);
+            });
+        }
 
-            function showScreen(name) {
-                screens.forEach(s => {
-                    s.classList.remove('quiz-screen--active');
-                    if (s.dataset.screen === name) {
-                        // Force re-trigger animation
-                        void s.offsetWidth;
-                        s.classList.add('quiz-screen--active');
+        reveal('.intro-text, .section-top, .scope-header, .cta-inner, .why-left');
+        revealStagger('.approach-img-placeholder', 0.12);
+        revealStagger('.approach-item', 0.12);
+        revealStagger('.scope-card', 0.1);
+        revealStagger('.accordion-item', 0.1);
+
+        // Accordion — support multiple accordion groups
+        document.querySelectorAll('.accordion').forEach((accordion) => {
+            accordion.querySelectorAll('.accordion-trigger').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const item = btn.parentElement;
+                    const body = item.querySelector('.accordion-body');
+                    const toggle = btn.querySelector('.accordion-toggle');
+                    const isOpen = body.classList.contains('open');
+
+                    // Close all within this accordion
+                    accordion.querySelectorAll('.accordion-body').forEach((b) => {
+                        b.classList.remove('open');
+                        b.style.maxHeight = null;
+                    });
+                    accordion.querySelectorAll('.accordion-trigger').forEach((t) => {
+                        t.setAttribute('aria-expanded', 'false');
+                        t.querySelector('.accordion-toggle').textContent = '+';
+                    });
+
+                    if (!isOpen) {
+                        body.classList.add('open');
+                        body.style.maxHeight = body.scrollHeight + 'px';
+                        btn.setAttribute('aria-expanded', 'true');
+                        toggle.textContent = '\u2212';
                     }
                 });
-            }
-
-            function renderQuestion() {
-                const q = questions[current];
-                document.getElementById('quiz-question').textContent = q.q;
-                document.getElementById('quiz-progress-label').textContent = (current + 1) + ' / ' + questions.length;
-                document.getElementById('quiz-progress-fill').style.width = ((current + 1) / questions.length * 100) + '%';
-
-                const optionsEl = document.getElementById('quiz-options');
-                optionsEl.innerHTML = '';
-                const letters = ['A', 'B', 'C'];
-                q.options.forEach((opt, i) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'quiz-option';
-                    btn.innerHTML = '<span class="quiz-option-letter">' + letters[i] + '</span>' + opt.text;
-                    btn.addEventListener('click', () => {
-                        scores.push({ cat: q.cat, score: opt.score });
-                        // Brief highlight
-                        btn.classList.add('quiz-option--selected');
-                        setTimeout(() => {
-                            current++;
-                            if (current < questions.length) {
-                                showScreen('question');
-                                renderQuestion();
-                            } else {
-                                showResult();
-                            }
-                        }, 300);
-                    });
-                    optionsEl.appendChild(btn);
-                });
-            }
-
-            function showResult() {
-                const total = scores.reduce((sum, s) => sum + s.score, 0);
-                let level;
-                if (total >= 17) level = 'strong';
-                else if (total >= 12) level = 'medium';
-                else level = 'weak';
-
-                document.getElementById('quiz-result-number').textContent = total;
-                document.getElementById('quiz-result-title').textContent = results[level].title;
-                document.getElementById('quiz-result-text').textContent = results[level].text;
-
-                // Category breakdown
-                const cats = {};
-                scores.forEach(s => {
-                    if (!cats[s.cat]) cats[s.cat] = { total: 0, max: 0 };
-                    cats[s.cat].total += s.score;
-                    cats[s.cat].max += 3;
-                });
-
-                const breakdownEl = document.getElementById('quiz-result-breakdown');
-                breakdownEl.innerHTML = '';
-                Object.keys(cats).forEach(cat => {
-                    const pct = Math.round(cats[cat].total / cats[cat].max * 100);
-                    const item = document.createElement('div');
-                    item.className = 'quiz-result-item';
-                    item.innerHTML =
-                        '<p class="quiz-result-item-label">' + cat + '</p>' +
-                        '<div class="quiz-result-item-bar"><div class="quiz-result-item-fill" style="width:0%"></div></div>';
-                    breakdownEl.appendChild(item);
-                    // Animate bar
-                    setTimeout(() => {
-                        item.querySelector('.quiz-result-item-fill').style.width = pct + '%';
-                    }, 100);
-                });
-
-                showScreen('result');
-            }
-
-            document.getElementById('quiz-start').addEventListener('click', () => {
-                current = 0;
-                scores = [];
-                showScreen('question');
-                renderQuestion();
             });
 
-            document.getElementById('quiz-restart').addEventListener('click', () => {
-                current = 0;
-                scores = [];
-                showScreen('intro');
-            });
-        })();
+            // Init first open accordion item in each group
+            const firstBody = accordion.querySelector('.accordion-body.open');
+            if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+        });
 
         // Nav menu toggle
         const navCenter = document.querySelector('.nav-center');
@@ -387,6 +340,7 @@
             navCenter.classList.remove('open');
         });
 
+        // Close menu on link click
         document.querySelectorAll('.nav-menu-item').forEach((link) => {
             if (link.classList.contains('nav-services-toggle')) return;
             link.addEventListener('click', () => {
@@ -420,13 +374,13 @@
             document.querySelectorAll('.nav-connect-time').forEach((el) => {
                 const tz = el.getAttribute('data-tz');
                 const now = new Date();
-                el.textContent = now.toLocaleTimeString('de-DE', {
+                el.textContent = now.toLocaleTimeString('en-GB', {
                     timeZone: tz,
                     hour: '2-digit',
                     minute: '2-digit',
                     second: '2-digit',
-                    hour12: false
-                });
+                    hour12: true
+                }).toUpperCase();
             });
         }
         updateClocks();

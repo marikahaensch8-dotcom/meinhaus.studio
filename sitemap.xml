@@ -31,6 +31,24 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://meinhaus.studio/branding-for-coaches.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://meinhaus.studio/webdesign-for-coaches.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://meinhaus.studio/brand-check.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://meinhaus.studio/impressum.html</loc>
         <lastmod>2026-03-24</lastmod>
         <changefreq>yearly</changefreq>
