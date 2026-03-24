@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>meinhaus · Personal Brand Studio</title>
     <meta name="description" content="We build personal brands for coaches. Positioned, designed and built to convert.">
+    <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -93,7 +94,7 @@
         <section class="hero">
             <div class="hero-inner">
                 <p class="hero-label">Design studio for coaches & founders</p>
-                <h1 class="hero-headline">Every brand needs a home.<br>We are meinhaus, a design studio<br>for branding, web and everything<br>that makes your brand visible.</h1>
+                <h1 class="hero-headline">Every brand needs a home. <br>We are meinhaus, a design studio <br>for branding, web and everything <br>that makes your brand visible.</h1>
             </div>
             <div class="hero-meta">
                 <span>Branding · Web · Editorial · 3D</span>
@@ -110,27 +111,30 @@
         <section class="approach" id="approach">
             <div class="section-top">
                 <p class="label">How we help</p>
-                <h2 class="section-headline">We build the personal brand<br>that shows who you really are.</h2>
+                <h2 class="section-headline">We build the personal brand <br>that shows who you really are.</h2>
             </div>
 
             <div class="approach-images">
-                <div class="approach-img-placeholder"></div>
-                <div class="approach-img-placeholder"></div>
-                <div class="approach-img-placeholder"></div>
+                <div class="approach-img-placeholder"><img src="haus02.png" alt="Branding" style="width:80%; height:auto; display:block; margin:auto;"></div>
+                <div class="approach-img-placeholder"><img src="haus 01.png" alt="Web Design" style="width:60%; height:auto; display:block; margin:auto;"></div>
+                <div class="approach-img-placeholder"><img src="schaf04.png" alt="Creative Direction" style="width:60%; height:auto; display:block; margin:auto;"></div>
             </div>
 
             <div class="approach-grid">
                 <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="haus02.png" alt="Branding"></div>
                     <span class="approach-num">01</span>
                     <h3 class="approach-title">Branding</h3>
                     <p class="approach-desc">The foundation. We build identities from the ground up. Strategy, visual language and everything that makes your brand yours.</p>
                 </div>
                 <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="haus 01.png" alt="Web Design"></div>
                     <span class="approach-num">02</span>
                     <h3 class="approach-title">Web Design</h3>
                     <p class="approach-desc">The front door. First impressions count. We design websites and digital experiences that make your brand tangible.</p>
                 </div>
                 <div class="approach-item">
+                    <div class="approach-img-mobile"><img src="schaf04.png" alt="Creative Direction"></div>
                     <span class="approach-num">03</span>
                     <h3 class="approach-title">Creative Direction</h3>
                     <p class="approach-desc">The interior. A house only becomes a home when it comes alive. We fill your brand with everything that makes it visible and vibrant.</p>
@@ -226,7 +230,9 @@
                     <p class="about-body">Emma thinks in spaces. She builds the foundation, the systems, the strategy, the structure that holds everything together. Marika thinks in pixels. She shapes the surface, the logos, the websites, the visual language that makes people feel something. We believe your brand should reflect the quality of what you do, so you can show up with confidence.</p>
                 </div>
                 <div class="about-image">
-                    <div class="about-img-placeholder"></div>
+                    <div style="width:100%; aspect-ratio:3/4; overflow:hidden; border-radius:4px;">
+                        <img src="DSC03675.jpeg" alt="Marika & Emma" style="width:100%; height:100%; object-fit:cover; object-position:center 20%;">
+                    </div>
                 </div>
             </div>
         </section>
@@ -309,7 +315,6 @@
 
     <script>
         // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -317,13 +322,29 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
-        // Add reveal class to animatable elements
-        document.querySelectorAll('.hero-inner, .hero-meta, .intro-grid, .section-top, .approach-images, .approach-item, .result-section, .cta, .scope-header, .scope-cards, .why-header, .accordion-item, .about-layout, .contact-card').forEach((el) => {
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
+        function reveal(selector) {
+            document.querySelectorAll(selector).forEach((el) => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        }
+
+        function revealStagger(selector, step) {
+            document.querySelectorAll(selector).forEach((el, i) => {
+                el.classList.add('reveal');
+                el.style.setProperty('--reveal-delay', (i * step).toFixed(2));
+                observer.observe(el);
+            });
+        }
+
+        reveal('.intro-text, .section-top, .scope-header, .cta-inner, .why-left, .about-left, .about-image, .contact-card');
+        revealStagger('.approach-img-placeholder', 0.12);
+        revealStagger('.approach-item', 0.12);
+        revealStagger('.scope-card', 0.1);
+        revealStagger('.accordion-item', 0.1);
+
 
         // Accordion
         document.querySelectorAll('.accordion-trigger').forEach((btn) => {
