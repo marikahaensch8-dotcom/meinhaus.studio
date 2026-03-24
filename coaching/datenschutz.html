@@ -58,8 +58,8 @@
                     <div class="nav-connect-social">
                         <p class="nav-connect-label">Social</p>
                         <div class="nav-connect-social-links">
-                            <a href="https://www.instagram.com/marika.haensch/" target="_blank">Instagram</a>
-                            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank">LinkedIn</a>
+                            <a href="https://www.instagram.com/marika.haensch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                 <li>Ihre Nachricht</li>
             </ul>
             <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. b DSGVO (vorvertragliche Maßnahmen) sowie Art. 6 Abs. 1 S. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung von Anfragen). Formspree verarbeitet Daten unter anderem in den USA. Weitere Informationen finden Sie in der <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener" style="color: var(--black);">Datenschutzerklärung von Formspree</a>.
+                Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. b DSGVO (vorvertragliche Maßnahmen) sowie Art. 6 Abs. 1 S. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung von Anfragen). Formspree verarbeitet Daten unter anderem in den USA. Weitere Informationen finden Sie in der <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer" style="color: var(--black);">Datenschutzerklärung von Formspree</a>.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
                 Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet und nach Abschluss der Bearbeitung bzw. nach Ablauf gesetzlicher Aufbewahrungsfristen gelöscht.
@@ -137,7 +137,7 @@
                 Unsere Website wird gehostet bei <strong style="font-weight: 500; color: var(--black);">Netlify</strong> (Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA). Beim Aufruf unserer Website erhebt Netlify verschiedene Logfiles inkl. Ihrer IP-Adresse. Netlify verarbeitet Daten unter anderem in den USA.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Weitere Informationen finden Sie in der <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener" style="color: var(--black);">Datenschutzerklärung von Netlify</a>.
+                Weitere Informationen finden Sie in der <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" style="color: var(--black);">Datenschutzerklärung von Netlify</a>.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
                 Die Nutzung von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer zuverlässigen Darstellung unserer Website.
@@ -204,12 +204,14 @@
         <!-- Footer back link -->
         <div style="padding-top: 40px; border-top: 1px solid var(--grey-light);">
             <a href="de.html" style="font-size: 14px; color: var(--grey); text-decoration: none;">&larr; Zurück zur Startseite</a>
-            <p style="font-size: 12px; color: var(--grey); margin-top: 24px; letter-spacing: 0.04em;">&copy; <script>document.write(new Date().getFullYear())</script> meinhaus studio</p>
+            <p style="font-size: 12px; color: var(--grey); margin-top: 24px; letter-spacing: 0.04em;">&copy; <span class="year"></span> meinhaus studio</p>
         </div>
 
     </main>
 
     <script>
+        document.querySelector('.year').textContent = new Date().getFullYear();
+
         // Connect dropdown
         const connectToggle = document.getElementById('nav-connect-toggle');
         const connectDropdown = document.getElementById('nav-connect-dropdown');

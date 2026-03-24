@@ -58,8 +58,8 @@
                     <div class="nav-connect-social">
                         <p class="nav-connect-label">Social</p>
                         <div class="nav-connect-social-links">
-                            <a href="https://www.instagram.com/marika.haensch/" target="_blank">Instagram</a>
-                            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank">LinkedIn</a>
+                            <a href="https://www.instagram.com/marika.haensch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://www.linkedin.com/in/marika-haensch/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -131,12 +131,14 @@
         <!-- Footer back link -->
         <div style="padding-top: 40px; border-top: 1px solid var(--grey-light);">
             <a href="de.html" style="font-size: 14px; color: var(--grey); text-decoration: none;">&larr; Zurück zur Startseite</a>
-            <p style="font-size: 12px; color: var(--grey); margin-top: 24px; letter-spacing: 0.04em;">&copy; <script>document.write(new Date().getFullYear())</script> meinhaus studio</p>
+            <p style="font-size: 12px; color: var(--grey); margin-top: 24px; letter-spacing: 0.04em;">&copy; <span class="year"></span> meinhaus studio</p>
         </div>
 
     </main>
 
     <script>
+        document.querySelector('.year').textContent = new Date().getFullYear();
+
         // Connect dropdown
         const connectToggle = document.getElementById('nav-connect-toggle');
         const connectDropdown = document.getElementById('nav-connect-dropdown');
