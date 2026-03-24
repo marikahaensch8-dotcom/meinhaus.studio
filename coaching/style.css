@@ -112,7 +112,7 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 20px var(--pad);
-    background: var(--white);
+    background: transparent;
     width: 100%;
     max-width: 1360px;
 }
@@ -257,14 +257,22 @@ button {
 }
 
 .nav-connect-wrap.open .nav-connect-icon {
-    display: inline-block;
-    transform: rotate(45deg);
-    transition: transform var(--ease);
+    display: inline-flex;
+    transform: none;
 }
 
 .nav-connect-icon {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     transition: transform var(--ease);
+}
+
+.nav-connect-wrap.open svg.door-closed {
+    display: none;
+}
+
+.nav-connect-wrap.open svg.door-open {
+    display: block !important;
 }
 
 .nav-connect-body {
@@ -443,6 +451,15 @@ button {
 .approach-desc {
     font-size: var(--body);
     line-height: 1.6;
+    color: var(--grey);
+    margin-bottom: 16px;
+}
+
+.approach-tags {
+    font-size: var(--label);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--grey);
 }
 
@@ -728,6 +745,7 @@ button {
 
 .contact-card-header {
     margin-bottom: 32px;
+    text-align: center;
 }
 
 .contact-card-header .label {
@@ -886,48 +904,96 @@ button {
     color: var(--black);
 }
 
-/* ===== FOOTER ===== */
-.footer {
-    padding: 60px var(--pad) 40px;
-    border-top: 1px solid var(--grey-light);
+/* ===== MEADOW FOOTER ===== */
+
+.meadow {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    cursor: default;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+.meadow-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
 }
 
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-size: var(--body);
-    color: var(--grey);
+.sheep {
+    position: absolute;
+    display: block;
+    cursor: grab;
+    text-decoration: none;
+    z-index: 2;
+    transition: filter 0.2s ease;
 }
 
-.footer-col a {
-    color: var(--grey);
+.sheep:active {
+    cursor: grabbing;
 }
 
-.footer-col a:hover {
-    color: var(--black);
+.sheep.dragging {
+    z-index: 10;
 }
 
-.footer-label {
-    font-size: var(--label);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--black);
-    margin-bottom: 8px;
+.sheep img {
+    width: 100px;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-.footer-bottom {
-    margin-top: 60px;
+.sheep--house img {
+    width: 140px;
+}
+
+.sheep-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.sheep:hover .sheep-tooltip {
+    opacity: 1;
+}
+
+.sheep.dragging .sheep-tooltip {
+    opacity: 1;
+}
+
+.meadow-bottom {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
     font-size: var(--label);
     letter-spacing: 0.04em;
-    color: var(--grey);
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 3;
+}
+
+.meadow-footer {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background: #f2f2f2;
 }
 
 /* ===== RESPONSIVE ===== */
