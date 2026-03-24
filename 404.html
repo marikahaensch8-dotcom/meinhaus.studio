@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 · Nobody's home · meinhaus studio</title>
+    <link rel="icon" href="House.svg" type="image/svg+xml">
+    <style>
+        @font-face {
+            font-family: 'Diatype';
+            src: url('fonts/ABC Diatype/Diatype-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Diatype';
+            src: url('fonts/ABC Diatype/Diatype-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Diatype', sans-serif;
+            background: #f5f0e8;
+            color: #1a1a1a;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: default;
+            user-select: none;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .code {
+            font-size: clamp(80px, 15vw, 160px);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: #1a1a1a;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        .message {
+            font-size: clamp(16px, 2.5vw, 22px);
+            font-weight: 300;
+            color: #8a8a8a;
+            margin-top: 12px;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+        }
+
+        .submessage {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #8a8a8a;
+            margin-top: 32px;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background 0.3s ease;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
+        }
+        .home-link:hover { background: #333; }
+
+        /* Meadow at bottom */
+        .meadow {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35vh;
+            min-height: 200px;
+            z-index: 1;
+        }
+
+        .meadow-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .sheep {
+            position: absolute;
+            width: clamp(50px, 8vw, 80px);
+            cursor: grab;
+            transition: transform 0.2s ease;
+            z-index: 3;
+            opacity: 0;
+            animation: sheepAppear 0.6s ease both;
+        }
+        .sheep:active { cursor: grabbing; }
+        .sheep.dragging { transition: none; }
+        .sheep:hover { transform: scale(1.08); }
+        .sheep img { width: 100%; height: auto; pointer-events: none; }
+
+        .sheep:nth-child(2) { animation-delay: 0.3s; }
+        .sheep:nth-child(3) { animation-delay: 0.5s; }
+        .sheep:nth-child(4) { animation-delay: 0.7s; }
+        .sheep:nth-child(5) { animation-delay: 0.9s; }
+        .sheep:nth-child(6) { animation-delay: 1.1s; }
+        .sheep:nth-child(7) { animation-delay: 1.3s; }
+
+        .sheep-tooltip {
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+        .sheep:hover .sheep-tooltip { opacity: 1; }
+
+        .house-404 {
+            position: absolute;
+            width: clamp(60px, 10vw, 100px);
+            z-index: 4;
+            opacity: 0;
+            animation: sheepAppear 0.8s ease 0.1s both;
+        }
+        .house-404 img { width: 100%; height: auto; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sheepAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+            .code, .message, .submessage, .home-link, .sheep, .house-404 { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .meadow { height: 28vh; }
+            .content { padding-bottom: 30vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1 class="code">404</h1>
+        <p class="message">Nobody's home right now.<br>But the sheep are still here.</p>
+        <p class="submessage">Can you look after them while we're gone?</p>
+        <a href="/" class="home-link">Take me home</a>
+    </div>
+
+    <div class="meadow">
+        <img class="meadow-bg" src="wiese.png" alt="">
+
+        <div class="house-404" style="left: 50%; top: 10%; transform: translateX(-50%);">
+            <img src="haus 01.png" alt="meinhaus">
+        </div>
+
+        <span class="sheep" style="left: 8%; top: 45%;">
+            <span class="sheep-tooltip">Baaaack to work?</span>
+            <img src="schaf 01.png" alt="Schaf">
+        </span>
+        <span class="sheep" style="left: 22%; top: 60%;">
+            <span class="sheep-tooltip">Not my job</span>
+            <img src="schaf02.png" alt="Schaf">
+        </span>
+        <span class="sheep" style="left: 40%; top: 50%;">
+            <span class="sheep-tooltip">404 what?</span>
+            <img src="schaf03.png" alt="Schaf">
+        </span>
+        <span class="sheep" style="left: 60%; top: 65%;">
+            <span class="sheep-tooltip">I live here now</span>
+            <img src="schaf04.png" alt="Schaf">
+        </span>
+        <span class="sheep" style="left: 75%; top: 45%;">
+            <span class="sheep-tooltip">Page not found, grass found</span>
+            <img src="schaf 01.png" alt="Schaf">
+        </span>
+        <span class="sheep" style="left: 88%; top: 58%;">
+            <span class="sheep-tooltip">Mäh.</span>
+            <img src="schaf03.png" alt="Schaf">
+        </span>
+    </div>
+
+    <script>
+        // Drag & drop sheep
+        (function () {
+            const meadow = document.querySelector('.meadow');
+            let dragging = null;
+            let offsetX = 0, offsetY = 0, hasMoved = false;
+
+            function startDrag(el, cx, cy) {
+                dragging = el;
+                hasMoved = false;
+                const r = el.getBoundingClientRect();
+                offsetX = cx - r.left;
+                offsetY = cy - r.top;
+                el.style.zIndex = '10';
+                el.classList.add('dragging');
+            }
+
+            function moveDrag(cx, cy) {
+                if (!dragging) return;
+                hasMoved = true;
+                const mr = meadow.getBoundingClientRect();
+                const x = ((cx - mr.left - offsetX) / mr.width) * 100;
+                const y = ((cy - mr.top - offsetY) / mr.height) * 100;
+                dragging.style.left = Math.max(0, Math.min(92, x)) + '%';
+                dragging.style.top = Math.max(0, Math.min(85, y)) + '%';
+            }
+
+            function endDrag(e) {
+                if (!dragging) return;
+                dragging.classList.remove('dragging');
+                dragging.style.zIndex = '';
+                if (hasMoved) e.preventDefault();
+                dragging = null;
+            }
+
+            meadow.querySelectorAll('.sheep').forEach(function (s) {
+                s.addEventListener('mousedown', function (e) { e.preventDefault(); startDrag(s, e.clientX, e.clientY); });
+                s.addEventListener('touchstart', function (e) { startDrag(s, e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+            });
+
+            document.addEventListener('mousemove', function (e) { moveDrag(e.clientX, e.clientY); });
+            document.addEventListener('touchmove', function (e) { if (!dragging) return; moveDrag(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+            document.addEventListener('mouseup', function (e) { endDrag(e); });
+            document.addEventListener('touchend', function (e) { endDrag(e); });
+        })();
+    </script>
+
+</body>
+</html>
