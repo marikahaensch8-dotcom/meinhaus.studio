@@ -35,7 +35,7 @@
             font-size: 16px;
             line-height: 1.5;
             color: var(--black);
-            background: var(--white);
+            background: var(--pure-white);
             overflow-x: hidden;
         }
         a { color: inherit; text-decoration: none; }
@@ -294,7 +294,7 @@
         }
         .service-card {
             position: relative;
-            border: 1px solid var(--grey-light);
+            border: 1px solid var(--black);
             padding: 48px 40px;
             display: flex;
             flex-direction: column;
@@ -307,7 +307,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .service-card:hover { border-color: var(--grey); }
+        .service-card:hover { border-color: var(--black); }
         .service-card-title {
             font-family: var(--serif);
             font-size: clamp(28px, 2.8vw, 40px);
@@ -422,8 +422,8 @@
             max-width: 700px;
             margin-bottom: 80px;
         }
-        .why-items { border-top: 1px solid var(--grey-light); }
-        .why-item { border-bottom: 1px solid var(--grey-light); }
+        .why-items { border-top: 1px solid var(--black); }
+        .why-item { border-bottom: 1px solid var(--black); }
         .why-trigger {
             width: 100%;
             display: flex;
@@ -546,35 +546,45 @@
             background: rgba(200, 200, 200, 0.5);
         }
 
-        /* ===== CONTACT ===== */
+        /* ===== CONTACT SECTION ===== */
         .contact {
-            padding: 160px var(--pad);
-            max-width: 800px;
+            padding: 100px var(--pad);
+        }
+        .contact-inner {
+            max-width: 520px;
             margin: 0 auto;
+            text-align: center;
+        }
+        .contact-label {
+            font-size: 12px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 16px;
         }
         .contact-heading {
             font-family: var(--serif);
-            font-size: clamp(28px, 2.8vw, 40px);
+            font-size: clamp(28px, 3.5vw, 40px);
             font-weight: 400;
-            margin-bottom: 48px;
+            line-height: 1.2;
+            color: var(--black);
+            margin-bottom: 40px;
         }
-        .contact-form { display: flex; flex-direction: column; gap: 24px; }
-        .contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .contact-form {
+            display: flex; flex-direction: column; gap: 16px;
+            text-align: left;
+        }
         .contact-form input,
         .contact-form textarea,
         .contact-form select {
             font-family: var(--sans);
-            font-size: 16px;
-            font-weight: 300;
-            padding: 16px 0;
-            border: none;
-            border-bottom: 1px solid var(--grey-light);
-            background: transparent;
+            font-size: 15px; font-weight: 400;
+            padding: 16px 18px;
+            border: 1px solid var(--black);
+            border-radius: 10px;
+            background: var(--pure-white);
             color: var(--black);
-            outline: none;
-            width: 100%;
+            outline: none; width: 100%;
             transition: border-color var(--ease);
-            border-radius: 0;
             -webkit-appearance: none;
         }
         .contact-form input:focus,
@@ -586,52 +596,95 @@
         .contact-form textarea::placeholder {
             color: var(--grey);
         }
-        .contact-form select { color: var(--grey); cursor: pointer; }
-        .contact-form select:valid { color: var(--black); }
-        .contact-form textarea { resize: vertical; min-height: 100px; }
-        .contact-submit {
-            align-self: flex-start;
-            font-family: var(--sans);
-            font-size: 16px;
-            font-weight: 400;
-            padding: 16px 48px;
-            border: 1px solid var(--black);
-            border-radius: 100px;
-            color: var(--black);
-            background: transparent;
+        .contact-form select {
+            color: var(--grey);
             cursor: pointer;
-            transition: background var(--ease), color var(--ease);
-            margin-top: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            padding-right: 44px;
         }
-        .contact-submit:hover { background: var(--black); color: var(--white); }
+        .contact-form select option { background: var(--white); color: var(--black); }
+        .contact-form select:valid { color: var(--black); }
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .contact-form textarea {
+            resize: vertical; min-height: 120px;
+        }
+        .contact-submit {
+            align-self: center;
+            font-family: var(--sans);
+            font-size: 15px; font-weight: 500;
+            padding: 14px 40px;
+            border: none; border-radius: 100px;
+            background: var(--black);
+            color: var(--pure-white);
+            cursor: pointer;
+            transition: opacity var(--ease);
+            margin-top: 8px;
+        }
+        .contact-submit:hover { opacity: 0.8; }
         .contact-success {
-            display: none;
-            text-align: center;
-            padding: 80px 0;
+            display: none; padding: 40px 0; text-align: center;
         }
         .contact-success.visible { display: block; }
         .contact-success h3 {
             font-family: var(--serif);
-            font-size: 36px;
-            font-weight: 400;
-            margin-bottom: 16px;
+            font-size: 32px; font-weight: 400;
+            margin-bottom: 8px; color: var(--black);
         }
-        .contact-success p { font-size: 16px; font-weight: 300; color: var(--grey); }
+        .contact-success p { font-size: 15px; color: var(--grey); }
 
         /* ===== FOOTER ===== */
-        .footer {
-            padding: 48px var(--pad);
+        .site-footer {
+            padding: 48px var(--pad) 32px;
+            background: var(--white);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+        .footer-logo {
+            font-family: var(--sans);
+            font-size: 18px; font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--black);
+        }
+        .footer-links {
+            display: flex; gap: 32px; flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 14px; font-weight: 400;
+            color: var(--grey);
+            text-decoration: none;
+            transition: color var(--ease);
+        }
+        .footer-links a:hover { color: var(--black); }
+        .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 24px;
+            border-top: 2px solid var(--grey-light);
             font-size: 13px;
-            font-weight: 400;
             color: var(--grey);
-            border-top: 1px solid var(--grey-light);
         }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a { color: var(--grey); text-decoration: none; }
-        .footer-links a:hover { color: var(--black); }
+        .footer-bottom-links { display: flex; gap: 24px; }
+        .footer-bottom-links a {
+            color: var(--grey); text-decoration: none; font-size: 13px;
+            transition: color var(--ease);
+        }
+        .footer-bottom-links a:hover { color: var(--black); }
 
         /* ===== RESPONSIVE — TABLET ===== */
         @media (max-width: 900px) {
@@ -680,6 +733,9 @@
             .about { grid-template-columns: 1fr; }
             .about-photo { min-height: 50vh; }
             .contact-form-row { grid-template-columns: 1fr; }
+            .footer-top { flex-direction: column; gap: 24px; }
+            .footer-links { gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
         }
 
         /* ===== RESPONSIVE — MOBILE ===== */
@@ -690,13 +746,12 @@
             .intro-text { font-size: 22px; }
             .services { padding: 100px var(--pad); }
             .service-card { padding: 32px 24px; }
-            .service-card-tags { grid-template-columns: 1fr; }
             .cta-card { padding: 60px 24px; }
             .why { padding: 100px var(--pad); }
             .about-text { padding: 80px var(--pad); }
             .cta { padding: 40px var(--pad); }
-            .contact { padding: 100px var(--pad); }
-            .footer { padding: 32px var(--pad); flex-direction: column; gap: 16px; text-align: center; }
+            .contact { padding: 80px var(--pad); }
+            .contact-heading { margin-bottom: 32px; }
         }
     </style>
 </head>
@@ -894,52 +949,74 @@
         </section>
 
 
-        <!-- CONTACT -->
-        <section class="contact" id="contact">
-            <p class="label">Lass uns reden</p>
-            <h2 class="contact-heading r-line"><span class="r-line-inner">Unsere Tür steht offen.</span></h2>
-            <form class="contact-form" id="contact-form">
-                <div class="contact-form-row">
-                    <input type="text" name="name" placeholder="Name / Unternehmen" required>
-                    <input type="email" name="email" placeholder="E-Mail" required>
-                </div>
+    </main>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <p class="contact-label">Projekt anfragen</p>
+            <h2 class="contact-heading">Unsere Tür steht offen.</h2>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqeyodor" method="POST">
+                <input type="text" name="name" placeholder="Name / Unternehmen" required>
+                <input type="email" name="email" placeholder="E-Mail" required>
                 <div class="contact-form-row">
                     <select name="service" required>
                         <option value="" disabled selected>Leistung</option>
                         <option>Brand Strategy</option>
                         <option>Brand Identity</option>
                         <option>Website</option>
-                        <option>Content</option>
                         <option>Komplettes Brand System</option>
+                        <option>Rebrand</option>
                         <option>Anderes</option>
                     </select>
                     <select name="budget">
                         <option value="" disabled selected>Budget</option>
-                        <option>3-5k</option>
-                        <option>5-10k</option>
+                        <option>3–5k</option>
+                        <option>5–10k</option>
                         <option>10k+</option>
                         <option>Noch unsicher</option>
                     </select>
                 </div>
+                <select name="timeline">
+                    <option value="" disabled selected>Zeitrahmen</option>
+                    <option>So schnell wie möglich</option>
+                    <option>1–2 Wochen</option>
+                    <option>1–2 Monate</option>
+                    <option>3+ Monate</option>
+                    <option>Kein Zeitdruck</option>
+                </select>
                 <textarea name="message" placeholder="Wobei können wir helfen?"></textarea>
                 <button type="submit" class="contact-submit">Anfrage senden</button>
             </form>
             <div class="contact-success" id="contact-success">
                 <h3>Danke.</h3>
-                <p>Wir haben deine Anfrage erhalten und melden uns in Kürze bei dir.</p>
+                <p>Wir melden uns in Kürze bei dir.</p>
             </div>
-        </section>
-
-    </main>
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <span>&copy; 2026 meinhaus studio</span>
-        <div class="footer-links">
-            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="../impressum.html">Impressum</a>
-            <a href="../datenschutz.html">Datenschutz</a>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <span class="footer-logo">meinhaus</span>
+                <nav class="footer-links">
+                    <a href="dev/about.html">Über uns</a>
+                    <a href="../branding-fuer-coaches.html">Branding</a>
+                    <a href="../webdesign-fuer-coaches.html">Webdesign</a>
+                    <a href="../personal-brand-aufbauen.html">Brand Check</a>
+                    <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 meinhaus studio</span>
+                <div class="footer-bottom-links">
+                    <a href="mailto:hello@meinhaus.studio">hello@meinhaus.studio</a>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
         </div>
     </footer>
 
