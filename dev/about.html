@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns · meinhaus studio</title>
+    <meta name="description" content="Emma und Marika. Eine Architektin und eine Designerin. Wir bauen Marken von Grund auf.">
+    <link rel="icon" href="../House.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #1a1a1a;
+            --grey: #8a8a8a;
+            --grey-light: #e8e8e8;
+            --white: #fafafa;
+            --pure-white: #ffffff;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'General Sans', 'Helvetica Neue', sans-serif;
+            --ease: 0.3s ease;
+            --ease-out: cubic-bezier(.19, 1, .22, 1);
+            --pad: 48px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        html.ready { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--black);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: var(--sans); border: none; cursor: pointer; background: none; }
+        ::selection { color: var(--white); background: var(--black); }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px var(--pad); background: transparent;
+            opacity: 0; animation: fadeIn 0.8s ease 0.2s both;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-logo { font-size: 18px; font-weight: 500; letter-spacing: 0.04em; color: var(--black); }
+
+        .nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-pill {
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 40px; border: none; border-radius: 100px;
+            background: rgba(200, 200, 200, 0.35);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            cursor: pointer; color: var(--black);
+            transition: background var(--ease);
+        }
+        .nav-pill:hover { background: rgba(200, 200, 200, 0.5); }
+        .nav-pill-icon { display: flex; align-items: center; justify-content: center; transition: transform 0.3s var(--ease-out); }
+        .nav-menu { display: none; align-items: center; gap: 8px; }
+        .nav-center .nav-pill:first-child { display: flex; }
+        .nav-center.open > .nav-pill:first-child { display: none; }
+        .nav-center.open .nav-menu { display: flex; }
+        .nav-menu-item {
+            display: flex; align-items: center; justify-content: center;
+            height: 36px; padding: 0 20px; border-radius: 100px;
+            background: rgba(200, 200, 200, 0.35);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            font-family: var(--sans);
+            font-size: 14px; font-weight: 400; color: var(--black);
+            text-decoration: none; transition: background var(--ease);
+        }
+        .nav-menu-item:hover { background: rgba(200, 200, 200, 0.5); color: var(--black); }
+        .nav-pill-close { background: var(--black); color: var(--pure-white); }
+        .nav-pill-close:hover { background: #333; }
+        .nav-services-wrap { position: relative; }
+        .nav-services-toggle { cursor: pointer; border: none; gap: 6px; }
+        .nav-services-chevron { display: inline-flex; align-items: center; transition: transform var(--ease); }
+        .nav-services-wrap.open .nav-services-chevron { transform: rotate(180deg); }
+        .nav-services-dropdown {
+            display: none; position: absolute; top: calc(100% + 8px);
+            left: 50%; transform: translateX(-50%); min-width: 220px;
+            background: rgba(200, 200, 200, 0.35);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 12px; padding: 8px;
+            flex-direction: column; z-index: 100;
+        }
+        .nav-services-dropdown.active { display: flex; }
+        .nav-services-link {
+            display: block; padding: 10px 14px; font-size: 14px; font-weight: 400;
+            color: var(--black); text-decoration: none; border-radius: 8px;
+            transition: background var(--ease);
+        }
+        .nav-services-link:hover { background: rgba(0,0,0,0.05); }
+        .nav-mobile-only { display: none; }
+        .nav-connect-wrap { position: relative; }
+        .nav-connect {
+            display: flex; align-items: center; gap: 8px; height: 40px;
+            padding: 0 20px; border: none; border-radius: 100px;
+            background: rgba(200, 200, 200, 0.35);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            font-family: var(--sans);
+            font-size: 14px; font-weight: 400; color: var(--black);
+            cursor: pointer; transition: background var(--ease);
+        }
+        .nav-connect:hover { background: rgba(200, 200, 200, 0.5); }
+        .nav-connect-icon { display: inline-flex; align-items: center; transition: transform var(--ease); }
+        .nav-connect-dropdown {
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            width: 360px; background: rgba(200, 200, 200, 0.35);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px; padding: 24px;
+        }
+        .nav-connect-dropdown.active { display: block; }
+        .nav-connect-wrap.open svg.door-closed { display: none; }
+        .nav-connect-wrap.open svg.door-open { display: block !important; }
+        .nav-connect-body { display: flex; flex-direction: column; gap: 20px; }
+        .nav-connect-location { display: flex; justify-content: space-between; align-items: flex-start; }
+        .nav-connect-city { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+        .nav-connect-time { font-size: 15px; font-weight: 400; color: var(--black); white-space: nowrap; }
+        .nav-connect-row { display: flex; flex-direction: column; gap: 4px; }
+        .nav-connect-label { font-size: 15px; font-weight: 400; color: var(--black); }
+        .nav-connect-link { font-size: 14px; color: var(--grey); text-decoration: none; }
+        .nav-connect-link:hover { color: var(--black); }
+        .nav-connect-social { display: flex; align-items: baseline; justify-content: space-between; }
+        .nav-connect-social-links { display: flex; gap: 16px; }
+        .nav-connect-social-links a { font-size: 14px; color: var(--grey); text-decoration: none; }
+        .nav-connect-social-links a:hover { color: var(--black); }
+
+        /* ===== DUO CARDS ===== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 var(--pad) 160px;
+        }
+        .duo-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 3 / 4;
+        }
+        .duo-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1);
+            transition: filter 0.6s ease, transform 0.6s var(--ease-out);
+        }
+        .duo-card:hover .duo-photo {
+            filter: grayscale(0);
+            transform: scale(1.03);
+        }
+
+        /* Overlay card that slides up on hover */
+        .duo-overlay {
+            position: absolute;
+            bottom: 0; left: 12px; right: 12px;
+            background: var(--white);
+            padding: 32px 28px;
+            transform: translateY(100%);
+            transition: transform 0.5s var(--ease-out);
+        }
+        .duo-card:hover .duo-overlay {
+            transform: translateY(0);
+        }
+
+        .duo-name {
+            font-family: var(--serif);
+            font-size: clamp(28px, 2.8vw, 40px);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .duo-desc {
+            font-family: var(--sans);
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.35;
+            color: var(--black);
+            margin-bottom: 24px;
+        }
+
+        .duo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .duo-tag {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--grey);
+        }
+        .duo-tag::after {
+            content: '·';
+            margin-left: 8px;
+        }
+        .duo-tag:last-child::after {
+            content: none;
+        }
+
+        /* ===== MANIFEST ===== */
+        .manifest {
+            padding: 160px var(--pad);
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .manifest-hero {
+            padding: 180px var(--pad) 120px;
+            text-align: center;
+            max-width: 1100px;
+        }
+        .manifest-text {
+            font-family: var(--sans);
+            font-size: clamp(24px, 3vw, 40px);
+            font-weight: 300;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+        .manifest-text .word {
+            color: var(--grey-light);
+            transition: color 0.3s ease;
+        }
+        .manifest-text .word.lit { color: var(--black); }
+
+        /* ===== VALUES ===== */
+        .values {
+            padding: 0 var(--pad) 160px;
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        .values-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 48px;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 48px;
+        }
+        .value-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s var(--ease-out);
+        }
+        .value-item.visible { opacity: 1; transform: translateY(0); }
+        .value-num {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--grey);
+            margin-bottom: 16px;
+        }
+        .value-title {
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+        .value-desc {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--grey);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 48px var(--pad);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 13px; font-weight: 400; color: var(--grey);
+            border-top: 1px solid var(--grey-light);
+        }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { color: var(--grey); text-decoration: none; }
+        .footer-links a:hover { color: var(--black); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            :root { --pad: 24px; }
+
+            .nav-center.open > .nav-pill:first-child { display: flex; background: var(--black); color: var(--pure-white); }
+            .nav-center.open > .nav-pill:first-child .nav-pill-icon { transform: rotate(90deg); }
+            .nav-center .nav-menu { display: none; }
+            .nav-center.open .nav-menu {
+                display: flex; flex-direction: column; position: absolute;
+                top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+                width: 200px; background: #f2f2f2; border-radius: 16px;
+                padding: 8px; gap: 2px; z-index: 100;
+            }
+            .nav-center.open .nav-menu-item { height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%; }
+            .nav-center.open .nav-menu-item:hover { background: #e4e4e4; }
+            .nav-center.open .nav-services-wrap { width: 100%; }
+            .nav-center.open .nav-services-toggle { height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%; }
+            .nav-center.open .nav-services-dropdown { position: static; transform: none; width: 100%; min-width: 0; background: transparent; padding: 0 0 0 12px; border-radius: 0; }
+            .nav-center.open .nav-services-link { font-size: 13px; color: var(--grey); padding: 8px 16px; }
+            .nav-center.open .nav-pill-close { display: none; }
+            .nav-mobile-only { display: flex; }
+            .nav { padding: 16px 24px; }
+            .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
+            .nav-connect-dropdown { width: 260px; padding: 16px; }
+
+            .duo { grid-template-columns: 1fr; padding: 0 var(--pad) 100px; }
+            .duo-card { aspect-ratio: 2 / 3; }
+            .values-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 600px) {
+            .duo-name, .duo-desc { font-size: 20px; }
+            .manifest { padding: 100px var(--pad); }
+            .manifest-text { font-size: 24px; }
+            .values { padding: 0 var(--pad) 100px; }
+            .footer { padding: 32px var(--pad); flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <header class="nav">
+        <a href="v2.html" class="nav-logo">meinhaus</a>
+
+        <div class="nav-center">
+            <button class="nav-pill" id="nav-menu-toggle" aria-label="Menü öffnen">
+                <span class="nav-pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-services-wrap">
+                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+                    <div class="nav-services-dropdown" id="nav-services-dropdown">
+                        <a href="../branding-fuer-coaches.html" class="nav-services-link">Branding</a>
+                        <a href="../webdesign-fuer-coaches.html" class="nav-services-link">Webdesign</a>
+                        <a href="../personal-brand-aufbauen.html" class="nav-services-link">Brand Check</a>
+                    </div>
+                </div>
+                <a href="v2.html#scope" class="nav-menu-item">Scope</a>
+                <a href="about.html" class="nav-menu-item" aria-current="page">Über uns</a>
+                <a href="../en.html" class="nav-menu-item">EN</a>
+                <a href="v2.html#contact" class="nav-menu-item nav-mobile-only">Kontakt</a>
+                <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
+                    <span class="nav-pill-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M13 13h-4M13 13v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-connect-wrap">
+            <button class="nav-connect" id="nav-connect-toggle">
+                <span>Komm rein</span>
+                <span class="nav-connect-icon">
+                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="1" width="12" height="14"/>
+                        <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                        <rect x="1" y="1" width="12" height="14"/>
+                        <path d="M1 1 L6 3 L6 13 L1 15"/>
+                        <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="nav-connect-dropdown" id="nav-connect-dropdown">
+                <div class="nav-connect-body">
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">LDN</p>
+                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/London"></span>
+                    </div>
+                    <div class="nav-connect-location">
+                        <div>
+                            <p class="nav-connect-city">BER</p>
+                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
+                        </div>
+                        <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
+                    </div>
+                    <div class="nav-connect-row">
+                        <p class="nav-connect-label">Allgemeine Anfragen</p>
+                        <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
+                    </div>
+                    <div class="nav-connect-social">
+                        <p class="nav-connect-label">Social</p>
+                        <div class="nav-connect-social-links">
+                            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- MANIFEST — hero statement -->
+        <section class="manifest manifest-hero">
+            <p class="manifest-text" id="manifest-text">Wir sind eine Architektin und eine Designerin, die angefangen haben, zusammen Marken zu bauen, weil wir glauben, dass jede gute Idee ein großartiges visuelles Zuhause verdient.</p>
+        </section>
+
+        <!-- DUO CARDS -->
+        <section class="duo">
+            <!-- EMMA -->
+            <div class="duo-card">
+                <img src="../DSC03289.jpeg" alt="Emma" class="duo-photo">
+                <div class="duo-overlay">
+                    <h2 class="duo-name">Emma</h2>
+                    <p class="duo-desc">Denkt in Räumen. Baut das Fundament, die Systeme, die Strategie, die Struktur, die alles zusammenhält. Bevor ein Pixel gesetzt wird, stellt sie die Fragen, die andere überspringen. Wer bist du, wem hilfst du, und warum sollte es jemanden interessieren. Sie formt aus Antworten eine Marke, die nicht nur gut aussieht, sondern funktioniert.</p>
+                    <div class="duo-tags">
+                        <span class="duo-tag">Brand Strategy</span>
+                        <span class="duo-tag">Positionierung</span>
+                        <span class="duo-tag">Messaging</span>
+                        <span class="duo-tag">Content Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MARIKA -->
+            <div class="duo-card">
+                <img src="../DSC03675.jpeg" alt="Marika" class="duo-photo">
+                <div class="duo-overlay">
+                    <h2 class="duo-name">Marika</h2>
+                    <p class="duo-desc">Denkt in Pixeln. Formt die Oberfläche, die Logos, die Websites, die visuelle Sprache, die Menschen etwas fühlen lässt. Wenn die Strategie steht, macht sie daraus etwas Sichtbares. Eine Identität, die sich anfühlt wie du, nur klarer, schärfer, und mit einem Gesicht, das man nicht vergisst. Vom Logo bis zur letzten Seite deiner Website.</p>
+                    <div class="duo-tags">
+                        <span class="duo-tag">Brand Identity</span>
+                        <span class="duo-tag">Webdesign</span>
+                        <span class="duo-tag">UI/UX Design</span>
+                        <span class="duo-tag">3D Visuals</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUES -->
+        <section class="values">
+            <p class="values-label">Unsere Werte</p>
+            <div class="values-grid">
+                <div class="value-item">
+                    <p class="value-num">01</p>
+                    <h3 class="value-title">Strategie zuerst</h3>
+                    <p class="value-desc">Jedes Projekt beginnt mit Verstehen. Deine Ziele, dein Publikum, deine Geschichte. Wir planen, bevor wir bauen.</p>
+                </div>
+                <div class="value-item">
+                    <p class="value-num">02</p>
+                    <h3 class="value-title">Gebaut für die Dauer</h3>
+                    <p class="value-desc">Keine Trends um der Trends willen. Wir schaffen Arbeit, die gut altert und mit dir wächst.</p>
+                </div>
+                <div class="value-item">
+                    <p class="value-num">03</p>
+                    <h3 class="value-title">Persönlich, immer</h3>
+                    <p class="value-desc">Zwei Menschen, keine Umwege. Du arbeitest direkt mit uns. Den Leuten, die die Arbeit auch wirklich machen.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <span>&copy; 2026 meinhaus studio</span>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="../impressum.html">Impressum</a>
+            <a href="../datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to top
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            setTimeout(() => { window.scrollTo(0, 0); document.documentElement.classList.add('ready'); }, 50);
+        });
+
+        // Scroll-driven word reveal (manifest)
+        (function() {
+            const p = document.getElementById('manifest-text');
+            const text = p.textContent;
+            p.textContent = '';
+            text.split(' ').forEach((word, i, arr) => {
+                const span = document.createElement('span');
+                span.className = 'word';
+                span.textContent = word;
+                p.appendChild(span);
+                if (i < arr.length - 1) p.appendChild(document.createTextNode(' '));
+            });
+
+            const wordEls = p.querySelectorAll('.word');
+            function update() {
+                const rect = p.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const progress = Math.max(0, Math.min(1, (vh * 0.5 - rect.top) / (vh * 0.5)));
+                wordEls.forEach((el, i) => {
+                    el.classList.toggle('lit', progress > i / wordEls.length);
+                });
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+
+        // Reveal observer
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.value-item').forEach((el, i) => {
+            el.style.transitionDelay = (i * 0.12) + 's';
+            obs.observe(el);
+        });
+
+        // Nav
+        const navCenter = document.querySelector('.nav-center');
+        document.getElementById('nav-menu-toggle').addEventListener('click', () => navCenter.classList.toggle('open'));
+        document.getElementById('nav-menu-close').addEventListener('click', () => navCenter.classList.remove('open'));
+        document.querySelectorAll('.nav-menu-item').forEach(link => {
+            if (link.classList.contains('nav-services-toggle')) return;
+            link.addEventListener('click', () => navCenter.classList.remove('open'));
+        });
+        const servicesToggle = document.getElementById('nav-services-toggle');
+        const servicesDropdown = document.getElementById('nav-services-dropdown');
+        const servicesWrap = document.querySelector('.nav-services-wrap');
+        servicesToggle.addEventListener('click', e => { e.stopPropagation(); const o = servicesWrap.classList.toggle('open'); servicesDropdown.classList.toggle('active', o); });
+        const connectToggle = document.getElementById('nav-connect-toggle');
+        const connectDropdown = document.getElementById('nav-connect-dropdown');
+        const connectWrap = document.querySelector('.nav-connect-wrap');
+        connectToggle.addEventListener('click', () => { const o = connectWrap.classList.toggle('open'); connectDropdown.classList.toggle('active', o); });
+        function updateClocks() {
+            document.querySelectorAll('.nav-connect-time').forEach(el => {
+                el.textContent = new Date().toLocaleTimeString('de-DE', { timeZone: el.getAttribute('data-tz'), hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+            });
+        }
+        updateClocks(); setInterval(updateClocks, 1000);
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.nav-services-wrap')) { servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); }
+            if (!e.target.closest('.nav-connect-wrap')) { connectWrap.classList.remove('open'); connectDropdown.classList.remove('active'); }
+            if (!e.target.closest('.nav-center')) { navCenter.classList.remove('open'); }
+        });
+
+    </script>
+
+</body>
+</html>
