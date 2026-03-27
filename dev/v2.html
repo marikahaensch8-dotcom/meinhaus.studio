@@ -401,13 +401,13 @@
             max-width: 1360px;
             margin: 0 auto;
             padding: 0 var(--pad);
+            align-items: stretch;
         }
         .why-photo {
             background: url('../DSC03289.jpeg') center center / cover no-repeat;
-            min-height: 600px;
-            border-radius: 20px;
             filter: grayscale(1);
             transition: filter 0.6s ease;
+            margin: 80px 0;
         }
         .why-photo:hover { filter: grayscale(0); }
         .why-content {
@@ -429,18 +429,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 32px 0;
-            font-family: var(--sans);
-            font-size: 20px;
-            font-weight: 500;
+            padding: 28px 0;
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 400;
             color: var(--black);
             cursor: pointer;
             background: none; border: none;
             text-align: left;
+            transition: color var(--ease);
         }
         .why-trigger:hover { color: var(--grey); }
         .why-toggle {
-            font-size: 24px;
+            font-family: var(--sans);
+            font-size: 18px;
             font-weight: 300;
             width: 32px; height: 32px;
             display: flex; align-items: center; justify-content: center;
@@ -456,9 +458,9 @@
         .why-body-inner {
             padding: 0 0 32px;
             font-size: 16px;
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1.6;
-            color: var(--grey);
+            color: var(--black);
             max-width: 560px;
         }
 
@@ -499,20 +501,17 @@
 
         /* ===== CTA ===== */
         .cta {
-            padding: 120px var(--pad);
+            padding: 60px var(--pad) 220px;
             max-width: 1360px;
             margin: 0 auto;
         }
         .cta-card {
-            border: 1px solid var(--grey-light);
-            border-radius: 20px;
-            padding: 80px 60px;
+            padding: 40px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
             transition: border-color 0.3s ease;
         }
-        .cta-card:hover { border-color: var(--grey); }
         .cta-tagline {
             font-size: 14px;
             font-weight: 400;
@@ -531,18 +530,20 @@
         .cta-btn {
             display: inline-block;
             font-family: var(--sans);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
-            padding: 16px 48px;
-            border: 1px solid var(--black);
+            padding: 12px 32px;
+            border: none;
             border-radius: 100px;
+            background: rgba(200, 200, 200, 0.35);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             color: var(--black);
             text-decoration: none;
-            transition: background var(--ease), color var(--ease);
+            transition: background var(--ease);
         }
         .cta-btn:hover {
-            background: var(--black);
-            color: var(--white);
+            background: rgba(200, 200, 200, 0.5);
         }
 
         /* ===== CONTACT ===== */
@@ -693,7 +694,7 @@
             .cta-card { padding: 60px 24px; }
             .why { padding: 100px var(--pad); }
             .about-text { padding: 80px var(--pad); }
-            .cta { padding: 120px var(--pad); }
+            .cta { padding: 40px var(--pad); }
             .contact { padding: 100px var(--pad); }
             .footer { padding: 32px var(--pad); flex-direction: column; gap: 16px; text-align: center; }
         }
@@ -857,7 +858,7 @@
         <!-- CTA -->
         <section class="cta">
             <div class="cta-card r-fade">
-                <p class="cta-tagline">Zu viele Optionen? Kein Problem.</p>
+                <p class="cta-tagline">Noch unsicher? Kein Problem.</p>
                 <h2 class="cta-headline">Lass uns reden.</h2>
                 <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="cta-btn" target="_blank" rel="noopener noreferrer">Call buchen</a>
             </div>
@@ -868,7 +869,7 @@
             <div class="why-photo r-fade" role="img" aria-label="meinhaus studio"></div>
             <div class="why-content">
             <p class="label">Warum wir</p>
-            <h2 class="why-headline r-line"><span class="r-line-inner">Wir bauen Marken von Grund auf. Strategie, Design und alles dazwischen, aus einem Studio.</span></h2>
+            <h2 class="why-headline r-line"><span class="r-line-inner">Wir bauen Marken von Grund auf. Strategie, Design und alles dazwischen.</span></h2>
             <div class="why-items">
                 <div class="why-item">
                     <button class="why-trigger">Strategie zuerst <span class="why-toggle">+</span></button>
