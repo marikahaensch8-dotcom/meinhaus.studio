@@ -63,11 +63,14 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
+            padding: 20px var(--pad);
+            background: transparent;
+        }
+        .nav > nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px var(--pad);
-            background: transparent;
+            position: relative;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .nav-logo {
