@@ -18,12 +18,13 @@
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #1a1a1a;
-            --grey: #8a8a8a;
+            --grey: #737373;
             --grey-light: #e8e8e8;
             --white: #fafafa;
             --pure-white: #ffffff;
@@ -34,6 +35,12 @@
             --pad: 48px;
         }
 
+        /* ===== A11Y ===== */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .skip-link { position: absolute; top: -100%; left: 16px; z-index: 9999; padding: 12px 24px; background: var(--black); color: var(--pure-white); font-family: var(--sans); font-size: 14px; border-radius: 0 0 8px 8px; text-decoration: none; transition: top 0.2s ease; }
+        .skip-link:focus { top: 0; }
+
+        /* ===== RESET ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { -webkit-font-smoothing: antialiased; }
         html.ready { scroll-behavior: smooth; }
@@ -297,7 +304,7 @@
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
-            border-bottom-color: var(--black);
+            border-color: var(--black); box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.15);
         }
         .contact-form input::placeholder,
         .contact-form textarea::placeholder {
@@ -463,16 +470,26 @@
             .manifest-text { font-size: 24px; }
             .contact { padding: 80px var(--pad); }
         }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+            .r-line-inner { transform: none; }
+            .r-fade { opacity: 1; transform: none; }
+            .intro-text .word { color: var(--black); }
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
 
     <!-- Nav -->
     <header class="nav">
+        <nav aria-label="Hauptnavigation">
         <a href="/" class="nav-logo">meinhaus</a>
 
         <div class="nav-center">
-            <button class="nav-pill" id="nav-menu-toggle" aria-label="Menü öffnen">
+            <button class="nav-pill" id="nav-menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-menu">
                 <span class="nav-pill-icon">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -482,7 +499,7 @@
             </button>
             <div class="nav-menu" id="nav-menu">
                 <div class="nav-services-wrap">
-                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle" aria-expanded="false" aria-controls="nav-services-dropdown">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
                     <div class="nav-services-dropdown" id="nav-services-dropdown">
                         <a href="/branding-fuer-coaches" class="nav-services-link">Branding</a>
                         <a href="/webdesign-fuer-coaches" class="nav-services-link">Webdesign</a>
@@ -504,14 +521,14 @@
         </div>
 
         <div class="nav-connect-wrap">
-            <button class="nav-connect" id="nav-connect-toggle">
+            <button class="nav-connect" id="nav-connect-toggle" aria-expanded="false" aria-controls="nav-connect-dropdown">
                 <span>Komm rein</span>
                 <span class="nav-connect-icon">
-                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="1" y="1" width="12" height="14"/>
                         <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
                     </svg>
-                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none" aria-hidden="true">
                         <rect x="1" y="1" width="12" height="14"/>
                         <path d="M1 1 L6 3 L6 13 L1 15"/>
                         <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
@@ -548,9 +565,10 @@
                 </div>
             </div>
         </div>
+        </nav>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- MANIFEST — hero statement -->
         <section class="manifest manifest-hero">
@@ -597,10 +615,13 @@
                 <p class="contact-label">Projekt anfragen</p>
                 <h2 class="contact-heading">Unsere Tür steht offen.</h2>
                 <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqeyodor" method="POST">
-                    <input type="text" name="name" placeholder="Name / Unternehmen" required>
-                    <input type="email" name="email" placeholder="E-Mail" required>
+                    <label for="contact-name" class="sr-only">Name / Unternehmen</label>
+                    <input type="text" name="name" id="contact-name" placeholder="Name / Unternehmen" required>
+                    <label for="contact-email" class="sr-only">E-Mail</label>
+                    <input type="email" name="email" id="contact-email" placeholder="E-Mail" required>
                     <div class="contact-form-row">
-                        <select name="service" required>
+                        <label for="contact-service" class="sr-only">Leistung</label>
+                        <select name="service" id="contact-service" required>
                             <option value="" disabled selected>Leistung</option>
                             <option>Brand Strategy</option>
                             <option>Brand Identity</option>
@@ -609,7 +630,8 @@
                             <option>Rebrand</option>
                             <option>Anderes</option>
                         </select>
-                        <select name="budget">
+                        <label for="contact-budget" class="sr-only">Budget</label>
+                        <select name="budget" id="contact-budget">
                             <option value="" disabled selected>Budget</option>
                             <option>3-5k</option>
                             <option>5-10k</option>
@@ -617,17 +639,19 @@
                             <option>Noch unsicher</option>
                         </select>
                     </div>
-                    <select name="timeline">
+                    <label for="contact-timeline" class="sr-only">Zeitrahmen</label>
+                    <select name="timeline" id="contact-timeline">
                         <option value="" disabled selected>Zeitrahmen</option>
                         <option>So schnell wie möglich</option>
                         <option>1-2 Wochen</option>
                         <option>3-6 Wochen</option>
                         <option>Kein Zeitdruck</option>
                     </select>
-                    <textarea name="message" placeholder="Wobei können wir helfen?"></textarea>
+                    <label for="contact-message" class="sr-only">Nachricht</label>
+                    <textarea name="message" id="contact-message" placeholder="Wobei können wir helfen?"></textarea>
                     <button type="submit" class="contact-submit">Anfrage senden</button>
                 </form>
-                <div class="contact-success" id="contact-success">
+                <div class="contact-success" id="contact-success" role="status" aria-live="polite">
                     <h3>Danke.</h3>
                     <p>Wir melden uns in Kürze bei dir.</p>
                 </div>
@@ -654,9 +678,9 @@
                     <a href="/datenschutz">Datenschutz</a>
                 </div>
                 <div class="footer-right">
-                    <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="footer-link-text">Instagram</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
-                    <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="footer-link-text">LinkedIn</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-                    <a href="mailto:hello@meinhaus.studio" class="footer-link"><span class="footer-link-text">Mail</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                    <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Instagram"><span class="footer-link-text">Instagram</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+                    <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn"><span class="footer-link-text">LinkedIn</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                    <a href="mailto:hello@meinhaus.studio" class="footer-link" aria-label="E-Mail"><span class="footer-link-text">Mail</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
                 </div>
             </div>
     </footer>
@@ -684,6 +708,7 @@
             });
 
             const wordEls = p.querySelectorAll('.word');
+            let rafId = null;
             function update() {
                 const rect = p.getBoundingClientRect();
                 const vh = window.innerHeight;
@@ -694,9 +719,18 @@
             }
             function loop() {
                 update();
-                requestAnimationFrame(loop);
+                rafId = requestAnimationFrame(loop);
             }
-            requestAnimationFrame(loop);
+            const revealObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!rafId) rafId = requestAnimationFrame(loop);
+                    } else {
+                        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+                    }
+                });
+            }, { threshold: 0 });
+            revealObs.observe(p);
         })();
 
         // Reveal observer
@@ -712,36 +746,58 @@
 
         // Nav
         const navCenter = document.querySelector('.nav-center');
-        document.getElementById('nav-menu-toggle').addEventListener('click', () => navCenter.classList.toggle('open'));
-        document.getElementById('nav-menu-close').addEventListener('click', () => navCenter.classList.remove('open'));
+        const navMenuToggle = document.getElementById('nav-menu-toggle');
+        navMenuToggle.addEventListener('click', () => {
+            const isOpen = navCenter.classList.toggle('open');
+            navMenuToggle.setAttribute('aria-expanded', isOpen);
+        });
+        document.getElementById('nav-menu-close').addEventListener('click', () => {
+            navCenter.classList.remove('open');
+            navMenuToggle.setAttribute('aria-expanded', 'false');
+        });
         document.querySelectorAll('.nav-menu-item').forEach(link => {
             if (link.classList.contains('nav-services-toggle')) return;
-            link.addEventListener('click', () => navCenter.classList.remove('open'));
+            link.addEventListener('click', () => {
+                navCenter.classList.remove('open');
+                navMenuToggle.setAttribute('aria-expanded', 'false');
+            });
         });
         const servicesToggle = document.getElementById('nav-services-toggle');
         const servicesDropdown = document.getElementById('nav-services-dropdown');
         const servicesWrap = document.querySelector('.nav-services-wrap');
-        servicesToggle.addEventListener('click', e => { e.stopPropagation(); const o = servicesWrap.classList.toggle('open'); servicesDropdown.classList.toggle('active', o); });
+        servicesToggle.addEventListener('click', e => {
+            e.stopPropagation();
+            const o = servicesWrap.classList.toggle('open');
+            servicesDropdown.classList.toggle('active', o);
+            servicesToggle.setAttribute('aria-expanded', o);
+        });
         const connectToggle = document.getElementById('nav-connect-toggle');
         const connectDropdown = document.getElementById('nav-connect-dropdown');
         const connectWrap = document.querySelector('.nav-connect-wrap');
-        connectToggle.addEventListener('click', () => { const o = connectWrap.classList.toggle('open'); connectDropdown.classList.toggle('active', o); });
+        let clockInterval = null;
         function updateClocks() {
             document.querySelectorAll('.nav-connect-time').forEach(el => {
                 el.textContent = new Date().toLocaleTimeString('de-DE', { timeZone: el.getAttribute('data-tz'), hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
             });
         }
-        updateClocks(); setInterval(updateClocks, 1000);
+        function startClocks() { updateClocks(); if (!clockInterval) clockInterval = setInterval(updateClocks, 1000); }
+        function stopClocks() { if (clockInterval) { clearInterval(clockInterval); clockInterval = null; } }
+        connectToggle.addEventListener('click', () => {
+            const isOpen = connectWrap.classList.toggle('open');
+            connectDropdown.classList.toggle('active', isOpen);
+            connectToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) startClocks(); else stopClocks();
+        });
         document.addEventListener('click', e => {
-            if (!e.target.closest('.nav-services-wrap')) { servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); }
-            if (!e.target.closest('.nav-connect-wrap')) { connectWrap.classList.remove('open'); connectDropdown.classList.remove('active'); }
-            if (!e.target.closest('.nav-center')) { navCenter.classList.remove('open'); }
+            if (!e.target.closest('.nav-services-wrap')) { servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); servicesToggle.setAttribute('aria-expanded', 'false'); }
+            if (!e.target.closest('.nav-connect-wrap')) { connectWrap.classList.remove('open'); connectDropdown.classList.remove('active'); connectToggle.setAttribute('aria-expanded', 'false'); stopClocks(); }
+            if (!e.target.closest('.nav-center')) { navCenter.classList.remove('open'); navMenuToggle.setAttribute('aria-expanded', 'false'); }
         });
 
         window.addEventListener('scroll', () => {
-            servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active');
-            connectWrap.classList.remove('open'); connectDropdown.classList.remove('active');
-            navCenter.classList.remove('open');
+            servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); servicesToggle.setAttribute('aria-expanded', 'false');
+            connectWrap.classList.remove('open'); connectDropdown.classList.remove('active'); connectToggle.setAttribute('aria-expanded', 'false'); stopClocks();
+            navCenter.classList.remove('open'); navMenuToggle.setAttribute('aria-expanded', 'false');
         }, { passive: true });
 
         // ===== CONTACT FORM =====

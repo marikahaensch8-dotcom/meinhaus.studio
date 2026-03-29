@@ -21,13 +21,14 @@
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
     <style>
         /* ===== TOKENS ===== */
         :root {
             --black: #1a1a1a;
-            --grey: #8a8a8a;
+            --grey: #737373;
             --grey-light: #e8e8e8;
             --white: #fafafa;
             --pure-white: #ffffff;
@@ -37,6 +38,11 @@
             --ease-out: cubic-bezier(.19, 1, .22, 1);
             --pad: 48px;
         }
+
+        /* ===== A11Y ===== */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .skip-link { position: absolute; top: -100%; left: 16px; z-index: 9999; padding: 12px 24px; background: var(--black); color: var(--pure-white); font-family: var(--sans); font-size: 14px; border-radius: 0 0 8px 8px; text-decoration: none; transition: top 0.2s ease; }
+        .skip-link:focus { top: 0; }
 
         /* ===== RESET ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -573,16 +579,24 @@
             .quiz-result-number { font-size: 72px; }
             .quiz-cta { flex-direction: column; align-items: flex-start; }
         }
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+            .r-line-inner { transform: none; }
+            .r-fade { opacity: 1; transform: none; }
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Nav -->
     <header class="nav">
+        <nav aria-label="Main navigation">
         <a href="/en" class="nav-logo">meinhaus</a>
 
         <div class="nav-center">
-            <button class="nav-pill" id="nav-menu-toggle" aria-label="Open menu">
+            <button class="nav-pill" id="nav-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
                 <span class="nav-pill-icon">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M1 1h4M1 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -592,7 +606,7 @@
             </button>
             <div class="nav-menu" id="nav-menu">
                 <div class="nav-services-wrap">
-                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle" aria-expanded="false" aria-controls="nav-services-dropdown">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
                     <div class="nav-services-dropdown" id="nav-services-dropdown">
                         <a href="/branding-for-coaches" class="nav-services-link">Branding</a>
                         <a href="/webdesign-for-coaches" class="nav-services-link">Webdesign</a>
@@ -614,14 +628,14 @@
         </div>
 
         <div class="nav-connect-wrap">
-            <button class="nav-connect" id="nav-connect-toggle">
+            <button class="nav-connect" id="nav-connect-toggle" aria-expanded="false" aria-controls="nav-connect-dropdown">
                 <span>Come in</span>
                 <span class="nav-connect-icon">
-                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="1" y="1" width="12" height="14"/>
                         <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
                     </svg>
-                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none" aria-hidden="true">
                         <rect x="1" y="1" width="12" height="14"/>
                         <path d="M1 1 L6 3 L6 13 L1 15"/>
                         <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
@@ -658,9 +672,10 @@
                 </div>
             </div>
         </div>
+        </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="quiz" id="quiz">
             <div class="quiz-inner">
 
@@ -888,11 +903,13 @@
         const navMenuClose = document.getElementById('nav-menu-close');
 
         navMenuToggle.addEventListener('click', () => {
-            navCenter.classList.toggle('open');
+            const isOpen = navCenter.classList.toggle('open');
+            navMenuToggle.setAttribute('aria-expanded', isOpen);
         });
 
         navMenuClose.addEventListener('click', () => {
             navCenter.classList.remove('open');
+            navMenuToggle.setAttribute('aria-expanded', 'false');
         });
 
         document.querySelectorAll('.nav-menu-item').forEach((link) => {
@@ -911,6 +928,7 @@
             e.stopPropagation();
             const isOpen = servicesWrap.classList.toggle('open');
             servicesDropdown.classList.toggle('active', isOpen);
+            servicesToggle.setAttribute('aria-expanded', isOpen);
         });
 
         // Connect dropdown
@@ -921,6 +939,8 @@
         connectToggle.addEventListener('click', () => {
             const isOpen = connectWrap.classList.toggle('open');
             connectDropdown.classList.toggle('active', isOpen);
+            connectToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) startClocks(); else stopClocks();
         });
 
         // Live clocks
@@ -937,28 +957,41 @@
                 }).toUpperCase();
             });
         }
-        updateClocks();
-        setInterval(updateClocks, 1000);
+        let clockInterval = null;
+        function startClocks() { if (!clockInterval) { updateClocks(); clockInterval = setInterval(updateClocks, 1000); } }
+        function stopClocks() { if (clockInterval) { clearInterval(clockInterval); clockInterval = null; } }
 
         // Close dropdowns on outside click
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.nav-services-wrap')) {
                 servicesWrap.classList.remove('open');
                 servicesDropdown.classList.remove('active');
+                servicesToggle.setAttribute('aria-expanded', 'false');
             }
             if (!e.target.closest('.nav-connect-wrap')) {
-                connectWrap.classList.remove('open');
-                connectDropdown.classList.remove('active');
+                if (connectWrap.classList.contains('open')) {
+                    connectWrap.classList.remove('open');
+                    connectDropdown.classList.remove('active');
+                    connectToggle.setAttribute('aria-expanded', 'false');
+                    stopClocks();
+                }
             }
             if (!e.target.closest('.nav-center')) {
                 navCenter.classList.remove('open');
+                navMenuToggle.setAttribute('aria-expanded', 'false');
             }
         });
 
         window.addEventListener('scroll', () => {
             servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active');
-            connectWrap.classList.remove('open'); connectDropdown.classList.remove('active');
+            servicesToggle.setAttribute('aria-expanded', 'false');
+            if (connectWrap.classList.contains('open')) {
+                connectWrap.classList.remove('open'); connectDropdown.classList.remove('active');
+                connectToggle.setAttribute('aria-expanded', 'false');
+                stopClocks();
+            }
             navCenter.classList.remove('open');
+            navMenuToggle.setAttribute('aria-expanded', 'false');
         }, { passive: true });
     </script>
 
