@@ -127,7 +127,7 @@
         .nav-connect-city { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
         .nav-connect-time { font-size: 15px; font-weight: 400; color: var(--black); white-space: nowrap; }
         .nav-connect-row { display: flex; flex-direction: column; gap: 4px; }
-        .nav-connect-label { font-size: 15px; font-weight: 400; color: var(--black); }
+        .nav-connect-label { font-size: 15px; font-weight: 500; color: var(--black); }
         .nav-connect-link { font-size: 14px; color: var(--grey); text-decoration: none; }
         .nav-connect-link:hover { color: var(--black); }
         .nav-connect-social { display: flex; align-items: baseline; justify-content: space-between; }
@@ -288,15 +288,62 @@
         }
 
         /* ===== FOOTER ===== */
-        .footer {
-            padding: 48px var(--pad);
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 13px; font-weight: 400; color: var(--grey);
-            border-top: 1px solid var(--grey-light);
+        .site-footer {
+            padding: 0 0 32px;
+            background: var(--pure-white);
         }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a { color: var(--grey); text-decoration: none; }
-        .footer-links a:hover { color: var(--black); }
+        .footer-lines {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        .footer-line {
+            height: 0;
+            border-top: 1px solid var(--black);
+            margin-bottom: 12px;
+        }
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px var(--pad);
+            border-top: 1px solid var(--black);
+        }
+        .footer-row:last-child {
+            border-bottom: 1px solid var(--black);
+        }
+        .footer-left {
+            display: flex; gap: 24px; align-items: center;
+        }
+        .footer-left span, .footer-left a {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            transition: opacity var(--ease);
+        }
+        .footer-left a:hover { opacity: 0.5; }
+        .footer-right {
+            display: flex; gap: 28px; align-items: center;
+        }
+        .footer-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--serif);
+            font-size: clamp(20px, 3vw, 32px);
+            color: var(--black);
+            text-decoration: none;
+            transition: opacity var(--ease);
+        }
+        .footer-link:hover { opacity: 0.5; }
+        .footer-icon-arrow {
+            width: clamp(14px, 2vw, 20px);
+            height: clamp(14px, 2vw, 20px);
+            flex-shrink: 0;
+        }
+        .footer-icon-social {
+            display: none;
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
@@ -308,7 +355,7 @@
             .nav-center.open .nav-menu {
                 display: flex; flex-direction: column; position: absolute;
                 top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-                width: 200px; background: #f2f2f2; border-radius: 16px;
+                width: 200px; background: rgba(235, 235, 235, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 16px;
                 padding: 8px; gap: 2px; z-index: 100;
             }
             .nav-center.open .nav-menu-item { height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%; }
@@ -324,8 +371,24 @@
             .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
 
             .duo { grid-template-columns: 1fr; padding: 0 var(--pad) 100px; }
-            .duo-card { aspect-ratio: 2 / 3; }
+            .duo-card { aspect-ratio: auto; display: flex; flex-direction: column; }
+            .duo-photo { aspect-ratio: 2 / 3; }
+            .duo-overlay {
+                position: static;
+                transform: none;
+                left: auto; right: auto; bottom: auto;
+                padding: 24px 0;
+            }
             .values-grid { grid-template-columns: 1fr; gap: 40px; }
+
+            .footer-row { padding: 12px var(--pad); align-items: center; }
+            .footer-left { gap: 12px; }
+            .footer-left span, .footer-left a { font-size: 11px; }
+            .footer-right { gap: 16px; }
+            .footer-link-text, .footer-icon-arrow { display: none; }
+            .footer-icon-social { display: block; width: 16px; height: 16px; stroke: none; fill: var(--black); }
+            .footer-link { font-size: 0; }
+            .footer-line { margin-bottom: 8px; }
         }
 
         @media (max-width: 600px) {
@@ -333,7 +396,6 @@
             .manifest { padding: 100px var(--pad); }
             .manifest-text { font-size: 24px; }
             .values { padding: 0 var(--pad) 100px; }
-            .footer { padding: 32px var(--pad); flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
@@ -436,12 +498,13 @@
                 <img src="../DSC03289.jpeg" alt="Emma" class="duo-photo">
                 <div class="duo-overlay">
                     <h2 class="duo-name">Emma</h2>
-                    <p class="duo-desc">Denkt in Räumen. Baut das Fundament, die Systeme, die Strategie, die Struktur, die alles zusammenhält. Bevor ein Pixel gesetzt wird, stellt sie die Fragen, die andere überspringen. Wer bist du, wem hilfst du, und warum sollte es jemanden interessieren. Sie formt aus Antworten eine Marke, die nicht nur gut aussieht, sondern funktioniert.</p>
+                    <p class="duo-desc">Denkt in Räumen. Baut die strategische Grundlage, auf der alles andere steht. Positionierung, Markenstrategie, Messaging, Content. Sie verbindet analytisches Denken mit kreativem Gespür und bringt Marken auch dreidimensional zum Leben.</p>
                     <div class="duo-tags">
                         <span class="duo-tag">Brand Strategy</span>
                         <span class="duo-tag">Positionierung</span>
                         <span class="duo-tag">Messaging</span>
                         <span class="duo-tag">Content Strategy</span>
+                        <span class="duo-tag">3D Visuals</span>
                     </div>
                 </div>
             </div>
@@ -451,12 +514,12 @@
                 <img src="../DSC03675.jpeg" alt="Marika" class="duo-photo">
                 <div class="duo-overlay">
                     <h2 class="duo-name">Marika</h2>
-                    <p class="duo-desc">Denkt in Pixeln. Formt die Oberfläche, die Logos, die Websites, die visuelle Sprache, die Menschen etwas fühlen lässt. Wenn die Strategie steht, macht sie daraus etwas Sichtbares. Eine Identität, die sich anfühlt wie du, nur klarer, schärfer, und mit einem Gesicht, das man nicht vergisst. Vom Logo bis zur letzten Seite deiner Website.</p>
+                    <p class="duo-desc">Denkt in Pixeln. Gibt der Strategie ein Gesicht. Websites, Illustrationen, visuelle Systeme, alles, was eine Marke sichtbar und spürbar macht. Sie gestaltet Identitäten, die sich sofort richtig anfühlen und im Kopf bleiben. Vom ersten Entwurf bis zur fertigen Website.</p>
                     <div class="duo-tags">
                         <span class="duo-tag">Brand Identity</span>
                         <span class="duo-tag">Webdesign</span>
                         <span class="duo-tag">UI/UX Design</span>
-                        <span class="duo-tag">3D Visuals</span>
+                        <span class="duo-tag">Illustration</span>
                     </div>
                 </div>
             </div>
@@ -486,14 +549,29 @@
 
     </main>
 
-    <footer class="footer">
-        <span>&copy; 2026 meinhaus studio</span>
-        <div class="footer-links">
-            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="../impressum.html">Impressum</a>
-            <a href="../datenschutz.html">Datenschutz</a>
+    <footer class="site-footer">
+        <div class="footer-lines">
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
         </div>
+            <div class="footer-row">
+                <div class="footer-left">
+                    <span>&copy; 2026 meinhaus studio</span>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="footer-link-text">Instagram</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+                    <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="footer-link-text">LinkedIn</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                    <a href="mailto:hello@meinhaus.studio" class="footer-link"><span class="footer-link-text">Mail</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                </div>
+            </div>
     </footer>
 
     <script>
@@ -527,8 +605,11 @@
                     el.classList.toggle('lit', progress > i / wordEls.length);
                 });
             }
-            window.addEventListener('scroll', update, { passive: true });
-            update();
+            function loop() {
+                update();
+                requestAnimationFrame(loop);
+            }
+            requestAnimationFrame(loop);
         })();
 
         // Reveal observer
