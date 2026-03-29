@@ -15,6 +15,13 @@
     <meta property="og:url" content="https://meinhaus.studio/en">
     <meta property="og:site_name" content="meinhaus studio">
     <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1800">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="meinhaus studio · Branding &amp; Web Design for Coaches and Founders">
+    <meta name="twitter:description" content="Personal Brand Studio for coaches and founders. We build brands from the ground up.">
+    <meta name="twitter:image" content="https://meinhaus.studio/DSC03675.jpeg">
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -816,6 +823,35 @@
             .intro-text .word { color: var(--black); }
         }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "meinhaus studio",
+        "url": "https://meinhaus.studio",
+        "logo": "https://meinhaus.studio/DSC03675.jpeg",
+        "description": "Personal Brand Studio for coaches and founders. Branding, web design and creative direction.",
+        "foundingDate": "2025",
+        "email": ["marika@meinhaus.studio", "emma@meinhaus.studio"],
+        "sameAs": [
+            "https://www.instagram.com/meinhaus.studio/",
+            "https://www.linkedin.com/company/mein-haus-studio/"
+        ],
+        "address": [
+            {"@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB"},
+            {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Branding", "url": "https://meinhaus.studio/branding-for-coaches"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Web Design", "url": "https://meinhaus.studio/webdesign-for-coaches"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creative Direction"}}
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
