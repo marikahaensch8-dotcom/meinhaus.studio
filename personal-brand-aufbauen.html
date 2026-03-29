@@ -624,17 +624,18 @@
             position: fixed;
             bottom: 24px; right: var(--pad);
             z-index: 9999;
-            text-align: right;
+            align-items: center;
+            gap: 20px;
         }
-        .cookie-banner.visible { display: block; }
+        .cookie-banner.visible { display: flex; }
         .cookie-banner p {
             font-family: var(--sans);
             font-size: 13px;
             font-weight: 300;
             color: #bbb;
-            margin: 0 0 4px;
+            margin: 0;
         }
-        .cookie-actions { display: flex; justify-content: flex-end; gap: 16px; }
+        .cookie-actions { display: flex; gap: 16px; }
         .cookie-action {
             font-family: var(--sans);
             font-size: 13px;
@@ -1077,7 +1078,7 @@
         <p>Lust auf Cookies?</p>
         <div class="cookie-actions">
             <button class="cookie-action" id="cookie-accept">Gerne</button>
-            <button class="cookie-action" id="cookie-decline">Naechstes Mal</button>
+            <button class="cookie-action" id="cookie-decline">Nächstes Mal</button>
         </div>
     </div>
 
