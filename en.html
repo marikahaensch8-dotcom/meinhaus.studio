@@ -4,33 +4,793 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>meinhaus studio · Branding & Web Design for Coaches and Founders</title>
-    <meta name="description" content="Personal brand studio for coaches and founders. We build brands from the ground up. Strategy, identity, website and content. Based in London & Berlin.">
+    <meta name="description" content="Personal Brand Studio for coaches and founders. We build brands from the ground up.">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://meinhaus.studio/en.html">
     <link rel="alternate" hreflang="en" href="https://meinhaus.studio/en.html">
     <link rel="alternate" hreflang="de" href="https://meinhaus.studio/">
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="meinhaus studio · Branding & Web Design for Coaches and Founders">
-    <meta property="og:description" content="Personal brand studio for coaches and founders. We build brands from the ground up. Strategy, identity, website and content. Based in London & Berlin.">
+    <meta property="og:title" content="meinhaus studio · Branding &amp; Web Design for Coaches and Founders">
+    <meta property="og:description" content="Personal Brand Studio for coaches and founders. We build brands from the ground up.">
     <meta property="og:url" content="https://meinhaus.studio/en.html">
     <meta property="og:site_name" content="meinhaus studio">
     <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
-
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://formspree.io">
-
     <link rel="icon" href="House.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== TOKENS ===== */
+        :root {
+            --black: #1a1a1a;
+            --grey: #8a8a8a;
+            --grey-light: #e8e8e8;
+            --white: #fafafa;
+            --pure-white: #ffffff;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'General Sans', 'Helvetica Neue', sans-serif;
+            --ease: 0.3s ease;
+            --ease-out: cubic-bezier(.19, 1, .22, 1);
+            --pad: 48px;
+        }
+
+        /* ===== RESET ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html.ready { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--black);
+            background: var(--pure-white);
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: var(--sans); border: none; cursor: pointer; background: none; }
+        ::selection { color: var(--white); background: var(--black); }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px var(--pad);
+            background: transparent;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-logo {
+            font-family: var(--sans);
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--black);
+        }
+
+        /* Center pill */
+        .nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-pill {
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 40px;
+            border: none; border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            cursor: pointer; color: var(--black);
+            transition: background var(--ease), color var(--ease);
+        }
+        .nav-pill:hover { background: rgba(220, 220, 220, 0.75); }
+        .nav-pill-icon {
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s var(--ease-out);
+        }
+        .nav-menu { display: none; align-items: center; gap: 8px; }
+        .nav-center .nav-pill:first-child { display: flex; }
+        .nav-center.open > .nav-pill:first-child { display: none; }
+        .nav-center.open .nav-menu { display: flex; }
+        .nav-menu-item {
+            display: flex; align-items: center; justify-content: center;
+            height: 36px; padding: 0 20px; border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            color: var(--black); text-decoration: none;
+            transition: background var(--ease);
+        }
+        .nav-menu-item:hover { background: rgba(220, 220, 220, 0.75); color: var(--black); }
+        .nav-pill-close { background: var(--black); color: var(--pure-white); }
+        .nav-pill-close:hover { background: #333; }
+
+        /* Services dropdown */
+        .nav-services-wrap { position: relative; }
+        .nav-services-toggle { cursor: pointer; border: none; gap: 6px; }
+        .nav-services-chevron { display: inline-flex; align-items: center; transition: transform var(--ease); }
+        .nav-services-wrap.open .nav-services-chevron { transform: rotate(180deg); }
+        .nav-services-dropdown {
+            display: none; position: absolute; top: calc(100% + 8px);
+            left: 0;
+            min-width: 220px; background: rgba(235, 235, 235, 0.85);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 12px; padding: 8px;
+            flex-direction: column; z-index: 100;
+        }
+        .nav-services-dropdown.active { display: flex; }
+        .nav-services-link {
+            display: block; padding: 10px 14px;
+            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            color: var(--black); text-decoration: none;
+            border-radius: 8px; transition: background var(--ease);
+        }
+        .nav-services-link:hover { background: rgba(0,0,0,0.05); }
+        .nav-menu-item.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+            cursor: default;
+        }
+
+
+        /* Connect pill */
+        .nav-connect-wrap { position: relative; }
+        .nav-connect {
+            display: flex; align-items: center; gap: 8px;
+            height: 40px; padding: 0 20px; border: none; border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            color: var(--black); cursor: pointer; transition: background var(--ease);
+        }
+        .nav-connect:hover { background: rgba(220, 220, 220, 0.75); }
+        .nav-connect-icon { display: inline-flex; align-items: center; transition: transform var(--ease); }
+        .nav-connect-dropdown {
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            width: 360px; background: rgba(235, 235, 235, 0.85);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px; padding: 24px;
+        }
+        .nav-connect-dropdown.active { display: block; }
+        .nav-connect-wrap.open svg.door-closed { display: none; }
+        .nav-connect-wrap.open svg.door-open { display: block !important; }
+        .nav-connect-body { display: flex; flex-direction: column; gap: 20px; }
+        .nav-connect-location { display: flex; justify-content: space-between; align-items: flex-start; }
+        .nav-connect-city { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+        .nav-connect-time { font-size: 15px; font-weight: 400; color: var(--black); white-space: nowrap; }
+        .nav-connect-row { display: flex; flex-direction: column; gap: 4px; }
+        .nav-connect-label { font-size: 15px; font-weight: 500; color: var(--black); }
+        .nav-connect-link { font-size: 14px; color: var(--grey); text-decoration: none; }
+        .nav-connect-link:hover { color: var(--black); }
+        .nav-connect-social { display: flex; align-items: baseline; justify-content: space-between; }
+        .nav-connect-social-links { display: flex; gap: 16px; }
+        .nav-connect-social-links a { font-size: 14px; color: var(--grey); text-decoration: none; }
+        .nav-connect-social-links a:hover { color: var(--black); }
+
+        /* ===== SHARED ===== */
+        .label {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 32px;
+        }
+        .divider { height: 1px; background: var(--grey-light); margin: 0 var(--pad); }
+
+        /* ===== REVEAL SYSTEM ===== */
+        .r-line {
+            overflow: hidden;
+        }
+        .r-line-inner {
+            transform: translateY(110%);
+            transition: transform 1s var(--ease-out);
+        }
+        .r-line.visible .r-line-inner {
+            transform: translateY(0);
+        }
+
+        .r-fade {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.8s var(--ease-out);
+        }
+        .r-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px var(--pad) 80px;
+            position: relative;
+        }
+        .hero-content { max-width: 900px; }
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(52px, 7vw, 96px);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--black);
+            min-height: 1.05em;
+        }
+        .hero h1 .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 0.8em;
+            background: var(--black);
+            margin-left: 4px;
+            vertical-align: baseline;
+            animation: blink 0.6s step-end infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .hero-sub {
+            font-family: var(--sans);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--black);
+            margin-top: 24px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        .hero-sub.visible { opacity: 1; }
+        .hero-meta {
+            position: absolute;
+            bottom: 40px; left: var(--pad); right: var(--pad);
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--grey);
+            opacity: 0;
+            animation: fadeIn 1s ease 2.5s both;
+        }
+
+        /* ===== INTRO ===== */
+        .intro {
+            padding: 160px var(--pad);
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .intro-text {
+            font-family: var(--sans);
+            font-size: clamp(24px, 3vw, 40px);
+            font-weight: 300;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            color: var(--black);
+        }
+        .intro-text .word {
+            color: var(--grey-light);
+            transition: color 0.3s ease;
+        }
+        .intro-text .word.lit {
+            color: var(--black);
+        }
+
+        /* ===== SERVICES (cards) ===== */
+        .services {
+            padding: 160px var(--pad);
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        .services-headline {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+        .service-card {
+            position: relative;
+            border: 1px solid var(--black);
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out, border-color 0.3s ease;
+            transition-delay: calc(var(--index, 0) * 400ms);
+        }
+        .services-grid.is-visible .service-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-card:hover { border-color: var(--black); }
+        .service-card-title {
+            font-family: var(--serif);
+            font-size: clamp(28px, 2.8vw, 40px);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .service-card-desc {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--black);
+            margin-bottom: 40px;
+            max-width: 360px;
+        }
+        .service-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s var(--ease-out), opacity 0.4s ease, padding 0.5s var(--ease-out);
+        }
+        .service-card:hover .service-card-tags {
+            max-height: 80px;
+            opacity: 1;
+            padding-top: 16px;
+        }
+        .service-card-tag {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--grey);
+        }
+        .service-card-tag::after {
+            content: '·';
+            margin-left: 8px;
+        }
+        .service-card-tag:last-child::after {
+            content: none;
+        }
+        .service-card-link {
+            margin-top: auto;
+            padding-top: 24px;
+        }
+        .service-card-link a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--black);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-card-link a span {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .service-card-link a span::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 1px;
+            background: var(--black);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease-out);
+        }
+        .service-card-link a:hover span::after {
+            transform: scaleX(1);
+        }
+        .service-card-link a::after {
+            content: '';
+            width: 20px; height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'/%3E%3Cpath d='M7 7h10v10'/%3E%3C/svg%3E") no-repeat center;
+            transition: transform 0.3s var(--ease-out);
+        }
+        .service-card-link a:hover::after {
+            transform: translate(2px, -2px);
+        }
+
+
+        /* ===== SCOPE (merged into services, kept as ID target) ===== */
+
+        /* ===== WHY ===== */
+        .why {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 var(--pad);
+            align-items: stretch;
+        }
+        .why-photo {
+            background: url('DSC03289.jpeg') center center / cover no-repeat;
+            filter: grayscale(1);
+            transition: filter 0.6s ease;
+            margin: 80px 0;
+        }
+        .why-photo:hover { filter: grayscale(0); }
+        .why-content {
+            padding: 80px 0 80px 64px;
+        }
+        .why-headline {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3vw, 44px);
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+            max-width: 700px;
+            margin-bottom: 80px;
+        }
+        .why-items { border-top: 1px solid var(--black); }
+        .why-item { border-bottom: 1px solid var(--black); }
+        .why-trigger {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--black);
+            cursor: pointer;
+            background: none; border: none;
+            text-align: left;
+            transition: color var(--ease);
+        }
+        .why-trigger:hover { color: var(--grey); }
+        .why-toggle {
+            font-family: var(--sans);
+            font-size: 18px;
+            font-weight: 300;
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.3s var(--ease-out);
+        }
+        .why-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--ease-out);
+        }
+        .why-body.open { /* set by JS */ }
+        .why-body-inner {
+            padding: 0 0 32px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--black);
+            max-width: 560px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+        }
+        .about-text {
+            padding: 120px var(--pad);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .about-heading {
+            font-family: var(--serif);
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+        .about-text p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--grey);
+            margin-bottom: 20px;
+            max-width: 480px;
+        }
+        .about-photo {
+            background: url('DSC03675.jpeg') center center / cover no-repeat;
+            min-height: 500px;
+            filter: grayscale(1);
+            transition: filter 0.6s ease;
+        }
+        .about-photo:hover { filter: grayscale(0); }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 60px var(--pad) 220px;
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        .cta-card {
+            padding: 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .cta-tagline {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--grey);
+            margin-bottom: 32px;
+            letter-spacing: 0.02em;
+        }
+        .cta-headline {
+            font-family: var(--serif);
+            font-size: clamp(48px, 8vw, 120px);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 48px;
+        }
+        .cta-btn {
+            display: inline-block;
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 400;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--black);
+            text-decoration: none;
+            transition: background var(--ease);
+        }
+        .cta-btn:hover {
+            background: rgba(220, 220, 220, 0.75);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 100px var(--pad);
+        }
+        .contact-inner {
+            max-width: 520px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-label {
+            font-size: 12px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 16px;
+        }
+        .contact-heading {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--black);
+            margin-bottom: 40px;
+        }
+        .contact-form {
+            display: flex; flex-direction: column; gap: 16px;
+            text-align: left;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            font-family: var(--sans);
+            font-size: 15px; font-weight: 400;
+            padding: 16px 18px;
+            border: 1px solid var(--black);
+            border-radius: 10px;
+            background: var(--pure-white);
+            color: var(--black);
+            outline: none; width: 100%;
+            transition: border-color var(--ease);
+            -webkit-appearance: none;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-bottom-color: var(--black);
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--grey);
+        }
+        .contact-form select {
+            color: var(--grey);
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            padding-right: 44px;
+        }
+        .contact-form select option { background: var(--white); color: var(--black); }
+        .contact-form select:valid { color: var(--black); }
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .contact-form textarea {
+            resize: vertical; min-height: 120px;
+        }
+        .contact-submit {
+            align-self: center;
+            font-family: var(--sans);
+            font-size: 15px; font-weight: 500;
+            padding: 14px 40px;
+            border: none; border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--black);
+            cursor: pointer;
+            transition: background var(--ease);
+            margin-top: 8px;
+        }
+        .contact-submit:hover { background: rgba(220, 220, 220, 0.75); }
+        .contact-success {
+            display: none; padding: 40px 0; text-align: center;
+        }
+        .contact-success.visible { display: block; }
+        .contact-success h3 {
+            font-family: var(--serif);
+            font-size: 32px; font-weight: 400;
+            margin-bottom: 8px; color: var(--black);
+        }
+        .contact-success p { font-size: 15px; color: var(--grey); }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            padding: 0 0 32px;
+            background: var(--pure-white);
+        }
+        .footer-lines {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        .footer-line {
+            height: 0;
+            border-top: 1px solid var(--black);
+            margin-bottom: 12px;
+        }
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px var(--pad);
+            border-top: 1px solid var(--black);
+        }
+        .footer-row:last-child {
+            border-bottom: 1px solid var(--black);
+        }
+        .footer-left {
+            display: flex; gap: 24px; align-items: center;
+        }
+        .footer-left span, .footer-left a {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            transition: opacity var(--ease);
+        }
+        .footer-left a:hover { opacity: 0.5; }
+        .footer-right {
+            display: flex; gap: 28px; align-items: center;
+        }
+        .footer-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--serif);
+            font-size: clamp(20px, 3vw, 32px);
+            color: var(--black);
+            text-decoration: none;
+            transition: opacity var(--ease);
+        }
+        .footer-link:hover { opacity: 0.5; }
+        .footer-icon-arrow {
+            width: clamp(14px, 2vw, 20px);
+            height: clamp(14px, 2vw, 20px);
+            flex-shrink: 0;
+        }
+        .footer-icon-social {
+            display: none;
+        }
+
+        /* ===== RESPONSIVE — TABLET ===== */
+        @media (max-width: 900px) {
+            :root { --pad: 24px; }
+
+            /* Nav mobile */
+            .nav-center.open > .nav-pill:first-child {
+                display: flex; background: var(--black); color: var(--pure-white);
+            }
+            .nav-center.open > .nav-pill:first-child .nav-pill-icon { transform: rotate(90deg); }
+            .nav-center .nav-menu { display: none; }
+            .nav-center.open .nav-menu {
+                display: flex; flex-direction: column; position: absolute;
+                top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+                width: 200px; background: rgba(235, 235, 235, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+                border-radius: 16px; padding: 8px; gap: 2px; z-index: 100;
+            }
+            .nav-center.open .nav-menu-item {
+                height: 40px; padding: 0 16px; font-size: 14px;
+                border-radius: 8px; background: transparent;
+                justify-content: flex-start; width: 100%;
+            }
+            .nav-center.open .nav-menu-item:hover { background: #e4e4e4; }
+            .nav-center.open .nav-services-wrap { width: 100%; }
+            .nav-center.open .nav-services-toggle {
+                height: 40px; padding: 0 16px; font-size: 14px;
+                border-radius: 8px; background: transparent;
+                justify-content: flex-start; width: 100%;
+            }
+            .nav-center.open .nav-services-toggle:hover { background: #e4e4e4; }
+            .nav-center.open .nav-services-dropdown {
+                position: static; transform: none; width: 100%;
+                min-width: 0; background: transparent; padding: 0 0 0 12px; border-radius: 0;
+            }
+            .nav-center.open .nav-services-link { font-size: 13px; color: var(--grey); padding: 8px 16px; }
+            .nav-center.open .nav-pill-close { display: none; }
+
+            .nav { padding: 16px 24px; }
+            .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
+            .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .why { grid-template-columns: 1fr; }
+            .why-photo { min-height: 400px; order: 2; }
+            .why-content { padding: 0 0 48px; order: 1; }
+            .about { grid-template-columns: 1fr; }
+            .about-photo { min-height: 50vh; }
+            .contact-form-row { grid-template-columns: 1fr; }
+            .footer-row { padding: 12px var(--pad); align-items: center; }
+            .footer-left { gap: 12px; }
+            .footer-left span, .footer-left a { font-size: 11px; }
+            .footer-right { gap: 16px; }
+            .footer-link-text, .footer-icon-arrow { display: none; }
+            .footer-icon-social { display: block; width: 16px; height: 16px; stroke: none; fill: var(--black); }
+            .footer-link { font-size: 0; }
+            .footer-line { margin-bottom: 8px; }
+        }
+
+        /* ===== RESPONSIVE — MOBILE ===== */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 40px; }
+            .hero-meta { flex-direction: column; gap: 4px; }
+            .intro { padding: 100px var(--pad); }
+            .intro-text { font-size: 22px; }
+            .services { padding: 100px var(--pad); }
+            .service-card { padding: 32px 24px; }
+            .cta-card { padding: 60px 24px; }
+            .why { padding: 100px var(--pad); }
+            .about-text { padding: 80px var(--pad); }
+            .cta { padding: 40px var(--pad); }
+            .contact { padding: 80px var(--pad); }
+            .contact-heading { margin-bottom: 32px; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- Nav -->
     <header class="nav">
-        <span class="nav-logo">meinhaus</span>
+        <a href="en.html" class="nav-logo">meinhaus</a>
 
-        <!-- Center menu pill -->
         <div class="nav-center">
             <button class="nav-pill" id="nav-menu-toggle" aria-label="Open menu">
                 <span class="nav-pill-icon">
@@ -49,10 +809,9 @@
                         <a href="brand-check.html" class="nav-services-link">Brand Check</a>
                     </div>
                 </div>
-                <a href="#scope" class="nav-menu-item">Scope</a>
-                <a href="#about" class="nav-menu-item">About</a>
+                <a href="about-en.html" class="nav-menu-item">About</a>
                 <a href="index.html" class="nav-menu-item">DE</a>
-                <a href="#contact" class="nav-menu-item nav-mobile-only">Contact</a>
+
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Close menu">
                     <span class="nav-pill-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -64,7 +823,6 @@
             </div>
         </div>
 
-        <!-- Connect pill -->
         <div class="nav-connect-wrap">
             <button class="nav-connect" id="nav-connect-toggle">
                 <span>Come in</span>
@@ -97,7 +855,7 @@
                         <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
                     </div>
                     <div class="nav-connect-row">
-                        <p class="nav-connect-label">General Inquiries</p>
+                        <p class="nav-connect-label">General inquiries</p>
                         <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
                     </div>
                     <div class="nav-connect-social">
@@ -114,477 +872,382 @@
 
     <main>
 
-        <!-- Hero -->
+        <!-- HERO -->
         <section class="hero">
-            <div class="hero-inner">
-                <p class="hero-label">Design studio for coaches & founders</p>
-                <h1 class="hero-headline">Every brand needs a home.</h1>
+            <div class="hero-content">
+                <h1 id="hero-heading" aria-label="Every brand needs a home."></h1>
                 <p class="hero-sub">We build yours.</p>
             </div>
             <div class="hero-meta">
                 <span>Branding · Web · Editorial · 3D</span>
-                <span>Based in London & Berlin</span>
+                <span>London & Berlin</span>
             </div>
         </section>
 
-        <!-- Intro -->
+        <!-- INTRO — scroll-driven word reveal -->
         <section class="intro">
-            <p class="intro-text">Most coaches and founders have a strong idea but a presence that doesn't show it. We build the visual foundation that gives your brand structure, clarity and character.</p>
+            <p class="intro-text" id="intro-text">Most coaches and founders have a powerful idea but a presence that doesn't show it. We build the visual foundation that gives your brand structure, clarity and character.</p>
         </section>
 
-        <!-- Approach -->
-        <section class="approach" id="approach">
-            <div class="section-top">
-                <p class="label">How we help</p>
-                <h2 class="section-headline">We build the personal brand <br>that shows who you really are.</h2>
-            </div>
+        <!-- SERVICES + SCOPE (merged) -->
+        <section class="services" id="scope">
+            <p class="label" style="text-align:center">Personal Brand System</p>
+            <h2 class="services-headline r-line"><span class="r-line-inner">Everything your brand needs.<br>From one studio.</span></h2>
 
-            <div class="approach-images">
-                <div class="approach-img-placeholder"><img src="haus02.png" alt="Branding" loading="lazy" style="width:80%; height:auto; display:block; margin:auto;"></div>
-                <div class="approach-img-placeholder"><img src="haus 01.png" alt="Web Design" loading="lazy" style="width:60%; height:auto; display:block; margin:auto;"></div>
-                <div class="approach-img-placeholder"><img src="schaf04.png" alt="Creative Direction" loading="lazy" style="width:60%; height:auto; display:block; margin:auto;"></div>
-            </div>
+            <div class="services-grid">
+                <!-- Card 1: Branding -->
+                <div class="service-card" style="--index: 0;">
+                    <h3 class="service-card-title">Branding</h3>
+                    <p class="service-card-desc">The foundation. We build identities from the ground up. Strategy, visual language and everything that makes your brand yours.</p>
+                    <div class="service-card-link"><a href="branding-for-coaches.html"><span>read more</span></a></div>
+                    <div class="service-card-tags">
+                        <span class="service-card-tag">Positioning</span>
+                        <span class="service-card-tag">Messaging</span>
+                        <span class="service-card-tag">Typography</span>
+                        <span class="service-card-tag">Brand Architecture</span>
+                        <span class="service-card-tag">Brand Guidelines</span>
+                    </div>
+                </div>
 
-            <div class="approach-grid">
-                <div class="approach-item">
-                    <div class="approach-img-mobile"><img src="haus02.png" alt="Branding" loading="lazy"></div>
-                    <span class="approach-num">01</span>
-                    <h3 class="approach-title">Branding</h3>
-                    <p class="approach-desc">The foundation. We build identities from the ground up. Strategy, visual language and everything that makes your brand yours.</p>
+                <!-- Card 2: Webdesign -->
+                <div class="service-card" style="--index: 1;">
+                    <h3 class="service-card-title">Webdesign</h3>
+                    <p class="service-card-desc">The front door. First impressions matter. We design websites and digital experiences that make your brand tangible.</p>
+                    <div class="service-card-link"><a href="webdesign-for-coaches.html"><span>read more</span></a></div>
+                    <div class="service-card-tags">
+                        <span class="service-card-tag">UI/UX Design</span>
+                        <span class="service-card-tag">Landing Pages</span>
+                        <span class="service-card-tag">Development</span>
+                        <span class="service-card-tag">SEO Basics</span>
+                        <span class="service-card-tag">Motion Design</span>
+                        <span class="service-card-tag">3D Visuals</span>
+                    </div>
                 </div>
-                <div class="approach-item">
-                    <div class="approach-img-mobile"><img src="haus 01.png" alt="Web Design" loading="lazy"></div>
-                    <span class="approach-num">02</span>
-                    <h3 class="approach-title">Web Design</h3>
-                    <p class="approach-desc">The front door. First impressions count. We design websites and digital experiences that make your brand tangible.</p>
-                </div>
-                <div class="approach-item">
-                    <div class="approach-img-mobile"><img src="schaf04.png" alt="Creative Direction" loading="lazy"></div>
-                    <span class="approach-num">03</span>
-                    <h3 class="approach-title">Creative Direction</h3>
-                    <p class="approach-desc">The interior. A house only becomes a home when it comes alive. We fill your brand with everything that makes it visible and vibrant.</p>
-                </div>
-            </div>
 
-        </section>
-
-        <!-- Scope -->
-        <section class="scope" id="scope">
-            <div class="scope-header">
-                <p class="label">What you get</p>
-                <h2 class="section-headline">Personal Brand System <span class="scope-timeline">[3 to 6 weeks]</span></h2>
-                <p class="scope-lead">Together we bring clarity to your positioning and make your real value visible. From there, we build a personal brand that earns trust and attracts the right clients.</p>
-            </div>
-
-            <div class="scope-cards">
-                <div class="scope-card">
-                    <h3 class="scope-card-title">Brand Strategy</h3>
-                    <p class="scope-card-detail">Positioning / Target Audience / Messaging / Brand Architecture / Competitor Analysis</p>
-                </div>
-                <div class="scope-card">
-                    <h3 class="scope-card-title">Brand Identity</h3>
-                    <p class="scope-card-detail">Typography / Color Palette / Visual Language / Brand Guidelines</p>
-                </div>
-                <div class="scope-card">
-                    <h3 class="scope-card-title">Website</h3>
-                    <p class="scope-card-detail">UI/UX Design / Landing Page / Development / SEO Basics</p>
-                </div>
-                <div class="scope-card">
-                    <h3 class="scope-card-title">Content</h3>
-                    <p class="scope-card-detail">Editorial Design / 3D Visuals / Motion Design / Photography</p>
+                <!-- Card 3: Creative Direction -->
+                <div class="service-card" style="--index: 2;">
+                    <h3 class="service-card-title">Creative Direction</h3>
+                    <p class="service-card-desc">The interior. A house only becomes a home when it lives. We fill your brand with everything that makes it visible and alive.</p>
+                    <div class="service-card-link"><a href="brand-check.html"><span>test your brand</span></a></div>
+                    <div class="service-card-tags">
+                        <span class="service-card-tag">Editorial Design</span>
+                        <span class="service-card-tag">Content Strategy</span>
+                        <span class="service-card-tag">Photography</span>
+                        <span class="service-card-tag">Visual Language</span>
+                    </div>
                 </div>
             </div>
-
         </section>
 
         <!-- CTA -->
         <section class="cta">
-            <div class="cta-inner">
-                <p class="label">Ready?</p>
-                <h2 class="cta-headline">Let's build your brand.</h2>
-                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="cta-link">Book a call</a>
+            <div class="cta-card r-fade">
+                <p class="cta-tagline">Not sure yet? No problem.</p>
+                <h2 class="cta-headline">Let's talk.</h2>
+                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="cta-btn" target="_blank" rel="noopener noreferrer">Book a call</a>
             </div>
         </section>
 
-        <!-- Why Us -->
-        <section class="why" id="why">
-            <div class="why-layout">
-                <div class="why-left">
-                    <p class="label">Why us</p>
-                    <h2 class="section-headline">We build brands from the ground up. Strategy, design and everything in between – from one studio.</h2>
-                </div>
-                <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="true">
-                        <span class="accordion-label">Strategy first</span>
-                        <span class="accordion-toggle">&#8722;</span>
-                    </button>
-                    <div class="accordion-body open">
-                        <p>Every project starts with understanding. Your goals, your audience, your story. We plan before we build.</p>
+        <!-- WHY -->
+        <section class="why">
+            <div class="why-photo r-fade" role="img" aria-label="meinhaus studio"></div>
+            <div class="why-content">
+            <p class="label">Why us</p>
+            <h2 class="why-headline r-line"><span class="r-line-inner">We build brands from the ground up. Strategy, design and everything in between.</span></h2>
+            <div class="why-items">
+                <div class="why-item">
+                    <button class="why-trigger">Strategy first <span class="why-toggle">+</span></button>
+                    <div class="why-body open">
+                        <div class="why-body-inner">Every project starts with understanding. Your goals, your audience, your story. We plan before we build.</div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span class="accordion-label">Built to last</span>
-                        <span class="accordion-toggle">&#43;</span>
-                    </button>
-                    <div class="accordion-body">
-                        <p>No trends for the sake of trends. We create work that ages well and grows with you.</p>
+                <div class="why-item">
+                    <button class="why-trigger">Built to last <span class="why-toggle">+</span></button>
+                    <div class="why-body">
+                        <div class="why-body-inner">No trends for the sake of trends. We create work that ages well and grows with you.</div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span class="accordion-label">Personal, always</span>
-                        <span class="accordion-toggle">&#43;</span>
-                    </button>
-                    <div class="accordion-body">
-                        <p>Two people, no detours. You work directly with us. The people who actually do the work.</p>
+                <div class="why-item">
+                    <button class="why-trigger">Personal, always <span class="why-toggle">+</span></button>
+                    <div class="why-body">
+                        <div class="why-body-inner">Two people, no detours. You work directly with us. The ones who actually do the work.</div>
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
         </section>
 
-        <!-- About -->
-        <section class="about" id="about">
-            <div class="about-layout">
-                <div class="about-left">
-                    <p class="label">About</p>
-                    <h2 class="section-headline">Marika & Emma</h2>
-                    <p class="about-lead">We're Emma and Marika, an architect and a designer who started building brands together because we believe every good idea deserves a great visual home.</p>
-                    <p class="about-body">Emma thinks in spaces. She builds the foundation, the systems, the strategy, the structure that holds everything together. Marika thinks in pixels. She shapes the surface, the logos, the websites, the visual language that makes people feel something. We believe your brand should reflect the quality of what you do, so you can show up with confidence.</p>
-                </div>
-                <div class="about-image">
-                    <div style="width:100%; aspect-ratio:3/4; overflow:hidden; border-radius:4px;">
-                        <img src="DSC03675.jpeg" alt="Marika and Emma, founders of meinhaus studio" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center 20%;">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact" id="contact">
-            <div class="contact-card">
-                <div class="contact-card-header">
-                    <p class="label">Let's talk</p>
-                    <h2 class="section-headline">Our door is open.</h2>
-                </div>
-                <form class="contact-form" id="contact-form">
-                    <input type="text" name="name" placeholder="Name / Company" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <div class="contact-form-row">
-                        <select name="service" required>
-                            <option value="" disabled selected>Service</option>
-                            <option value="strategy">Brand Strategy</option>
-                            <option value="identity">Brand Identity</option>
-                            <option value="web">Website</option>
-                            <option value="content">Content</option>
-                            <option value="full">Full Brand System</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <select name="budget">
-                            <option value="" disabled selected>Budget</option>
-                            <option value="3-5k">3–5k</option>
-                            <option value="5-10k">5–10k</option>
-                            <option value="10k+">10k+</option>
-                            <option value="unsure">Not sure yet</option>
-                        </select>
-                    </div>
-                    <textarea name="details" placeholder="Where can we help?" rows="4"></textarea>
-                    <button type="submit" class="contact-submit">Send request</button>
-                </form>
-                <div class="contact-success" id="contact-success">
-                    <h2 class="section-headline">Thank you.</h2>
-                    <p class="contact-success-text">We received your request and will get back to you shortly.</p>
-                </div>
-            </div>
-        </section>
 
     </main>
 
-    <!-- Meadow Footer -->
-    <footer class="meadow-footer">
-        <div class="meadow">
-            <img class="meadow-bg" src="wiese.jpeg" alt="">
-            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 8%; top: 45%;" data-label="Instagram">
-                <span class="sheep-tooltip">Instagram</span>
-                <img src="schaf 01.png" alt="Instagram">
-            </a>
-            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 22%; top: 60%;" data-label="LinkedIn">
-                <span class="sheep-tooltip">LinkedIn</span>
-                <img src="schaf02.png" alt="LinkedIn">
-            </a>
-            <a href="mailto:hello@meinhaus.studio" class="sheep" style="left: 45%; top: 40%;" data-label="E-Mail">
-                <span class="sheep-tooltip">E-Mail</span>
-                <img src="schaf03.png" alt="E-Mail">
-            </a>
-            <a href="impressum.html" class="sheep sheep--house" style="left: 65%; top: 25%;" data-label="Impressum">
-                <span class="sheep-tooltip">Impressum</span>
-                <img src="haus 01.png" alt="Impressum">
-            </a>
-            <a href="datenschutz.html" class="sheep" style="left: 82%; top: 55%;" data-label="Datenschutz">
-                <span class="sheep-tooltip">Datenschutz</span>
-                <img src="schaf04.png" alt="Datenschutz">
-            </a>
-            <a href="brand-check.html" class="sheep" style="left: 35%; top: 50%;" data-label="Brand Check">
-                <span class="sheep-tooltip">Brand Check</span>
-                <img src="schaf 01.png" alt="Brand Check">
-            </a>
-            <span class="sheep sheep--muted" style="left: 55%; top: 65%;" data-label="Blog">
-                <span class="sheep-tooltip">Blog</span>
-                <img src="schaf03.png" alt="Blog">
-            </span>
-            <div class="meadow-bottom">
-                <span>&copy; <span class="year"></span> meinhaus studio</span>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <p class="contact-label">Get in touch</p>
+            <h2 class="contact-heading">Our door is open.</h2>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqeyodor" method="POST">
+                <input type="text" name="name" placeholder="Name / Company" required>
+                <input type="email" name="email" placeholder="E-Mail" required>
+                <div class="contact-form-row">
+                    <select name="service" required>
+                        <option value="" disabled selected>Service</option>
+                        <option>Brand Strategy</option>
+                        <option>Brand Identity</option>
+                        <option>Website</option>
+                        <option>Full Brand System</option>
+                        <option>Rebrand</option>
+                        <option>Other</option>
+                    </select>
+                    <select name="budget">
+                        <option value="" disabled selected>Budget</option>
+                        <option>3–5k</option>
+                        <option>5–10k</option>
+                        <option>10k+</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </div>
+                <select name="timeline">
+                    <option value="" disabled selected>Timeline</option>
+                    <option>As soon as possible</option>
+                    <option>1–2 Weeks</option>
+                    <option>3–6 Weeks</option>
+                    <option>No rush</option>
+                </select>
+                <textarea name="message" placeholder="How can we help?"></textarea>
+                <button type="submit" class="contact-submit">Send inquiry</button>
+            </form>
+            <div class="contact-success" id="contact-success">
+                <h3>Thank you.</h3>
+                <p>We'll get back to you soon.</p>
             </div>
         </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-lines">
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+            <div class="footer-line"></div><div class="footer-line"></div>
+        </div>
+            <div class="footer-row">
+                <div class="footer-left">
+                    <span>&copy; 2026 meinhaus studio</span>
+                    <a href="impressum.html">Legal Notice</a>
+                    <a href="datenschutz.html">Privacy Policy</a>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="footer-link-text">Instagram</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+                    <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="footer-link-text">LinkedIn</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                    <a href="mailto:hello@meinhaus.studio" class="footer-link"><span class="footer-link-text">Mail</span><svg class="footer-icon-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7"/></svg><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                </div>
+            </div>
     </footer>
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "meinhaus studio",
-        "description": "Design studio for coaches and founders. Branding, web design and creative direction.",
-        "url": "https://meinhaus.studio/",
-        "email": "hello@meinhaus.studio",
-        "founder": [
-            { "@type": "Person", "name": "Marika Haensch" },
-            { "@type": "Person", "name": "Emma Neumann" }
-        ],
-        "areaServed": ["London", "Berlin"],
-        "serviceType": ["Branding", "Web Design", "Creative Direction"],
-        "sameAs": [
-            "https://www.instagram.com/meinhaus.studio/",
-            "https://www.linkedin.com/company/mein-haus-studio/"
-        ]
-    }
-    </script>
-
     <script>
-        // Year
-        document.querySelector('.year').textContent = new Date().getFullYear();
+        // Force scroll to top
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.classList.add('ready');
+            }, 50);
+        });
 
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+        // ===== TYPING ANIMATION =====
+        (function() {
+            const el = document.getElementById('hero-heading');
+            const lines = ['Every brand needs', 'a home.'];
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            let lineIdx = 0, charIdx = 0;
+
+            function type() {
+                if (lineIdx >= lines.length) {
+                    cursor.remove();
+                    document.querySelector('.hero-sub').classList.add('visible');
+                    return;
+                }
+                const line = lines[lineIdx];
+                if (charIdx === 0 && lineIdx > 0) el.appendChild(document.createElement('br'));
+                if (charIdx < line.length) {
+                    if (cursor.parentNode) cursor.remove();
+                    const tn = el.lastChild && el.lastChild.nodeType === 3
+                        ? el.lastChild : el.appendChild(document.createTextNode(''));
+                    tn.textContent += line[charIdx];
+                    el.appendChild(cursor);
+                    charIdx++;
+                    setTimeout(type, 55);
+                } else {
+                    lineIdx++;
+                    charIdx = 0;
+                    setTimeout(type, 100);
+                }
+            }
+            setTimeout(type, 800);
+        })();
+
+        // ===== SCROLL-DRIVEN WORD REVEAL (intro) =====
+        (function() {
+            const p = document.getElementById('intro-text');
+            const text = p.textContent;
+            p.textContent = '';
+            const words = text.split(' ');
+            words.forEach((word, i) => {
+                const span = document.createElement('span');
+                span.className = 'word';
+                span.textContent = word;
+                p.appendChild(span);
+                if (i < words.length - 1) p.appendChild(document.createTextNode(' '));
+            });
+
+            const wordEls = p.querySelectorAll('.word');
+
+            function updateWords() {
+                const rect = p.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const start = vh * 0.85;
+                const end = vh * 0.15;
+                const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+
+                wordEls.forEach((el, i) => {
+                    const wordProgress = i / wordEls.length;
+                    el.classList.toggle('lit', progress > wordProgress);
+                });
+                requestAnimationFrame(updateWords);
+            }
+            requestAnimationFrame(updateWords);
+        })();
+
+        // ===== EQUALIZE SERVICE CARD HEIGHTS =====
+        function equalizeCards() {
+            const els = document.querySelectorAll('.service-card');
+            els.forEach(c => c.style.minHeight = '');
+            // Only equalize in multi-column layout
+            if (window.innerWidth <= 900) return;
+            const grid = document.querySelector('.services-grid');
+            grid.classList.add('is-visible');
+            const max = Math.max(...[...els].map(c => c.offsetHeight));
+            grid.classList.remove('is-visible');
+            els.forEach(c => c.style.minHeight = max + 'px');
+        }
+        equalizeCards();
+        window.addEventListener('resize', equalizeCards);
+
+        // ===== SCROLL REVEALS =====
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObs.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-        function reveal(selector) {
-            document.querySelectorAll(selector).forEach((el) => {
-                el.classList.add('reveal');
-                observer.observe(el);
+        document.querySelectorAll('.r-line, .r-fade').forEach(el => revealObs.observe(el));
+
+        // Stagger service cards — observe grid, reveal all cards with CSS stagger
+        const servicesGrid = document.querySelector('.services-grid');
+        const gridObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    gridObs.unobserve(e.target);
+                }
             });
-        }
+        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+        gridObs.observe(servicesGrid);
 
-        function revealStagger(selector, step) {
-            document.querySelectorAll(selector).forEach((el, i) => {
-                el.classList.add('reveal');
-                el.style.setProperty('--reveal-delay', (i * step).toFixed(2));
-                observer.observe(el);
-            });
-        }
-
-        reveal('.intro-text, .section-top, .scope-header, .cta-inner, .why-left, .about-left, .about-image, .contact-card');
-        revealStagger('.approach-img-placeholder', 0.12);
-        revealStagger('.approach-item', 0.12);
-        revealStagger('.scope-card', 0.1);
-        revealStagger('.accordion-item', 0.1);
-
-
-        // Accordion
-        document.querySelectorAll('.accordion-trigger').forEach((btn) => {
+        // ===== ACCORDION =====
+        document.querySelectorAll('.why-trigger').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
-                const body = item.querySelector('.accordion-body');
-                const toggle = btn.querySelector('.accordion-toggle');
+                const body = item.querySelector('.why-body');
+                const toggle = btn.querySelector('.why-toggle');
                 const isOpen = body.classList.contains('open');
 
-                // Close all
-                document.querySelectorAll('.accordion-body').forEach((b) => {
+                document.querySelectorAll('.why-body').forEach(b => {
                     b.classList.remove('open');
                     b.style.maxHeight = null;
                 });
-                document.querySelectorAll('.accordion-trigger').forEach((t) => {
-                    t.setAttribute('aria-expanded', 'false');
-                    t.querySelector('.accordion-toggle').textContent = '+';
-                });
+                document.querySelectorAll('.why-toggle').forEach(t => t.textContent = '+');
 
                 if (!isOpen) {
                     body.classList.add('open');
                     body.style.maxHeight = body.scrollHeight + 'px';
-                    btn.setAttribute('aria-expanded', 'true');
                     toggle.textContent = '\u2212';
                 }
             });
         });
 
-        // Init first accordion
-        const firstBody = document.querySelector('.accordion-body.open');
-        if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+        const firstWhy = document.querySelector('.why-body.open');
+        if (firstWhy) firstWhy.style.maxHeight = firstWhy.scrollHeight + 'px';
 
-        // Nav menu toggle
+        // ===== NAV =====
         const navCenter = document.querySelector('.nav-center');
-        const navMenuToggle = document.getElementById('nav-menu-toggle');
-        const navMenuClose = document.getElementById('nav-menu-close');
+        document.getElementById('nav-menu-toggle').addEventListener('click', () => navCenter.classList.toggle('open'));
+        document.getElementById('nav-menu-close').addEventListener('click', () => navCenter.classList.remove('open'));
 
-        navMenuToggle.addEventListener('click', () => {
-            navCenter.classList.toggle('open');
-        });
-
-        navMenuClose.addEventListener('click', () => {
-            navCenter.classList.remove('open');
-        });
-
-        // Close menu on link click
-        document.querySelectorAll('.nav-menu-item').forEach((link) => {
+        document.querySelectorAll('.nav-menu-item').forEach(link => {
             if (link.classList.contains('nav-services-toggle')) return;
-            link.addEventListener('click', () => {
-                navCenter.classList.remove('open');
-            });
+            link.addEventListener('click', () => navCenter.classList.remove('open'));
         });
 
-        // Services dropdown
         const servicesToggle = document.getElementById('nav-services-toggle');
         const servicesDropdown = document.getElementById('nav-services-dropdown');
         const servicesWrap = document.querySelector('.nav-services-wrap');
-
-        servicesToggle.addEventListener('click', (e) => {
+        servicesToggle.addEventListener('click', e => {
             e.stopPropagation();
             const isOpen = servicesWrap.classList.toggle('open');
             servicesDropdown.classList.toggle('active', isOpen);
         });
 
-        // Connect dropdown
         const connectToggle = document.getElementById('nav-connect-toggle');
         const connectDropdown = document.getElementById('nav-connect-dropdown');
         const connectWrap = document.querySelector('.nav-connect-wrap');
-
         connectToggle.addEventListener('click', () => {
             const isOpen = connectWrap.classList.toggle('open');
             connectDropdown.classList.toggle('active', isOpen);
         });
 
-        // Live clocks
         function updateClocks() {
-            document.querySelectorAll('.nav-connect-time').forEach((el) => {
+            document.querySelectorAll('.nav-connect-time').forEach(el => {
                 const tz = el.getAttribute('data-tz');
-                const now = new Date();
-                el.textContent = now.toLocaleTimeString('en-GB', {
-                    timeZone: tz,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: true
-                }).toUpperCase();
+                el.textContent = new Date().toLocaleTimeString('en-GB', {
+                    timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+                });
             });
         }
         updateClocks();
         setInterval(updateClocks, 1000);
 
-        // Close dropdowns on outside click
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-services-wrap')) {
-                servicesWrap.classList.remove('open');
-                servicesDropdown.classList.remove('active');
-            }
-            if (!e.target.closest('.nav-connect-wrap')) {
-                connectWrap.classList.remove('open');
-                connectDropdown.classList.remove('active');
-            }
-            if (!e.target.closest('.nav-center')) {
-                navCenter.classList.remove('open');
-            }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.nav-services-wrap')) { servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); }
+            if (!e.target.closest('.nav-connect-wrap')) { connectWrap.classList.remove('open'); connectDropdown.classList.remove('active'); }
+            if (!e.target.closest('.nav-center')) { navCenter.classList.remove('open'); }
         });
 
-        // Contact form AJAX
-        const contactForm = document.getElementById('contact-form');
-        const contactSuccess = document.getElementById('contact-success');
-
-        contactForm.addEventListener('submit', (e) => {
+        // ===== CONTACT FORM =====
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            const data = new FormData(contactForm);
-
             fetch('https://formspree.io/f/xqeyodor', {
-                method: 'POST',
-                body: data,
+                method: 'POST', body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
-            }).then((res) => {
+            }).then(res => {
                 if (res.ok) {
-                    contactForm.style.display = 'none';
-                    document.querySelector('.contact-card-header').style.display = 'none';
-                    contactSuccess.classList.add('visible');
+                    form.style.display = 'none';
+                    document.getElementById('contact-success').classList.add('visible');
                 }
             });
         });
-
-        // Sheep drag & drop
-        (function () {
-            const meadow = document.querySelector('.meadow');
-            if (!meadow) return;
-
-            let dragging = null;
-            let offsetX = 0;
-            let offsetY = 0;
-            let hasMoved = false;
-
-            function startDrag(sheep, clientX, clientY) {
-                dragging = sheep;
-                hasMoved = false;
-                const rect = sheep.getBoundingClientRect();
-                offsetX = clientX - rect.left;
-                offsetY = clientY - rect.top;
-                sheep.style.zIndex = '10';
-                sheep.classList.add('dragging');
-            }
-
-            function moveDrag(clientX, clientY) {
-                if (!dragging) return;
-                hasMoved = true;
-                const meadowRect = meadow.getBoundingClientRect();
-                const x = clientX - meadowRect.left - offsetX;
-                const y = clientY - meadowRect.top - offsetY;
-                const px = (x / meadowRect.width) * 100;
-                const py = (y / meadowRect.height) * 100;
-                dragging.style.left = Math.max(0, Math.min(92, px)) + '%';
-                dragging.style.top = Math.max(0, Math.min(85, py)) + '%';
-            }
-
-            function endDrag(e) {
-                if (!dragging) return;
-                dragging.classList.remove('dragging');
-                dragging.style.zIndex = '';
-                if (hasMoved) e.preventDefault();
-                dragging = null;
-            }
-
-            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
-                sheep.addEventListener('mousedown', function (e) {
-                    e.preventDefault();
-                    startDrag(sheep, e.clientX, e.clientY);
-                });
-                sheep.addEventListener('touchstart', function (e) {
-                    const t = e.touches[0];
-                    startDrag(sheep, t.clientX, t.clientY);
-                }, { passive: true });
-                sheep.addEventListener('click', function (e) {
-                    if (hasMoved) { e.preventDefault(); hasMoved = false; }
-                });
-            });
-
-            document.addEventListener('mousemove', function (e) { moveDrag(e.clientX, e.clientY); });
-            document.addEventListener('touchmove', function (e) {
-                if (!dragging) return;
-                moveDrag(e.touches[0].clientX, e.touches[0].clientY);
-            }, { passive: false });
-            document.addEventListener('mouseup', function (e) { endDrag(e); });
-            document.addEventListener('touchend', function (e) { endDrag(e); });
-        })();
     </script>
 
 </body>
