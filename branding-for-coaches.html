@@ -708,67 +708,36 @@
 
         /* ===== COOKIE CONSENT ===== */
         .cookie-banner {
+            display: none;
             position: fixed;
-            bottom: 20px; right: 20px;
+            bottom: 24px; right: var(--pad);
             z-index: 9999;
-            width: 200px;
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.4s cubic-bezier(.19, 1, .22, 1), transform 0.4s cubic-bezier(.19, 1, .22, 1);
-            pointer-events: none;
+            text-align: right;
         }
-        .cookie-banner.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .cookie-roof {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
-            height: auto;
-        }
-        .cookie-body {
-            background: var(--black);
-            padding: 16px 18px 14px;
-            border-radius: 0 0 4px 4px;
-            text-align: center;
-        }
+        .cookie-banner.visible { display: block; }
         .cookie-banner p {
             font-family: var(--sans);
-            font-size: 17px;
-            font-weight: 400;
-            color: var(--white);
-            line-height: 1.35;
-            margin: 0 0 12px;
+            font-size: 13px;
+            font-weight: 300;
+            color: #bbb;
+            margin: 0 0 4px;
         }
-        .cookie-actions {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-        }
+        .cookie-actions { display: flex; justify-content: flex-end; gap: 16px; }
         .cookie-action {
             font-family: var(--sans);
-            font-size: 11px;
-            font-weight: 400;
+            font-size: 13px;
+            font-weight: 300;
+            color: #bbb;
             background: none;
             border: none;
             cursor: pointer;
             padding: 0;
-            transition: opacity 0.2s;
+            transition: color 0.2s;
         }
-        .cookie-accept { color: var(--white); }
-        .cookie-accept:hover { opacity: 0.7; }
-        .cookie-decline { color: #666; }
-        .cookie-decline:hover { opacity: 0.7; }
-        .cookie-link {
-            font-family: var(--sans);
-            font-size: 9px;
-            color: #555;
-            text-decoration: none;
-            display: block;
-            margin-top: 10px;
-        }
-        .cookie-link:hover { color: #888; }
+        .cookie-action:hover { color: var(--black); }
         @media (max-width: 600px) {
-            .cookie-banner { bottom: 16px; right: 16px; width: 180px; }
+            .cookie-banner { bottom: 16px; right: 20px; }
+            .cookie-banner p, .cookie-action { font-size: 11px; }
         }
 
         /* ===== REDUCED MOTION ===== */
@@ -1219,14 +1188,10 @@
 
     <!-- Cookie Consent -->
     <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie settings">
-        <svg class="cookie-roof" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 L100 0 L200 40Z" fill="#1a1a1a"/></svg>
-        <div class="cookie-body">
-            <p>Cookies at ours?</p>
-            <div class="cookie-actions">
-                <button class="cookie-action cookie-accept" id="cookie-accept">Sure</button>
-                <button class="cookie-action cookie-decline" id="cookie-decline">Next time</button>
-            </div>
-            <a href="/datenschutz" class="cookie-link">Privacy</a>
+        <p>Fancy a cookie?</p>
+        <div class="cookie-actions">
+            <button class="cookie-action" id="cookie-accept">Sure</button>
+            <button class="cookie-action" id="cookie-decline">Next time</button>
         </div>
     </div>
 
@@ -1235,7 +1200,7 @@
         var banner = document.getElementById('cookie-banner');
         if (!banner) return;
         if (!localStorage.getItem('cookie-consent')) {
-            setTimeout(function() { banner.classList.add('visible'); }, 1000);
+            setTimeout(function() { banner.classList.add('visible'); }, 3000);
         }
         document.getElementById('cookie-accept').addEventListener('click', function() {
             localStorage.setItem('cookie-consent', 'accepted');
