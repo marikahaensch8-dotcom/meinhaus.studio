@@ -984,6 +984,12 @@
             if (!e.target.closest('.nav-center')) { navCenter.classList.remove('open'); }
         });
 
+        window.addEventListener('scroll', () => {
+            servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active');
+            connectWrap.classList.remove('open'); connectDropdown.classList.remove('active');
+            navCenter.classList.remove('open');
+        }, { passive: true });
+
         // ===== CONTACT FORM =====
         const form = document.getElementById('contact-form');
         form.addEventListener('submit', e => {
