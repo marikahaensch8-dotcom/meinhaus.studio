@@ -2,6 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Google Tag Manager - loads after consent -->
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function loadGTM() {
+        if (document.querySelector('#gtm-script')) return;
+        var s = document.createElement('script');
+        s.id = 'gtm-script';
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TXB92363';
+        document.head.appendChild(s);
+        window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    }
+    if (localStorage.getItem('cookie-consent') === 'accepted') { loadGTM(); }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Check · How strong is your brand? · meinhaus studio</title>
     <meta name="description" content="Find out where your personal brand stands in 2 minutes. 7 questions, an honest result, clear next steps.">
@@ -593,6 +607,53 @@
             .quiz-result-number { font-size: 72px; }
             .quiz-cta { flex-direction: column; align-items: flex-start; }
         }
+        /* ===== COOKIE CONSENT ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 9999;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 20px var(--pad);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(.19, 1, .22, 1);
+        }
+        .cookie-banner.visible { transform: translateY(0); }
+        .cookie-banner p {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 300;
+            color: #ccc;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .cookie-banner a { text-decoration: underline; color: #ccc; }
+        .cookie-banner a:hover { color: #fff; }
+        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+        .cookie-btn {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 400;
+            padding: 8px 20px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .cookie-btn-accept { background: #fff; color: #1a1a1a; }
+        .cookie-btn-accept:hover { background: #e8e8e8; }
+        .cookie-btn-decline { background: transparent; color: #999; border: 1px solid #444; }
+        .cookie-btn-decline:hover { color: #fff; border-color: #999; }
+        @media (max-width: 600px) {
+            .cookie-banner { flex-direction: column; align-items: stretch; padding: 16px 20px; }
+            .cookie-btns { justify-content: flex-end; }
+        }
+
         /* ===== REDUCED MOTION ===== */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -603,6 +664,8 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXB92363" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Nav -->
     <header class="nav">
@@ -895,6 +958,8 @@
                 });
 
                 showScreen('result');
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({'event': 'quiz_complete', 'quiz_name': 'brand_check'});
             }
 
             document.getElementById('quiz-start').addEventListener('click', () => {
@@ -1007,6 +1072,34 @@
             navCenter.classList.remove('open');
             navMenuToggle.setAttribute('aria-expanded', 'false');
         }, { passive: true });
+    </script>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie settings">
+        <p>We use cookies and analytics to improve our website. <a href="/datenschutz">Learn more</a></p>
+        <div class="cookie-btns">
+            <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
+            <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var banner = document.getElementById('cookie-banner');
+        if (!banner) return;
+        if (!localStorage.getItem('cookie-consent')) {
+            setTimeout(function() { banner.classList.add('visible'); }, 1000);
+        }
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'accepted');
+            banner.classList.remove('visible');
+            loadGTM();
+        });
+        document.getElementById('cookie-decline').addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'declined');
+            banner.classList.remove('visible');
+        });
+    })();
     </script>
 
 </body>
