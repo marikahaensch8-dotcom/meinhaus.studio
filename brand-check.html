@@ -153,48 +153,8 @@
 
     </main>
 
-    <!-- Meadow Footer -->
-    <footer class="meadow-footer">
-        <div class="meadow">
-            <img class="meadow-bg" src="wiese.png" alt="">
-            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 8%; top: 45%;" data-label="Instagram">
-                <span class="sheep-tooltip">Instagram</span>
-                <img src="schaf 01.png" alt="Instagram">
-            </a>
-            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 22%; top: 60%;" data-label="LinkedIn">
-                <span class="sheep-tooltip">LinkedIn</span>
-                <img src="schaf02.png" alt="LinkedIn">
-            </a>
-            <a href="mailto:hello@meinhaus.studio" class="sheep" style="left: 45%; top: 40%;" data-label="E-Mail">
-                <span class="sheep-tooltip">E-Mail</span>
-                <img src="schaf03.png" alt="E-Mail">
-            </a>
-            <a href="impressum.html" class="sheep sheep--house" style="left: 65%; top: 25%;" data-label="Impressum">
-                <span class="sheep-tooltip">Impressum</span>
-                <img src="haus 01.png" alt="Impressum">
-            </a>
-            <a href="datenschutz.html" class="sheep" style="left: 82%; top: 55%;" data-label="Datenschutz">
-                <span class="sheep-tooltip">Datenschutz</span>
-                <img src="schaf04.png" alt="Datenschutz">
-            </a>
-            <a href="brand-check.html" class="sheep" style="left: 35%; top: 50%;" data-label="Brand Check">
-                <span class="sheep-tooltip">Brand Check</span>
-                <img src="schaf 01.png" alt="Brand Check">
-            </a>
-            <span class="sheep sheep--muted" style="left: 55%; top: 65%;" data-label="Blog">
-                <span class="sheep-tooltip">Blog</span>
-                <img src="schaf03.png" alt="Blog">
-            </span>
-            <div class="meadow-bottom">
-                <span>&copy; <span class="year"></span> meinhaus studio</span>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        // Year
-        document.querySelector('.year').textContent = new Date().getFullYear();
-
         // Quiz
         (function() {
             const questions = [
@@ -203,26 +163,26 @@
                     cat: 'Strategy',
                     options: [
                         { text: 'Yes, crystal clear', score: 3 },
-                        { text: 'Roughly', score: 2 },
-                        { text: 'Not really', score: 1 }
+                        { text: 'Roughly', score: 1 },
+                        { text: 'Not really', score: 0 }
                     ]
                 },
                 {
-                    q: 'Do you have a defined target audience?',
+                    q: 'Do you have a defined target audience you speak to directly?',
                     cat: 'Strategy',
                     options: [
-                        { text: 'Yes, I know exactly who I\'m talking to', score: 3 },
-                        { text: 'I have an idea, but nothing concrete', score: 2 },
-                        { text: 'I\'m talking to everyone, really', score: 1 }
+                        { text: 'Yes, clearly defined', score: 3 },
+                        { text: 'I have an idea, but nothing concrete', score: 1 },
+                        { text: 'I\'m talking to everyone', score: 0 }
                     ]
                 },
                 {
-                    q: 'Do you have a logo, colours and fonts that work together?',
+                    q: 'Do you have a professional visual system: logo, colours, fonts?',
                     cat: 'Identity',
                     options: [
                         { text: 'Yes, professionally designed', score: 3 },
-                        { text: 'Self-made, but okay', score: 2 },
-                        { text: 'No, nothing consistent', score: 1 }
+                        { text: 'Self-made with Canva or similar', score: 1 },
+                        { text: 'No, nothing consistent', score: 0 }
                     ]
                 },
                 {
@@ -230,35 +190,35 @@
                     cat: 'Identity',
                     options: [
                         { text: 'Yes, fully cohesive', score: 3 },
-                        { text: 'Partially', score: 2 },
-                        { text: 'Every platform looks different', score: 1 }
+                        { text: 'Partially', score: 1 },
+                        { text: 'Every platform looks different', score: 0 }
                     ]
                 },
                 {
-                    q: 'Do you have your own website?',
+                    q: 'Does your online presence reflect the price level you charge?',
                     cat: 'Website',
                     options: [
-                        { text: 'Yes, custom designed', score: 3 },
-                        { text: 'Yes, but a template', score: 2 },
-                        { text: 'No', score: 1 }
+                        { text: 'Yes, it reflects my value', score: 3 },
+                        { text: 'Not really', score: 1 },
+                        { text: 'Definitely not', score: 0 }
                     ]
                 },
                 {
-                    q: 'Can visitors understand what you offer within 5 seconds?',
+                    q: 'Do website visitors have a clear next step?',
                     cat: 'Website',
                     options: [
-                        { text: 'Yes, instantly clear', score: 3 },
-                        { text: 'Probably not', score: 2 },
-                        { text: 'I have no idea', score: 1 }
+                        { text: 'Yes, clear path to a call', score: 3 },
+                        { text: 'There\'s a contact form', score: 1 },
+                        { text: 'Not really', score: 0 }
                     ]
                 },
                 {
-                    q: 'Do you get inquiries through your online presence?',
+                    q: 'Do you get qualified inquiries through your online presence?',
                     cat: 'Impact',
                     options: [
                         { text: 'Regularly', score: 3 },
-                        { text: 'Rarely', score: 2 },
-                        { text: 'Never', score: 1 }
+                        { text: 'Rarely, and often not the right ones', score: 1 },
+                        { text: 'Never', score: 0 }
                     ]
                 }
             ];
@@ -266,15 +226,15 @@
             const results = {
                 strong: {
                     title: 'Your brand is in good shape.',
-                    text: 'The foundation is solid. Now it\u2019s about sharpening the details and taking your presence to the next level. A brand audit can help uncover blind spots.'
+                    text: 'Strong foundation. We\'d love to connect and explore where there\'s still untapped potential.'
                 },
                 medium: {
                     title: 'Good building blocks, but no system.',
-                    text: 'You have individual pieces, but they don\u2019t fit together yet. This is the most common state we see. A thought-through brand system brings clarity and consistency.'
+                    text: 'You have individual pieces, but they don\'t fit together yet. Your expertise isn\'t landing online the way it should. This is exactly where we come in.'
                 },
                 weak: {
                     title: 'Time for a foundation.',
-                    text: 'Your brand doesn\u2019t have a home yet. That\u2019s not a problem, it\u2019s a starting point. With the right strategy and a clear visual system, your expertise becomes a brand that works.'
+                    text: 'You\'re good at what you do, but your presence doesn\'t show it yet. With a clear brand identity, your expertise becomes a presence that attracts the right clients.'
                 }
             };
 
@@ -328,7 +288,7 @@
                 const total = scores.reduce((sum, s) => sum + s.score, 0);
                 let level;
                 if (total >= 17) level = 'strong';
-                else if (total >= 12) level = 'medium';
+                else if (total >= 8) level = 'medium';
                 else level = 'weak';
 
                 document.getElementById('quiz-result-number').textContent = total;
@@ -449,68 +409,6 @@
             }
         });
 
-        // Sheep drag & drop
-        (function () {
-            const meadow = document.querySelector('.meadow');
-            if (!meadow) return;
-
-            let dragging = null;
-            let offsetX = 0;
-            let offsetY = 0;
-            let hasMoved = false;
-
-            function startDrag(sheep, clientX, clientY) {
-                dragging = sheep;
-                hasMoved = false;
-                const rect = sheep.getBoundingClientRect();
-                offsetX = clientX - rect.left;
-                offsetY = clientY - rect.top;
-                sheep.style.zIndex = '10';
-                sheep.classList.add('dragging');
-            }
-
-            function moveDrag(clientX, clientY) {
-                if (!dragging) return;
-                hasMoved = true;
-                const meadowRect = meadow.getBoundingClientRect();
-                const x = clientX - meadowRect.left - offsetX;
-                const y = clientY - meadowRect.top - offsetY;
-                const px = (x / meadowRect.width) * 100;
-                const py = (y / meadowRect.height) * 100;
-                dragging.style.left = Math.max(0, Math.min(92, px)) + '%';
-                dragging.style.top = Math.max(0, Math.min(85, py)) + '%';
-            }
-
-            function endDrag(e) {
-                if (!dragging) return;
-                dragging.classList.remove('dragging');
-                dragging.style.zIndex = '';
-                if (hasMoved) e.preventDefault();
-                dragging = null;
-            }
-
-            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
-                sheep.addEventListener('mousedown', function (e) {
-                    e.preventDefault();
-                    startDrag(sheep, e.clientX, e.clientY);
-                });
-                sheep.addEventListener('touchstart', function (e) {
-                    const t = e.touches[0];
-                    startDrag(sheep, t.clientX, t.clientY);
-                }, { passive: true });
-                sheep.addEventListener('click', function (e) {
-                    if (hasMoved) { e.preventDefault(); hasMoved = false; }
-                });
-            });
-
-            document.addEventListener('mousemove', function (e) { moveDrag(e.clientX, e.clientY); });
-            document.addEventListener('touchmove', function (e) {
-                if (!dragging) return;
-                moveDrag(e.touches[0].clientX, e.touches[0].clientY);
-            }, { passive: false });
-            document.addEventListener('mouseup', function (e) { endDrag(e); });
-            document.addEventListener('touchend', function (e) { endDrag(e); });
-        })();
     </script>
 
 </body>

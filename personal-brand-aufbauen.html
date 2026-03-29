@@ -7,7 +7,7 @@
     <meta name="description" content="Finde in 2 Minuten heraus, wo deine Personal Brand steht. 7 Fragen, ein ehrliches Ergebnis, klare nächste Schritte.">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://meinhaus.studio/personal-brand-aufbauen.html">
-    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/">
+    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/brand-check.html">
     <link rel="alternate" hreflang="de" href="https://meinhaus.studio/personal-brand-aufbauen.html">
 
     <!-- Open Graph -->
@@ -153,48 +153,8 @@
 
     </main>
 
-    <!-- Meadow Footer -->
-    <footer class="meadow-footer">
-        <div class="meadow">
-            <img class="meadow-bg" src="wiese.png" alt="">
-            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 8%; top: 45%;" data-label="Instagram">
-                <span class="sheep-tooltip">Instagram</span>
-                <img src="schaf 01.png" alt="Instagram">
-            </a>
-            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="sheep" style="left: 22%; top: 60%;" data-label="LinkedIn">
-                <span class="sheep-tooltip">LinkedIn</span>
-                <img src="schaf02.png" alt="LinkedIn">
-            </a>
-            <a href="mailto:hello@meinhaus.studio" class="sheep" style="left: 45%; top: 40%;" data-label="E-Mail">
-                <span class="sheep-tooltip">E-Mail</span>
-                <img src="schaf03.png" alt="E-Mail">
-            </a>
-            <a href="impressum.html" class="sheep sheep--house" style="left: 65%; top: 25%;" data-label="Impressum">
-                <span class="sheep-tooltip">Impressum</span>
-                <img src="haus 01.png" alt="Impressum">
-            </a>
-            <a href="datenschutz.html" class="sheep" style="left: 82%; top: 55%;" data-label="Datenschutz">
-                <span class="sheep-tooltip">Datenschutz</span>
-                <img src="schaf04.png" alt="Datenschutz">
-            </a>
-            <a href="brand-check.html" class="sheep" style="left: 35%; top: 50%;" data-label="Brand Check">
-                <span class="sheep-tooltip">Brand Check</span>
-                <img src="schaf 01.png" alt="Brand Check">
-            </a>
-            <span class="sheep sheep--muted" style="left: 55%; top: 65%;" data-label="Blog">
-                <span class="sheep-tooltip">Blog</span>
-                <img src="schaf03.png" alt="Blog">
-            </span>
-            <div class="meadow-bottom">
-                <span>&copy; <span class="year"></span> meinhaus studio</span>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        // Year
-        document.querySelector('.year').textContent = new Date().getFullYear();
-
         // Quiz
         (function() {
             const questions = [
@@ -203,26 +163,26 @@
                     cat: 'Strategie',
                     options: [
                         { text: 'Ja, glasklar', score: 3 },
-                        { text: 'So ungefähr', score: 2 },
-                        { text: 'Eher nicht', score: 1 }
+                        { text: 'So ungefähr', score: 1 },
+                        { text: 'Eher nicht', score: 0 }
                     ]
                 },
                 {
-                    q: 'Hast du eine definierte Zielgruppe?',
+                    q: 'Hast du eine klare Zielgruppe, die du gezielt ansprichst?',
                     cat: 'Strategie',
                     options: [
-                        { text: 'Ja, ich weiß genau wen ich anspreche', score: 3 },
-                        { text: 'Ich habe eine Idee, aber nichts Konkretes', score: 2 },
-                        { text: 'Ich spreche eigentlich alle an', score: 1 }
+                        { text: 'Ja, genau definiert', score: 3 },
+                        { text: 'Ich habe eine Idee, aber nichts Konkretes', score: 1 },
+                        { text: 'Ich spreche eigentlich alle an', score: 0 }
                     ]
                 },
                 {
-                    q: 'Hast du ein Logo, Farben und Schriften, die zusammenpassen?',
+                    q: 'Hast du ein professionelles visuelles System: Logo, Farben, Schriften?',
                     cat: 'Identität',
                     options: [
                         { text: 'Ja, professionell gestaltet', score: 3 },
-                        { text: 'Selbst gemacht, aber okay', score: 2 },
-                        { text: 'Nein, nichts Einheitliches', score: 1 }
+                        { text: 'Selbst gemacht mit Canva o.ä.', score: 1 },
+                        { text: 'Nein, nichts Einheitliches', score: 0 }
                     ]
                 },
                 {
@@ -230,35 +190,35 @@
                     cat: 'Identität',
                     options: [
                         { text: 'Ja, alles aus einem Guss', score: 3 },
-                        { text: 'Teilweise', score: 2 },
-                        { text: 'Jede Plattform sieht anders aus', score: 1 }
+                        { text: 'Teilweise', score: 1 },
+                        { text: 'Jede Plattform sieht anders aus', score: 0 }
                     ]
                 },
                 {
-                    q: 'Hast du eine eigene Website?',
+                    q: 'Spiegelt dein Online-Auftritt dein Preisniveau wider?',
                     cat: 'Website',
                     options: [
-                        { text: 'Ja, custom designed', score: 3 },
-                        { text: 'Ja, aber ein Template', score: 2 },
-                        { text: 'Nein', score: 1 }
+                        { text: 'Ja, wirkt hochwertig', score: 3 },
+                        { text: 'Nicht wirklich', score: 1 },
+                        { text: 'Definitiv nicht', score: 0 }
                     ]
                 },
                 {
-                    q: 'Verstehen Besucher in 5 Sekunden, was du anbietest?',
+                    q: 'Haben Besucher auf deiner Website einen klaren nächsten Schritt?',
                     cat: 'Website',
                     options: [
-                        { text: 'Ja, sofort klar', score: 3 },
-                        { text: 'Wahrscheinlich nicht', score: 2 },
-                        { text: 'Ich habe keine Ahnung', score: 1 }
+                        { text: 'Ja, klarer Pfad zum Erstgespräch', score: 3 },
+                        { text: 'Es gibt ein Kontaktformular', score: 1 },
+                        { text: 'Nicht wirklich', score: 0 }
                     ]
                 },
                 {
-                    q: 'Bekommst du Anfragen über deine Online-Präsenz?',
+                    q: 'Bekommst du qualifizierte Anfragen über deine Online-Präsenz?',
                     cat: 'Wirkung',
                     options: [
                         { text: 'Regelmäßig', score: 3 },
-                        { text: 'Selten', score: 2 },
-                        { text: 'Nie', score: 1 }
+                        { text: 'Selten, und oft nicht die Richtigen', score: 1 },
+                        { text: 'Nie', score: 0 }
                     ]
                 }
             ];
@@ -266,15 +226,15 @@
             const results = {
                 strong: {
                     title: 'Deine Marke steht gut da.',
-                    text: 'Die Basis stimmt. Jetzt geht es darum, die Details zu schärfen und den Auftritt auf das nächste Level zu bringen. Ein Brand Audit kann helfen, blinde Flecken aufzudecken.'
+                    text: 'Starke Grundlage. Wir würden uns freuen, uns mit dir auszutauschen und zu sehen, wo noch Potenzial steckt.'
                 },
                 medium: {
                     title: 'Gute Ansätze, aber kein System.',
-                    text: 'Du hast einzelne Bausteine, aber sie passen noch nicht zusammen. Das ist der häufigste Zustand, den wir sehen. Ein durchdachtes Brand System bringt Klarheit und Konsistenz.'
+                    text: 'Du hast einzelne Bausteine, aber sie passen noch nicht zusammen. Deine Expertise kommt online nicht so an, wie sie sollte. Genau hier setzen wir an.'
                 },
                 weak: {
                     title: 'Zeit für ein Fundament.',
-                    text: 'Deine Marke hat noch kein Zuhause. Das ist kein Problem, es ist ein Startpunkt. Mit der richtigen Strategie und einem klaren visuellen System wird aus deiner Expertise eine Marke, die wirkt.'
+                    text: 'Du bist gut in dem, was du tust, aber dein Auftritt zeigt das noch nicht. Mit einer klaren Markenidentität wird aus deiner Expertise ein Auftritt, der Wunschkunden anzieht.'
                 }
             };
 
@@ -328,7 +288,7 @@
                 const total = scores.reduce((sum, s) => sum + s.score, 0);
                 let level;
                 if (total >= 17) level = 'strong';
-                else if (total >= 12) level = 'medium';
+                else if (total >= 8) level = 'medium';
                 else level = 'weak';
 
                 document.getElementById('quiz-result-number').textContent = total;
@@ -449,68 +409,6 @@
             }
         });
 
-        // Sheep drag & drop
-        (function () {
-            const meadow = document.querySelector('.meadow');
-            if (!meadow) return;
-
-            let dragging = null;
-            let offsetX = 0;
-            let offsetY = 0;
-            let hasMoved = false;
-
-            function startDrag(sheep, clientX, clientY) {
-                dragging = sheep;
-                hasMoved = false;
-                const rect = sheep.getBoundingClientRect();
-                offsetX = clientX - rect.left;
-                offsetY = clientY - rect.top;
-                sheep.style.zIndex = '10';
-                sheep.classList.add('dragging');
-            }
-
-            function moveDrag(clientX, clientY) {
-                if (!dragging) return;
-                hasMoved = true;
-                const meadowRect = meadow.getBoundingClientRect();
-                const x = clientX - meadowRect.left - offsetX;
-                const y = clientY - meadowRect.top - offsetY;
-                const px = (x / meadowRect.width) * 100;
-                const py = (y / meadowRect.height) * 100;
-                dragging.style.left = Math.max(0, Math.min(92, px)) + '%';
-                dragging.style.top = Math.max(0, Math.min(85, py)) + '%';
-            }
-
-            function endDrag(e) {
-                if (!dragging) return;
-                dragging.classList.remove('dragging');
-                dragging.style.zIndex = '';
-                if (hasMoved) e.preventDefault();
-                dragging = null;
-            }
-
-            meadow.querySelectorAll('.sheep').forEach(function (sheep) {
-                sheep.addEventListener('mousedown', function (e) {
-                    e.preventDefault();
-                    startDrag(sheep, e.clientX, e.clientY);
-                });
-                sheep.addEventListener('touchstart', function (e) {
-                    const t = e.touches[0];
-                    startDrag(sheep, t.clientX, t.clientY);
-                }, { passive: true });
-                sheep.addEventListener('click', function (e) {
-                    if (hasMoved) { e.preventDefault(); hasMoved = false; }
-                });
-            });
-
-            document.addEventListener('mousemove', function (e) { moveDrag(e.clientX, e.clientY); });
-            document.addEventListener('touchmove', function (e) {
-                if (!dragging) return;
-                moveDrag(e.touches[0].clientX, e.touches[0].clientY);
-            }, { passive: false });
-            document.addEventListener('mouseup', function (e) { endDrag(e); });
-            document.addEventListener('touchend', function (e) { endDrag(e); });
-        })();
     </script>
 
 </body>
