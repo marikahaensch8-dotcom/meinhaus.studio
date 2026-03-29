@@ -1060,16 +1060,29 @@
             }
         });
 
+        // Desktop: open nav menu on load, collapse on scroll
+        if (window.innerWidth > 900) {
+            navCenter.classList.add('open');
+            navMenuToggle.setAttribute('aria-expanded', 'true');
+        }
         window.addEventListener('scroll', () => {
-            servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active');
-            servicesToggle.setAttribute('aria-expanded', 'false');
-            if (connectWrap.classList.contains('open')) {
+            if (window.innerWidth > 900) {
+                if (window.scrollY > 200 && navCenter.classList.contains('open')) {
+                    navCenter.classList.remove('open');
+                    navMenuToggle.setAttribute('aria-expanded', 'false');
+                }
+                if (window.scrollY <= 50 && !navCenter.classList.contains('open')) {
+                    navCenter.classList.add('open');
+                    navMenuToggle.setAttribute('aria-expanded', 'true');
+                }
+            }
+            if (servicesWrap.classList.contains('open') || connectWrap.classList.contains('open')) {
+                servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active');
+                servicesToggle.setAttribute('aria-expanded', 'false');
                 connectWrap.classList.remove('open'); connectDropdown.classList.remove('active');
                 connectToggle.setAttribute('aria-expanded', 'false');
                 stopClocks();
             }
-            navCenter.classList.remove('open');
-            navMenuToggle.setAttribute('aria-expanded', 'false');
         }, { passive: true });
     </script>
 
