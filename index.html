@@ -51,8 +51,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
+    </noscript>
     <link rel="preload" as="image" href="DSC03289.webp" type="image/webp">
     <style>
         /* ===== TOKENS ===== */
@@ -1005,8 +1009,8 @@
         <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
-                <h1 id="hero-heading" aria-label="Jede Marke braucht ein Zuhause."></h1>
-                <p class="hero-sub">Wir bauen deins.</p>
+                <h1 id="hero-heading" aria-label="Jede Marke braucht ein Zuhause.">Jede Marke braucht<br>ein Zuhause.</h1>
+                <p class="hero-sub" style="opacity:1">Wir bauen deins.</p>
             </div>
             <div class="hero-meta">
                 <span>Branding · Web · Editorial · 3D</span>
@@ -1187,18 +1191,24 @@
             }, 50);
         });
 
-        // ===== TYPING ANIMATION =====
+        // ===== TYPING ANIMATION (progressive enhancement) =====
         (function() {
             const el = document.getElementById('hero-heading');
+            const sub = document.querySelector('.hero-sub');
             const lines = ['Jede Marke braucht', 'ein Zuhause.'];
             const cursor = document.createElement('span');
             cursor.className = 'cursor';
             let lineIdx = 0, charIdx = 0;
 
+            // Clear pre-rendered text before typing
+            el.textContent = '';
+            sub.style.opacity = '0';
+
             function type() {
                 if (lineIdx >= lines.length) {
                     cursor.remove();
-                    document.querySelector('.hero-sub').classList.add('visible');
+                    sub.style.opacity = '1';
+                    sub.classList.add('visible');
                     return;
                 }
                 const line = lines[lineIdx];
