@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 · Nobody's home · meinhaus studio</title>
     <link rel="icon" href="House.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
     <style>
         @font-face {
             font-family: 'Diatype';
@@ -22,7 +28,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Diatype', sans-serif;
+            font-family: 'Inter', 'Diatype', sans-serif;
             background: #f5f0e8;
             color: #1a1a1a;
             height: 100vh;
@@ -46,8 +52,8 @@
         }
 
         .code {
-            font-size: clamp(80px, 15vw, 160px);
-            font-weight: 300;
+            font-size: clamp(72px, 14vw, 140px);
+            font-weight: 600;
             line-height: 1;
             letter-spacing: -0.03em;
             color: #1a1a1a;
@@ -82,9 +88,12 @@
             gap: 8px;
             margin-top: 40px;
             padding: 12px 28px;
+            border: none;
             border-radius: 100px;
-            background: #1a1a1a;
-            color: #fff;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: #1a1a1a;
             text-decoration: none;
             font-size: 14px;
             font-weight: 400;
@@ -92,7 +101,7 @@
             opacity: 0;
             animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
         }
-        .home-link:hover { background: #333; }
+        .home-link:hover { background: rgba(220, 220, 220, 0.75); }
 
         /* Meadow at bottom */
         .meadow {
