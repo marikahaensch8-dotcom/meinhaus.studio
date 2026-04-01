@@ -51,10 +51,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
     </noscript>
     <link rel="preload" as="image" href="DSC03289.webp" type="image/webp">
@@ -66,7 +66,7 @@
             --grey-light: #e8e8e8;
             --white: #fafafa;
             --pure-white: #ffffff;
-            --serif: 'Instrument Serif', Georgia, serif;
+            --serif: 'Inter', 'Helvetica Neue', sans-serif;
             --sans: 'General Sans', 'Helvetica Neue', sans-serif;
             --ease: 0.3s ease;
             --ease-out: cubic-bezier(.19, 1, .22, 1);
@@ -266,9 +266,9 @@
         .hero-content { max-width: 900px; }
         .hero h1 {
             font-family: var(--serif);
-            font-size: clamp(52px, 7vw, 96px);
-            font-weight: 400;
-            line-height: 1.05;
+            font-size: clamp(42px, 5.5vw, 76px);
+            font-weight: 600;
+            line-height: 1.08;
             letter-spacing: -0.02em;
             color: var(--black);
             min-height: 1.05em;
@@ -293,6 +293,26 @@
             transition: opacity 0.8s ease;
         }
         .hero-sub.visible { opacity: 1; }
+        .hero-cta {
+            display: inline-block;
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 400;
+            padding: 12px 32px;
+            margin-top: 48px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.6s ease, transform 0.6s ease, background var(--ease);
+            border: none;
+            border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--black);
+            text-decoration: none;
+            transition: background var(--ease);
+        }
+        .hero-cta:hover { background: rgba(220, 220, 220, 0.75); }
         .hero-meta {
             position: absolute;
             bottom: 40px; left: var(--pad); right: var(--pad);
@@ -330,125 +350,86 @@
             color: var(--black);
         }
 
-        /* ===== SERVICES (cards) ===== */
+        /* ===== SERVICES (scroll stacking) ===== */
         .services {
-            padding: 160px var(--pad);
+            padding: 0;
             max-width: 1360px;
             margin: 0 auto;
         }
+        .services-header {
+            padding: 160px var(--pad) 80px;
+            text-align: center;
+        }
         .services-headline {
             font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 56px);
-            font-weight: 400;
-            line-height: 1.15;
+            font-size: clamp(26px, 3.2vw, 44px);
+            font-weight: 600;
+            line-height: 1.2;
             letter-spacing: -0.02em;
-            text-align: center;
             max-width: 700px;
-            margin: 0 auto 80px;
+            margin: 0 auto;
         }
-        .services-grid {
+        .services-scroll {
+            height: calc(5 * 100vh);
+        }
+        .services-sticky {
+            position: sticky;
+            top: 8vh;
+        }
+        .svc-row {
+            overflow: hidden;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 40px;
             align-items: start;
+            padding: 3vh var(--pad);
+            will-change: height;
         }
-        .service-card {
-            position: relative;
-            border: 1px solid var(--black);
-            padding: 48px 40px;
+        .svc-left {
             display: flex;
             flex-direction: column;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out, border-color 0.3s ease;
-            transition-delay: calc(var(--index, 0) * 400ms);
+            gap: 20px;
+            align-items: flex-start;
         }
-        .services-grid.is-visible .service-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .service-card:hover { border-color: var(--black); }
-        .service-card-title {
+        .svc-title {
             font-family: var(--serif);
-            font-size: clamp(28px, 2.8vw, 40px);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 12px;
-        }
-        .service-card-desc {
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 1.5;
+            font-size: clamp(20px, 2.2vw, 32px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
             color: var(--black);
-            margin-bottom: 40px;
-            max-width: 360px;
         }
-        .service-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px 8px;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.5s var(--ease-out), opacity 0.4s ease, padding 0.5s var(--ease-out);
-        }
-        .service-card:hover .service-card-tags {
-            max-height: 80px;
-            opacity: 1;
-            padding-top: 16px;
-        }
-        .service-card-tag {
+        .svc-btn {
+            display: inline-block;
             font-family: var(--sans);
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 400;
+            padding: 9px 24px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--black);
+            text-decoration: none;
+            transition: background var(--ease);
+        }
+        .svc-btn:hover {
+            background: rgba(220, 220, 220, 0.75);
+        }
+        .svc-desc {
+            font-family: var(--sans);
+            font-size: clamp(15px, 1.5vw, 18px);
+            font-weight: 300;
+            line-height: 1.65;
             color: var(--grey);
         }
-        .service-card-tag::after {
-            content: '·';
-            margin-left: 8px;
-        }
-        .service-card-tag:last-child::after {
-            content: none;
-        }
-        .service-card-link {
-            margin-top: auto;
-            padding-top: 24px;
-        }
-        .service-card-link a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--black);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .service-card-link a span {
-            position: relative;
-            padding-bottom: 4px;
-        }
-        .service-card-link a span::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 1px;
-            background: var(--black);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s var(--ease-out);
-        }
-        .service-card-link a:hover span::after {
-            transform: scaleX(1);
-        }
-        .service-card-link a::after {
-            content: '';
-            width: 20px; height: 20px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'/%3E%3Cpath d='M7 7h10v10'/%3E%3C/svg%3E") no-repeat center;
-            transition: transform 0.3s var(--ease-out);
-        }
-        .service-card-link a:hover::after {
-            transform: translate(2px, -2px);
+        .svc-img {
+            aspect-ratio: 1/1;
+            width: 100%;
+            border-radius: 0;
+            object-fit: cover;
         }
 
 
@@ -475,15 +456,15 @@
         }
         .why-headline {
             font-family: var(--serif);
-            font-size: clamp(28px, 3vw, 44px);
-            font-weight: 400;
-            line-height: 1.25;
+            font-size: clamp(22px, 2.4vw, 34px);
+            font-weight: 600;
+            line-height: 1.3;
             letter-spacing: -0.01em;
             max-width: 700px;
             margin-bottom: 80px;
         }
-        .why-items { border-top: 1px solid var(--black); }
-        .why-item { border-bottom: 1px solid var(--black); }
+        .why-items { }
+        .why-item { }
         .why-trigger {
             width: 100%;
             display: flex;
@@ -491,8 +472,8 @@
             align-items: center;
             padding: 28px 0;
             font-family: var(--serif);
-            font-size: 24px;
-            font-weight: 400;
+            font-size: 20px;
+            font-weight: 500;
             color: var(--black);
             cursor: pointer;
             background: none; border: none;
@@ -538,9 +519,9 @@
         }
         .about-heading {
             font-family: var(--serif);
-            font-size: clamp(36px, 4vw, 56px);
-            font-weight: 400;
-            line-height: 1.1;
+            font-size: clamp(28px, 3.2vw, 44px);
+            font-weight: 600;
+            line-height: 1.15;
             margin-bottom: 32px;
         }
         .about-text p {
@@ -561,7 +542,7 @@
 
         /* ===== CTA ===== */
         .cta {
-            padding: 60px var(--pad) 220px;
+            padding: 200px var(--pad) 220px;
             max-width: 1360px;
             margin: 0 auto;
         }
@@ -581,8 +562,8 @@
         }
         .cta-headline {
             font-family: var(--serif);
-            font-size: clamp(48px, 8vw, 120px);
-            font-weight: 400;
+            font-size: clamp(40px, 6.5vw, 96px);
+            font-weight: 700;
             line-height: 1;
             letter-spacing: -0.03em;
             margin-bottom: 48px;
@@ -623,9 +604,9 @@
         }
         .contact-heading {
             font-family: var(--serif);
-            font-size: clamp(28px, 3.5vw, 40px);
-            font-weight: 400;
-            line-height: 1.2;
+            font-size: clamp(24px, 2.8vw, 34px);
+            font-weight: 600;
+            line-height: 1.25;
             color: var(--black);
             margin-bottom: 40px;
         }
@@ -638,10 +619,11 @@
         .contact-form select {
             font-family: var(--sans);
             font-size: 15px; font-weight: 400;
-            padding: 16px 18px;
-            border: 1px solid var(--black);
-            border-radius: 10px;
-            background: var(--pure-white);
+            padding: 16px 0;
+            border: none;
+            border-bottom: 1px solid var(--grey-light);
+            border-radius: 0;
+            background: transparent;
             color: var(--black);
             outline: none; width: 100%;
             /* a11y: restore focus ring */
@@ -651,8 +633,8 @@
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
-            border-color: var(--black);
-            box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.15);
+            border-bottom-color: var(--black);
+            box-shadow: none;
         }
         .contact-form input::placeholder,
         .contact-form textarea::placeholder {
@@ -663,8 +645,8 @@
             cursor: pointer;
             background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 18px center;
-            padding-right: 44px;
+            background-position: right 0 center;
+            padding-right: 24px;
         }
         .contact-form select option { background: var(--white); color: var(--black); }
         .contact-form select:valid { color: var(--black); }
@@ -674,7 +656,7 @@
             gap: 16px;
         }
         .contact-form textarea {
-            resize: vertical; min-height: 120px;
+            resize: vertical; min-height: 100px; border-bottom: 1px solid var(--grey-light);
         }
         .contact-submit {
             align-self: center;
@@ -697,7 +679,7 @@
         .contact-success.visible { display: block; }
         .contact-success h3 {
             font-family: var(--serif);
-            font-size: 32px; font-weight: 400;
+            font-size: 26px; font-weight: 600;
             margin-bottom: 8px; color: var(--black);
         }
         .contact-success p { font-size: 15px; color: var(--grey); }
@@ -707,25 +689,24 @@
             padding: 0 0 32px;
             background: var(--pure-white);
         }
-        .footer-lines {
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-        }
-        .footer-line {
-            height: 0;
-            border-top: 1px solid var(--black);
-            margin-bottom: 12px;
+        .footer-lines { display: none; }
+        .footer-brand {
+            font-family: var(--serif);
+            font-size: 21vw;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: var(--black);
+            padding: 120px var(--pad) 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
         }
         .footer-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px var(--pad);
-            border-top: 1px solid var(--black);
-        }
-        .footer-row:last-child {
-            border-bottom: 1px solid var(--black);
+            padding: 0 var(--pad) 40px;
         }
         .footer-left {
             display: flex; gap: 24px; align-items: center;
@@ -745,7 +726,7 @@
         .footer-link {
             display: inline-flex; align-items: center; gap: 6px;
             font-family: var(--serif);
-            font-size: clamp(20px, 3vw, 32px);
+            font-size: clamp(18px, 2.4vw, 26px);
             color: var(--black);
             text-decoration: none;
             transition: opacity var(--ease);
@@ -756,9 +737,15 @@
             height: clamp(14px, 2vw, 20px);
             flex-shrink: 0;
         }
+        .footer-link-text, .footer-icon-arrow { display: none; }
         .footer-icon-social {
-            display: none;
+            display: block;
+            width: 22px;
+            height: 22px;
+            fill: var(--black);
+            stroke: none;
         }
+        .footer-link { font-size: 0; }
 
         /* ===== RESPONSIVE — TABLET ===== */
         @media (max-width: 900px) {
@@ -802,8 +789,10 @@
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
 
-            .services-grid { grid-template-columns: 1fr; }
-            .service-card-tags { max-height: none; opacity: 1; padding-top: 16px; }
+            .services-scroll { height: auto; }
+            .services-sticky { position: relative; top: auto; }
+            .svc-row { height: auto !important; grid-template-columns: 1fr; gap: 24px; padding: 40px var(--pad); }
+            .svc-img { aspect-ratio: 16/9; }
             .why { grid-template-columns: 1fr; }
             .why-photo { min-height: 400px; order: 2; }
             .why-content { padding: 0 0 48px; order: 1; }
@@ -814,10 +803,9 @@
             .footer-left { gap: 12px; }
             .footer-left span, .footer-left a { font-size: 11px; }
             .footer-right { gap: 16px; }
-            .footer-link-text, .footer-icon-arrow { display: none; }
-            .footer-icon-social { display: block; width: 16px; height: 16px; stroke: none; fill: var(--black); }
-            .footer-link { font-size: 0; }
-            .footer-line { margin-bottom: 8px; }
+            .footer-icon-social { width: 16px; height: 16px; }
+            .footer-brand { font-size: 18vw; padding: 80px var(--pad) 0; }
+            .hero-cta { margin-top: 32px; font-size: 13px; padding: 10px 28px; }
         }
 
         /* ===== RESPONSIVE — MOBILE ===== */
@@ -826,18 +814,22 @@
             .footer-left span, .footer-left a { font-size: 10px; white-space: nowrap; }
             .footer-right { gap: 10px; }
             .footer-icon-social { width: 14px; height: 14px; }
-            .hero h1 { font-size: 40px; }
+            .hero h1 { font-size: 32px; }
             .hero-meta { flex-direction: column; gap: 4px; }
             .intro { padding: 100px var(--pad); }
             .intro-text { font-size: 22px; }
-            .services { padding: 100px var(--pad); }
-            .service-card { padding: 32px 24px; }
+            .services { padding: 0 var(--pad); }
+            .services-header { padding: 100px 0 40px; }
+            .svc-row { padding: 32px var(--pad); }
+            .svc-title { font-size: 28px; }
             .cta-card { padding: 60px 24px; }
             .why { padding: 100px var(--pad); }
             .about-text { padding: 80px var(--pad); }
             .cta { padding: 40px var(--pad); }
             .contact { padding: 80px var(--pad); }
             .contact-heading { margin-bottom: 32px; }
+            .footer-brand { font-size: 16vw; padding: 60px var(--pad) 0; }
+            .hero-cta { margin-top: 24px; }
         }
         /* ===== COOKIE CONSENT ===== */
         .cookie-banner {
@@ -879,7 +871,9 @@
             *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
             .r-line-inner { transform: none; }
             .r-fade { opacity: 1; transform: none; }
-            .service-card { opacity: 1; transform: none; }
+            .services-scroll { height: auto; }
+            .services-sticky { position: relative; top: auto; }
+            .svc-row { height: auto !important; }
             .hero-sub { opacity: 1; }
             .intro-text .word { color: var(--black); }
         }
@@ -1011,6 +1005,7 @@
             <div class="hero-content">
                 <h1 id="hero-heading" aria-label="Jede Marke braucht ein Zuhause.">Jede Marke braucht<br>ein Zuhause.</h1>
                 <p class="hero-sub" style="opacity:1">Wir bauen deins.</p>
+                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="hero-cta" target="_blank" rel="noopener noreferrer">Call buchen</a>
             </div>
             <div class="hero-meta">
                 <span>Branding · Web · Editorial · 3D</span>
@@ -1023,51 +1018,45 @@
             <p class="intro-text" id="intro-text">Die meisten Coaches und Gründer haben eine starke Idee, aber einen Auftritt, der das nicht zeigt. Wir bauen das visuelle Fundament, das deiner Marke Struktur, Klarheit und Charakter gibt.</p>
         </section>
 
-        <!-- SERVICES + SCOPE (merged) -->
+        <!-- SERVICES (scroll stacking) -->
         <section class="services" id="scope">
-            <p class="label" style="text-align:center">Personal Brand System</p>
-            <h2 class="services-headline r-line"><span class="r-line-inner">Alles, was deine Marke braucht.<br>Aus einem Studio.</span></h2>
+            <div class="services-header">
+                <p class="label" style="text-align:center">Personal Brand System</p>
+                <h2 class="services-headline r-line"><span class="r-line-inner">Alles, was deine Marke braucht.<br>Aus einem Studio.</span></h2>
+            </div>
 
-            <div class="services-grid">
-                <!-- Card 1: Branding -->
-                <div class="service-card" style="--index: 0;">
-                    <h3 class="service-card-title">Branding</h3>
-                    <p class="service-card-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Strategie, visuelle Sprache und alles, was deine Marke ausmacht.</p>
-                    <div class="service-card-link"><a href="/branding-fuer-coaches"><span>weiterlesen</span></a></div>
-                    <div class="service-card-tags">
-                        <span class="service-card-tag">Positionierung</span>
-                        <span class="service-card-tag">Messaging</span>
-                        <span class="service-card-tag">Typografie</span>
-                        <span class="service-card-tag">Markenarchitektur</span>
-                        <span class="service-card-tag">Brand Guidelines</span>
+            <div class="services-scroll">
+                <div class="services-sticky">
+                    <div class="svc-row">
+                        <div class="svc-left">
+                            <h3 class="svc-title">Branding</h3>
+                            <a href="/branding-fuer-coaches" class="svc-btn">weiterlesen</a>
+                        </div>
+                        <p class="svc-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Von Positionierung und Messaging bis Typografie, Markenarchitektur und Brand Guidelines.</p>
+                        <img class="svc-img" src="brandig.jpeg" alt="Branding Beispiel">
                     </div>
-                </div>
-
-                <!-- Card 2: Webdesign -->
-                <div class="service-card" style="--index: 1;">
-                    <h3 class="service-card-title">Webdesign</h3>
-                    <p class="service-card-desc">Die Haustür. Der erste Eindruck zählt. Wir gestalten Websites und digitale Erlebnisse, die deine Marke greifbar machen.</p>
-                    <div class="service-card-link"><a href="/webdesign-fuer-coaches"><span>weiterlesen</span></a></div>
-                    <div class="service-card-tags">
-                        <span class="service-card-tag">UI/UX Design</span>
-                        <span class="service-card-tag">Landing Pages</span>
-                        <span class="service-card-tag">Development</span>
-                        <span class="service-card-tag">SEO Basics</span>
-                        <span class="service-card-tag">Motion Design</span>
-                        <span class="service-card-tag">3D Visuals</span>
+                    <div class="svc-row">
+                        <div class="svc-left">
+                            <h3 class="svc-title">Webdesign</h3>
+                            <a href="/webdesign-fuer-coaches" class="svc-btn">weiterlesen</a>
+                        </div>
+                        <p class="svc-desc">Die Haustür. Der erste Eindruck zählt. UI/UX Design, Landing Pages, Development und SEO. Alles, was deine Marke digital greifbar macht.</p>
+                        <img class="svc-img" src="webdesign.jpeg" alt="Webdesign Beispiel">
                     </div>
-                </div>
-
-                <!-- Card 3: Creative Direction -->
-                <div class="service-card" style="--index: 2;">
-                    <h3 class="service-card-title">Creative Direction</h3>
-                    <p class="service-card-desc">Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt. Wir füllen deine Marke mit allem, was sie sichtbar und lebendig macht.</p>
-                    <div class="service-card-link"><a href="/personal-brand-aufbauen"><span>eigene marke testen</span></a></div>
-                    <div class="service-card-tags">
-                        <span class="service-card-tag">Editorial Design</span>
-                        <span class="service-card-tag">Content Strategy</span>
-                        <span class="service-card-tag">Fotografie</span>
-                        <span class="service-card-tag">Bildsprache</span>
+                    <div class="svc-row">
+                        <div class="svc-left">
+                            <h3 class="svc-title">Creative Direction</h3>
+                            <a href="/brand-check" class="svc-btn">Brand Check</a>
+                        </div>
+                        <p class="svc-desc">Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt. Fotografie, Editorial Design, Content Strategy und Bildsprache, die deine Marke sichtbar machen.</p>
+                        <img class="svc-img" src="creative directio.jpeg" alt="Creative Direction Beispiel" style="filter: brightness(1.1) contrast(1.1);">
+                    </div>
+                    <div class="svc-row">
+                        <div class="svc-left">
+                            <h3 class="svc-title">Digital Marketing</h3>
+                        </div>
+                        <p class="svc-desc">Das Smart Home. Gut aussehen reicht nicht. SEO, Social Media, Performance Marketing und Analytics sorgen dafür, dass deine Marke gefunden wird und wächst.</p>
+                        <img class="svc-img" src="digital marketing.jpeg" alt="Digital Marketing Beispiel" style="filter: brightness(1.1) contrast(1.1);">
                     </div>
                 </div>
             </div>
@@ -1155,16 +1144,7 @@
 
     <!-- FOOTER -->
     <footer class="site-footer">
-        <div class="footer-lines">
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-            <div class="footer-line"></div><div class="footer-line"></div>
-        </div>
+        <div class="footer-brand">meinhaus</div>
             <div class="footer-row">
                 <div class="footer-left">
                     <span>&copy; 2026 meinhaus studio</span>
@@ -1209,6 +1189,8 @@
                     cursor.remove();
                     sub.style.opacity = '1';
                     sub.classList.add('visible');
+                    var cta = document.querySelector('.hero-cta');
+                    if (cta) { setTimeout(function() { cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }, 400); }
                     return;
                 }
                 const line = lines[lineIdx];
@@ -1269,20 +1251,6 @@
             wordObs.observe(p);
         })();
 
-        // ===== EQUALIZE SERVICE CARD HEIGHTS =====
-        function equalizeCards() {
-            const els = document.querySelectorAll('.service-card');
-            els.forEach(c => c.style.minHeight = '');
-            // Only equalize in multi-column layout
-            if (window.innerWidth <= 900) return;
-            const grid = document.querySelector('.services-grid');
-            grid.classList.add('is-visible');
-            const max = Math.max(...[...els].map(c => c.offsetHeight));
-            grid.classList.remove('is-visible');
-            els.forEach(c => c.style.minHeight = max + 'px');
-        }
-        equalizeCards();
-        window.addEventListener('resize', equalizeCards);
 
         // ===== SCROLL REVEALS =====
         const revealObs = new IntersectionObserver((entries) => {
@@ -1296,17 +1264,46 @@
 
         document.querySelectorAll('.r-line, .r-fade').forEach(el => revealObs.observe(el));
 
-        // Stagger service cards — observe grid, reveal all cards with CSS stagger
-        const servicesGrid = document.querySelector('.services-grid');
-        const gridObs = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('is-visible');
-                    gridObs.unobserve(e.target);
+        // ===== SERVICES SCROLL STACKING =====
+        (function() {
+            var scrollEl = document.querySelector('.services-scroll');
+            var rows = document.querySelectorAll('.svc-row');
+            if (!scrollEl || !rows.length) return;
+
+            var n = rows.length;
+
+            // Mobile: no scroll stacking
+            if (window.innerWidth <= 900) return;
+
+            function update() {
+                var vh = window.innerHeight;
+                var MIN_H = vh * 0.22;
+                var MAX_H = vh * 0.86;
+                var scrollable = scrollEl.offsetHeight - vh;
+                var pageH = scrollable / n;
+
+                var rect = scrollEl.getBoundingClientRect();
+                var scrollIn = Math.max(0, -rect.top);
+
+                rows.forEach(function(row, i) {
+                    var progress = (scrollIn - i * pageH) / pageH;
+                    progress = Math.max(0, Math.min(1, progress));
+
+                    var h = MAX_H - progress * (MAX_H - MIN_H);
+                    row.style.height = h + 'px';
+                });
+            }
+
+            var ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() { update(); ticking = false; });
+                    ticking = true;
                 }
-            });
-        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-        gridObs.observe(servicesGrid);
+            }, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
 
         // ===== ACCORDION =====
         document.querySelectorAll('.why-trigger').forEach(btn => {
