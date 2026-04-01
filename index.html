@@ -175,7 +175,7 @@
             border-radius: 8px; transition: background var(--ease);
         }
         .nav-services-link:hover { background: rgba(0,0,0,0.05); }
-        .nav-menu-item.disabled {
+        .nav-menu-item.disabled, .nav-services-link.disabled, .svc-btn.disabled {
             opacity: 0.4;
             pointer-events: none;
             cursor: default;
@@ -931,8 +931,8 @@
                 <div class="nav-services-wrap">
                     <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle" aria-expanded="false" aria-controls="nav-services-dropdown">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
                     <div class="nav-services-dropdown" id="nav-services-dropdown">
-                        <a href="/branding-fuer-coaches" class="nav-services-link">Branding</a>
-                        <a href="/webdesign-fuer-coaches" class="nav-services-link">Webdesign</a>
+                        <a href="/branding-fuer-coaches" class="nav-services-link disabled">Branding</a>
+                        <a href="/webdesign-fuer-coaches" class="nav-services-link disabled">Webdesign</a>
                         <a href="/personal-brand-aufbauen" class="nav-services-link">Brand Check</a>
                     </div>
                 </div>
@@ -1030,7 +1030,7 @@
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Branding</h3>
-                            <a href="/branding-fuer-coaches" class="svc-btn">weiterlesen</a>
+                            <a href="/branding-fuer-coaches" class="svc-btn disabled">weiterlesen</a>
                         </div>
                         <p class="svc-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Von Positionierung und Messaging bis Typografie, Markenarchitektur und Brand Guidelines.</p>
                         <img class="svc-img" src="brandig.jpeg" alt="Branding Beispiel">
@@ -1038,7 +1038,7 @@
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Webdesign</h3>
-                            <a href="/webdesign-fuer-coaches" class="svc-btn">weiterlesen</a>
+                            <a href="/webdesign-fuer-coaches" class="svc-btn disabled">weiterlesen</a>
                         </div>
                         <p class="svc-desc">Die Haustür. Der erste Eindruck zählt. UI/UX Design, Landing Pages, Development und SEO. Alles, was deine Marke digital greifbar macht.</p>
                         <img class="svc-img" src="webdesign.jpeg" alt="Webdesign Beispiel">
