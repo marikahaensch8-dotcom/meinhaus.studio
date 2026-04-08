@@ -28,24 +28,24 @@
     })(window,document,'script','dataLayer','GTM-TXB92363');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Über uns · meinhaus studio</title>
-    <meta name="description" content="Emma und Marika. Eine Architektin und eine Designerin. Wir bauen Marken von Grund auf.">
+    <title>Work · meinhaus studio</title>
+    <meta name="description" content="Ausgewählte Arbeiten von meinhaus studio. Branding, Webdesign und Packaging für bewusste Marken.">
     <meta name="theme-color" content="#ffffff">
-    <link rel="canonical" href="https://meinhaus.studio/about">
-    <link rel="alternate" hreflang="de" href="https://meinhaus.studio/about">
-    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/about-en">
+    <link rel="canonical" href="https://meinhaus.studio/work">
+    <link rel="alternate" hreflang="de" href="https://meinhaus.studio/work">
+    <link rel="alternate" hreflang="en" href="https://meinhaus.studio/work-en">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Über uns · meinhaus studio">
-    <meta property="og:description" content="Emma und Marika. Eine Architektin und eine Designerin. Wir bauen Marken von Grund auf.">
-    <meta property="og:url" content="https://meinhaus.studio/about">
+    <meta property="og:title" content="Work · meinhaus studio">
+    <meta property="og:description" content="Ausgewählte Arbeiten von meinhaus studio. Branding, Webdesign und Packaging für bewusste Marken.">
+    <meta property="og:url" content="https://meinhaus.studio/work">
     <meta property="og:site_name" content="meinhaus studio">
     <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1800">
     <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Über uns · meinhaus studio">
-    <meta name="twitter:description" content="Emma und Marika. Eine Architektin und eine Designerin. Wir bauen Marken von Grund auf.">
+    <meta name="twitter:title" content="Work · meinhaus studio">
+    <meta name="twitter:description" content="Ausgewählte Arbeiten von meinhaus studio. Branding, Webdesign und Packaging für bewusste Marken.">
     <meta name="twitter:image" content="https://meinhaus.studio/DSC03675.jpeg">
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,6 +58,7 @@
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
     </noscript>
     <style>
+        /* ===== TOKENS ===== */
         :root {
             --black: #1a1a1a;
             --grey: #737373;
@@ -78,7 +79,7 @@
 
         /* ===== RESET ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { -webkit-font-smoothing: antialiased; }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         html.ready { scroll-behavior: smooth; }
         body {
             font-family: var(--sans);
@@ -111,7 +112,7 @@
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             cursor: pointer; color: var(--black);
-            transition: background var(--ease);
+            transition: background var(--ease), color var(--ease);
         }
         .nav-pill:hover { background: rgba(220, 220, 220, 0.75); }
         .nav-pill-icon { display: flex; align-items: center; justify-content: center; transition: transform 0.3s var(--ease-out); }
@@ -124,13 +125,15 @@
             height: 36px; padding: 0 20px; border-radius: 100px;
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            font-family: var(--sans);
-            font-size: 14px; font-weight: 400; color: var(--black);
-            text-decoration: none; transition: background var(--ease);
+            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            color: var(--black); text-decoration: none;
+            transition: background var(--ease);
         }
         .nav-menu-item:hover { background: rgba(220, 220, 220, 0.75); color: var(--black); }
         .nav-pill-close { background: var(--black); color: var(--pure-white); }
         .nav-pill-close:hover { background: #333; }
+
+        /* Services dropdown */
         .nav-services-wrap { position: relative; }
         .nav-services-toggle { cursor: pointer; border: none; gap: 6px; }
         .nav-services-chevron { display: inline-flex; align-items: center; transition: transform var(--ease); }
@@ -156,15 +159,15 @@
             cursor: default;
         }
 
+        /* Connect pill */
         .nav-connect-wrap { position: relative; }
         .nav-connect {
             display: flex; align-items: center; gap: 8px; height: 40px;
             padding: 0 20px; border: none; border-radius: 100px;
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            font-family: var(--sans);
-            font-size: 14px; font-weight: 400; color: var(--black);
-            cursor: pointer; transition: background var(--ease);
+            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            color: var(--black); cursor: pointer; transition: background var(--ease);
         }
         .nav-connect:hover { background: rgba(220, 220, 220, 0.75); }
         .nav-connect-icon { display: inline-flex; align-items: center; transition: transform var(--ease); }
@@ -190,113 +193,183 @@
         .nav-connect-social-links a { font-size: 14px; color: var(--grey); text-decoration: none; }
         .nav-connect-social-links a:hover { color: var(--black); }
 
-        /* ===== DUO CARDS ===== */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ===== SHARED ===== */
+        .label {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 16px;
         }
 
-        .duo {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            max-width: 1360px;
-            margin: 0 auto;
-            padding: 0 var(--pad) 160px;
+        /* ===== REVEAL SYSTEM ===== */
+        .r-fade {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.8s var(--ease-out);
         }
-        .duo-card {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 3 / 4;
-        }
-        .duo-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(1);
-            transition: filter 0.6s ease, transform 0.6s var(--ease-out);
-        }
-        .duo-card:hover .duo-photo {
-            filter: grayscale(0);
-            transform: scale(1.03);
-        }
-
-        /* Overlay card that slides up on hover */
-        .duo-overlay {
-            position: absolute;
-            bottom: 0; left: 12px; right: 12px;
-            background: var(--pure-white);
-            padding: 32px 28px;
-            transform: translateY(100%);
-            transition: transform 0.5s var(--ease-out);
-        }
-        .duo-card:hover .duo-overlay {
+        .r-fade.visible {
+            opacity: 1;
             transform: translateY(0);
         }
 
-        .duo-name {
+        /* ===== WORK HERO ===== */
+        .work-hero {
+            padding: 160px var(--pad) 80px;
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        .work-hero h1 {
             font-family: var(--serif);
-            font-size: clamp(24px, 2.4vw, 34px);
+            font-size: clamp(36px, 5vw, 64px);
             font-weight: 600;
             line-height: 1.1;
-            margin-bottom: 12px;
-        }
-
-        .duo-desc {
-            font-family: var(--sans);
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 1.35;
+            letter-spacing: -0.02em;
             color: var(--black);
-            margin-bottom: 24px;
+            margin-bottom: 48px;
         }
 
-        .duo-tags {
+        /* ===== FILTER PILLS ===== */
+        .filter-bar {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
-        .duo-tag {
+        .filter-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            padding: 0 20px;
+            border: 1px solid var(--grey-light);
+            border-radius: 100px;
+            background: transparent;
             font-family: var(--sans);
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 400;
             color: var(--grey);
+            cursor: pointer;
+            transition: background var(--ease), color var(--ease), border-color var(--ease);
         }
-        .duo-tag::after {
-            content: '·';
-            margin-left: 8px;
+        .filter-pill:hover {
+            border-color: var(--black);
+            color: var(--black);
         }
-        .duo-tag:last-child::after {
-            content: none;
+        .filter-pill.active {
+            background: var(--black);
+            border-color: var(--black);
+            color: var(--pure-white);
         }
 
-        /* ===== MANIFEST ===== */
-        .manifest {
-            padding: 160px var(--pad);
-            max-width: 1000px;
+        /* ===== PROJECT GRID ===== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1360px;
             margin: 0 auto;
-            text-align: center;
+            padding: 0 var(--pad) 120px;
         }
-        .manifest-hero {
-            padding: 180px var(--pad) 120px;
-            text-align: center;
-            max-width: 1100px;
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
-        .manifest-text {
+        .project-card-img {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: var(--grey-light);
+        }
+        .project-card-img-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s var(--ease-out);
+        }
+        .project-card:hover .project-card-img-inner {
+            transform: scale(1.04);
+        }
+        .project-card-body {
+            padding: 20px 0 0;
+        }
+        .project-card-name {
+            font-family: var(--serif);
+            font-size: clamp(18px, 1.8vw, 24px);
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--black);
+            margin-bottom: 4px;
+        }
+        .project-card-category {
             font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--grey);
+            margin-bottom: 12px;
+        }
+        .project-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            height: 26px;
+            padding: 0 12px;
+            border: 1px solid var(--grey-light);
+            border-radius: 100px;
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--grey);
+            letter-spacing: 0.02em;
+        }
+
+        /* Card hide/show for filter */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .work-cta {
+            padding: 120px var(--pad);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .work-cta-heading {
+            font-family: var(--serif);
             font-size: clamp(24px, 3vw, 40px);
-            font-weight: 300;
-            line-height: 1.35;
-            letter-spacing: -0.01em;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--black);
+            margin-bottom: 32px;
         }
-        .manifest-text .word {
-            color: var(--grey-light);
-            transition: color 0.3s ease;
+        .work-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            padding: 0 36px;
+            border: none;
+            border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--black);
+            text-decoration: none;
+            transition: background var(--ease);
         }
-        .manifest-text .word.lit { color: var(--black); }
+        .work-cta-btn:hover {
+            background: rgba(220, 220, 220, 0.75);
+        }
 
         /* ===== CONTACT SECTION ===== */
         .contact {
@@ -470,11 +543,13 @@
                 padding: 8px; gap: 2px; z-index: 100;
             }
             .nav-center.open .nav-menu-item {
-                backdrop-filter: none; -webkit-backdrop-filter: none; height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%; }
+                backdrop-filter: none; -webkit-backdrop-filter: none; height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%;
+            }
             .nav-center.open .nav-menu-item:hover { background: #e4e4e4; }
             .nav-center.open .nav-services-wrap { width: 100%; }
             .nav-center.open .nav-services-toggle {
-                backdrop-filter: none; -webkit-backdrop-filter: none; height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%; }
+                backdrop-filter: none; -webkit-backdrop-filter: none; height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px; background: transparent; justify-content: flex-start; width: 100%;
+            }
             .nav-center.open .nav-services-dropdown { position: static; transform: none; width: 100%; min-width: 0; background: transparent; padding: 0 0 0 12px; border-radius: 0; }
             .nav-center.open .nav-services-link { font-size: 13px; color: var(--grey); padding: 8px 16px; }
             .nav-center.open .nav-pill-close { display: none; }
@@ -483,15 +558,8 @@
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
 
-            .duo { grid-template-columns: 1fr; padding: 0 var(--pad) 100px; }
-            .duo-card { aspect-ratio: auto; display: flex; flex-direction: column; }
-            .duo-photo { aspect-ratio: 2 / 3; }
-            .duo-overlay {
-                position: static;
-                transform: none;
-                left: auto; right: auto; bottom: auto;
-                padding: 24px 0;
-            }
+            .project-grid { grid-template-columns: 1fr; gap: 48px; }
+
             .contact-form-row { grid-template-columns: 1fr; }
 
             .footer-row { padding: 12px var(--pad); align-items: center; }
@@ -503,15 +571,16 @@
         }
 
         @media (max-width: 600px) {
+            .work-hero { padding: 140px var(--pad) 60px; }
+            .work-hero h1 { margin-bottom: 32px; }
+            .project-grid { gap: 40px; padding: 0 var(--pad) 80px; }
+            .work-cta { padding: 80px var(--pad); }
+            .contact { padding: 80px var(--pad); }
             .footer-left { gap: 8px; }
             .footer-left span, .footer-left a { font-size: 10px; white-space: nowrap; }
             .footer-right { gap: 10px; }
             .footer-icon-social { width: 14px; height: 14px; }
             .footer-brand { font-size: 16vw; padding: 60px var(--pad) 0; }
-            .duo-name, .duo-desc { font-size: 20px; }
-            .manifest { padding: 100px var(--pad); }
-            .manifest-text { font-size: 24px; }
-            .contact { padding: 80px var(--pad); }
         }
 
         /* ===== COOKIE CONSENT ===== */
@@ -552,22 +621,30 @@
         /* ===== REDUCED MOTION ===== */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-            .r-line-inner { transform: none; }
             .r-fade { opacity: 1; transform: none; }
-            .intro-text .word { color: var(--black); }
         }
     </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "meinhaus studio",
-        "url": "https://meinhaus.studio",
-        "description": "Emma und Marika. Eine Architektin und eine Designerin. Wir bauen Marken von Grund auf.",
-        "sameAs": [
-            "https://www.instagram.com/meinhaus.studio/",
-            "https://www.linkedin.com/company/mein-haus-studio/"
-        ]
+        "@type": "CollectionPage",
+        "name": "Work",
+        "description": "Ausgewählte Arbeiten von meinhaus studio. Branding, Webdesign und Packaging für bewusste Marken.",
+        "url": "https://meinhaus.studio/work",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "meinhaus studio",
+            "url": "https://meinhaus.studio"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "meinhaus studio",
+            "url": "https://meinhaus.studio",
+            "sameAs": [
+                "https://www.instagram.com/meinhaus.studio/",
+                "https://www.linkedin.com/company/mein-haus-studio/"
+            ]
+        }
     }
     </script>
 </head>
@@ -596,14 +673,14 @@
                     <div class="nav-services-dropdown" id="nav-services-dropdown">
                         <a href="/branding" class="nav-services-link disabled">Branding</a>
                         <a href="/webdesign" class="nav-services-link disabled">Webdesign</a>
-                        <a href="/packaging" class="nav-services-link disabled">Packaging</a>
+                        <a href="#" class="nav-services-link disabled">Packaging</a>
                         <a href="/personal-brand-aufbauen" class="nav-services-link">Brand Check</a>
                     </div>
                 </div>
-                <a href="/work" class="nav-menu-item">Work</a>
+                <a href="/work" class="nav-menu-item" aria-current="page">Work</a>
                 <a href="/blog" class="nav-menu-item">Blog</a>
-                <a href="/about" class="nav-menu-item" aria-current="page">Über uns</a>
-                <a href="/about-en" class="nav-menu-item">EN</a>
+                <a href="/about" class="nav-menu-item">Über uns</a>
+                <a href="/work-en" class="nav-menu-item">EN</a>
 
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
                     <span class="nav-pill-icon">
@@ -666,43 +743,87 @@
 
     <main id="main-content">
 
-        <!-- MANIFEST — hero statement -->
-        <section class="manifest manifest-hero">
-            <p class="manifest-text" id="manifest-text">Wir sind eine Architektin und eine Designerin, die angefangen haben, zusammen Marken zu bauen, weil wir glauben, dass jede gute Idee ein großartiges visuelles Zuhause verdient.</p>
+        <!-- HERO -->
+        <section class="work-hero">
+            <p class="label">Projekte</p>
+            <h1>Ausgewählte Arbeiten</h1>
+            <div class="filter-bar">
+                <button class="filter-pill active" data-filter="all">Alle</button>
+                <button class="filter-pill" data-filter="branding">Branding</button>
+                <button class="filter-pill" data-filter="webdesign">Webdesign</button>
+                <button class="filter-pill" data-filter="packaging">Packaging</button>
+            </div>
         </section>
 
-        <!-- DUO CARDS -->
-        <section class="duo">
-            <!-- EMMA -->
-            <div class="duo-card">
-                <img src="emma.jpeg" alt="Emma" class="duo-photo">
-                <div class="duo-overlay">
-                    <h2 class="duo-name">Emma</h2>
-                    <p class="duo-desc">Denkt in Räumen. Baut die strategische Grundlage, auf der alles andere steht. Positionierung, Markenstrategie, Messaging, Content. Sie verbindet analytisches Denken mit kreativem Gespür und bringt Marken auch dreidimensional zum Leben.</p>
-                    <div class="duo-tags">
-                        <span class="duo-tag">Brand Strategy</span>
-                        <span class="duo-tag">Positionierung</span>
-                        <span class="duo-tag">Messaging</span>
-                        <span class="duo-tag">Content Strategy</span>
-                        <span class="duo-tag">3D Visuals</span>
-                    </div>
-                </div>
-            </div>
+        <!-- PROJECT GRID -->
+        <section class="project-grid" id="project-grid">
 
-            <!-- MARIKA -->
-            <div class="duo-card">
-                <img src="DSC03675.jpeg" alt="Marika" class="duo-photo">
-                <div class="duo-overlay">
-                    <h2 class="duo-name">Marika</h2>
-                    <p class="duo-desc">Denkt in Pixeln. Gibt der Strategie ein Gesicht. Websites, Illustrationen, visuelle Systeme, alles, was eine Marke sichtbar und spürbar macht. Sie gestaltet Identitäten, die sich sofort richtig anfühlen und im Kopf bleiben. Vom ersten Entwurf bis zur fertigen Website.</p>
-                    <div class="duo-tags">
-                        <span class="duo-tag">Brand Identity</span>
-                        <span class="duo-tag">Webdesign</span>
-                        <span class="duo-tag">UI/UX Design</span>
-                        <span class="duo-tag">Illustration</span>
+            <!-- Nua Skincare -->
+            <a href="/work/nua-skincare" class="project-card r-fade" data-tags="branding,packaging">
+                <div class="project-card-img">
+                    <div class="project-card-img-inner" style="background: #d4c5b9; width: 100%; height: 100%;"></div>
+                </div>
+                <div class="project-card-body">
+                    <h2 class="project-card-name">Nua Skincare</h2>
+                    <p class="project-card-category">Beauty</p>
+                    <div class="project-card-tags">
+                        <span class="project-tag">Branding</span>
+                        <span class="project-tag">Packaging</span>
                     </div>
                 </div>
-            </div>
+            </a>
+
+            <!-- Sarah Lindström Coaching -->
+            <a href="/work/sarah-lindstroem-coaching" class="project-card r-fade" data-tags="branding,webdesign">
+                <div class="project-card-img">
+                    <div class="project-card-img-inner" style="background: #b8c4cc; width: 100%; height: 100%;"></div>
+                </div>
+                <div class="project-card-body">
+                    <h2 class="project-card-name">Sarah Lindström Coaching</h2>
+                    <p class="project-card-category">Coaching</p>
+                    <div class="project-card-tags">
+                        <span class="project-tag">Branding</span>
+                        <span class="project-tag">Webdesign</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Maison Terre -->
+            <a href="/work/maison-terre" class="project-card r-fade" data-tags="branding,packaging,webdesign">
+                <div class="project-card-img">
+                    <div class="project-card-img-inner" style="background: #c2b8a3; width: 100%; height: 100%;"></div>
+                </div>
+                <div class="project-card-body">
+                    <h2 class="project-card-name">Maison Terre</h2>
+                    <p class="project-card-category">Lifestyle</p>
+                    <div class="project-card-tags">
+                        <span class="project-tag">Branding</span>
+                        <span class="project-tag">Packaging</span>
+                        <span class="project-tag">Webdesign</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mindful Movement -->
+            <a href="/work/mindful-movement" class="project-card r-fade" data-tags="branding">
+                <div class="project-card-img">
+                    <div class="project-card-img-inner" style="background: #a8b5a0; width: 100%; height: 100%;"></div>
+                </div>
+                <div class="project-card-body">
+                    <h2 class="project-card-name">Mindful Movement</h2>
+                    <p class="project-card-category">Wellness</p>
+                    <div class="project-card-tags">
+                        <span class="project-tag">Branding</span>
+                    </div>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- CTA -->
+        <section class="work-cta r-fade">
+            <h2 class="work-cta-heading">Dein Projekt könnte hier stehen.</h2>
+            <a href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer" class="work-cta-btn">Call buchen</a>
         </section>
 
         <!-- CONTACT -->
@@ -710,7 +831,7 @@
             <div class="contact-inner">
                 <p class="contact-label">Projekt anfragen</p>
                 <h2 class="contact-heading">Unsere Tür steht offen.</h2>
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqeyodor" method="POST">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xovazzey" method="POST">
                     <label for="contact-name" class="sr-only">Name / Unternehmen</label>
                     <input type="text" name="name" id="contact-name" placeholder="Name / Unternehmen" required>
                     <label for="contact-email" class="sr-only">E-Mail</label>
@@ -771,54 +892,38 @@
             setTimeout(() => { window.scrollTo(0, 0); document.documentElement.classList.add('ready'); }, 50);
         });
 
-        // Scroll-driven word reveal (manifest)
-        (function() {
-            const p = document.getElementById('manifest-text');
-            const text = p.textContent;
-            p.textContent = '';
-            text.split(' ').forEach((word, i, arr) => {
-                const span = document.createElement('span');
-                span.className = 'word';
-                span.textContent = word;
-                p.appendChild(span);
-                if (i < arr.length - 1) p.appendChild(document.createTextNode(' '));
-            });
-
-            const wordEls = p.querySelectorAll('.word');
-            let rafId = null;
-            function update() {
-                const rect = p.getBoundingClientRect();
-                const vh = window.innerHeight;
-                const progress = Math.max(0, Math.min(1, (vh * 0.5 - rect.top) / (vh * 0.5)));
-                wordEls.forEach((el, i) => {
-                    el.classList.toggle('lit', progress > i / wordEls.length);
-                });
-            }
-            function loop() {
-                update();
-                rafId = requestAnimationFrame(loop);
-            }
-            const revealObs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!rafId) rafId = requestAnimationFrame(loop);
-                    } else {
-                        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-                    }
-                });
-            }, { threshold: 0 });
-            revealObs.observe(p);
-        })();
-
         // Reveal observer
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.value-item').forEach((el, i) => {
-            el.style.transitionDelay = (i * 0.12) + 's';
-            obs.observe(el);
+        document.querySelectorAll('.r-fade').forEach(el => obs.observe(el));
+
+        // Filter system
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                const filter = pill.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const tags = card.getAttribute('data-tags').split(',');
+                        if (tags.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
         });
 
         // Nav
@@ -897,7 +1002,7 @@
         const form = document.getElementById('contact-form');
         form.addEventListener('submit', e => {
             e.preventDefault();
-            fetch('https://formspree.io/f/xqeyodor', {
+            fetch('https://formspree.io/f/xovazzey', {
                 method: 'POST', body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
             }).then(res => {
@@ -945,6 +1050,6 @@
     })();
     </script>
 
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0fc1bdb27562427b93b37c7891d45bb1"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e498b214d0714dc4adf5e4fb308e5e84"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

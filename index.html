@@ -28,15 +28,15 @@
     })(window,document,'script','dataLayer','GTM-TXB92363');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>meinhaus studio · Branding & Webdesign für Coaches und Gründer</title>
-    <meta name="description" content="Personal Brand Studio für Coaches und Gründer. Wir bauen Marken von Grund auf.">
+    <title>meinhaus studio · Branding Studio für Marken mit Haltung</title>
+    <meta name="description" content="Branding Studio für bewusste Marken. Strategie, Design und alles dazwischen.">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://meinhaus.studio/">
     <link rel="alternate" hreflang="de" href="https://meinhaus.studio/">
     <link rel="alternate" hreflang="en" href="https://meinhaus.studio/en">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="meinhaus studio · Branding &amp; Webdesign für Coaches und Gründer">
-    <meta property="og:description" content="Personal Brand Studio für Coaches und Gründer. Wir bauen Marken von Grund auf.">
+    <meta property="og:title" content="meinhaus studio · Branding Studio für Marken mit Haltung">
+    <meta property="og:description" content="Branding Studio für bewusste Marken. Strategie, Design und alles dazwischen.">
     <meta property="og:url" content="https://meinhaus.studio/">
     <meta property="og:site_name" content="meinhaus studio">
     <meta property="og:image" content="https://meinhaus.studio/DSC03675.jpeg">
@@ -44,8 +44,8 @@
     <meta property="og:image:height" content="1800">
     <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="meinhaus studio · Branding &amp; Webdesign für Coaches und Gründer">
-    <meta name="twitter:description" content="Personal Brand Studio für Coaches und Gründer. Wir bauen Marken von Grund auf.">
+    <meta name="twitter:title" content="meinhaus studio · Branding Studio für Marken mit Haltung">
+    <meta name="twitter:description" content="Branding Studio für bewusste Marken. Strategie, Design und alles dazwischen.">
     <meta name="twitter:image" content="https://meinhaus.studio/DSC03675.jpeg">
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,6 +179,20 @@
             opacity: 0.4;
             pointer-events: none;
             cursor: default;
+        }
+        .industry-tag {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 100px;
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            color: var(--black);
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+        .industry-tag:hover {
+            background: rgba(0,0,0,0.04);
         }
 
 
@@ -883,7 +897,7 @@
         "name": "meinhaus studio",
         "url": "https://meinhaus.studio",
         "logo": "https://meinhaus.studio/DSC03675.jpeg",
-        "description": "Personal Brand Studio für Coaches und Gründer. Branding, Webdesign und Creative Direction.",
+        "description": "Branding Studio für bewusste Marken. Branding, Webdesign, Packaging und Creative Direction.",
         "foundingDate": "2025",
         "email": ["marika@meinhaus.studio", "emma@meinhaus.studio"],
         "sameAs": [
@@ -898,8 +912,9 @@
             "@type": "OfferCatalog",
             "name": "Services",
             "itemListElement": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Branding", "url": "https://meinhaus.studio/branding-fuer-coaches"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Webdesign", "url": "https://meinhaus.studio/webdesign-fuer-coaches"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Branding", "url": "https://meinhaus.studio/branding"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Webdesign", "url": "https://meinhaus.studio/webdesign"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Packaging"}},
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creative Direction"}}
             ]
         }
@@ -929,11 +944,14 @@
                 <div class="nav-services-wrap">
                     <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle" aria-expanded="false" aria-controls="nav-services-dropdown">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
                     <div class="nav-services-dropdown" id="nav-services-dropdown">
-                        <a href="/branding-fuer-coaches" class="nav-services-link disabled">Branding</a>
-                        <a href="/webdesign-fuer-coaches" class="nav-services-link disabled">Webdesign</a>
+                        <a href="/branding" class="nav-services-link disabled">Branding</a>
+                        <a href="/webdesign" class="nav-services-link disabled">Webdesign</a>
+                        <a href="/packaging" class="nav-services-link disabled">Packaging</a>
                         <a href="/personal-brand-aufbauen" class="nav-services-link">Brand Check</a>
                     </div>
                 </div>
+                <a href="/work" class="nav-menu-item">Work</a>
+                <a href="/blog" class="nav-menu-item">Blog</a>
                 <a href="/about" class="nav-menu-item">Über uns</a>
                 <a href="/en" class="nav-menu-item">EN</a>
 
@@ -1006,20 +1024,20 @@
                 <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="hero-cta" target="_blank" rel="noopener noreferrer">Call buchen</a>
             </div>
             <div class="hero-meta">
-                <span>Branding · Web · Editorial · 3D</span>
+                <span>Branding · Web · Packaging · Editorial</span>
                 <span>London & Berlin</span>
             </div>
         </section>
 
         <!-- INTRO — scroll-driven word reveal -->
         <section class="intro">
-            <p class="intro-text" id="intro-text">Die meisten Coaches und Gründer haben eine starke Idee, aber einen Auftritt, der das nicht zeigt. Wir bauen das visuelle Fundament, das deiner Marke Struktur, Klarheit und Charakter gibt.</p>
+            <p class="intro-text" id="intro-text">Die meisten Marken haben eine starke Idee, aber einen Auftritt, der das nicht zeigt. Wir bauen das visuelle Fundament, das deiner Marke Struktur, Klarheit und Charakter gibt.</p>
         </section>
 
         <!-- SERVICES (scroll stacking) -->
         <section class="services" id="scope">
             <div class="services-header">
-                <p class="label" style="text-align:center">Personal Brand System</p>
+                <p class="label" style="text-align:center">Brand System</p>
                 <h2 class="services-headline r-line"><span class="r-line-inner">Alles, was deine Marke braucht.<br>Aus einem Studio.</span></h2>
             </div>
 
@@ -1028,7 +1046,7 @@
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Branding</h3>
-                            <a href="/branding-fuer-coaches" class="svc-btn disabled">coming soon</a>
+                            <a href="/branding" class="svc-btn disabled">coming soon</a>
                         </div>
                         <p class="svc-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Von Positionierung und Messaging bis Typografie, Markenarchitektur und Brand Guidelines.</p>
                         <img class="svc-img" src="brandig.jpeg" alt="Branding Beispiel">
@@ -1036,7 +1054,7 @@
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Webdesign</h3>
-                            <a href="/webdesign-fuer-coaches" class="svc-btn disabled">coming soon</a>
+                            <a href="/webdesign" class="svc-btn disabled">coming soon</a>
                         </div>
                         <p class="svc-desc">Die Haustür. Der erste Eindruck zählt. UI/UX Design, Landing Pages, Development und SEO. Alles, was deine Marke digital greifbar macht.</p>
                         <img class="svc-img" src="webdesign.jpeg" alt="Webdesign Beispiel">
@@ -1051,9 +1069,17 @@
                     </div>
                     <div class="svc-row">
                         <div class="svc-left">
+                            <h3 class="svc-title">Packaging</h3>
+                            <a href="/packaging" class="svc-btn disabled">coming soon</a>
+                        </div>
+                        <p class="svc-desc">Die Verpackung. Dein Produkt in den Haenden deiner Kunden. Packaging Design, Materialwahl und Druckvorbereitung. Von der ersten Skizze bis zum fertigen Regal.</p>
+                        <img class="svc-img" src="digital marketing.jpeg" alt="Packaging Beispiel" style="filter: brightness(1.1) contrast(1.1);">
+                    </div>
+                    <div class="svc-row">
+                        <div class="svc-left">
                             <h3 class="svc-title">Digital Marketing</h3>
                         </div>
-                        <p class="svc-desc">Das Smart Home. Gut aussehen reicht nicht. SEO, Social Media, Performance Marketing und Analytics sorgen dafür, dass deine Marke gefunden wird und wächst.</p>
+                        <p class="svc-desc">Das Smart Home. Gut aussehen reicht nicht. SEO, Social Media, Performance Marketing und Analytics sorgen dafuer, dass deine Marke gefunden wird und waechst.</p>
                         <img class="svc-img" src="digital marketing.jpeg" alt="Digital Marketing Beispiel" style="filter: brightness(1.1) contrast(1.1);">
                     </div>
                 </div>
@@ -1066,6 +1092,39 @@
                 <p class="cta-tagline">Noch unsicher? Kein Problem.</p>
                 <h2 class="cta-headline">Lass uns reden.</h2>
                 <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="cta-btn" target="_blank" rel="noopener noreferrer">Call buchen</a>
+            </div>
+        </section>
+
+        <!-- INDUSTRIES -->
+        <section class="industries r-fade" style="padding:80px 24px;text-align:center;max-width:900px;margin:0 auto">
+            <p class="label" style="text-align:center;margin-bottom:16px">Fuer wen wir arbeiten</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px">
+                <span class="industry-tag">Conscious Beauty</span>
+                <span class="industry-tag">Wellness & Health</span>
+                <span class="industry-tag">Coaches & Berater</span>
+                <span class="industry-tag">Lifestyle Brands</span>
+                <span class="industry-tag">Nachhaltige Produkte</span>
+                <span class="industry-tag">Food & Beverage</span>
+            </div>
+        </section>
+
+        <!-- VALUES -->
+        <section class="values r-fade" style="padding:80px 24px;max-width:720px;margin:0 auto">
+            <p class="label" style="text-align:center;margin-bottom:16px">Woran wir glauben</p>
+            <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:500;line-height:1.4;text-align:center;margin-bottom:40px">Wir arbeiten mit Marken, die etwas Echtes zu sagen haben.</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;text-align:left">
+                <div>
+                    <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Substanz vor Oberflaeche</h3>
+                    <p style="font-size:0.95rem;color:#666;line-height:1.6">Kein Greenwashing, kein leeres Design. Jedes Element hat einen Grund.</p>
+                </div>
+                <div>
+                    <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Bewusst gebaut</h3>
+                    <p style="font-size:0.95rem;color:#666;line-height:1.6">Wir gestalten fuer Marken, die Verantwortung uebernehmen. Fuer ihre Produkte, ihre Kunden, ihre Wirkung.</p>
+                </div>
+                <div>
+                    <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Langfristig gedacht</h3>
+                    <p style="font-size:0.95rem;color:#666;line-height:1.6">Keine schnellen Trends. Wir bauen Markenidentitaeten, die wachsen und Bestand haben.</p>
+                </div>
             </div>
         </section>
 
@@ -1110,11 +1169,19 @@
                 <label for="contact-email" class="sr-only">E-Mail</label>
                 <input type="email" name="email" id="contact-email" placeholder="E-Mail" required>
                 <label for="contact-service" class="sr-only">Leistung</label>
+                <select name="brand-type" id="contact-brand-type">
+                    <option value="" disabled selected>Art der Marke</option>
+                    <option>Personal Brand</option>
+                    <option>Produktmarke</option>
+                    <option>Dienstleistung</option>
+                    <option>Anderes</option>
+                </select>
                 <select name="service" id="contact-service" required>
                     <option value="" disabled selected>Leistung</option>
                     <option>Brand Strategy</option>
                     <option>Brand Identity</option>
                     <option>Website</option>
+                    <option>Packaging</option>
                     <option>Komplettes Brand System</option>
                     <option>Rebrand</option>
                     <option>Anderes</option>
