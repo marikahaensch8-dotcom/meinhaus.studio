@@ -114,7 +114,7 @@
         .nav-logo {
             font-family: var(--sans);
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.04em;
             color: var(--black);
         }
@@ -175,26 +175,59 @@
             border-radius: 8px; transition: background var(--ease);
         }
         .nav-services-link:hover { background: rgba(0,0,0,0.05); }
-        .nav-menu-item.disabled, .nav-services-link.disabled, .svc-btn.disabled {
+        .nav-menu-item.disabled, .nav-services-link.disabled {
             opacity: 0.4;
             pointer-events: none;
             cursor: default;
         }
-        .industry-tag {
-            display: inline-block;
-            padding: 8px 18px;
-            border: 1px solid rgba(0,0,0,0.15);
-            border-radius: 100px;
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            color: var(--black);
-            background: transparent;
-            transition: background 0.3s ease;
-        }
-        .industry-tag:hover {
-            background: rgba(0,0,0,0.04);
+
+
+        /* Nav right group */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
+        /* Language cube toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            perspective: 200px;
+            text-decoration: none;
+        }
+        .lang-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s var(--ease-out);
+        }
+        .lang-toggle:hover .lang-cube {
+            transform: rotateX(-90deg);
+        }
+        .lang-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--grey);
+            backface-visibility: hidden;
+        }
+        .lang-face-front {
+            transform: translateZ(18px);
+        }
+        .lang-face-back {
+            transform: rotateX(90deg) translateZ(18px);
+        }
 
         /* Connect pill */
         .nav-connect-wrap { position: relative; }
@@ -274,39 +307,42 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px var(--pad) 80px;
+            padding: 0 var(--pad) 80px;
             position: relative;
         }
+        .hero-label-wrap {
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        .hero-label {
+            font-family: var(--sans);
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--black);
+            letter-spacing: 0.02em;
+            transform: translateY(110%);
+            animation: heroLabelIn 0.8s var(--ease-out) 0.3s forwards;
+        }
+        @keyframes heroLabelIn {
+            to { transform: translateY(0); }
+        }
+        @keyframes heroCtaIn {
+            to { opacity: 1; }
+        }
         .hero-content { max-width: 900px; }
+        .hero-heading-wrap {
+            overflow: hidden;
+        }
         .hero h1 {
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: clamp(42px, 5.5vw, 76px);
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1.08;
             letter-spacing: -0.02em;
             color: var(--black);
-            min-height: 1.05em;
+            transform: translateY(110%);
+            animation: heroLabelIn 0.9s var(--ease-out) 0.9s forwards;
         }
-        .hero h1 .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 0.8em;
-            background: var(--black);
-            margin-left: 4px;
-            vertical-align: baseline;
-            animation: blink 0.6s step-end infinite;
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .hero-sub {
-            font-family: var(--sans);
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--black);
-            margin-top: 24px;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        .hero-sub.visible { opacity: 1; }
         .hero-cta {
             display: inline-block;
             font-family: var(--sans);
@@ -315,8 +351,8 @@
             padding: 12px 32px;
             margin-top: 48px;
             opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.6s ease, transform 0.6s ease, background var(--ease);
+            animation: heroCtaIn 0.7s ease 1.6s forwards;
+            transition: background var(--ease);
             border: none;
             border-radius: 100px;
             background: rgba(220, 220, 220, 0.6);
@@ -324,7 +360,6 @@
             -webkit-backdrop-filter: blur(16px);
             color: var(--black);
             text-decoration: none;
-            transition: background var(--ease);
         }
         .hero-cta:hover { background: rgba(220, 220, 220, 0.75); }
         .hero-meta {
@@ -375,9 +410,9 @@
             text-align: center;
         }
         .services-headline {
-            font-family: var(--serif);
-            font-size: clamp(26px, 3.2vw, 44px);
-            font-weight: 600;
+            font-family: var(--sans);
+            font-size: clamp(26px, 3vw, 40px);
+            font-weight: 400;
             line-height: 1.2;
             letter-spacing: -0.02em;
             max-width: 700px;
@@ -398,6 +433,7 @@
             align-items: start;
             padding: 3vh var(--pad);
             will-change: height;
+            contain: layout style;
         }
         .svc-left {
             display: flex;
@@ -406,31 +442,51 @@
             align-items: flex-start;
         }
         .svc-title {
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: clamp(20px, 2.2vw, 32px);
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1.2;
             letter-spacing: -0.02em;
             color: var(--black);
         }
-        .svc-btn {
-            display: inline-block;
+        .svc-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             font-family: var(--sans);
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
-            padding: 9px 24px;
-            margin-top: 12px;
-            border: none;
-            border-radius: 100px;
-            background: rgba(220, 220, 220, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             color: var(--black);
             text-decoration: none;
-            transition: background var(--ease);
+            margin-top: 24px;
+            padding-bottom: 6px;
         }
-        .svc-btn:hover {
-            background: rgba(220, 220, 220, 0.75);
+        .svc-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-image: radial-gradient(circle, var(--black) 1.2px, transparent 1.2px);
+            background-size: 8px 3px;
+            background-repeat: repeat-x;
+            transition: width 0.4s var(--ease-out);
+        }
+        .svc-link:hover::after {
+            width: 100%;
+        }
+        .svc-link svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+        }
+        .svc-link:hover svg {
+            opacity: 1;
+            transform: translateX(0);
         }
         .svc-desc {
             font-family: var(--sans);
@@ -467,9 +523,9 @@
             padding: 80px 0 80px 64px;
         }
         .why-headline {
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: clamp(22px, 2.4vw, 34px);
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1.3;
             letter-spacing: -0.01em;
             max-width: 700px;
@@ -483,9 +539,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 28px 0;
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--black);
             cursor: pointer;
             background: none; border: none;
@@ -530,9 +586,9 @@
             justify-content: center;
         }
         .about-heading {
-            font-family: var(--serif);
-            font-size: clamp(28px, 3.2vw, 44px);
-            font-weight: 600;
+            font-family: var(--sans);
+            font-size: clamp(28px, 3.2vw, 40px);
+            font-weight: 400;
             line-height: 1.15;
             margin-bottom: 32px;
         }
@@ -573,9 +629,9 @@
             letter-spacing: 0.02em;
         }
         .cta-headline {
-            font-family: var(--serif);
-            font-size: clamp(40px, 6.5vw, 96px);
-            font-weight: 700;
+            font-family: var(--sans);
+            font-size: clamp(40px, 6.5vw, 80px);
+            font-weight: 400;
             line-height: 1;
             letter-spacing: -0.03em;
             margin-bottom: 48px;
@@ -615,9 +671,9 @@
             margin-bottom: 16px;
         }
         .contact-heading {
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: clamp(24px, 2.8vw, 34px);
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1.25;
             color: var(--black);
             margin-bottom: 40px;
@@ -690,8 +746,8 @@
         }
         .contact-success.visible { display: block; }
         .contact-success h3 {
-            font-family: var(--serif);
-            font-size: 26px; font-weight: 600;
+            font-family: var(--sans);
+            font-size: 26px; font-weight: 400;
             margin-bottom: 8px; color: var(--black);
         }
         .contact-success p { font-size: 15px; color: var(--grey); }
@@ -953,7 +1009,6 @@
                 <a href="/work" class="nav-menu-item">Work</a>
                 <a href="/blog" class="nav-menu-item">Blog</a>
                 <a href="/about" class="nav-menu-item">Über uns</a>
-                <a href="/en" class="nav-menu-item">EN</a>
 
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
                     <span class="nav-pill-icon">
@@ -965,6 +1020,14 @@
                 </button>
             </div>
         </div>
+
+        <div class="nav-right">
+            <a href="/en" class="lang-toggle" aria-label="Switch to English">
+                <div class="lang-cube">
+                    <span class="lang-face lang-face-front">DE</span>
+                    <span class="lang-face lang-face-back">EN</span>
+                </div>
+            </a>
 
         <div class="nav-connect-wrap">
             <button class="nav-connect" id="nav-connect-toggle" aria-expanded="false" aria-controls="nav-connect-dropdown">
@@ -1011,6 +1074,7 @@
                 </div>
             </div>
         </div>
+        </div>
     </nav>
     </header>
 
@@ -1019,8 +1083,8 @@
         <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
-                <h1 id="hero-heading" aria-label="Jede Marke braucht ein Zuhause.">Jede Marke braucht<br>ein Zuhause.</h1>
-                <p class="hero-sub" style="opacity:1">Wir bauen deins.</p>
+                <div class="hero-label-wrap"><p class="hero-label">meinhaus</p></div>
+                <div class="hero-heading-wrap"><h1 id="hero-heading">dein Zuhause.</h1></div>
                 <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="hero-cta" target="_blank" rel="noopener noreferrer">Call buchen</a>
             </div>
             <div class="hero-meta">
@@ -1031,7 +1095,7 @@
 
         <!-- INTRO — scroll-driven word reveal -->
         <section class="intro">
-            <p class="intro-text" id="intro-text">Die meisten Marken haben eine starke Idee, aber einen Auftritt, der das nicht zeigt. Wir bauen das visuelle Fundament, das deiner Marke Struktur, Klarheit und Charakter gibt.</p>
+            <p class="intro-text" id="intro-text">Jede Marke braucht ein Zuhause. Wir verbinden Strategie mit Branding, Webdesign und Packaging. Von der ersten Idee bis zum fertigen System, damit deine Marke sichtbar wird und bleibt.</p>
         </section>
 
         <!-- SERVICES (scroll stacking) -->
@@ -1046,41 +1110,26 @@
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Branding</h3>
-                            <a href="/branding" class="svc-btn disabled">coming soon</a>
                         </div>
-                        <p class="svc-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Von Positionierung und Messaging bis Typografie, Markenarchitektur und Brand Guidelines.</p>
+                        <div class="svc-mid"><p class="svc-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Von Positionierung und Messaging bis Typografie, Packaging und Brand Guidelines. Strategie bis zum fertigen Produkt in einer Hand.</p>
+                        <a href="/branding" class="svc-link">weiterlesen <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
                         <img class="svc-img" src="brandig.jpeg" alt="Branding Beispiel">
                     </div>
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Webdesign</h3>
-                            <a href="/webdesign" class="svc-btn disabled">coming soon</a>
                         </div>
-                        <p class="svc-desc">Die Haustür. Der erste Eindruck zählt. UI/UX Design, Landing Pages, Development und SEO. Alles, was deine Marke digital greifbar macht.</p>
+                        <div class="svc-mid"><p class="svc-desc">Die Haustür. Der erste Eindruck zählt. UI/UX Design, Landing Pages, Development und SEO. Alles, was deine Marke digital greifbar macht.</p>
+                        <a href="/webdesign" class="svc-link">weiterlesen <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
                         <img class="svc-img" src="webdesign.jpeg" alt="Webdesign Beispiel">
                     </div>
                     <div class="svc-row">
                         <div class="svc-left">
                             <h3 class="svc-title">Creative Direction</h3>
-                            <a href="/brand-check" class="svc-btn">Brand Check</a>
                         </div>
-                        <p class="svc-desc">Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt. Fotografie, Editorial Design, Content Strategy und Bildsprache, die deine Marke sichtbar machen.</p>
+                        <div class="svc-mid"><p class="svc-desc">Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt. Fotografie, Editorial Design, Content Strategy und Marketing. Damit deine Marke sichtbar wird und wächst.</p>
+                        <a href="/brand-check" class="svc-link">brand check <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
                         <img class="svc-img" src="creative directio.jpeg" alt="Creative Direction Beispiel" style="filter: brightness(1.1) contrast(1.1);">
-                    </div>
-                    <div class="svc-row">
-                        <div class="svc-left">
-                            <h3 class="svc-title">Packaging</h3>
-                            <a href="/packaging" class="svc-btn disabled">coming soon</a>
-                        </div>
-                        <p class="svc-desc">Die Verpackung. Dein Produkt in den Haenden deiner Kunden. Packaging Design, Materialwahl und Druckvorbereitung. Von der ersten Skizze bis zum fertigen Regal.</p>
-                        <img class="svc-img" src="digital marketing.jpeg" alt="Packaging Beispiel" style="filter: brightness(1.1) contrast(1.1);">
-                    </div>
-                    <div class="svc-row">
-                        <div class="svc-left">
-                            <h3 class="svc-title">Digital Marketing</h3>
-                        </div>
-                        <p class="svc-desc">Das Smart Home. Gut aussehen reicht nicht. SEO, Social Media, Performance Marketing und Analytics sorgen dafuer, dass deine Marke gefunden wird und waechst.</p>
-                        <img class="svc-img" src="digital marketing.jpeg" alt="Digital Marketing Beispiel" style="filter: brightness(1.1) contrast(1.1);">
                     </div>
                 </div>
             </div>
@@ -1095,38 +1144,6 @@
             </div>
         </section>
 
-        <!-- INDUSTRIES -->
-        <section class="industries r-fade" style="padding:80px 24px;text-align:center;max-width:900px;margin:0 auto">
-            <p class="label" style="text-align:center;margin-bottom:16px">Fuer wen wir arbeiten</p>
-            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px">
-                <span class="industry-tag">Conscious Beauty</span>
-                <span class="industry-tag">Wellness & Health</span>
-                <span class="industry-tag">Coaches & Berater</span>
-                <span class="industry-tag">Lifestyle Brands</span>
-                <span class="industry-tag">Nachhaltige Produkte</span>
-                <span class="industry-tag">Food & Beverage</span>
-            </div>
-        </section>
-
-        <!-- VALUES -->
-        <section class="values r-fade" style="padding:80px 24px;max-width:720px;margin:0 auto">
-            <p class="label" style="text-align:center;margin-bottom:16px">Woran wir glauben</p>
-            <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:500;line-height:1.4;text-align:center;margin-bottom:40px">Wir arbeiten mit Marken, die etwas Echtes zu sagen haben.</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;text-align:left">
-                <div>
-                    <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Substanz vor Oberflaeche</h3>
-                    <p style="font-size:0.95rem;color:#666;line-height:1.6">Kein Greenwashing, kein leeres Design. Jedes Element hat einen Grund.</p>
-                </div>
-                <div>
-                    <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Bewusst gebaut</h3>
-                    <p style="font-size:0.95rem;color:#666;line-height:1.6">Wir gestalten fuer Marken, die Verantwortung uebernehmen. Fuer ihre Produkte, ihre Kunden, ihre Wirkung.</p>
-                </div>
-                <div>
-                    <h3 style="font-size:1rem;font-weight:600;margin-bottom:8px">Langfristig gedacht</h3>
-                    <p style="font-size:0.95rem;color:#666;line-height:1.6">Keine schnellen Trends. Wir bauen Markenidentitaeten, die wachsen und Bestand haben.</p>
-                </div>
-            </div>
-        </section>
 
         <!-- WHY -->
         <section class="why">
@@ -1236,46 +1253,7 @@
             }, 50);
         });
 
-        // ===== TYPING ANIMATION (progressive enhancement) =====
-        (function() {
-            const el = document.getElementById('hero-heading');
-            const sub = document.querySelector('.hero-sub');
-            const lines = ['Jede Marke braucht', 'ein Zuhause.'];
-            const cursor = document.createElement('span');
-            cursor.className = 'cursor';
-            let lineIdx = 0, charIdx = 0;
-
-            // Clear pre-rendered text before typing
-            el.textContent = '';
-            sub.style.opacity = '0';
-
-            function type() {
-                if (lineIdx >= lines.length) {
-                    cursor.remove();
-                    sub.style.opacity = '1';
-                    sub.classList.add('visible');
-                    var cta = document.querySelector('.hero-cta');
-                    if (cta) { setTimeout(function() { cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }, 400); }
-                    return;
-                }
-                const line = lines[lineIdx];
-                if (charIdx === 0 && lineIdx > 0) el.appendChild(document.createElement('br'));
-                if (charIdx < line.length) {
-                    if (cursor.parentNode) cursor.remove();
-                    const tn = el.lastChild && el.lastChild.nodeType === 3
-                        ? el.lastChild : el.appendChild(document.createTextNode(''));
-                    tn.textContent += line[charIdx];
-                    el.appendChild(cursor);
-                    charIdx++;
-                    setTimeout(type, 55);
-                } else {
-                    lineIdx++;
-                    charIdx = 0;
-                    setTimeout(type, 100);
-                }
-            }
-            setTimeout(type, 800);
-        })();
+        // Typing animation removed — using CSS slide-up instead
 
         // ===== SCROLL-DRIVEN WORD REVEAL (intro) =====
         (function() {

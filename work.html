@@ -103,7 +103,7 @@
             display: flex; justify-content: space-between; align-items: center; position: relative; width: 100%;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .nav-logo { font-size: 18px; font-weight: 500; letter-spacing: 0.04em; color: var(--black); }
+        .nav-logo { font-size: 18px; font-weight: 400; letter-spacing: 0.04em; color: var(--black); }
 
         .nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
         .nav-pill {
@@ -215,256 +215,101 @@
             transform: translateY(0);
         }
 
-        /* ===== WORK HERO ===== */
-        .work-hero {
-            padding: 160px var(--pad) 80px;
-            max-width: 1360px;
-            margin: 0 auto;
+        /* ===== PROJECTS (neuegestaltung-style) ===== */
+        .projects {
+            padding: 120px 19px 140px;
+            min-height: 100vh;
         }
-        .work-hero h1 {
-            font-family: var(--serif);
-            font-size: clamp(36px, 5vw, 64px);
-            font-weight: 600;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: var(--black);
-            margin-bottom: 48px;
-        }
-
-        /* ===== FILTER PILLS ===== */
-        .filter-bar {
+        .projects-grid {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            column-gap: 21px;
         }
-        .filter-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 36px;
-            padding: 0 20px;
-            border: 1px solid var(--grey-light);
-            border-radius: 100px;
-            background: transparent;
-            font-family: var(--sans);
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--grey);
-            cursor: pointer;
-            transition: background var(--ease), color var(--ease), border-color var(--ease);
+        .projects-col {
+            width: calc((100% - 42px) / 3);
         }
-        .filter-pill:hover {
-            border-color: var(--black);
-            color: var(--black);
-        }
-        .filter-pill.active {
-            background: var(--black);
-            border-color: var(--black);
-            color: var(--pure-white);
-        }
-
-        /* ===== PROJECT GRID ===== */
-        .project-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            max-width: 1360px;
-            margin: 0 auto;
-            padding: 0 var(--pad) 120px;
-        }
-        .project-card {
+        .project-item {
             display: block;
             text-decoration: none;
             color: inherit;
+            margin-bottom: 61px;
+            cursor: pointer;
         }
-        .project-card-img {
-            position: relative;
-            aspect-ratio: 4 / 3;
-            overflow: hidden;
-            background: var(--grey-light);
+        .project-figure {
+            margin: 0;
         }
-        .project-card-img-inner {
+        .project-img {
             width: 100%;
-            height: 100%;
-            transition: transform 0.6s var(--ease-out);
+            overflow: hidden;
+            transition: transform 0.2s ease;
         }
-        .project-card:hover .project-card-img-inner {
-            transform: scale(1.04);
+        .project-item:hover .project-img {
+            transform: scale(1.03);
         }
-        .project-card-body {
-            padding: 20px 0 0;
-        }
-        .project-card-name {
-            font-family: var(--serif);
-            font-size: clamp(18px, 1.8vw, 24px);
-            font-weight: 500;
-            line-height: 1.3;
-            color: var(--black);
-            margin-bottom: 4px;
-        }
-        .project-card-category {
-            font-family: var(--sans);
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--grey);
-            margin-bottom: 12px;
-        }
-        .project-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .project-tag {
-            display: inline-flex;
-            align-items: center;
-            height: 26px;
-            padding: 0 12px;
-            border: 1px solid var(--grey-light);
-            border-radius: 100px;
-            font-family: var(--sans);
-            font-size: 11px;
-            font-weight: 400;
-            color: var(--grey);
-            letter-spacing: 0.02em;
-        }
-
-        /* Card hide/show for filter */
-        .project-card.hidden {
-            display: none;
-        }
-
-        /* ===== CTA SECTION ===== */
-        .work-cta {
-            padding: 120px var(--pad);
+        .project-caption {
+            padding: 12px 20px 0;
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
         }
-        .work-cta-heading {
-            font-family: var(--serif);
-            font-size: clamp(24px, 3vw, 40px);
-            font-weight: 600;
+        .project-client {
+            display: block;
+            font-family: var(--sans);
+            font-size: clamp(16px, 1.8vw, 22px);
+            font-weight: 300;
             line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: var(--black);
-            margin-bottom: 32px;
+            letter-spacing: 0.03em;
+            color: #000;
+        }
+        .project-type {
+            display: block;
+            font-family: var(--serif);
+            font-size: clamp(16px, 1.8vw, 22px);
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: 0.03em;
+            color: #000;
+            margin-top: 2px;
+        }
+
+        /* ===== CTA ===== */
+        .work-cta {
+            padding: 0 19px 120px;
+            text-align: center;
+        }
+        .work-cta-text {
+            font-family: var(--sans);
+            font-size: clamp(18px, 2.5vw, 30px);
+            font-weight: 300;
+            color: #000;
+            letter-spacing: 0.03em;
+            margin-bottom: 24px;
         }
         .work-cta-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 48px;
+            height: 44px;
             padding: 0 36px;
-            border: none;
+            border: 1px solid #000;
             border-radius: 100px;
-            background: rgba(220, 220, 220, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: transparent;
             font-family: var(--sans);
             font-size: 15px;
-            font-weight: 500;
-            color: var(--black);
+            font-weight: 400;
+            color: #000;
             text-decoration: none;
-            transition: background var(--ease);
+            letter-spacing: 0.03em;
+            transition: background 0.2s ease, color 0.2s ease;
         }
         .work-cta-btn:hover {
-            background: rgba(220, 220, 220, 0.75);
+            background: #000;
+            color: #fff;
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            padding: 100px var(--pad);
+        /* ===== TABLET: 2 columns ===== */
+        @media (min-width: 711px) and (max-width: 1024px) {
+            .projects-grid { column-gap: 16px; }
+            .projects-col { width: calc((100% - 16px) / 2); }
+            .projects-col:nth-child(3) { display: none; }
         }
-        .contact-inner {
-            max-width: 520px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .contact-label {
-            font-size: 12px; font-weight: 500;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--grey);
-            margin-bottom: 16px;
-        }
-        .contact-heading {
-            font-family: var(--serif);
-            font-size: clamp(24px, 3vw, 34px);
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--black);
-            margin-bottom: 40px;
-        }
-        .contact-form {
-            display: flex; flex-direction: column; gap: 16px;
-            text-align: left;
-        }
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            font-family: var(--sans);
-            font-size: 15px; font-weight: 400;
-            padding: 16px 18px;
-            border: none;
-            border-bottom: 1px solid var(--grey-light);
-            border-radius: 0;
-            background: transparent;
-            color: var(--black);
-            outline: none; width: 100%;
-            transition: border-color var(--ease);
-            -webkit-appearance: none;
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus {
-            border-color: var(--black); box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.15);
-        }
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: var(--grey);
-        }
-        .contact-form select {
-            color: var(--grey);
-            cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 18px center;
-            padding-right: 44px;
-        }
-        .contact-form select option { background: var(--white); color: var(--black); }
-        .contact-form select:valid { color: var(--black); }
-        .contact-form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .contact-form textarea {
-            resize: vertical; min-height: 120px;
-        }
-        .contact-submit {
-            align-self: center;
-            font-family: var(--sans);
-            font-size: 15px; font-weight: 500;
-            padding: 14px 40px;
-            border: none; border-radius: 100px;
-            background: rgba(220, 220, 220, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            color: var(--black);
-            cursor: pointer;
-            transition: background var(--ease);
-            margin-top: 8px;
-        }
-        .contact-submit:hover { background: rgba(220, 220, 220, 0.75); }
-        .contact-success {
-            display: none; padding: 40px 0; text-align: center;
-        }
-        .contact-success.visible { display: block; }
-        .contact-success h3 {
-            font-family: var(--serif);
-            font-size: 26px; font-weight: 600;
-            margin-bottom: 8px; color: var(--black);
-        }
-        .contact-success p { font-size: 15px; color: var(--grey); }
 
         /* ===== FOOTER ===== */
         .site-footer {
@@ -558,9 +403,11 @@
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
 
-            .project-grid { grid-template-columns: 1fr; gap: 48px; }
-
-            .contact-form-row { grid-template-columns: 1fr; }
+            .projects { padding: 100px 19px 100px; }
+            .projects-grid { flex-direction: column; }
+            .projects-col { width: 100%; }
+            .project-item { margin-bottom: 40px; }
+            .project-caption { display: none; }
 
             .footer-row { padding: 12px var(--pad); align-items: center; }
             .footer-left { gap: 12px; }
@@ -571,11 +418,8 @@
         }
 
         @media (max-width: 600px) {
-            .work-hero { padding: 140px var(--pad) 60px; }
-            .work-hero h1 { margin-bottom: 32px; }
-            .project-grid { gap: 40px; padding: 0 var(--pad) 80px; }
-            .work-cta { padding: 80px var(--pad); }
-            .contact { padding: 80px var(--pad); }
+            .projects { padding: 80px 16px 80px; }
+            .work-cta { padding: 0 16px 80px; }
             .footer-left { gap: 8px; }
             .footer-left span, .footer-left a { font-size: 10px; white-space: nowrap; }
             .footer-right { gap: 10px; }
@@ -743,126 +587,79 @@
 
     <main id="main-content">
 
-        <!-- HERO -->
-        <section class="work-hero">
-            <p class="label">Projekte</p>
-            <h1>Ausgewählte Arbeiten</h1>
-            <div class="filter-bar">
-                <button class="filter-pill active" data-filter="all">Alle</button>
-                <button class="filter-pill" data-filter="branding">Branding</button>
-                <button class="filter-pill" data-filter="webdesign">Webdesign</button>
-                <button class="filter-pill" data-filter="packaging">Packaging</button>
+        <!-- PROJECT GRID (neuegestaltung-style 3-column masonry) -->
+        <section class="projects" id="projects">
+            <div class="projects-grid">
+                <!-- Column 1 -->
+                <div class="projects-col">
+                    <a href="/work/nua-skincare" class="project-item r-fade">
+                        <figure class="project-figure">
+                            <div class="project-img" style="aspect-ratio:1.414;background:#d4c5b9"></div>
+                            <figcaption class="project-caption">
+                                <span class="project-client">Nua Skincare</span>
+                                <span class="project-type">Branding, Packaging</span>
+                            </figcaption>
+                        </figure>
+                    </a>
+                    <a href="/work/mindful-movement" class="project-item r-fade">
+                        <figure class="project-figure">
+                            <div class="project-img" style="aspect-ratio:0.75;background:#a8b5a0"></div>
+                            <figcaption class="project-caption">
+                                <span class="project-client">Mindful Movement</span>
+                                <span class="project-type">Branding</span>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+                <!-- Column 2 -->
+                <div class="projects-col">
+                    <a href="/work/sarah-lindstroem-coaching" class="project-item r-fade">
+                        <figure class="project-figure">
+                            <div class="project-img" style="aspect-ratio:0.707;background:#b8c4cc"></div>
+                            <figcaption class="project-caption">
+                                <span class="project-client">Sarah Lindstroem</span>
+                                <span class="project-type">Branding, Webdesign</span>
+                            </figcaption>
+                        </figure>
+                    </a>
+                    <a href="/work/terre-botanicals" class="project-item r-fade">
+                        <figure class="project-figure">
+                            <div class="project-img" style="aspect-ratio:1.2;background:#e0d5c7"></div>
+                            <figcaption class="project-caption">
+                                <span class="project-client">Terre Botanicals</span>
+                                <span class="project-type">Branding, Packaging</span>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+                <!-- Column 3 -->
+                <div class="projects-col">
+                    <a href="/work/maison-terre" class="project-item r-fade">
+                        <figure class="project-figure">
+                            <div class="project-img" style="aspect-ratio:1.0;background:#c2b8a3"></div>
+                            <figcaption class="project-caption">
+                                <span class="project-client">Maison Terre</span>
+                                <span class="project-type">Branding, Packaging, Webdesign</span>
+                            </figcaption>
+                        </figure>
+                    </a>
+                    <a href="/work/clara-wellness" class="project-item r-fade">
+                        <figure class="project-figure">
+                            <div class="project-img" style="aspect-ratio:1.414;background:#c9d1c5"></div>
+                            <figcaption class="project-caption">
+                                <span class="project-client">Clara Wellness</span>
+                                <span class="project-type">Branding, Webdesign</span>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
             </div>
-        </section>
-
-        <!-- PROJECT GRID -->
-        <section class="project-grid" id="project-grid">
-
-            <!-- Nua Skincare -->
-            <a href="/work/nua-skincare" class="project-card r-fade" data-tags="branding,packaging">
-                <div class="project-card-img">
-                    <div class="project-card-img-inner" style="background: #d4c5b9; width: 100%; height: 100%;"></div>
-                </div>
-                <div class="project-card-body">
-                    <h2 class="project-card-name">Nua Skincare</h2>
-                    <p class="project-card-category">Beauty</p>
-                    <div class="project-card-tags">
-                        <span class="project-tag">Branding</span>
-                        <span class="project-tag">Packaging</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Sarah Lindström Coaching -->
-            <a href="/work/sarah-lindstroem-coaching" class="project-card r-fade" data-tags="branding,webdesign">
-                <div class="project-card-img">
-                    <div class="project-card-img-inner" style="background: #b8c4cc; width: 100%; height: 100%;"></div>
-                </div>
-                <div class="project-card-body">
-                    <h2 class="project-card-name">Sarah Lindström Coaching</h2>
-                    <p class="project-card-category">Coaching</p>
-                    <div class="project-card-tags">
-                        <span class="project-tag">Branding</span>
-                        <span class="project-tag">Webdesign</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Maison Terre -->
-            <a href="/work/maison-terre" class="project-card r-fade" data-tags="branding,packaging,webdesign">
-                <div class="project-card-img">
-                    <div class="project-card-img-inner" style="background: #c2b8a3; width: 100%; height: 100%;"></div>
-                </div>
-                <div class="project-card-body">
-                    <h2 class="project-card-name">Maison Terre</h2>
-                    <p class="project-card-category">Lifestyle</p>
-                    <div class="project-card-tags">
-                        <span class="project-tag">Branding</span>
-                        <span class="project-tag">Packaging</span>
-                        <span class="project-tag">Webdesign</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Mindful Movement -->
-            <a href="/work/mindful-movement" class="project-card r-fade" data-tags="branding">
-                <div class="project-card-img">
-                    <div class="project-card-img-inner" style="background: #a8b5a0; width: 100%; height: 100%;"></div>
-                </div>
-                <div class="project-card-body">
-                    <h2 class="project-card-name">Mindful Movement</h2>
-                    <p class="project-card-category">Wellness</p>
-                    <div class="project-card-tags">
-                        <span class="project-tag">Branding</span>
-                    </div>
-                </div>
-            </a>
-
         </section>
 
         <!-- CTA -->
-        <section class="work-cta r-fade">
-            <h2 class="work-cta-heading">Dein Projekt könnte hier stehen.</h2>
-            <a href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer" class="work-cta-btn">Call buchen</a>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="contact" id="contact">
-            <div class="contact-inner">
-                <p class="contact-label">Projekt anfragen</p>
-                <h2 class="contact-heading">Unsere Tür steht offen.</h2>
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xovazzey" method="POST">
-                    <label for="contact-name" class="sr-only">Name / Unternehmen</label>
-                    <input type="text" name="name" id="contact-name" placeholder="Name / Unternehmen" required>
-                    <label for="contact-email" class="sr-only">E-Mail</label>
-                    <input type="email" name="email" id="contact-email" placeholder="E-Mail" required>
-                    <label for="contact-service" class="sr-only">Leistung</label>
-                    <select name="service" id="contact-service" required>
-                        <option value="" disabled selected>Leistung</option>
-                        <option>Brand Strategy</option>
-                        <option>Brand Identity</option>
-                        <option>Website</option>
-                        <option>Komplettes Brand System</option>
-                        <option>Rebrand</option>
-                        <option>Anderes</option>
-                    </select>
-                    <label for="contact-timeline" class="sr-only">Zeitrahmen</label>
-                    <select name="timeline" id="contact-timeline">
-                        <option value="" disabled selected>Zeitrahmen</option>
-                        <option>So schnell wie möglich</option>
-                        <option>1-2 Wochen</option>
-                        <option>3-6 Wochen</option>
-                        <option>Kein Zeitdruck</option>
-                    </select>
-                    <label for="contact-message" class="sr-only">Nachricht</label>
-                    <textarea name="message" id="contact-message" placeholder="Wobei können wir helfen?"></textarea>
-                    <button type="submit" class="contact-submit">Anfrage senden</button>
-                </form>
-                <div class="contact-success" id="contact-success" role="status" aria-live="polite">
-                    <h3>Danke.</h3>
-                    <p>Wir melden uns in Kürze bei dir.</p>
-                </div>
-            </div>
+        <section class="work-cta">
+            <p class="work-cta-text">Dein Projekt hier?</p>
+            <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="work-cta-btn">Call buchen</a>
         </section>
 
     </main>
@@ -900,31 +697,7 @@
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.r-fade').forEach(el => obs.observe(el));
 
-        // Filter system
-        const filterPills = document.querySelectorAll('.filter-pill');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                filterPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-
-                const filter = pill.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filter === 'all') {
-                        card.classList.remove('hidden');
-                    } else {
-                        const tags = card.getAttribute('data-tags').split(',');
-                        if (tags.includes(filter)) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    }
-                });
-            });
-        });
+        // (filter system removed - clean grid layout)
 
         // Nav
         const navCenter = document.querySelector('.nav-center');
@@ -998,22 +771,7 @@
             }
         }, { passive: true });
 
-        // ===== CONTACT FORM =====
-        const form = document.getElementById('contact-form');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch('https://formspree.io/f/xovazzey', {
-                method: 'POST', body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            }).then(res => {
-                if (res.ok) {
-                    form.style.display = 'none';
-                    document.getElementById('contact-success').classList.add('visible');
-                    window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push({'event': 'form_submission', 'form_name': 'contact'});
-                }
-            });
-        });
+        // (contact form on main pages only)
 
     </script>
 
