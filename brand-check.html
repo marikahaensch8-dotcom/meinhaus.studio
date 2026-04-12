@@ -147,7 +147,7 @@
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 400;
             color: var(--black); text-decoration: none;
             transition: background var(--ease);
         }
@@ -191,7 +191,7 @@
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 400;
             color: var(--black); cursor: pointer; transition: background var(--ease);
         }
         .nav-connect:hover { background: rgba(220, 220, 220, 0.75); }
@@ -209,11 +209,9 @@
         .nav-connect-location { display: flex; justify-content: space-between; align-items: flex-start; }
         .nav-connect-city { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
         .nav-connect-time { font-size: 15px; font-weight: 400; color: var(--black); white-space: nowrap; }
-        .nav-connect-row { display: flex; flex-direction: column; gap: 4px; }
-        .nav-connect-label { font-size: 15px; font-weight: 500; color: var(--black); }
         .nav-connect-link { font-size: 14px; color: var(--grey); text-decoration: none; }
         .nav-connect-link:hover { color: var(--black); }
-        .nav-connect-social { display: flex; align-items: baseline; justify-content: space-between; }
+        .nav-connect-bottom { display: flex; align-items: baseline; justify-content: space-between; }
         .nav-connect-social-links { display: flex; gap: 16px; }
         .nav-connect-social-links a { font-size: 14px; color: var(--grey); text-decoration: none; }
         .nav-connect-social-links a:hover { color: var(--black); }
@@ -601,7 +599,7 @@
 
             .nav { padding: 16px 24px; }
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
-            .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
+            .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
 
             .footer-row { padding: 12px var(--pad); align-items: center; }
             .footer-left { gap: 12px; }
@@ -699,7 +697,6 @@
                     </div>
                 </div>
                 <a href="/work" class="nav-menu-item">Work</a>
-                <a href="/blog" class="nav-menu-item">Blog</a>
                 <a href="/about-en" class="nav-menu-item">About</a>
                 <a href="/personal-brand-aufbauen" class="nav-menu-item">DE</a>
 
@@ -732,28 +729,18 @@
             <div class="nav-connect-dropdown" id="nav-connect-dropdown">
                 <div class="nav-connect-body">
                     <div class="nav-connect-location">
-                        <div>
-                            <p class="nav-connect-city">LDN</p>
-                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
-                        </div>
+                        <p class="nav-connect-city">LDN</p>
                         <span class="nav-connect-time" data-tz="Europe/London"></span>
                     </div>
                     <div class="nav-connect-location">
-                        <div>
-                            <p class="nav-connect-city">BER</p>
-                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
-                        </div>
+                        <p class="nav-connect-city">BER</p>
                         <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
                     </div>
-                    <div class="nav-connect-row">
-                        <p class="nav-connect-label">General Inquiries</p>
+                    <div class="nav-connect-bottom">
                         <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
-                    </div>
-                    <div class="nav-connect-social">
-                        <p class="nav-connect-label">Social</p>
                         <div class="nav-connect-social-links">
-                            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">IG</a>
+                            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">IN</a>
                         </div>
                     </div>
                 </div>

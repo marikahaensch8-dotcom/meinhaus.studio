@@ -51,10 +51,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
     </noscript>
     <link rel="preload" as="image" href="DSC03289.webp" type="image/webp">
@@ -146,7 +146,7 @@
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 400;
             color: var(--black); text-decoration: none;
             transition: background var(--ease);
         }
@@ -203,7 +203,7 @@
             background: rgba(220, 220, 220, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            font-family: var(--sans); font-size: 14px; font-weight: 400;
+            font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 400;
             color: var(--black); cursor: pointer; transition: background var(--ease);
         }
         .nav-connect:hover { background: rgba(220, 220, 220, 0.75); }
@@ -221,11 +221,9 @@
         .nav-connect-location { display: flex; justify-content: space-between; align-items: flex-start; }
         .nav-connect-city { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
         .nav-connect-time { font-size: 15px; font-weight: 400; color: var(--black); white-space: nowrap; }
-        .nav-connect-row { display: flex; flex-direction: column; gap: 4px; }
-        .nav-connect-label { font-size: 15px; font-weight: 500; color: var(--black); }
         .nav-connect-link { font-size: 14px; color: var(--grey); text-decoration: none; }
         .nav-connect-link:hover { color: var(--black); }
-        .nav-connect-social { display: flex; align-items: baseline; justify-content: space-between; }
+        .nav-connect-bottom { display: flex; align-items: baseline; justify-content: space-between; }
         .nav-connect-social-links { display: flex; gap: 16px; }
         .nav-connect-social-links a { font-size: 14px; color: var(--grey); text-decoration: none; }
         .nav-connect-social-links a:hover { color: var(--black); }
@@ -798,7 +796,8 @@
 
             .nav { padding: 16px 24px; }
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
-            .nav-connect-dropdown { position: fixed; width: calc(100vw - 48px); left: 24px; right: 24px; top: 72px; padding: 16px; }
+            .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
+            .nav-connect-bottom { flex-direction: column; gap: 12px; }
 
             .services-scroll { height: auto; }
             .services-sticky { position: relative; top: auto; }
@@ -950,7 +949,6 @@
                     </div>
                 </div>
                 <a href="/work" class="nav-menu-item">Work</a>
-                <a href="/blog" class="nav-menu-item">Blog</a>
                 <a href="/about-en" class="nav-menu-item">About</a>
                 <a href="/" class="nav-menu-item">DE</a>
 
@@ -983,28 +981,18 @@
             <div class="nav-connect-dropdown" id="nav-connect-dropdown">
                 <div class="nav-connect-body">
                     <div class="nav-connect-location">
-                        <div>
-                            <p class="nav-connect-city">LDN</p>
-                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
-                        </div>
+                        <p class="nav-connect-city">LDN</p>
                         <span class="nav-connect-time" data-tz="Europe/London"></span>
                     </div>
                     <div class="nav-connect-location">
-                        <div>
-                            <p class="nav-connect-city">BER</p>
-                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
-                        </div>
+                        <p class="nav-connect-city">BER</p>
                         <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
                     </div>
-                    <div class="nav-connect-row">
-                        <p class="nav-connect-label">General inquiries</p>
+                    <div class="nav-connect-bottom">
                         <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
-                    </div>
-                    <div class="nav-connect-social">
-                        <p class="nav-connect-label">Social</p>
                         <div class="nav-connect-social-links">
-                            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">IG</a>
+                            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">IN</a>
                         </div>
                     </div>
                 </div>
@@ -1085,14 +1073,6 @@
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="cta">
-            <div class="cta-card r-fade">
-                <p class="cta-tagline">Not sure yet? No problem.</p>
-                <h2 class="cta-headline">Let's talk.</h2>
-                <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" class="cta-btn" target="_blank" rel="noopener noreferrer">Book a call</a>
-            </div>
-        </section>
 
         <!-- INDUSTRIES -->
         <section class="industries r-fade" style="padding:80px 24px;text-align:center;max-width:900px;margin:0 auto">
@@ -1127,34 +1107,6 @@
             </div>
         </section>
 
-        <!-- WHY -->
-        <section class="why">
-            <div class="why-photo r-fade" role="img" aria-label="meinhaus studio"></div>
-            <div class="why-content">
-            <p class="label">Why us</p>
-            <h2 class="why-headline r-line"><span class="r-line-inner">We build brands from the ground up. Strategy, design and everything in between.</span></h2>
-            <div class="why-items">
-                <div class="why-item">
-                    <button class="why-trigger" aria-expanded="true">Strategy first <span class="why-toggle">+</span></button>
-                    <div class="why-body open">
-                        <div class="why-body-inner">Every project starts with understanding. Your goals, your audience, your story. We plan before we build.</div>
-                    </div>
-                </div>
-                <div class="why-item">
-                    <button class="why-trigger" aria-expanded="false">Built to last <span class="why-toggle">+</span></button>
-                    <div class="why-body">
-                        <div class="why-body-inner">No trends for the sake of trends. We create work that ages well and grows with you.</div>
-                    </div>
-                </div>
-                <div class="why-item">
-                    <button class="why-trigger" aria-expanded="false">Personal, always <span class="why-toggle">+</span></button>
-                    <div class="why-body">
-                        <div class="why-body-inner">Two people, no detours. You work directly with us. The ones who actually do the work.</div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </section>
 
 
         <!-- CONTACT -->

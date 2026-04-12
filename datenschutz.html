@@ -30,7 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung · meinhaus studio</title>
     <meta name="description" content="Datenschutzerklärung von meinhaus studio – Informationen zur Verarbeitung personenbezogener Daten.">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#f2f2f2">
     <link rel="canonical" href="https://meinhaus.studio/datenschutz.html">
 
     <!-- Open Graph -->
@@ -43,120 +43,253 @@
     <link rel="icon" href="House.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500&display=swap" rel="stylesheet">
     </noscript>
-    <link rel="stylesheet" href="style.css">
     <style>
         :root {
-            --serif: 'Inter', 'Helvetica Neue', sans-serif;
+            --sans: 'General Sans', 'Helvetica Neue', sans-serif;
+            --mono: 'Space Mono', monospace;
+            --black: #1a1a1a;
+            --grey: #737373;
+            --grey-light: #e8e8e8;
+            --bg: #f2f2f2;
+            --ease: 0.3s ease;
+            --ease-out: cubic-bezier(.19, 1, .22, 1);
         }
 
-        /* ===== FOOTER ===== */
-        .site-footer {
-            padding: 0 0 32px;
-            background: var(--white);
-        }
-        .footer-brand {
-            font-family: var(--serif);
-            font-size: 21vw;
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: -0.04em;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body {
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 11.5px;
+            line-height: 1.6;
             color: var(--black);
-            padding: 120px var(--pad) 0;
-            white-space: nowrap;
+            background: var(--bg);
             overflow: hidden;
-            text-align: center;
+            height: 100vh;
         }
-        .footer-row {
+        a { color: inherit; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        button { font-family: var(--sans); border: none; cursor: pointer; background: none; }
+        ::selection { color: #fff; background: var(--black); }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; background: transparent;
+        }
+        .nav-logo { font-family: var(--sans); font-size: 18px; font-weight: 400; letter-spacing: 0.04em; color: var(--black); text-decoration: none; }
+        .nav-logo:hover { text-decoration: none; }
+        .nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-menu-item {
+            display: flex; align-items: center; justify-content: center;
+            height: 36px; padding: 0 20px; border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            font-family: var(--mono); font-size: 14px; font-weight: 400; color: var(--black);
+            text-decoration: none; transition: background var(--ease);
+        }
+        .nav-menu-item:hover { background: rgba(220, 220, 220, 0.75); color: var(--black); text-decoration: none; }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .lang-toggle {
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; perspective: 200px; text-decoration: none;
+        }
+        .lang-toggle:hover { text-decoration: none; }
+        .lang-cube {
+            width: 100%; height: 100%; position: relative;
+            transform-style: preserve-3d; transition: transform 0.5s var(--ease-out);
+        }
+        .lang-toggle:hover .lang-cube { transform: rotateX(-90deg); }
+        .lang-face {
+            position: absolute; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--grey);
+            backface-visibility: hidden;
+        }
+        .lang-face-front { transform: translateZ(18px); }
+        .lang-face-back { transform: rotateX(90deg) translateZ(18px); }
+
+        /* Connect pill */
+        .nav-connect-wrap { position: relative; }
+        .nav-connect {
+            display: flex; align-items: center; gap: 8px; height: 40px;
+            padding: 0 20px; border: none; border-radius: 100px;
+            background: rgba(220, 220, 220, 0.6);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            font-family: var(--mono); font-size: 14px; font-weight: 400; color: var(--black);
+            cursor: pointer; transition: background var(--ease);
+        }
+        .nav-connect:hover { background: rgba(220, 220, 220, 0.75); }
+        .nav-connect-icon { display: inline-flex; align-items: center; transition: transform var(--ease); }
+        .nav-connect-dropdown {
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            width: 360px; background: rgba(235, 235, 235, 0.85);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px; padding: 24px;
+        }
+        .nav-connect-dropdown.active { display: block; }
+        .nav-connect-wrap.open svg.door-closed { display: none; }
+        .nav-connect-wrap.open svg.door-open { display: block !important; }
+        .nav-connect-body { display: flex; flex-direction: column; gap: 20px; }
+        .nav-connect-location { display: flex; justify-content: space-between; align-items: flex-start; }
+        .nav-connect-city { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+        .nav-connect-time { font-size: 15px; font-weight: 400; color: var(--black); white-space: nowrap; }
+        .nav-connect-link { font-size: 14px; color: var(--grey); text-decoration: none; }
+        .nav-connect-link:hover { color: var(--black); text-decoration: none; }
+        .nav-connect-bottom { display: flex; align-items: baseline; justify-content: space-between; }
+        .nav-connect-social-links { display: flex; gap: 16px; }
+        .nav-connect-social-links a { font-size: 14px; color: var(--grey); text-decoration: none; }
+        .nav-connect-social-links a:hover { color: var(--black); text-decoration: none; }
+
+        /* ===== LEGAL LAYOUT ===== */
+        .legal-page {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .legal-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 28px;
+            padding: 92px 40px 0;
+            align-content: start;
+            overflow: hidden;
+        }
+
+        .legal-col h2 {
+            font-family: var(--sans);
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .legal-col p {
+            font-family: var(--sans);
+            font-size: 11.5px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--black);
+            margin-bottom: 8px;
+        }
+
+        .legal-col p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-col ul {
+            font-family: var(--sans);
+            font-size: 11.5px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--black);
+            padding-left: 16px;
+            margin-bottom: 8px;
+        }
+
+        .legal-col a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .legal-col .legal-section {
+            margin-bottom: 20px;
+        }
+
+        .legal-col .legal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== BOTTOM BAR ===== */
+        .legal-bottom {
+            background: var(--black);
+            color: #fff;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 var(--pad) 40px;
-        }
-        .footer-left {
-            display: flex; gap: 24px; align-items: center;
-        }
-        .footer-left span, .footer-left a {
-            font-family: var(--font);
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--black);
-            text-decoration: none;
-            transition: opacity var(--ease);
-        }
-        .footer-left a:hover { opacity: 0.5; }
-        .footer-right {
-            display: flex; gap: 28px; align-items: center;
-        }
-        .footer-link {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-family: var(--serif);
-            font-size: 0;
-            color: var(--black);
-            text-decoration: none;
-            transition: opacity var(--ease);
-        }
-        .footer-link:hover { opacity: 0.5; }
-        .footer-link-text, .footer-icon-arrow { display: none; }
-        .footer-icon-social {
-            display: block;
-            width: 22px;
-            height: 22px;
-            fill: var(--black);
-            stroke: none;
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 300;
+            flex-shrink: 0;
         }
 
-        @media (max-width: 900px) {
-            .footer-row { padding: 12px var(--pad); align-items: center; }
-            .footer-left { gap: 12px; }
-            .footer-left span, .footer-left a { font-size: 11px; }
-            .footer-right { gap: 16px; }
-            .footer-icon-social { width: 16px; height: 16px; }
-            .footer-brand { font-size: 18vw; padding: 80px var(--pad) 0; }
+        .legal-bottom a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity var(--ease);
         }
-        @media (max-width: 600px) {
-            .footer-left { gap: 8px; }
-            .footer-left span, .footer-left a { font-size: 10px; white-space: nowrap; }
-            .footer-right { gap: 10px; }
-            .footer-icon-social { width: 14px; height: 14px; }
-            .footer-brand { font-size: 16vw; padding: 60px var(--pad) 0; }
+
+        .legal-bottom a:hover { opacity: 0.7; text-decoration: none; }
+
+        .legal-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
         }
+
         /* ===== COOKIE CONSENT ===== */
         .cookie-banner {
             display: none;
             position: fixed;
-            bottom: 24px; right: var(--pad);
+            bottom: 56px; left: 40px;
             z-index: 9999;
             align-items: center;
             gap: 20px;
         }
         .cookie-banner.visible { display: flex; }
         .cookie-banner p {
-            font-family: var(--font);
-            font-size: 13px;
-            font-weight: 300;
-            color: #bbb;
-            margin: 0;
+            font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); margin: 0;
         }
         .cookie-actions { display: flex; gap: 16px; }
         .cookie-action {
-            font-family: var(--font);
-            font-size: 13px;
-            font-weight: 300;
-            color: #bbb;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: color 0.2s;
+            font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey);
+            background: none; border: none; cursor: pointer; padding: 0; transition: color 0.2s;
         }
         .cookie-action:hover { color: var(--black); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .legal-content {
+                grid-template-columns: 1fr 1fr;
+                padding: 100px 24px 40px;
+                gap: 24px;
+            }
+            body { overflow: auto; height: auto; font-size: 13px; }
+            .legal-page { height: auto; min-height: 100vh; }
+            .legal-col h2 { font-size: 13px; }
+            .legal-col p, .legal-col ul { font-size: 13px; }
+            .nav { padding: 16px 24px; }
+            .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
+            .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
+            .legal-bottom { padding: 16px 24px; }
+        }
+
         @media (max-width: 600px) {
-            .cookie-banner { bottom: 16px; right: 20px; }
-            .cookie-banner p, .cookie-action { font-size: 11px; }
+            .legal-content {
+                grid-template-columns: 1fr;
+                padding: 90px 16px 40px;
+                gap: 32px;
+            }
+            .nav { padding: 16px; }
+            .legal-bottom {
+                padding: 16px;
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .cookie-banner { left: 16px; bottom: 70px; }
         }
     </style>
 </head>
@@ -166,54 +299,51 @@
 
     <!-- Nav -->
     <header class="nav">
-        <a href="/" class="nav-logo" style="text-decoration:none;">meinhaus</a>
+        <a href="/" class="nav-logo">meinhaus</a>
 
-        <!-- Center menu pill -->
         <div class="nav-center">
             <a href="/" class="nav-menu-item">Zurück</a>
         </div>
 
-        <!-- Connect pill -->
-        <div class="nav-connect-wrap">
-            <button class="nav-connect" id="nav-connect-toggle">
-                <span>Komm rein</span>
-                <span class="nav-connect-icon">
-                    <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="1" y="1" width="12" height="14"/>
-                        <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
-                    </svg>
-                    <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-                        <rect x="1" y="1" width="12" height="14"/>
-                        <path d="M1 1 L6 3 L6 13 L1 15"/>
-                        <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
-                    </svg>
-                </span>
-            </button>
-            <div class="nav-connect-dropdown" id="nav-connect-dropdown">
-                <div class="nav-connect-body">
-                    <div class="nav-connect-location">
-                        <div>
+        <div class="nav-right">
+            <a href="/datenschutz" class="lang-toggle" aria-label="Switch to English">
+                <div class="lang-cube">
+                    <span class="lang-face lang-face-front">DE</span>
+                    <span class="lang-face lang-face-back">EN</span>
+                </div>
+            </a>
+
+            <div class="nav-connect-wrap">
+                <button class="nav-connect" id="nav-connect-toggle" aria-expanded="false" aria-controls="nav-connect-dropdown">
+                    <span>Komm rein</span>
+                    <span class="nav-connect-icon">
+                        <svg class="door-icon door-closed" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="1" y="1" width="12" height="14"/>
+                            <circle cx="10" cy="8" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                        <svg class="door-icon door-open" width="14" height="16" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:none" aria-hidden="true">
+                            <rect x="1" y="1" width="12" height="14"/>
+                            <path d="M1 1 L6 3 L6 13 L1 15"/>
+                            <circle cx="5" cy="8" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="nav-connect-dropdown" id="nav-connect-dropdown">
+                    <div class="nav-connect-body">
+                        <div class="nav-connect-location">
                             <p class="nav-connect-city">LDN</p>
-                            <a href="mailto:marika@meinhaus.studio" class="nav-connect-link">marika@meinhaus.studio</a>
+                            <span class="nav-connect-time" data-tz="Europe/London"></span>
                         </div>
-                        <span class="nav-connect-time" data-tz="Europe/London"></span>
-                    </div>
-                    <div class="nav-connect-location">
-                        <div>
+                        <div class="nav-connect-location">
                             <p class="nav-connect-city">BER</p>
-                            <a href="mailto:emma@meinhaus.studio" class="nav-connect-link">emma@meinhaus.studio</a>
+                            <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
                         </div>
-                        <span class="nav-connect-time" data-tz="Europe/Berlin"></span>
-                    </div>
-                    <div class="nav-connect-row">
-                        <p class="nav-connect-label">Allgemeine Anfragen</p>
-                        <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
-                    </div>
-                    <div class="nav-connect-social">
-                        <p class="nav-connect-label">Social</p>
-                        <div class="nav-connect-social-links">
-                            <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                            <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <div class="nav-connect-bottom">
+                            <a href="mailto:hello@meinhaus.studio" class="nav-connect-link">hello@meinhaus.studio</a>
+                            <div class="nav-connect-social-links">
+                                <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer">IG</a>
+                                <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer">IN</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -221,197 +351,109 @@
         </div>
     </header>
 
-    <main style="padding: 140px var(--pad) 80px; max-width: 680px;">
+    <div class="legal-page">
+        <main class="legal-content">
 
-        <p class="label">Rechtliches</p>
-        <h1 class="section-headline" style="margin-bottom: 60px;">Datenschutzerklärung</h1>
-
-        <!-- 1. Verantwortliche Stelle -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">1. Verantwortliche Stelle</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Verantwortlich für die Datenverarbeitung auf dieser Website:
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Marija Haensch und Emma Neumann<br>
-                [Adresse wird nachgetragen]<br><br>
-                E-Mail: <a href="mailto:hello@meinhaus.studio" style="color: var(--black);">hello@meinhaus.studio</a><br>
-                Telefon: [wird nachgetragen]
-            </p>
-        </section>
-
-        <!-- 2. Allgemeines zur Datenverarbeitung -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">2. Erhebung und Speicherung personenbezogener Daten</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Beim Besuch unserer Website werden automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sogenannten Logfile gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:
-            </p>
-            <ul style="font-size: 16px; line-height: 1.8; color: var(--grey); margin-top: 12px; padding-left: 20px;">
-                <li>IP-Adresse des anfragenden Rechners</li>
-                <li>Datum und Uhrzeit des Zugriffs</li>
-                <li>Name und URL der abgerufenen Datei</li>
-                <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
-                <li>Verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers</li>
-            </ul>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Die genannten Daten werden zu folgenden Zwecken verarbeitet: Gewährleistung eines reibungslosen Verbindungsaufbaus der Website, Gewährleistung einer komfortablen Nutzung unserer Website, Auswertung der Systemsicherheit und -stabilität. Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 S. 1 lit. f DSGVO. Unser berechtigtes Interesse folgt aus den oben aufgelisteten Zwecken der Datenerhebung.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Wir verwenden auf unserer Website kein Google Analytics und keine sonstigen Tracking- oder Analyse-Tools. Es findet keine Profilbildung oder automatisierte Entscheidungsfindung statt.
-            </p>
-        </section>
-
-        <!-- 3. Kontaktformular -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">3. Kontaktformular (Formspree)</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Auf unserer Website bieten wir ein Kontaktformular an, über das Sie uns eine Nachricht senden können. Die Übermittlung der Formulardaten erfolgt über den Dienst <strong style="font-weight: 500; color: var(--black);">Formspree</strong> (Formspree, Inc., 1123 Broadway, Suite 220, New York, NY 10010, USA).
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Wenn Sie das Kontaktformular nutzen, werden folgende Daten an Formspree übermittelt und von uns verarbeitet:
-            </p>
-            <ul style="font-size: 16px; line-height: 1.8; color: var(--grey); margin-top: 12px; padding-left: 20px;">
-                <li>Name / Unternehmen</li>
-                <li>E-Mail-Adresse</li>
-                <li>Gewählte Leistung</li>
-                <li>Ihre Nachricht</li>
-            </ul>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. b DSGVO (vorvertragliche Maßnahmen) sowie Art. 6 Abs. 1 S. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung von Anfragen). Formspree verarbeitet Daten unter anderem in den USA. Weitere Informationen finden Sie in der <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer" style="color: var(--black);">Datenschutzerklärung von Formspree</a>.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet und nach Abschluss der Bearbeitung bzw. nach Ablauf gesetzlicher Aufbewahrungsfristen gelöscht.
-            </p>
-        </section>
-
-        <!-- 4. Hosting -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">4. Hosting (Netlify)</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Unsere Website wird gehostet bei <strong style="font-weight: 500; color: var(--black);">Netlify</strong> (Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA). Beim Aufruf unserer Website erhebt Netlify verschiedene Logfiles inkl. Ihrer IP-Adresse. Netlify verarbeitet Daten unter anderem in den USA.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Weitere Informationen finden Sie in der <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" style="color: var(--black);">Datenschutzerklärung von Netlify</a>.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Die Nutzung von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer zuverlässigen Darstellung unserer Website.
-            </p>
-        </section>
-
-        <!-- 5. Cookies -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">5. Cookies</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Unsere Website verwendet ausschließlich technisch notwendige Cookies, die für den Betrieb der Website erforderlich sind. Es werden keine Cookies zu Marketing- oder Analysezwecken eingesetzt. Die Rechtsgrundlage für die Verwendung technisch notwendiger Cookies ist Art. 6 Abs. 1 S. 1 lit. f DSGVO.
-            </p>
-        </section>
-
-        <!-- 6. Schriftarten -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">6. Schriftarten</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Alle auf dieser Website verwendeten Schriftarten werden lokal von unserem Server geladen. Es findet keine Verbindung zu externen Schriftarten-Diensten (z. B. Google Fonts) statt. Es werden daher keine Daten an Drittanbieter übermittelt.
-            </p>
-        </section>
-
-        <!-- 7. SSL-Verschlüsselung -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">7. SSL-Verschlüsselung</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
-            </p>
-        </section>
-
-        <!-- 8. Betroffenenrechte -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">8. Ihre Rechte als betroffene Person</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:
-            </p>
-            <ul style="font-size: 16px; line-height: 1.8; color: var(--grey); margin-top: 12px; padding-left: 20px;">
-                <li><strong style="font-weight: 500; color: var(--black);">Recht auf Auskunft</strong> (Art. 15 DSGVO)</li>
-                <li><strong style="font-weight: 500; color: var(--black);">Recht auf Berichtigung</strong> (Art. 16 DSGVO)</li>
-                <li><strong style="font-weight: 500; color: var(--black);">Recht auf Löschung</strong> (Art. 17 DSGVO)</li>
-                <li><strong style="font-weight: 500; color: var(--black);">Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
-                <li><strong style="font-weight: 500; color: var(--black);">Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
-                <li><strong style="font-weight: 500; color: var(--black);">Recht auf Widerspruch gegen die Verarbeitung</strong> (Art. 21 DSGVO)</li>
-            </ul>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Darüber hinaus haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:hello@meinhaus.studio" style="color: var(--black);">hello@meinhaus.studio</a>
-            </p>
-        </section>
-
-        <!-- 9. Änderungen -->
-        <section style="margin-bottom: 48px;">
-            <h2 style="font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 16px;">9. Änderungen dieser Datenschutzerklärung</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey);">
-                Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.
-            </p>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--grey); margin-top: 12px;">
-                [Weitere Abschnitte werden bei Bedarf nachgetragen.]
-            </p>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-brand">meinhaus</div>
-            <div class="footer-row">
-                <div class="footer-left">
-                    <span>&copy; <span class="year"></span> meinhaus studio</span>
-                    <a href="/impressum">Impressum</a>
-                    <a href="/datenschutz">Datenschutz</a>
+            <!-- Column 1: Verantwortliche Stelle + Erhebung -->
+            <div class="legal-col">
+                <div class="legal-section">
+                    <h2>1. Verantwortliche Stelle</h2>
+                    <p>Verantwortlich für die Datenverarbeitung auf dieser Website:</p>
+                    <p>
+                        Marija Haensch und Emma Neumann<br>
+                        [Adresse wird nachgetragen]<br><br>
+                        E-Mail: <a href="mailto:hello@meinhaus.studio">hello@meinhaus.studio</a><br>
+                        Telefon: [wird nachgetragen]
+                    </p>
                 </div>
-                <div class="footer-right">
-                    <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Instagram"><span class="footer-link-text">Instagram</span><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
-                    <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn"><span class="footer-link-text">LinkedIn</span><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-                    <a href="mailto:hello@meinhaus.studio" class="footer-link" aria-label="E-Mail"><span class="footer-link-text">Mail</span><svg class="footer-icon-social" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+
+                <div class="legal-section">
+                    <h2>2. Erhebung und Speicherung personenbezogener Daten</h2>
+                    <p>Beim Besuch unserer Website werden automatisch Informationen an den Server gesendet. Diese Informationen werden temporär in einem Logfile gespeichert:</p>
+                    <ul>
+                        <li>IP-Adresse des anfragenden Rechners</li>
+                        <li>Datum und Uhrzeit des Zugriffs</li>
+                        <li>Name und URL der abgerufenen Datei</li>
+                        <li>Website, von der aus der Zugriff erfolgt</li>
+                        <li>Verwendeter Browser und Betriebssystem</li>
+                    </ul>
+                    <p>Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 S. 1 lit. f DSGVO. Wir verwenden kein Google Analytics und keine sonstigen Tracking- oder Analyse-Tools.</p>
                 </div>
             </div>
-    </footer>
 
-    <script>
-        document.querySelector('.year').textContent = new Date().getFullYear();
+            <!-- Column 2: Kontaktformular + Hosting -->
+            <div class="legal-col">
+                <div class="legal-section">
+                    <h2>3. Kontaktformular (Formspree)</h2>
+                    <p>Die Übermittlung der Formulardaten erfolgt über den Dienst Formspree (Formspree, Inc., 1123 Broadway, Suite 220, New York, NY 10010, USA). Folgende Daten werden verarbeitet:</p>
+                    <ul>
+                        <li>Name / Unternehmen</li>
+                        <li>E-Mail-Adresse</li>
+                        <li>Gewählte Leistung</li>
+                        <li>Ihre Nachricht</li>
+                    </ul>
+                    <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. b DSGVO (vorvertragliche Maßnahmen) sowie Art. 6 Abs. 1 S. 1 lit. f DSGVO. Weitere Informationen: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Formspree</a>.</p>
+                    <p>Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet und nach Abschluss der Bearbeitung bzw. nach Ablauf gesetzlicher Aufbewahrungsfristen gelöscht.</p>
+                </div>
 
-        // Connect dropdown
-        const connectToggle = document.getElementById('nav-connect-toggle');
-        const connectDropdown = document.getElementById('nav-connect-dropdown');
-        const connectWrap = document.querySelector('.nav-connect-wrap');
+                <div class="legal-section">
+                    <h2>4. Hosting (Netlify)</h2>
+                    <p>Unsere Website wird gehostet bei Netlify (Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA). Beim Aufruf unserer Website erhebt Netlify verschiedene Logfiles inkl. Ihrer IP-Adresse.</p>
+                    <p>Die Nutzung von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 S. 1 lit. f DSGVO. Weitere Informationen: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Netlify</a>.</p>
+                </div>
+            </div>
 
-        connectToggle.addEventListener('click', () => {
-            const isOpen = connectWrap.classList.toggle('open');
-            connectDropdown.classList.toggle('active', isOpen);
-        });
+            <!-- Column 3: Cookies + Schriftarten + SSL -->
+            <div class="legal-col">
+                <div class="legal-section">
+                    <h2>5. Cookies</h2>
+                    <p>Unsere Website verwendet ausschließlich technisch notwendige Cookies, die für den Betrieb der Website erforderlich sind. Es werden keine Cookies zu Marketing- oder Analysezwecken eingesetzt. Die Rechtsgrundlage ist Art. 6 Abs. 1 S. 1 lit. f DSGVO.</p>
+                </div>
 
-        // Live clocks
-        function updateClocks() {
-            document.querySelectorAll('.nav-connect-time').forEach((el) => {
-                const tz = el.getAttribute('data-tz');
-                const now = new Date();
-                el.textContent = now.toLocaleTimeString('de-DE', {
-                    timeZone: tz,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                });
-            });
-        }
-        updateClocks();
-        setInterval(updateClocks, 1000);
+                <div class="legal-section">
+                    <h2>6. Schriftarten</h2>
+                    <p>Alle auf dieser Website verwendeten Schriftarten werden lokal von unserem Server geladen. Es findet keine Verbindung zu externen Schriftarten-Diensten (z. B. Google Fonts) statt. Es werden daher keine Daten an Drittanbieter übermittelt.</p>
+                </div>
 
-        // Close dropdown on outside click
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-connect-wrap')) {
-                connectWrap.classList.remove('open');
-                connectDropdown.classList.remove('active');
-            }
-        });
-    </script>
+                <div class="legal-section">
+                    <h2>7. SSL-Verschlüsselung</h2>
+                    <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+                </div>
+            </div>
+
+            <!-- Column 4: Rechte + Änderungen -->
+            <div class="legal-col">
+                <div class="legal-section">
+                    <h2>8. Ihre Rechte als betroffene Person</h2>
+                    <p>Sie haben folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:</p>
+                    <ul>
+                        <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+                        <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+                        <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+                        <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+                        <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+                        <li>Recht auf Widerspruch (Art. 21 DSGVO)</li>
+                    </ul>
+                    <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer Daten zu beschweren.</p>
+                    <p>Kontakt: <a href="mailto:hello@meinhaus.studio">hello@meinhaus.studio</a></p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+                    <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <div class="legal-bottom">
+            <span>&copy; 2026 meinhaus studio. All rights reserved.</span>
+            <div class="legal-bottom-right">
+                <a href="/impressum">Impressum</a>
+                <a href="/datenschutz">Datenschutz</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Cookie Consent -->
     <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie-Einstellungen">
@@ -423,27 +465,67 @@
     </div>
 
     <script>
-    (function() {
-        var banner = document.getElementById('cookie-banner');
-        if (!banner) return;
-        if (!localStorage.getItem('cookie-consent')) {
-            setTimeout(function() { banner.classList.add('visible'); }, 3000);
-        }
-        document.getElementById('cookie-accept').addEventListener('click', function() {
-            localStorage.setItem('cookie-consent', 'accepted');
-            banner.classList.remove('visible');
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted',
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
+        // ===== CONNECT DROPDOWN =====
+        const connectToggle = document.getElementById('nav-connect-toggle');
+        const connectDropdown = document.getElementById('nav-connect-dropdown');
+        const connectWrap = document.querySelector('.nav-connect-wrap');
+        let clockInterval = null;
+
+        function updateClocks() {
+            document.querySelectorAll('.nav-connect-time').forEach(el => {
+                el.textContent = new Date().toLocaleTimeString('de-DE', { timeZone: el.getAttribute('data-tz'), hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
             });
+        }
+        function startClocks() { updateClocks(); if (!clockInterval) clockInterval = setInterval(updateClocks, 1000); }
+        function stopClocks() { if (clockInterval) { clearInterval(clockInterval); clockInterval = null; } }
+
+        connectToggle.addEventListener('click', () => {
+            const isOpen = connectWrap.classList.toggle('open');
+            connectDropdown.classList.toggle('active', isOpen);
+            connectToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) startClocks(); else stopClocks();
         });
-        document.getElementById('cookie-decline').addEventListener('click', function() {
-            localStorage.setItem('cookie-consent', 'declined');
-            banner.classList.remove('visible');
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.nav-connect-wrap')) {
+                connectWrap.classList.remove('open');
+                connectDropdown.classList.remove('active');
+                connectToggle.setAttribute('aria-expanded', 'false');
+                stopClocks();
+            }
         });
-    })();
+
+        window.addEventListener('scroll', () => {
+            if (connectWrap.classList.contains('open')) {
+                connectWrap.classList.remove('open');
+                connectDropdown.classList.remove('active');
+                connectToggle.setAttribute('aria-expanded', 'false');
+                stopClocks();
+            }
+        }, { passive: true });
+
+        // ===== COOKIE CONSENT =====
+        (function() {
+            var banner = document.getElementById('cookie-banner');
+            if (!banner) return;
+            if (!localStorage.getItem('cookie-consent')) {
+                setTimeout(function() { banner.classList.add('visible'); }, 3000);
+            }
+            document.getElementById('cookie-accept').addEventListener('click', function() {
+                localStorage.setItem('cookie-consent', 'accepted');
+                banner.classList.remove('visible');
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted',
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted'
+                });
+            });
+            document.getElementById('cookie-decline').addEventListener('click', function() {
+                localStorage.setItem('cookie-consent', 'declined');
+                banner.classList.remove('visible');
+            });
+        })();
     </script>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0fc1bdb27562427b93b37c7891d45bb1"}'></script><!-- End Cloudflare Web Analytics -->
