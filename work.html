@@ -981,7 +981,19 @@
             v.setAttribute('muted', '');
             v.defaultMuted = true;
             v.playsInline = true;
-            v.play().catch(function(){});
+            v.setAttribute('playsinline', '');
+            v.setAttribute('webkit-playsinline', '');
+            // Load as blob to bypass iOS autoplay restrictions
+            var src = v.src || v.querySelector('source')?.src;
+            if (src) {
+                fetch(src).then(function(r) { return r.blob(); }).then(function(blob) {
+                    v.src = URL.createObjectURL(blob);
+                    v.load();
+                    v.play().catch(function(){});
+                }).catch(function(){
+                    v.play().catch(function(){});
+                });
+            }
             var vio = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) v.play().catch(function(){});
