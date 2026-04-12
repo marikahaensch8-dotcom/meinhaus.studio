@@ -204,6 +204,7 @@
         }
 
         /* Language cube toggle */
+        .nav-menu-lang { display: none; }
         .lang-toggle {
             display: flex;
             align-items: center;
@@ -929,6 +930,13 @@
             height: auto;
             pointer-events: none;
         }
+        .footer-illustration::-webkit-media-controls-panel,
+        .footer-illustration::-webkit-media-controls-play-button,
+        .footer-illustration::-webkit-media-controls-start-playback-button,
+        .footer-illustration::-webkit-media-controls {
+            display: none !important;
+            -webkit-appearance: none;
+        }
         .footer-socials {
             display: flex;
             gap: 12px;
@@ -1000,6 +1008,9 @@
             .nav-center.open .nav-pill-close { display: none; }
 
             .nav { padding: 16px 24px; }
+            .nav-center { position: static; transform: none; }
+            .lang-toggle { display: none; }
+            .nav-menu-lang { display: flex; }
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
             .nav-connect-bottom { flex-direction: column; gap: 12px; }
@@ -1015,6 +1026,12 @@
             .about-photo { min-height: 50vh; }
             .contact-form-row { grid-template-columns: 1fr; }
             .hero-cta { margin-top: 32px; font-size: 13px; padding: 10px 28px; }
+
+            .footer-block { font-size: 28px; }
+            .footer-email { font-size: 20px; }
+            .footer-illustration { width: 240px; }
+            .footer-socials { flex-wrap: wrap; justify-content: center; }
+            .footer-legal { font-size: 14px; }
         }
 
         /* ===== RESPONSIVE — MOBILE ===== */
@@ -1135,6 +1152,7 @@
             <div class="nav-menu" id="nav-menu">
                 <span class="nav-menu-item disabled">Work</span>
                 <a href="/about" class="nav-menu-item">Über uns</a>
+                <a href="/en" class="nav-menu-item nav-menu-lang">EN</a>
 
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
                     <span class="nav-pill-icon">
@@ -1487,9 +1505,14 @@
             v.muted = true;
             v.setAttribute('muted', '');
             v.defaultMuted = true;
+            v.playsInline = true;
             v.play().catch(function(){});
-            v.addEventListener('loadeddata', function() { v.play().catch(function(){}); });
-            v.addEventListener('canplay', function() { v.play().catch(function(){}); });
+            var vio = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) v.play().catch(function(){});
+                });
+            }, { threshold: 0.1 });
+            vio.observe(v);
         });
 
         // ===== NAV INVERT ON FOOTER =====

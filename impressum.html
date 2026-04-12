@@ -98,6 +98,7 @@
         }
         .nav-menu-item:hover { background: rgba(220, 220, 220, 0.75); color: var(--black); text-decoration: none; }
         .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-menu-lang { display: none; }
         .lang-toggle {
             display: flex; align-items: center; justify-content: center;
             width: 36px; height: 36px; perspective: 200px; text-decoration: none;
@@ -265,6 +266,9 @@
             body { overflow: auto; height: auto; }
             .legal-page { height: auto; min-height: 100vh; }
             .nav { padding: 16px 24px; }
+            .nav-center { position: static; transform: none; }
+            .lang-toggle { display: none; }
+            .nav-menu-lang { display: flex; }
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
             .legal-bottom { padding: 16px 24px; }
@@ -297,6 +301,7 @@
 
         <div class="nav-center">
             <a href="/" class="nav-menu-item">Zurück</a>
+            <a href="/en" class="nav-menu-item nav-menu-lang">EN</a>
         </div>
 
         <div class="nav-right">

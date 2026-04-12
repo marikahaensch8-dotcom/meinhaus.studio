@@ -152,8 +152,67 @@
         .nav-services-link:hover { background: rgba(0,0,0,0.05); }
         .nav-menu-item.disabled, .nav-services-link.disabled {
             opacity: 0.4;
-            pointer-events: none;
             cursor: default;
+            position: relative;
+        }
+        .nav-menu-item.disabled:hover::after {
+            content: 'under construction';
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-menu-lang { display: none; }
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            perspective: 200px;
+            text-decoration: none;
+        }
+        .lang-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s var(--ease-out);
+        }
+        .lang-toggle:hover .lang-cube {
+            transform: rotateX(-90deg);
+        }
+        .lang-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--grey);
+            backface-visibility: hidden;
+        }
+        .lang-face-front {
+            transform: translateZ(18px);
+        }
+        .lang-face-back {
+            transform: rotateX(90deg) translateZ(18px);
         }
 
         .nav-connect-wrap { position: relative; }
@@ -276,12 +335,13 @@
             padding: 160px var(--pad);
             max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
         }
         .manifest-hero {
             padding: 180px var(--pad) 120px;
             text-align: center;
             max-width: 1100px;
+            margin: 0 auto;
         }
         .manifest-text {
             font-family: var(--sans);
@@ -402,6 +462,7 @@
         .nav--inverted .nav-connect { background: rgba(255,255,255,0.1); color: #fff; }
         .nav--inverted .nav-connect:hover { background: rgba(255,255,255,0.2); }
         .nav--inverted .nav-connect svg path { stroke: #fff; }
+        .nav--inverted .lang-face { color: rgba(255,255,255,0.7); }
         .nav--inverted .nav-pill-close { background: #fff; color: #000; }
         .nav--inverted .nav-pill-close svg path { stroke: #000; }
         .nav--inverted .nav-menu {
@@ -428,6 +489,110 @@
         .nav--inverted .nav-connect-link:hover { color: #fff; }
         .nav--inverted .nav-connect-social-links a { color: rgba(255,255,255,0.5); }
         .nav--inverted .nav-connect-social-links a:hover { color: #fff; }
+
+        /* ===== FOOTER ===== */
+        /* ===== PHOTO SLIDER ===== */
+        .about-photo-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            height: 75vh;
+            margin-bottom: -4px;
+        }
+        .about-slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .about-slide {
+            min-width: 100%;
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .site-footer {
+            background: #000;
+            color: var(--pure-white);
+            text-align: center;
+            min-height: 100vh;
+            padding: 80px var(--pad) 40px;
+            font-family: var(--sans);
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 36px;
+            min-height: calc(100vh - 160px);
+            justify-content: center;
+            position: relative;
+            padding-bottom: 60px;
+        }
+        .footer-block {
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #fff;
+        }
+        .footer-email {
+            font-size: 28px;
+            font-weight: 400;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity var(--ease);
+        }
+        .footer-block-email {
+            margin-top: -20px;
+        }
+        .footer-email:hover { opacity: 0.7; }
+        .footer-illustration {
+            width: 320px;
+            height: auto;
+            pointer-events: none;
+        }
+        .footer-illustration::-webkit-media-controls-panel,
+        .footer-illustration::-webkit-media-controls-play-button,
+        .footer-illustration::-webkit-media-controls-start-playback-button,
+        .footer-illustration::-webkit-media-controls {
+            display: none !important;
+            -webkit-appearance: none;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: -24px;
+        }
+        .footer-social-pill {
+            font-family: 'Space Mono', monospace;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            border-radius: 100px;
+            padding: 8px 24px;
+            text-decoration: none;
+            transition: border-color var(--ease);
+        }
+        .footer-social-pill:hover { border-color: rgba(255,255,255,0.7); }
+        .footer-legal {
+            position: absolute;
+            bottom: 0;
+            font-size: 22px;
+            color: #fff;
+        }
+        .footer-legal a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity var(--ease);
+        }
+        .footer-legal span { margin: 0 4px; }
+        .footer-legal a:hover { opacity: 0.7; }
 
         /* ===== CONTACT MODAL ===== */
         .contact-modal-overlay {
@@ -509,80 +674,6 @@
         }
         .contact-modal-close:hover { color: #fff; }
 
-        /* ===== FOOTER ===== */
-        .site-footer {
-            background: #000;
-            color: var(--pure-white);
-            text-align: center;
-            min-height: 100vh;
-            padding: 80px var(--pad) 40px;
-            font-family: var(--sans);
-            font-weight: 300;
-            letter-spacing: 0.01em;
-        }
-        .footer-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 36px;
-            min-height: calc(100vh - 160px);
-            justify-content: center;
-            position: relative;
-            padding-bottom: 60px;
-        }
-        .footer-block {
-            font-size: 38px;
-            font-weight: 400;
-            line-height: 1.4;
-            color: #fff;
-        }
-        .footer-email {
-            font-size: 28px;
-            font-weight: 400;
-            color: #fff;
-            text-decoration: none;
-            transition: opacity var(--ease);
-        }
-        .footer-block-email {
-            margin-top: -20px;
-        }
-        .footer-email:hover { opacity: 0.7; }
-        .footer-illustration {
-            width: 320px;
-            height: auto;
-        }
-        .footer-socials {
-            display: flex;
-            gap: 12px;
-            margin-top: -24px;
-        }
-        .footer-social-pill {
-            font-family: 'Space Mono', monospace;
-            font-size: 16px;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            color: #fff;
-            border: 1.5px solid rgba(255,255,255,0.5);
-            border-radius: 100px;
-            padding: 8px 24px;
-            text-decoration: none;
-            transition: border-color var(--ease);
-        }
-        .footer-social-pill:hover { border-color: rgba(255,255,255,0.7); }
-        .footer-legal {
-            position: absolute;
-            bottom: 0;
-            font-size: 22px;
-            color: #fff;
-        }
-        .footer-legal a {
-            color: #fff;
-            text-decoration: none;
-            transition: opacity var(--ease);
-        }
-        .footer-legal span { margin: 0 4px; }
-        .footer-legal a:hover { opacity: 0.7; }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             :root { --pad: 24px; }
@@ -607,27 +698,28 @@
             .nav-center.open .nav-pill-close { display: none; }
 
             .nav { padding: 16px 24px; }
+            .nav-center { position: static; transform: none; }
+            .lang-toggle { display: none; }
+            .nav-menu-lang { display: flex; }
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
             .nav-connect-bottom { flex-direction: column; gap: 12px; }
 
-            .duo { grid-template-columns: 1fr; padding: 0 var(--pad) 100px; }
-            .duo-card { aspect-ratio: auto; display: flex; flex-direction: column; }
-            .duo-photo { aspect-ratio: 2 / 3; }
-            .duo-overlay {
-                position: static;
-                transform: none;
-                left: auto; right: auto; bottom: auto;
-                padding: 24px 0;
-            }
-            .contact-form-row { grid-template-columns: 1fr; }
+            .footer-block { font-size: 28px; }
+            .footer-email { font-size: 20px; }
+            .footer-socials { flex-wrap: wrap; justify-content: center; }
+            .footer-legal { font-size: 16px; }
+            .about-photo-slider { height: auto; }
         }
 
         @media (max-width: 600px) {
-            .duo-name, .duo-desc { font-size: 20px; }
             .manifest { padding: 100px var(--pad); }
             .manifest-text { font-size: 24px; }
-            .contact { padding: 80px var(--pad); }
+            .footer-block { font-size: 22px; }
+            .footer-email { font-size: 16px; }
+            .footer-social-pill { font-size: 14px; padding: 6px 18px; }
+            .footer-legal { font-size: 14px; }
+            .footer-illustration { width: 200px; }
         }
 
         /* ===== COOKIE CONSENT ===== */
@@ -695,7 +787,7 @@
     <!-- Nav -->
     <header class="nav">
         <nav aria-label="Main navigation">
-        <a href="/en" class="nav-logo">meinhaus</a>
+        <a href="/" class="nav-logo">meinhaus</a>
 
         <div class="nav-center">
             <button class="nav-pill" id="nav-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -707,18 +799,9 @@
                 </span>
             </button>
             <div class="nav-menu" id="nav-menu">
-                <div class="nav-services-wrap">
-                    <button class="nav-menu-item nav-services-toggle" id="nav-services-toggle" aria-expanded="false" aria-controls="nav-services-dropdown">Services <span class="nav-services-chevron"><svg width="10" height="8" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
-                    <div class="nav-services-dropdown" id="nav-services-dropdown">
-                        <a href="/branding" class="nav-services-link disabled">Branding</a>
-                        <a href="/webdesign" class="nav-services-link disabled">Webdesign</a>
-                        <a href="/packaging" class="nav-services-link disabled">Packaging</a>
-                        <a href="/brand-check" class="nav-services-link">Brand Check</a>
-                    </div>
-                </div>
-                <a href="/work" class="nav-menu-item">Work</a>
-                <a href="/about-en" class="nav-menu-item" aria-current="page">About us</a>
-                <a href="/about" class="nav-menu-item">DE</a>
+                <span class="nav-menu-item disabled">Work</span>
+                <a href="/about-en" class="nav-menu-item" aria-current="page">About</a>
+                <a href="/about" class="nav-menu-item nav-menu-lang">DE</a>
 
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Close menu">
                     <span class="nav-pill-icon">
@@ -730,6 +813,14 @@
                 </button>
             </div>
         </div>
+
+        <div class="nav-right">
+            <a href="/about" class="lang-toggle" aria-label="Wechseln zu Deutsch">
+                <div class="lang-cube">
+                    <span class="lang-face lang-face-front">EN</span>
+                    <span class="lang-face lang-face-back">DE</span>
+                </div>
+            </a>
 
         <div class="nav-connect-wrap">
             <button class="nav-connect" id="nav-connect-toggle" aria-expanded="false" aria-controls="nav-connect-dropdown">
@@ -766,86 +857,25 @@
                 </div>
             </div>
         </div>
+        </div>
         </nav>
     </header>
 
     <main id="main-content">
 
-        <!-- MANIFEST — hero statement -->
+        <!-- MANIFEST -->
         <section class="manifest manifest-hero">
-            <p class="manifest-text" id="manifest-text">We are an architect and a designer who started building brands together because we believe every good idea deserves a great visual home.</p>
+            <p class="manifest-text" id="manifest-text">We are an architect and a designer who started building brands together because we believe every good idea deserves a great visual home. Emma thinks in spaces. She builds the strategic foundation that everything else stands on. Marika thinks in pixels. She gives the strategy a face.</p>
         </section>
 
-        <!-- DUO CARDS -->
-        <section class="duo">
-            <!-- EMMA -->
-            <div class="duo-card">
-                <img src="emma.jpeg" alt="Emma" class="duo-photo">
-                <div class="duo-overlay">
-                    <h2 class="duo-name">Emma</h2>
-                    <p class="duo-desc">Thinks in spaces. Builds the strategic foundation that everything else stands on. Positioning, brand strategy, messaging, content. She combines analytical thinking with creative instinct and brings brands to life in three dimensions.</p>
-                    <div class="duo-tags">
-                        <span class="duo-tag">Brand Strategy</span>
-                        <span class="duo-tag">Positioning</span>
-                        <span class="duo-tag">Messaging</span>
-                        <span class="duo-tag">Content Strategy</span>
-                        <span class="duo-tag">3D Visuals</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MARIKA -->
-            <div class="duo-card">
-                <img src="DSC03675.jpeg" alt="Marika" class="duo-photo">
-                <div class="duo-overlay">
-                    <h2 class="duo-name">Marika</h2>
-                    <p class="duo-desc">Thinks in pixels. Gives the strategy a face. Websites, illustrations, visual systems, everything that makes a brand visible and tangible. She designs identities that feel right instantly and stay in your head. From the first draft to the finished website.</p>
-                    <div class="duo-tags">
-                        <span class="duo-tag">Brand Identity</span>
-                        <span class="duo-tag">Web Design</span>
-                        <span class="duo-tag">UI/UX Design</span>
-                        <span class="duo-tag">Illustration</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="contact" id="contact">
-            <div class="contact-inner">
-                <p class="contact-label">Get in touch</p>
-                <h2 class="contact-heading">Our door is open.</h2>
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqeyodor" method="POST">
-                    <label for="contact-name" class="sr-only">Name / Company</label>
-                    <input type="text" name="name" id="contact-name" placeholder="Name / Company" required>
-                    <label for="contact-email" class="sr-only">Email</label>
-                    <input type="email" name="email" id="contact-email" placeholder="Email" required>
-                    <label for="contact-service" class="sr-only">Service</label>
-                    <select name="service" id="contact-service" required>
-                        <option value="" disabled selected>Service</option>
-                        <option>Brand Strategy</option>
-                        <option>Brand Identity</option>
-                        <option>Website</option>
-                        <option>Full Brand System</option>
-                        <option>Rebrand</option>
-                        <option>Other</option>
-                    </select>
-                    <label for="contact-timeline" class="sr-only">Timeline</label>
-                    <select name="timeline" id="contact-timeline">
-                        <option value="" disabled selected>Timeline</option>
-                        <option>As soon as possible</option>
-                        <option>1-2 weeks</option>
-                        <option>3-6 weeks</option>
-                        <option>No rush</option>
-                    </select>
-                    <label for="contact-message" class="sr-only">Message</label>
-                    <textarea name="message" id="contact-message" placeholder="How can we help?"></textarea>
-                    <button type="submit" class="contact-submit">Send enquiry</button>
-                </form>
-                <div class="contact-success" id="contact-success" role="status" aria-live="polite">
-                    <h3>Thank you.</h3>
-                    <p>We'll get back to you shortly.</p>
-                </div>
+        <!-- FULL-WIDTH PHOTO SLIDER -->
+        <section class="about-photo-slider">
+            <div class="about-slider-track" id="about-slider-track">
+                <img src="about%20us_marika%26emma_0.png" alt="Emma and Marika" class="about-slide">
+                <img src="about%20us_marika%26emma-1.png" alt="Emma and Marika" class="about-slide">
+                <img src="about%20us_marika%26emma-2.png" alt="Emma and Marika" class="about-slide">
+                <img src="about%20us_marika%26emma-3.png" alt="Emma and Marika" class="about-slide">
+                <img src="about%20us_marika%26emma-4.png" alt="Emma and Marika" class="about-slide">
             </div>
         </section>
 
@@ -855,16 +885,14 @@
         <div class="footer-inner">
             <div class="footer-block">Hit us up.<br>We are always home.</div>
             <div class="footer-block footer-block-email"><a href="mailto:hello@meinhaus.studio" class="footer-email">hello@meinhaus.studio</a></div>
-            <video class="footer-illustration" autoplay loop muted playsinline>
-                <source src="footer%20illustration.mp4" type="video/mp4">
-            </video>
+            <video class="footer-illustration" src="footer%20illustration.mp4" autoplay loop muted playsinline preload="auto" disableRemotePlayback></video>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-social-pill">IG</a>
                 <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-social-pill">IN</a>
                 <button class="footer-social-pill" id="footer-contact-btn">Brief us</button>
                 <a href="https://calendar.app.google/ZQQHejhJVwAC2ybv8" target="_blank" rel="noopener noreferrer" class="footer-social-pill">Say hi</a>
             </div>
-            <div class="footer-legal">&copy; 2026 meinhaus studio. All rights reserved.<br><a href="/impressum">Legal Notice</a><span>,</span> <a href="/datenschutz">Privacy Policy</a></div>
+            <div class="footer-legal">&copy; 2026 meinhaus studio. All rights reserved.<br><a href="/impressum">Impressum</a><span>,</span> <a href="/datenschutz">Datenschutz</a></div>
         </div>
     </footer>
 
@@ -879,18 +907,18 @@
                 <input type="text" name="name" placeholder="Name or brand" required>
                 <input type="email" name="email" placeholder="Your email" required>
                 <select name="service" required>
-                    <option value="" disabled selected>What do you need?</option>
+                    <option value="" disabled selected>What do you have in mind?</option>
                     <option>Branding</option>
-                    <option>Web Design</option>
+                    <option>Webdesign</option>
                     <option>Packaging</option>
-                    <option>Full Package</option>
+                    <option>Full package</option>
                     <option>Other</option>
                 </select>
                 <select name="timeline">
-                    <option value="" disabled selected>When should we start?</option>
-                    <option>ASAP</option>
-                    <option>1-2 weeks</option>
-                    <option>3-6 weeks</option>
+                    <option value="" disabled selected>When do you need it?</option>
+                    <option>In 2 weeks</option>
+                    <option>In a month</option>
+                    <option>In 2-3 months</option>
                     <option>No rush</option>
                 </select>
                 <textarea name="message" placeholder="Tell us more..."></textarea>
@@ -979,12 +1007,14 @@
         const servicesToggle = document.getElementById('nav-services-toggle');
         const servicesDropdown = document.getElementById('nav-services-dropdown');
         const servicesWrap = document.querySelector('.nav-services-wrap');
-        servicesToggle.addEventListener('click', e => {
-            e.stopPropagation();
-            const o = servicesWrap.classList.toggle('open');
-            servicesDropdown.classList.toggle('active', o);
-            servicesToggle.setAttribute('aria-expanded', o);
-        });
+        if (servicesToggle) {
+            servicesToggle.addEventListener('click', e => {
+                e.stopPropagation();
+                const o = servicesWrap.classList.toggle('open');
+                servicesDropdown.classList.toggle('active', o);
+                servicesToggle.setAttribute('aria-expanded', o);
+            });
+        }
         const connectToggle = document.getElementById('nav-connect-toggle');
         const connectDropdown = document.getElementById('nav-connect-dropdown');
         const connectWrap = document.querySelector('.nav-connect-wrap');
@@ -1003,7 +1033,7 @@
             if (isOpen) startClocks(); else stopClocks();
         });
         document.addEventListener('click', e => {
-            if (!e.target.closest('.nav-services-wrap')) { servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); servicesToggle.setAttribute('aria-expanded', 'false'); }
+            if (servicesWrap && !e.target.closest('.nav-services-wrap')) { servicesWrap.classList.remove('open'); servicesDropdown.classList.remove('active'); servicesToggle.setAttribute('aria-expanded', 'false'); }
             if (!e.target.closest('.nav-connect-wrap')) { connectWrap.classList.remove('open'); connectDropdown.classList.remove('active'); connectToggle.setAttribute('aria-expanded', 'false'); stopClocks(); }
             if (!e.target.closest('.nav-center')) { navCenter.classList.remove('open'); navMenuToggle.setAttribute('aria-expanded', 'false'); }
         });
@@ -1030,6 +1060,65 @@
             }
         }, { passive: true });
 
+        // ===== CONTACT FORM =====
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                fetch('https://formspree.io/f/xqeyodor', {
+                    method: 'POST', body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                }).then(res => {
+                    if (res.ok) {
+                        form.style.display = 'none';
+                        document.getElementById('contact-success').classList.add('visible');
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'form_submission', 'form_name': 'contact'});
+                    }
+                });
+            });
+        }
+
+        // ===== PHOTO SLIDER =====
+        (function() {
+            const track = document.getElementById('about-slider-track');
+            if (!track) return;
+            // Clone first slide to end for seamless loop
+            const slides = track.querySelectorAll('.about-slide');
+            if (slides.length < 2) return;
+            const clone = slides[0].cloneNode(true);
+            track.appendChild(clone);
+            const total = slides.length;
+            let current = 0;
+            setInterval(() => {
+                current++;
+                track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                if (current === total) {
+                    setTimeout(() => {
+                        track.style.transition = 'none';
+                        track.style.transform = 'translateX(0)';
+                        current = 0;
+                    }, 850);
+                }
+            }, 4000);
+        })();
+
+        // ===== FORCE AUTOPLAY VIDEOS =====
+        document.querySelectorAll('video[autoplay]').forEach(function(v) {
+            v.muted = true;
+            v.setAttribute('muted', '');
+            v.defaultMuted = true;
+            v.playsInline = true;
+            v.play().catch(function(){});
+            var vio = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) v.play().catch(function(){});
+                });
+            }, { threshold: 0.1 });
+            vio.observe(v);
+        });
+
         // ===== NAV INVERT ON FOOTER =====
         const navEl = document.querySelector('.nav');
         const footerEl = document.querySelector('.site-footer');
@@ -1040,23 +1129,6 @@
             }, { threshold: 0, rootMargin: '0px 0px -' + (window.innerHeight - navH) + 'px 0px' });
             io.observe(footerEl);
         }
-
-        // ===== CONTACT FORM =====
-        const form = document.getElementById('contact-form');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch('https://formspree.io/f/xqeyodor', {
-                method: 'POST', body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            }).then(res => {
-                if (res.ok) {
-                    form.style.display = 'none';
-                    document.getElementById('contact-success').classList.add('visible');
-                    window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push({'event': 'form_submission', 'form_name': 'contact'});
-                }
-            });
-        });
 
         // ===== CONTACT MODAL =====
         const modalOverlay = document.getElementById('contact-modal-overlay');
@@ -1086,7 +1158,7 @@
             }).then(res => {
                 if (res.ok) {
                     modalForm.closest('.contact-modal').querySelector('.contact-heading').style.display = 'none';
-                    modalForm.innerHTML = '<div style="text-align:center;padding:60px 0"><h3 style="font-family:var(--sans);font-size:38px;font-weight:400;color:#fff;line-height:1.4">Yay, sent!<br>We\'ll get back to you soon.</h3></div>';
+                    modalForm.innerHTML = '<div style="text-align:center;padding:60px 0"><h3 style="font-family:var(--sans);font-size:38px;font-weight:400;color:#fff;line-height:1.4">Sent!<br>We\'ll get back to you soon.</h3></div>';
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({'event': 'form_submission', 'form_name': 'contact_modal'});
                 }

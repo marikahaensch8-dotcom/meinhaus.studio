@@ -152,8 +152,22 @@
         .nav-services-link:hover { background: rgba(0,0,0,0.05); }
         .nav-menu-item.disabled, .nav-services-link.disabled {
             opacity: 0.4;
-            pointer-events: none;
             cursor: default;
+            position: relative;
+        }
+        .nav-menu-item.disabled:hover::after {
+            content: 'under construction';
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            pointer-events: none;
         }
 
         .nav-right {
@@ -161,6 +175,7 @@
             align-items: center;
             gap: 12px;
         }
+        .nav-menu-lang { display: none; }
         .lang-toggle {
             display: flex;
             align-items: center;
@@ -538,6 +553,14 @@
         .footer-illustration {
             width: 320px;
             height: auto;
+            pointer-events: none;
+        }
+        .footer-illustration::-webkit-media-controls-panel,
+        .footer-illustration::-webkit-media-controls-play-button,
+        .footer-illustration::-webkit-media-controls-start-playback-button,
+        .footer-illustration::-webkit-media-controls {
+            display: none !important;
+            -webkit-appearance: none;
         }
         .footer-socials {
             display: flex;
@@ -675,6 +698,9 @@
             .nav-center.open .nav-pill-close { display: none; }
 
             .nav { padding: 16px 24px; }
+            .nav-center { position: static; transform: none; }
+            .lang-toggle { display: none; }
+            .nav-menu-lang { display: flex; }
             .nav-connect { height: 40px; padding: 0 16px; font-size: 13px; }
             .nav-connect-dropdown { position: fixed; width: auto; max-width: 320px; left: auto; right: 24px; top: 72px; padding: 16px; }
             .nav-connect-bottom { flex-direction: column; gap: 12px; }
@@ -773,8 +799,9 @@
                 </span>
             </button>
             <div class="nav-menu" id="nav-menu">
-                <a href="/work" class="nav-menu-item">Work</a>
+                <span class="nav-menu-item disabled">Work</span>
                 <a href="/about" class="nav-menu-item" aria-current="page">Über uns</a>
+                <a href="/en" class="nav-menu-item nav-menu-lang">EN</a>
 
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
                     <span class="nav-pill-icon">
@@ -858,9 +885,7 @@
         <div class="footer-inner">
             <div class="footer-block">Hit us up.<br>We are always home.</div>
             <div class="footer-block footer-block-email"><a href="mailto:hello@meinhaus.studio" class="footer-email">hello@meinhaus.studio</a></div>
-            <video class="footer-illustration" autoplay loop muted playsinline>
-                <source src="footer%20illustration.mp4" type="video/mp4">
-            </video>
+            <video class="footer-illustration" src="footer%20illustration.mp4" autoplay loop muted playsinline preload="auto" disableRemotePlayback></video>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-social-pill">IG</a>
                 <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-social-pill">IN</a>
@@ -1078,6 +1103,21 @@
                 }
             }, 4000);
         })();
+
+        // ===== FORCE AUTOPLAY VIDEOS =====
+        document.querySelectorAll('video[autoplay]').forEach(function(v) {
+            v.muted = true;
+            v.setAttribute('muted', '');
+            v.defaultMuted = true;
+            v.playsInline = true;
+            v.play().catch(function(){});
+            var vio = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) v.play().catch(function(){});
+                });
+            }, { threshold: 0.1 });
+            vio.observe(v);
+        });
 
         // ===== NAV INVERT ON FOOTER =====
         const navEl = document.querySelector('.nav');
