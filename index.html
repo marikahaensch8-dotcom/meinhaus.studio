@@ -177,8 +177,22 @@
         .nav-services-link:hover { background: rgba(0,0,0,0.05); }
         .nav-menu-item.disabled, .nav-services-link.disabled {
             opacity: 0.4;
-            pointer-events: none;
             cursor: default;
+            position: relative;
+        }
+        .nav-menu-item.disabled:hover::after {
+            content: 'under construction';
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            pointer-events: none;
         }
 
 
@@ -913,6 +927,7 @@
         .footer-illustration {
             width: 320px;
             height: auto;
+            pointer-events: none;
         }
         .footer-socials {
             display: flex;
@@ -1118,7 +1133,7 @@
                 </span>
             </button>
             <div class="nav-menu" id="nav-menu">
-                <a href="/work" class="nav-menu-item">Work</a>
+                <span class="nav-menu-item disabled">Work</span>
                 <a href="/about" class="nav-menu-item">Über uns</a>
 
                 <button class="nav-pill nav-pill-close" id="nav-menu-close" aria-label="Menü schließen">
@@ -1214,9 +1229,7 @@
                         </div>
                         <div class="svc-mid"><p class="svc-desc">Das Fundament. Wir bauen Identitäten von Grund auf. Von Positionierung und Messaging bis Typografie, Markenarchitektur und Brand Guidelines.</p>
 </div>
-                        <video class="svc-img" autoplay loop muted playsinline>
-                            <source src="footer%20illustration.mp4" type="video/mp4">
-                        </video>
+                        <img class="svc-img" src="branding.png" alt="Branding">
                     </div>
                     <div class="svc-row">
                         <div class="svc-left">
@@ -1224,9 +1237,7 @@
                         </div>
                         <div class="svc-mid"><p class="svc-desc">Die Haustür. Der erste Eindruck zählt. UI/UX Design, Landing Pages, Development und SEO. Alles, was deine Marke digital greifbar macht.</p>
 </div>
-                        <video class="svc-img" autoplay loop muted playsinline>
-                            <source src="footer%20illustration.mp4" type="video/mp4">
-                        </video>
+                        <img class="svc-img" src="webdesign.png" alt="Webdesign">
                     </div>
                     <div class="svc-row">
                         <div class="svc-left">
@@ -1234,9 +1245,7 @@
                         </div>
                         <div class="svc-mid"><p class="svc-desc">Das Interior. Ein Haus ist erst ein Zuhause, wenn es lebt. Fotografie, Editorial Design, Content Strategy und Marketing. Damit deine Marke sichtbar wird und wächst.</p>
 </div>
-                        <video class="svc-img" autoplay loop muted playsinline>
-                            <source src="footer%20illustration.mp4" type="video/mp4">
-                        </video>
+                        <img class="svc-img" src="creative%20direction.png" alt="Creative Direction">
                     </div>
                 </div>
             </div>
@@ -1297,9 +1306,7 @@
         <div class="footer-inner">
             <div class="footer-block">Hit us up.<br>We are always home.</div>
             <div class="footer-block footer-block-email"><a href="mailto:hello@meinhaus.studio" class="footer-email">hello@meinhaus.studio</a></div>
-            <video class="footer-illustration" autoplay loop muted playsinline>
-                <source src="footer%20illustration.mp4" type="video/mp4">
-            </video>
+            <video class="footer-illustration" src="footer%20illustration.mp4" autoplay loop muted playsinline preload="auto" disableRemotePlayback></video>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/meinhaus.studio/" target="_blank" rel="noopener noreferrer" class="footer-social-pill">IG</a>
                 <a href="https://www.linkedin.com/company/mein-haus-studio/" target="_blank" rel="noopener noreferrer" class="footer-social-pill">IN</a>
@@ -1474,6 +1481,16 @@
 
         const firstWhy = document.querySelector('.why-body.open');
         if (firstWhy) firstWhy.style.maxHeight = firstWhy.scrollHeight + 'px';
+
+        // ===== FORCE AUTOPLAY VIDEOS =====
+        document.querySelectorAll('video[autoplay]').forEach(function(v) {
+            v.muted = true;
+            v.setAttribute('muted', '');
+            v.defaultMuted = true;
+            v.play().catch(function(){});
+            v.addEventListener('loadeddata', function() { v.play().catch(function(){}); });
+            v.addEventListener('canplay', function() { v.play().catch(function(){}); });
+        });
 
         // ===== NAV INVERT ON FOOTER =====
         const navEl = document.querySelector('.nav');
